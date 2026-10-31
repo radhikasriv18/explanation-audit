@@ -54,8 +54,8 @@ data/
     gspell_final/             final GSPELL run (Cora and Products, embedding path)
   metrics/                    full-eval outputs: text metrics, readability, GSPELL metrics, GSPELL corrected eval,
                               CF-GNNExplainer edge-accuracy audit, prediction agreement
-  robustness/                 30 Cora + 30 Products subset, regenerated texts per model, scoring outputs
-docs/run_notes/               run logs kept during the experiments (every deviation, fix and job id)
+  robustness/                 regeneration subset, regenerated texts per model, scoring outputs
+                              (all metrics computed on a fixed subset of 12 Cora + 12 Products nodes)
 tools/
   workspace_layout.tsv        package path -> workspace path the scripts expect
   setup_workspace.sh          recreates that layout as symlinks
@@ -63,22 +63,19 @@ tools/
 
 ## Which script produces which result
 
-| Result | Script(s) | Output in this package |
-|---|---|---|
-| Generated explanations, all methods, full eval sets | `scripts/generation/*`, then `scripts/consolidation/consolidate_*.py` | `data/explanations/` |
-| Prediction agreement (canonical GNN vs. method predictions) | `scripts/consolidation/prediction_agreement/predict_canonical_and_gspell.py`, `predict_graphnarrator.py`, `merge_report.py` | `data/metrics/prediction_agreement/FINAL_agreement_report.json` |
-| Readability (Flesch-Kincaid) table | `scripts/metrics/readability/fk_components_pooled_table_sources.py`, `cf_nonempty_recompute.py` | `data/metrics/readability/` |
-| Text metrics on the full eval sets (FK, lexical, entity graph) | `scripts/metrics/text_metrics/compute_text_metrics_production.py` | `data/metrics/text_metrics/` |
-| GSPELL rows of the readability / lexical / entity tables; four-method Kruskal-Wallis | `scripts/metrics/gspell/stage_a_extract.py` → `stage_b_metrics.py` → `stage_c_fk30_all_methods.py` | `data/metrics/gspell/` |
-| Entity-graph complexity | `scripts/metrics/entity_graph/compute_entity_graph_v5.py` | — |
-| CF-GNNExplainer coverage and edge-accuracy audit | `scripts/generation/cf_gnnexplainer/src/cf_gnnexplainer.py`; see `docs/run_notes/cf_gnnexplainer_run.md` | `data/metrics/cf_gnnexplainer/` |
-| Grounding precision / recall / F1 | `scripts/metrics/grounding/{graphnarrator,graphxain,cf_gnnexplainer}/grounding_precision_rulebased*.py`, `grounding_recall_f1.py` | — |
-| Claim extraction | `scripts/claims/pilot/extract_claims.py` → `cleanup_v3.py` → `span_check_v4.py` | robustness texts: `data/robustness/scoring/` |
-| LLM grounding judge | `scripts/judge/judge_gemini.py`, `judge_gemini_3methods.py`; agreement with hand labels: `report_gemini_full.py` | robustness texts: `data/robustness/scoring/` |
-| Robustness to the narrating LLM | `scripts/robustness/make_robustness_subset.py`; `run_qwen14b_regen.py`, `run_llama70b_regen.py`, `run_gpt4o_graphxain.py`, `run_gpt4omini_graphnarrator.py`; `scoring/{prepare_judge_inputs,extract_robustness,judge_robustness,compute_metrics}.py` | `data/robustness/`; table: `data/robustness/scoring/results_table.csv` |
-
-"—" means the script is included but its outputs are not: they were computed on the human-study texts, which are
-not part of this release.
+| Result | Script(s) |
+|---|---|
+| Generated explanations, all methods, full eval sets | `scripts/generation/*`, then `scripts/consolidation/consolidate_*.py` |
+| Prediction agreement (canonical GNN vs. method predictions) | `scripts/consolidation/prediction_agreement/predict_canonical_and_gspell.py`, `predict_graphnarrator.py`, `merge_report.py` |
+| Readability (Flesch-Kincaid) table | `scripts/metrics/readability/fk_components_pooled_table_sources.py`, `cf_nonempty_recompute.py` |
+| Text metrics on the full eval sets (FK, lexical, entity graph) | `scripts/metrics/text_metrics/compute_text_metrics_production.py` |
+| GSPELL rows of the readability / lexical / entity tables; four-method Kruskal-Wallis | `scripts/metrics/gspell/stage_a_extract.py` → `stage_b_metrics.py` → `stage_c_fk30_all_methods.py` |
+| Entity-graph complexity | `scripts/metrics/entity_graph/compute_entity_graph_v5.py` |
+| CF-GNNExplainer coverage and edge-accuracy audit | `scripts/generation/cf_gnnexplainer/src/cf_gnnexplainer.py` |
+| Grounding precision / recall / F1 | `scripts/metrics/grounding/{graphnarrator,graphxain,cf_gnnexplainer}/grounding_precision_rulebased*.py`, `grounding_recall_f1.py` |
+| Claim extraction | `scripts/claims/pilot/extract_claims.py` → `cleanup_v3.py` → `span_check_v4.py` |
+| LLM grounding judge | `scripts/judge/judge_gemini.py`, `judge_gemini_3methods.py`; agreement with hand labels: `report_gemini_full.py` |
+| Robustness to the narrating LLM | `scripts/robustness/make_robustness_subset.py`; `run_qwen14b_regen.py`, `run_llama70b_regen.py`, `run_gpt4o_graphxain.py`, `run_gpt4omini_graphnarrator.py`; `scoring/{prepare_judge_inputs,extract_robustness,judge_robustness,compute_metrics}.py` |
 
 ## How to reproduce
 
@@ -107,6 +104,3 @@ not part of this release.
    `compute_metrics.py`). Every stage's outputs are in `data/`, so any stage can be rerun on its own.
 6. **Determinism.** Generation used seed 42. LLM outputs still differ across GPU types: compare regenerated text
    only against runs on the same hardware (A100 for the robustness runs, V100 for the rest).
-
-
-
