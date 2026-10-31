@@ -108,20 +108,5 @@ not part of this release.
 6. **Determinism.** Generation used seed 42. LLM outputs still differ across GPU types: compare regenerated text
    only against runs on the same hardware (A100 for the robustness runs, V100 for the rest).
 
-## Notes
 
-- Node ids are global ids in the canonical graphs unless a file says otherwise. GraphNarrator and llm-graph-cf write
-  per-position files; the `*index_to_global_node_id*.json` maps and `Target_Node_ID` fields map them back.
-- `full_eval_consolidated/graphxain_*.json` is the first GraphXAIN run, whose prompts included the true class.
-  The schema-aligned and paper-aligned runs do not; use those for anything that depends on the prompt.
-- `data/robustness/` is a snapshot taken while robustness scoring was still running: `results_table.csv` may show
-  configurations as not yet judged (`judged=False`, precision empty). Rerun `scripts/robustness/scoring/` to complete it.
-- `docs/run_notes/` are working logs written during the experiments. Job ids in file names are Slurm job ids.
-- Absolute paths in scripts and data were rewritten as workspace-relative paths (`./...` or `$WORKSPACE/...`);
-  OpenAI response ids were redacted (`chatcmpl-<redacted>`).
 
-## Human-study data (not included)
-
-This release contains no human-study material: no stimuli, no survey-version explanation texts, no survey
-platform files and no participant data (responses, participant IDs, timing logs). [Placeholder: add the
-data-access statement here, e.g. "available from the authors on request, subject to the approved study protocol".]
