@@ -1,0 +1,13 @@
+{
+ "success": 60,
+ "failed": [],
+ "finish_reasons": {
+  "stop": 60
+ },
+ "prompt_tokens": 453187,
+ "completion_tokens": 40568,
+ "est_cost_usd": 0.0923,
+ "models_returned": {
+  "gpt-4o-mini-2024-07-18": 60
+ }
+}

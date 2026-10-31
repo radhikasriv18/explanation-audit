@@ -1,0 +1,231 @@
+{
+ "run_id": "CF-GNNExplainer__Qwen-14B__cora__160",
+ "method": "CF-GNNExplainer",
+ "config": "Qwen-14B",
+ "dataset": "cora",
+ "node": "160",
+ "source_file": "./robustness_2026-10-30/production_a100/qwen14b_gptq_int4_cora_Response.json",
+ "source_locator": "[29][1]",
+ "text_scope": "whole output",
+ "input_text": "To address the provided scenario, let's first identify the differences between the factual and counterfactual examples and then populate the `infos` dictionary accordingly.\n\n### Differences Between Factual and Counterfactual Examples\n\nIn the factual graph, the node 160 (which is the target node) is classified as `Neural_Networks`. However, in the counterfactual graph, the same node 160 is reclassified as `Theory`.\n\n#### Node Differences\n- **Node ID**: 160\n- **Factual Classification**: Neural_Networks\n- **Counterfactual Classification**: Theory\n\n#### Edge Differences\n- In the factual graph, node 160 is connected to nodes 125, 322, 469, 1857, 2540, and 2681.\n- In the counterfactual graph, node 160 is connected to nodes 125, 322, 469, and 2540.\n\nThus, the edges involving node 160 that were removed in the counterfactual graph are those connecting it to nodes 1857 and 2681.\n\n### Populating the Dictionary\n\nBased on the differences identified, we can now fill the `infos` dictionary:\n\n```python\ninfos = {\n    'Target_Node_ID': 160,\n    'Factual_Target_Node_Neighbors': [125, 322, 469, 1857, 2540, 2681],\n    'Factual_Target_Node_Features': ['gaussian', 'organis', 'regress', 'process', 'evalu', 'method'],\n    'Counterfactual_Target_Node_Neighbors': [125, 322, 469, 2540],\n    'Counterfactual_Target_Node_Features': ['gaussian', 'organis', 'regress', 'process', 'evalu', 'method'],\n    'Factual_Target_Node_Class': 'Neural_Networks',\n    'Counterfactual_Target_Node_class': 'Theory',\n    'Target_Node_Features_Changed_From_Factual_To_Counterfactual': [],\n    'Natural_Language_Explanation': \"In the factual graph, node 160 is classified as 'Neural_Networks' and is connected to nodes 125, 322, 469, 1857, 2540, and 2681. In the counterfactual graph, node 160 is reclassified as 'Theory' and loses connections to nodes 1857 and 2681.\"\n}\n```\n\n### Explanation of Changes\n\nThe target node 160, originally classified as `Neural_Networks`, is reclassified as `Theory` in the counterfactual graph. This change is influenced by the removal of two edges connecting node 160 to nodes 1857 and 2681. \n\n- **Node 1857** is classified as `Probabilistic_Methods` and has features related to Gaussian processes and Bayesian regression.\n- **Node 2681** is also classified as `Neural_Networks` and deals with regression with input-dependent noise using Gaussian processes.\n\nBy removing these connections, the influence of nodes that are more aligned with `Neural_Networks` is diminished, leading to a shift in the classification towards `Theory`. This suggests that the model relies heavily on the connectivity pattern and the classification of neighboring nodes to determine the class of the target node.\n\nIn summary, the removal of edges connecting node 160 to nodes 1857 and 2681 alters the local neighborhood structure, causing the model to reclassify node 160 from `Neural_Networks` to `Theory`.",
+ "text_scored_sha256_16": "f523b1fd85df8891",
+ "model": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+ "prompt_version": "v3",
+ "generation": {
+  "dtype": "float16",
+  "do_sample": false,
+  "temperature": 0,
+  "max_new_tokens": 4096
+ },
+ "gpu": "NVIDIA A100-SXM4-80GB",
+ "versions": {
+  "torch": "2.4.1+cu121",
+  "transformers": "4.44.2"
+ },
+ "prompt_messages": [
+  {
+   "role": "system",
+   "content": "You are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only."
+  },
+  {
+   "role": "user",
+   "content": "Extract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 160. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 160  (dataset: cora)\n\nEXPLANATION:\n<<<\nTo address the provided scenario, let's first identify the differences between the factual and counterfactual examples and then populate the `infos` dictionary accordingly.\n\n### Differences Between Factual and Counterfactual Examples\n\nIn the factual graph, the node 160 (which is the target node) is classified as `Neural_Networks`. However, in the counterfactual graph, the same node 160 is reclassified as `Theory`.\n\n#### Node Differences\n- **Node ID**: 160\n- **Factual Classification**: Neural_Networks\n- **Counterfactual Classification**: Theory\n\n#### Edge Differences\n- In the factual graph, node 160 is connected to nodes 125, 322, 469, 1857, 2540, and 2681.\n- In the counterfactual graph, node 160 is connected to nodes 125, 322, 469, and 2540.\n\nThus, the edges involving node 160 that were removed in the counterfactual graph are those connecting it to nodes 1857 and 2681.\n\n### Populating the Dictionary\n\nBased on the differences identified, we can now fill the `infos` dictionary:\n\n```python\ninfos = {\n    'Target_Node_ID': 160,\n    'Factual_Target_Node_Neighbors': [125, 322, 469, 1857, 2540, 2681],\n    'Factual_Target_Node_Features': ['gaussian', 'organis', 'regress', 'process', 'evalu', 'method'],\n    'Counterfactual_Target_Node_Neighbors': [125, 322, 469, 2540],\n    'Counterfactual_Target_Node_Features': ['gaussian', 'organis', 'regress', 'process', 'evalu', 'method'],\n    'Factual_Target_Node_Class': 'Neural_Networks',\n    'Counterfactual_Target_Node_class': 'Theory',\n    'Target_Node_Features_Changed_From_Factual_To_Counterfactual': [],\n    'Natural_Language_Explanation': \"In the factual graph, node 160 is classified as 'Neural_Networks' and is connected to nodes 125, 322, 469, 1857, 2540, and 2681. In the counterfactual graph, node 160 is reclassified as 'Theory' and loses connections to nodes 1857 and 2681.\"\n}\n```\n\n### Explanation of Changes\n\nThe target node 160, originally classified as `Neural_Networks`, is reclassified as `Theory` in the counterfactual graph. This change is influenced by the removal of two edges connecting node 160 to nodes 1857 and 2681. \n\n- **Node 1857** is classified as `Probabilistic_Methods` and has features related to Gaussian processes and Bayesian regression.\n- **Node 2681** is also classified as `Neural_Networks` and deals with regression with input-dependent noise using Gaussian processes.\n\nBy removing these connections, the influence of nodes that are more aligned with `Neural_Networks` is diminished, leading to a shift in the classification towards `Theory`. This suggests that the model relies heavily on the connectivity pattern and the classification of neighboring nodes to determine the class of the target node.\n\nIn summary, the removal of edges connecting node 160 to nodes 1857 and 2681 alters the local neighborhood structure, causing the model to reclassify node 160 from `Neural_Networks` to `Theory`.\n>>>"
+  }
+ ],
+ "prompt_rendered": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nCutting Knowledge Date: December 2023\nToday Date: 26 Jul 2024\n\nYou are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\nExtract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 160. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 160  (dataset: cora)\n\nEXPLANATION:\n<<<\nTo address the provided scenario, let's first identify the differences between the factual and counterfactual examples and then populate the `infos` dictionary accordingly.\n\n### Differences Between Factual and Counterfactual Examples\n\nIn the factual graph, the node 160 (which is the target node) is classified as `Neural_Networks`. However, in the counterfactual graph, the same node 160 is reclassified as `Theory`.\n\n#### Node Differences\n- **Node ID**: 160\n- **Factual Classification**: Neural_Networks\n- **Counterfactual Classification**: Theory\n\n#### Edge Differences\n- In the factual graph, node 160 is connected to nodes 125, 322, 469, 1857, 2540, and 2681.\n- In the counterfactual graph, node 160 is connected to nodes 125, 322, 469, and 2540.\n\nThus, the edges involving node 160 that were removed in the counterfactual graph are those connecting it to nodes 1857 and 2681.\n\n### Populating the Dictionary\n\nBased on the differences identified, we can now fill the `infos` dictionary:\n\n```python\ninfos = {\n    'Target_Node_ID': 160,\n    'Factual_Target_Node_Neighbors': [125, 322, 469, 1857, 2540, 2681],\n    'Factual_Target_Node_Features': ['gaussian', 'organis', 'regress', 'process', 'evalu', 'method'],\n    'Counterfactual_Target_Node_Neighbors': [125, 322, 469, 2540],\n    'Counterfactual_Target_Node_Features': ['gaussian', 'organis', 'regress', 'process', 'evalu', 'method'],\n    'Factual_Target_Node_Class': 'Neural_Networks',\n    'Counterfactual_Target_Node_class': 'Theory',\n    'Target_Node_Features_Changed_From_Factual_To_Counterfactual': [],\n    'Natural_Language_Explanation': \"In the factual graph, node 160 is classified as 'Neural_Networks' and is connected to nodes 125, 322, 469, 1857, 2540, and 2681. In the counterfactual graph, node 160 is reclassified as 'Theory' and loses connections to nodes 1857 and 2681.\"\n}\n```\n\n### Explanation of Changes\n\nThe target node 160, originally classified as `Neural_Networks`, is reclassified as `Theory` in the counterfactual graph. This change is influenced by the removal of two edges connecting node 160 to nodes 1857 and 2681. \n\n- **Node 1857** is classified as `Probabilistic_Methods` and has features related to Gaussian processes and Bayesian regression.\n- **Node 2681** is also classified as `Neural_Networks` and deals with regression with input-dependent noise using Gaussian processes.\n\nBy removing these connections, the influence of nodes that are more aligned with `Neural_Networks` is diminished, leading to a shift in the classification towards `Theory`. This suggests that the model relies heavily on the connectivity pattern and the classification of neighboring nodes to determine the class of the target node.\n\nIn summary, the removal of edges connecting node 160 to nodes 1857 and 2681 alters the local neighborhood structure, causing the model to reclassify node 160 from `Neural_Networks` to `Theory`.\n>>><|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+ "raw_output": "{\n  \"claims\": [\n    {\n      \"claim\": \"node 160 is classified as Neural_Networks\",\n      \"claim_type\": \"class_state\",\n      \"source_span\": \"In the factual graph, the node 160 (which is the target node) is classified as `Neural_Networks`.\",\n      \"entities\": {\n        \"node_ids\": [160],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Neural_Networks\"]\n      }\n    },\n    {\n      \"claim\": \"node 160 is reclassified as Theory\",\n      \"claim_type\": \"class_state\",\n      \"source_span\": \"However, in the counterfactual graph, the same node 160 is reclassified as `Theory`.\",\n      \"entities\": {\n        \"node_ids\": [160],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Theory\"]\n      }\n    },\n    {\n      \"claim\": \"node 160 is connected to nodes 125, 322, 469, 1857, 2540, and 2681\",\n      \"claim_type\": \"structural\",\n      \"source_span\": \"In the factual graph, node 160 is connected to nodes 125, 322, 469, 1857, 2540, and 2681.\",\n      \"entities\": {\n        \"node_ids\": [160, 125, 322, 469, 1857, 2540, 2681],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [[160, 125], [160, 322], [160, 469], [160, 1857], [160, 2540], [160, 2681]],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"node 160 is connected to nodes 125, 322, 469, and 2540\",\n      \"claim_type\": \"structural\",\n      \"source_span\": \"In the counterfactual graph, node 160 is connected to nodes 125, 322, 469, and 2540.\",\n      \"entities\": {\n        \"node_ids\": [160, 125, 322, 469, 2540],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [[160, 125], [160, 322], [160, 469], [160, 2540]],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"node 160 loses connections to nodes 1857 and 2681\",\n      \"claim_type\": \"structural\",\n      \"source_span\": \"loses connections to nodes 1857 and 2681.\",\n      \"entities\": {\n        \"node_ids\": [160, 1857, 2681],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [[160, 1857], [160, 2681]],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"node 1857 is classified as Probabilistic_Methods\",\n      \"claim_type\": \"class_state\",\n      \"source_span\": \"Node 1857 is classified as `Probabilistic_Methods` and has features related to Gaussian processes and Bayesian regression.\",\n      \"entities\": {\n        \"node_ids\": [1857],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Probabilistic_Methods\"]\n      }\n    },\n    {\n      \"claim\": \"node 2681 is classified as Neural_Networks\",\n      \"claim_type\": \"class_state\",\n      \"source_span\": \"Node 2681 is also classified as `Neural_Networks` and deals with regression with input-dependent noise using Gaussian processes.\",\n      \"entities\": {\n        \"node_ids\": [2681],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Neural_Networks\"]\n      }\n    }\n  ]\n}",
+ "claims": [
+  {
+   "claim": "node 160 is classified as Neural_Networks",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     160
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Neural_Networks"
+    ]
+   },
+   "source_span": "In the factual graph, the node 160 (which is the target node) is classified as `Neural_Networks`."
+  },
+  {
+   "claim": "node 160 is reclassified as Theory",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     160
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Theory"
+    ]
+   },
+   "source_span": "However, in the counterfactual graph, the same node 160 is reclassified as `Theory`."
+  },
+  {
+   "claim": "node 160 is connected to nodes 125, 322, 469, 1857, 2540, and 2681",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     160,
+     125,
+     322,
+     469,
+     1857,
+     2540,
+     2681
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      160,
+      125
+     ],
+     [
+      160,
+      322
+     ],
+     [
+      160,
+      469
+     ],
+     [
+      160,
+      1857
+     ],
+     [
+      160,
+      2540
+     ],
+     [
+      160,
+      2681
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "In the factual graph, node 160 is connected to nodes 125, 322, 469, 1857, 2540, and 2681."
+  },
+  {
+   "claim": "node 160 is connected to nodes 125, 322, 469, and 2540",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     160,
+     125,
+     322,
+     469,
+     2540
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      160,
+      125
+     ],
+     [
+      160,
+      322
+     ],
+     [
+      160,
+      469
+     ],
+     [
+      160,
+      2540
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "In the counterfactual graph, node 160 is connected to nodes 125, 322, 469, and 2540."
+  },
+  {
+   "claim": "node 160 loses connections to nodes 1857 and 2681",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     160,
+     1857,
+     2681
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      160,
+      1857
+     ],
+     [
+      160,
+      2681
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "loses connections to nodes 1857 and 2681."
+  },
+  {
+   "claim": "node 1857 is classified as Probabilistic_Methods",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1857
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Probabilistic_Methods"
+    ]
+   },
+   "source_span": "Node 1857 is classified as `Probabilistic_Methods` and has features related to Gaussian processes and Bayesian regression."
+  },
+  {
+   "claim": "node 2681 is classified as Neural_Networks",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     2681
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Neural_Networks"
+    ]
+   },
+   "source_span": "Node 2681 is also classified as `Neural_Networks` and deals with regression with input-dependent noise using Gaussian processes."
+  }
+ ],
+ "n_claims": 7,
+ "parse_diagnostics": {
+  "json_found": true,
+  "json_valid": true,
+  "parse_mode": "strict",
+  "error": null,
+  "n_raw_claims": 7,
+  "n_bad_type": 0,
+  "n_merged_duplicates": 0,
+  "repairs": [],
+  "unrecoverable_segments": [],
+  "n_prompt_tokens": 2215,
+  "n_output_tokens": 851,
+  "hit_max_new_tokens": false,
+  "seconds": 20.8
+ }
+}

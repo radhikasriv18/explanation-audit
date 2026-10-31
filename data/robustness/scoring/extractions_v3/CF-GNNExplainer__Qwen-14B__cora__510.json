@@ -1,0 +1,352 @@
+{
+ "run_id": "CF-GNNExplainer__Qwen-14B__cora__510",
+ "method": "CF-GNNExplainer",
+ "config": "Qwen-14B",
+ "dataset": "cora",
+ "node": "510",
+ "source_file": "./robustness_2026-10-30/production_a100/qwen14b_gptq_int4_cora_Response.json",
+ "source_locator": "[85][1]",
+ "text_scope": "whole output",
+ "input_text": "To address the task, we need to compare the factual and counterfactual graphs and identify the differences in the target node's classification and its neighborhood. Here is the filled dictionary based on the provided information:\n\n```python\ninfos = {\n    'Target_Node_ID': '510',\n    'Factual_Target_Node_Neighbors': [192, 356, 519, 2223],\n    'Factual_Target_Node_Features': ['august', 'technic', 'report'],\n    'Counterfactual_Target_Node_Neighbors': [192, 356],\n    'Counterfactual_Target_Node_Features': ['august', 'technic', 'report'],\n    'Factual_Target_Node_Class': 'Neural_Networks',\n    'Counterfactual_Target_Node_class': 'Theory',\n    'Target_Node_Features_Changed_From_Factual_To_Counterfactual': [],\n    'Natural_Language_Explanation': 'In the factual scenario, the target node (node 510) is classified as Neural_Networks and is connected to nodes 192, 356, 519, and 2223. In the counterfactual scenario, the target node remains classified with the same features but loses connections to nodes 519 and 2223, resulting in a new classification of Theory.'\n}\n```\n\n### Explanation of Changes\n\n#### Target Node ID: 510\n- **Factual Scenario**: Node 510 is classified as \"Neural_Networks\" and has connections to nodes 192, 356, 519, and 2223.\n- **Counterfactual Scenario**: Node 510 retains the same features but loses connections to nodes 519 and 2223, leading to a reclassification as \"Theory\".\n\n#### Neighbors of Node 510\n- **Factual Scenario**:\n  - Node 192: \"Smoothing Spline ANOVA with Component-Wise Bayesian 'Confidence Intervals'\"\n  - Node 356: \"A Flexible Model For Human Circadian Rhythms\"\n  - Node 519: \"Smoothing Spline ANOVA for Exponential Families, with Application to the Wisconsin Epidemiology Study\"\n  - Node 2223: \"Smoothing Spline Models With Correlated Random Errors\"\n\n- **Counterfactual Scenario**:\n  - Node 192: Remains the same.\n  - Node 356: Remains the same.\n  - Node 519: Lost connection.\n  - Node 2223: Lost connection.\n\n#### Impact of Neighbor Changes\n- **Node 519**: This node is heavily connected to many other nodes and is classified as \"Neural_Networks\". Its removal as a neighbor reduces the influence of \"Neural_Networks\" content on node 510.\n- **Node 2223**: This node is also classified as \"Neural_Networks\" and its removal further diminishes the \"Neural_Networks\" influence on node 510.\n\nBy losing these connections, the target node 510 is influenced more by its remaining neighbors, which do not necessarily reinforce the \"Neural_Networks\" classification. As a result, the model reclassifies node 510 as \"Theory\", reflecting a shift in the contextual influence of its neighborhood.\n\n### Natural Language Explanation\nIn the factual scenario, node 510 is classified as \"Neural_Networks\" due to its connections with several nodes that are also classified as \"Neural_Networks\". However, in the counterfactual scenario, node 510 loses connections to nodes 519 and 2223, both of which were previously reinforcing the \"Neural_Networks\" classification. Without these connections, the influence of \"Neural_Networks\" content decreases, leading to a reclassification of node 510 as \"Theory\". This demonstrates how the removal of specific connections can significantly alter the classification of a node in a graph-based learning model.",
+ "text_scored_sha256_16": "687216c703ffbc70",
+ "model": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+ "prompt_version": "v3",
+ "generation": {
+  "dtype": "float16",
+  "do_sample": false,
+  "temperature": 0,
+  "max_new_tokens": 4096
+ },
+ "gpu": "NVIDIA A100-SXM4-80GB",
+ "versions": {
+  "torch": "2.4.1+cu121",
+  "transformers": "4.44.2"
+ },
+ "prompt_messages": [
+  {
+   "role": "system",
+   "content": "You are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only."
+  },
+  {
+   "role": "user",
+   "content": "Extract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 510. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 510  (dataset: cora)\n\nEXPLANATION:\n<<<\nTo address the task, we need to compare the factual and counterfactual graphs and identify the differences in the target node's classification and its neighborhood. Here is the filled dictionary based on the provided information:\n\n```python\ninfos = {\n    'Target_Node_ID': '510',\n    'Factual_Target_Node_Neighbors': [192, 356, 519, 2223],\n    'Factual_Target_Node_Features': ['august', 'technic', 'report'],\n    'Counterfactual_Target_Node_Neighbors': [192, 356],\n    'Counterfactual_Target_Node_Features': ['august', 'technic', 'report'],\n    'Factual_Target_Node_Class': 'Neural_Networks',\n    'Counterfactual_Target_Node_class': 'Theory',\n    'Target_Node_Features_Changed_From_Factual_To_Counterfactual': [],\n    'Natural_Language_Explanation': 'In the factual scenario, the target node (node 510) is classified as Neural_Networks and is connected to nodes 192, 356, 519, and 2223. In the counterfactual scenario, the target node remains classified with the same features but loses connections to nodes 519 and 2223, resulting in a new classification of Theory.'\n}\n```\n\n### Explanation of Changes\n\n#### Target Node ID: 510\n- **Factual Scenario**: Node 510 is classified as \"Neural_Networks\" and has connections to nodes 192, 356, 519, and 2223.\n- **Counterfactual Scenario**: Node 510 retains the same features but loses connections to nodes 519 and 2223, leading to a reclassification as \"Theory\".\n\n#### Neighbors of Node 510\n- **Factual Scenario**:\n  - Node 192: \"Smoothing Spline ANOVA with Component-Wise Bayesian 'Confidence Intervals'\"\n  - Node 356: \"A Flexible Model For Human Circadian Rhythms\"\n  - Node 519: \"Smoothing Spline ANOVA for Exponential Families, with Application to the Wisconsin Epidemiology Study\"\n  - Node 2223: \"Smoothing Spline Models With Correlated Random Errors\"\n\n- **Counterfactual Scenario**:\n  - Node 192: Remains the same.\n  - Node 356: Remains the same.\n  - Node 519: Lost connection.\n  - Node 2223: Lost connection.\n\n#### Impact of Neighbor Changes\n- **Node 519**: This node is heavily connected to many other nodes and is classified as \"Neural_Networks\". Its removal as a neighbor reduces the influence of \"Neural_Networks\" content on node 510.\n- **Node 2223**: This node is also classified as \"Neural_Networks\" and its removal further diminishes the \"Neural_Networks\" influence on node 510.\n\nBy losing these connections, the target node 510 is influenced more by its remaining neighbors, which do not necessarily reinforce the \"Neural_Networks\" classification. As a result, the model reclassifies node 510 as \"Theory\", reflecting a shift in the contextual influence of its neighborhood.\n\n### Natural Language Explanation\nIn the factual scenario, node 510 is classified as \"Neural_Networks\" due to its connections with several nodes that are also classified as \"Neural_Networks\". However, in the counterfactual scenario, node 510 loses connections to nodes 519 and 2223, both of which were previously reinforcing the \"Neural_Networks\" classification. Without these connections, the influence of \"Neural_Networks\" content decreases, leading to a reclassification of node 510 as \"Theory\". This demonstrates how the removal of specific connections can significantly alter the classification of a node in a graph-based learning model.\n>>>"
+  }
+ ],
+ "prompt_rendered": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nCutting Knowledge Date: December 2023\nToday Date: 26 Jul 2024\n\nYou are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\nExtract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 510. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 510  (dataset: cora)\n\nEXPLANATION:\n<<<\nTo address the task, we need to compare the factual and counterfactual graphs and identify the differences in the target node's classification and its neighborhood. Here is the filled dictionary based on the provided information:\n\n```python\ninfos = {\n    'Target_Node_ID': '510',\n    'Factual_Target_Node_Neighbors': [192, 356, 519, 2223],\n    'Factual_Target_Node_Features': ['august', 'technic', 'report'],\n    'Counterfactual_Target_Node_Neighbors': [192, 356],\n    'Counterfactual_Target_Node_Features': ['august', 'technic', 'report'],\n    'Factual_Target_Node_Class': 'Neural_Networks',\n    'Counterfactual_Target_Node_class': 'Theory',\n    'Target_Node_Features_Changed_From_Factual_To_Counterfactual': [],\n    'Natural_Language_Explanation': 'In the factual scenario, the target node (node 510) is classified as Neural_Networks and is connected to nodes 192, 356, 519, and 2223. In the counterfactual scenario, the target node remains classified with the same features but loses connections to nodes 519 and 2223, resulting in a new classification of Theory.'\n}\n```\n\n### Explanation of Changes\n\n#### Target Node ID: 510\n- **Factual Scenario**: Node 510 is classified as \"Neural_Networks\" and has connections to nodes 192, 356, 519, and 2223.\n- **Counterfactual Scenario**: Node 510 retains the same features but loses connections to nodes 519 and 2223, leading to a reclassification as \"Theory\".\n\n#### Neighbors of Node 510\n- **Factual Scenario**:\n  - Node 192: \"Smoothing Spline ANOVA with Component-Wise Bayesian 'Confidence Intervals'\"\n  - Node 356: \"A Flexible Model For Human Circadian Rhythms\"\n  - Node 519: \"Smoothing Spline ANOVA for Exponential Families, with Application to the Wisconsin Epidemiology Study\"\n  - Node 2223: \"Smoothing Spline Models With Correlated Random Errors\"\n\n- **Counterfactual Scenario**:\n  - Node 192: Remains the same.\n  - Node 356: Remains the same.\n  - Node 519: Lost connection.\n  - Node 2223: Lost connection.\n\n#### Impact of Neighbor Changes\n- **Node 519**: This node is heavily connected to many other nodes and is classified as \"Neural_Networks\". Its removal as a neighbor reduces the influence of \"Neural_Networks\" content on node 510.\n- **Node 2223**: This node is also classified as \"Neural_Networks\" and its removal further diminishes the \"Neural_Networks\" influence on node 510.\n\nBy losing these connections, the target node 510 is influenced more by its remaining neighbors, which do not necessarily reinforce the \"Neural_Networks\" classification. As a result, the model reclassifies node 510 as \"Theory\", reflecting a shift in the contextual influence of its neighborhood.\n\n### Natural Language Explanation\nIn the factual scenario, node 510 is classified as \"Neural_Networks\" due to its connections with several nodes that are also classified as \"Neural_Networks\". However, in the counterfactual scenario, node 510 loses connections to nodes 519 and 2223, both of which were previously reinforcing the \"Neural_Networks\" classification. Without these connections, the influence of \"Neural_Networks\" content decreases, leading to a reclassification of node 510 as \"Theory\". This demonstrates how the removal of specific connections can significantly alter the classification of a node in a graph-based learning model.\n>>><|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+ "raw_output": "{\n  \"claims\": [\n    {\n      \"claim\": \"Node 510 is classified as Neural_Networks\",\n      \"claim_type\": \"class_state\",\n      \"source_span\": \"Node 510 is classified as Neural_Networks and has connections to nodes 192, 356, 519, and 2223.\",\n      \"entities\": {\n        \"node_ids\": [\"510\"],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Neural_Networks\"]\n      }\n    },\n    {\n      \"claim\": \"Node 510 has connections to nodes 192, 356, 519, and 2223\",\n      \"claim_type\": \"structural\",\n      \"source_span\": \"Node 510 is classified as Neural_Networks and has connections to nodes 192, 356, 519, and 2223.\",\n      \"entities\": {\n        \"node_ids\": [\"510\", \"192\", \"356\", \"519\", \"2223\"],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [[510, 192], [510, 356], [510, 519], [510, 2223]],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"Node 510 retains the same features\",\n      \"claim_type\": \"feature\",\n      \"source_span\": \"Node 510 retains the same features but loses connections to nodes 519 and 2223, leading to a reclassification as Theory.\",\n      \"entities\": {\n        \"node_ids\": [\"510\"],\n        \"titles\": [],\n        \"feature_words\": [\"august\", \"technic\", \"report\"],\n        \"edges\": [],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"Node 510 loses connections to nodes 519 and 2223\",\n      \"claim_type\": \"structural\",\n      \"source_span\": \"Node 510 retains the same features but loses connections to nodes 519 and 2223, leading to a reclassification as Theory.\",\n      \"entities\": {\n        \"node_ids\": [\"510\", \"519\", \"2223\"],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [[510, 519], [510, 2223]],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"Node 510 is reclassified as Theory\",\n      \"claim_type\": \"class_state\",\n      \"source_span\": \"Node 510 retains the same features but loses connections to nodes 519 and 2223, leading to a reclassification as Theory.\",\n      \"entities\": {\n        \"node_ids\": [\"510\"],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Theory\"]\n      }\n    },\n    {\n      \"claim\": \"Node 192 is classified as Smoothing Spline ANOVA with Component-Wise Bayesian 'Confidence Intervals'\",\n      \"claim_type\": \"neighbor\",\n      \"source_span\": \"Node 192: Smoothing Spline ANOVA with Component-Wise Bayesian 'Confidence Intervals'\",\n      \"entities\": {\n        \"node_ids\": [\"192\"],\n        \"titles\": [\"Smoothing Spline ANOVA with Component-Wise Bayesian 'Confidence Intervals'\"],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"Node 356 is classified as A Flexible Model For Human Circadian Rhythms\",\n      \"claim_type\": \"neighbor\",\n      \"source_span\": \"Node 356: A Flexible Model For Human Circadian Rhythms\",\n      \"entities\": {\n        \"node_ids\": [\"356\"],\n        \"titles\": [\"A Flexible Model For Human Circadian Rhythms\"],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"Node 519 is classified as Smoothing Spline ANOVA for Exponential Families, with Application to the Wisconsin Epidemiology Study\",\n      \"claim_type\": \"neighbor\",\n      \"source_span\": \"Node 519: Smoothing Spline ANOVA for Exponential Families, with Application to the Wisconsin Epidemiology Study\",\n      \"entities\": {\n        \"node_ids\": [\"519\"],\n        \"titles\": [\"Smoothing Spline ANOVA for Exponential Families, with Application to the Wisconsin Epidemiology Study\"],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"Node 2223 is classified as Smoothing Spline Models With Correlated Random Errors\",\n      \"claim_type\": \"neighbor\",\n      \"source_span\": \"Node 2223: Smoothing Spline Models With Correlated Random Errors\",\n      \"entities\": {\n        \"node_ids\": [\"2223\"],\n        \"titles\": [\"Smoothing Spline Models With Correlated Random Errors\"],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"Node 519 is heavily connected to many other nodes\",\n      \"claim_type\": \"structural\",\n      \"source_span\": \"Node 519: This node is heavily connected to many other nodes and is classified as Neural_Networks.\",\n      \"entities\": {\n        \"node_ids\": [\"519\"],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Neural_Networks\"]\n      }\n    },\n    {\n      \"claim\": \"Node 519 is classified as Neural_Networks\",\n      \"claim_type\": \"class_state\",\n      \"source_span\": \"Node 519: This node is heavily connected to many other nodes and is classified as Neural_Networks.\",\n      \"entities\": {\n        \"node_ids\": [\"519\"],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Neural_Networks\"]\n      }\n    },\n    {\n      \"claim\": \"Node 519's removal reduces the influence of Neural_Networks content on node 510\",\n      \"claim_type\": \"mechanism\",\n      \"source_span\": \"Node 519: This node is heavily connected to many other nodes and is classified as Neural_Networks. Its removal as a neighbor reduces the influence of Neural_Networks content on node 510.\",\n      \"entities\": {\n        \"node_ids\": [\"519\", \"510\"],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [[510, 519]],\n        \"classes\": [\"Neural_Networks\"]\n      }\n    },\n    {\n      \"claim\": \"Node 2223 is classified as Neural_Networks\",\n      \"claim_type\": \"class_state\",\n      \"source_span\": \"Node 2223: This node is also classified as Neural_Networks and its removal further diminishes the Neural_Networks influence on node 510.\",\n      \"entities\": {\n        \"node_ids\": [\"2223\"],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Neural_Networks\"]\n      }\n    },\n    {\n      \"claim\": \"Node 2223's removal further diminishes the Neural_Networks influence on node 510\",\n      \"claim_type\": \"mechanism\",\n      \"source_span\": \"Node 2223: This node is also classified as Neural_Networks and its removal further diminishes the Neural_Networks influence on node 510.\",\n      \"entities\": {\n        \"node_ids\": [\"2223\", \"510\"],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [[510, 2223]],\n        \"classes\": [\"Neural_Networks\"]\n      }\n    },\n    {\n      \"claim\": \"The removal of specific connections can significantly alter the classification of a node in a graph-based learning model\",\n      \"claim_type\": \"content\",\n      \"source_span\": \"By losing these connections, the target node 510 is influenced more by its remaining neighbors, which do not necessarily reinforce the Neural_Networks classification. As a result, the model reclassifies node 510 as Theory, reflecting a shift in the contextual influence of its neighborhood.\",\n      \"entities\": {\n        \"node_ids\": [\"510\"],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Theory\"]\n      }\n    }\n  ]\n}",
+ "claims": [
+  {
+   "claim": "Node 510 is classified as Neural_Networks",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "510"
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Neural_Networks"
+    ]
+   },
+   "source_span": "Node 510 is classified as Neural_Networks and has connections to nodes 192, 356, 519, and 2223."
+  },
+  {
+   "claim": "Node 510 has connections to nodes 192, 356, 519, and 2223",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "510",
+     "192",
+     "356",
+     "519",
+     "2223"
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      510,
+      192
+     ],
+     [
+      510,
+      356
+     ],
+     [
+      510,
+      519
+     ],
+     [
+      510,
+      2223
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "Node 510 is classified as Neural_Networks and has connections to nodes 192, 356, 519, and 2223."
+  },
+  {
+   "claim": "Node 510 retains the same features",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "510"
+    ],
+    "titles": [],
+    "feature_words": [
+     "august",
+     "technic",
+     "report"
+    ],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 510 retains the same features but loses connections to nodes 519 and 2223, leading to a reclassification as Theory."
+  },
+  {
+   "claim": "Node 510 loses connections to nodes 519 and 2223",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "510",
+     "519",
+     "2223"
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      510,
+      519
+     ],
+     [
+      510,
+      2223
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "Node 510 retains the same features but loses connections to nodes 519 and 2223, leading to a reclassification as Theory."
+  },
+  {
+   "claim": "Node 510 is reclassified as Theory",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "510"
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Theory"
+    ]
+   },
+   "source_span": "Node 510 retains the same features but loses connections to nodes 519 and 2223, leading to a reclassification as Theory."
+  },
+  {
+   "claim": "Node 192 is classified as Smoothing Spline ANOVA with Component-Wise Bayesian 'Confidence Intervals'",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "192"
+    ],
+    "titles": [
+     "Smoothing Spline ANOVA with Component-Wise Bayesian 'Confidence Intervals'"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 192: Smoothing Spline ANOVA with Component-Wise Bayesian 'Confidence Intervals'"
+  },
+  {
+   "claim": "Node 356 is classified as A Flexible Model For Human Circadian Rhythms",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "356"
+    ],
+    "titles": [
+     "A Flexible Model For Human Circadian Rhythms"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 356: A Flexible Model For Human Circadian Rhythms"
+  },
+  {
+   "claim": "Node 519 is classified as Smoothing Spline ANOVA for Exponential Families, with Application to the Wisconsin Epidemiology Study",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "519"
+    ],
+    "titles": [
+     "Smoothing Spline ANOVA for Exponential Families, with Application to the Wisconsin Epidemiology Study"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 519: Smoothing Spline ANOVA for Exponential Families, with Application to the Wisconsin Epidemiology Study"
+  },
+  {
+   "claim": "Node 2223 is classified as Smoothing Spline Models With Correlated Random Errors",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "2223"
+    ],
+    "titles": [
+     "Smoothing Spline Models With Correlated Random Errors"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 2223: Smoothing Spline Models With Correlated Random Errors"
+  },
+  {
+   "claim": "Node 519 is heavily connected to many other nodes",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "519"
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Neural_Networks"
+    ]
+   },
+   "source_span": "Node 519: This node is heavily connected to many other nodes and is classified as Neural_Networks."
+  },
+  {
+   "claim": "Node 519 is classified as Neural_Networks",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "519"
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Neural_Networks"
+    ]
+   },
+   "source_span": "Node 519: This node is heavily connected to many other nodes and is classified as Neural_Networks."
+  },
+  {
+   "claim": "Node 519's removal reduces the influence of Neural_Networks content on node 510",
+   "claim_type": "mechanism",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "519",
+     "510"
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      510,
+      519
+     ]
+    ],
+    "classes": [
+     "Neural_Networks"
+    ]
+   },
+   "source_span": "Node 519: This node is heavily connected to many other nodes and is classified as Neural_Networks. Its removal as a neighbor reduces the influence of Neural_Networks content on node 510."
+  },
+  {
+   "claim": "Node 2223 is classified as Neural_Networks",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "2223"
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Neural_Networks"
+    ]
+   },
+   "source_span": "Node 2223: This node is also classified as Neural_Networks and its removal further diminishes the Neural_Networks influence on node 510."
+  },
+  {
+   "claim": "Node 2223's removal further diminishes the Neural_Networks influence on node 510",
+   "claim_type": "mechanism",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "2223",
+     "510"
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      510,
+      2223
+     ]
+    ],
+    "classes": [
+     "Neural_Networks"
+    ]
+   },
+   "source_span": "Node 2223: This node is also classified as Neural_Networks and its removal further diminishes the Neural_Networks influence on node 510."
+  },
+  {
+   "claim": "The removal of specific connections can significantly alter the classification of a node in a graph-based learning model",
+   "claim_type": "content",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "510"
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Theory"
+    ]
+   },
+   "source_span": "By losing these connections, the target node 510 is influenced more by its remaining neighbors, which do not necessarily reinforce the Neural_Networks classification. As a result, the model reclassifies node 510 as Theory, reflecting a shift in the contextual influence of its neighborhood."
+  }
+ ],
+ "n_claims": 15,
+ "parse_diagnostics": {
+  "json_found": true,
+  "json_valid": true,
+  "parse_mode": "strict",
+  "error": null,
+  "n_raw_claims": 15,
+  "n_bad_type": 0,
+  "n_merged_duplicates": 0,
+  "repairs": [],
+  "unrecoverable_segments": [],
+  "n_prompt_tokens": 2280,
+  "n_output_tokens": 1755,
+  "hit_max_new_tokens": false,
+  "seconds": 42.8
+ }
+}

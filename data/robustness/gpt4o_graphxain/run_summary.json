@@ -1,0 +1,13 @@
+{
+ "success": 60,
+ "failed": [],
+ "finish_reasons": {
+  "stop": 60
+ },
+ "prompt_tokens": 85412,
+ "completion_tokens": 14847,
+ "est_cost_usd": 0.362,
+ "models_returned": {
+  "gpt-4o-2024-08-06": 60
+ }
+}

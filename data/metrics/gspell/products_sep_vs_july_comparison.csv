@@ -1,0 +1,3 @@
+run,empty_batches,batches_without_support,nodes_without_support,batches_with_Summary_field,batches_with_KEYWORDS_block,batches_ending_mid_sentence,nodes_repetition_flagged,median_words_per_batch,max_words_per_batch,cited_ids,cited_outside_batches_pct
+sep_54238808,0,223,10,0,522,234,177,321.0,828,7344,42.4
+jul_50765167,0,78,3,538,316,160,166,272.0,893,5866,41.3

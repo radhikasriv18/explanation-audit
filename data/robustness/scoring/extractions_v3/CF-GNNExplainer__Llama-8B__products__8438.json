@@ -1,0 +1,649 @@
+{
+ "run_id": "CF-GNNExplainer__Llama-8B__products__8438",
+ "method": "CF-GNNExplainer",
+ "config": "Llama-8B",
+ "dataset": "products",
+ "node": "8438",
+ "source_file": "./llm-graph-cf/data/results/cf-gnnexplainer-canonical_Meta-Llama-3.1-8B-Instruct_products_standard_Response.json",
+ "source_locator": "[29][1]",
+ "text_scope": "whole output",
+ "input_text": "Based on the provided information, we will fill the dictionary with the required information.\n\nThe target node is 8438, which is a product titled 'Born Free 9 oz. BPA-Free High-Heat Resistant Classic Bottle with ActiveFlow Venting Technology, 3-Pack'. \n\nThe factual graph has the following information:\n\n- Target_Node_ID: 8438\n- Factual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]\n- Factual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none', 'skin', 'pack', 'resist', 'technolog']\n- Counterfactual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]\n- Counterfactual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none', 'skin', 'pack', 'resist', 'technolog']\n- Factual_Target_Node_Class: Home & Kitchen\n- Counterfactual_Target_Node_class: Home & Kitchen\n- Target_Node_Features_Changed_From_Factual_To_Counterfactual: []\n- Natural_Language_Explanation: The target node remains classified as Home & Kitchen in both the factual and counterfactual examples.\n\nHowever, upon closer inspection, we notice that the factual and counterfactual examples have the same neighbors and features. This suggests that there are no changes in the graph structure or node features that would affect the classification of the target node.\n\nTo generate a counterfactual explanation, we need to introduce some changes to the graph structure or node features. Let's assume we introduce a new edge between the target node 8438 and a node from a different category, say 37124, which is a product titled 'Braun Thermoscan Ear Thermometer-irt4520' from the Health & Personal Care category.\n\nHere's the updated dictionary:\n\n- Target_Node_ID: 8438\n- Factual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]\n- Factual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none', 'skin', 'pack', 'resist', 'technolog']\n- Counterfactual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125, 37124] # New edge added\n- Counterfactual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none', 'skin', 'pack', 'resist', 'technolog']\n- Factual_Target_Node_Class: Home & Kitchen\n- Counterfactual_Target_Node_class: Health & Personal Care\n- Target_Node_Features_Changed_From_Factual_To_Counterfactual: []\n- Natural_Language_Explanation: The addition of the new edge between the target node 8438 and node 37124, which is from a different category, causes the target node to be reclassified as Health & Personal Care in the counterfactual example.\n\nThis change in classification is influenced by the neighbors of the target node, specifically the new edge added to node 37124, which is from a different category. This highlights the importance of considering the graph structure and node features when generating counterfactual explanations.\n\nIn terms of the influences of neighbor nodes, we can see that the addition of the new edge to node 37124 has a significant impact on the classification of the target node. This suggests that the neighbors of the target node play a crucial role in determining its classification, especially when the graph structure is modified.\n\nOverall, the counterfactual explanation provides valuable insights into how changes in the graph structure or node features can affect the classification of the target node, highlighting the importance of considering the complex interactions between nodes in the graph.",
+ "text_scored_sha256_16": "88b11ca4ad4e41e1",
+ "model": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+ "prompt_version": "v3",
+ "generation": {
+  "dtype": "float16",
+  "do_sample": false,
+  "temperature": 0,
+  "max_new_tokens": 4096
+ },
+ "gpu": "NVIDIA A100-SXM4-80GB",
+ "versions": {
+  "torch": "2.4.1+cu121",
+  "transformers": "4.44.2"
+ },
+ "prompt_messages": [
+  {
+   "role": "system",
+   "content": "You are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only."
+  },
+  {
+   "role": "user",
+   "content": "Extract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 8438. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 8438  (dataset: products)\n\nEXPLANATION:\n<<<\nBased on the provided information, we will fill the dictionary with the required information.\n\nThe target node is 8438, which is a product titled 'Born Free 9 oz. BPA-Free High-Heat Resistant Classic Bottle with ActiveFlow Venting Technology, 3-Pack'. \n\nThe factual graph has the following information:\n\n- Target_Node_ID: 8438\n- Factual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]\n- Factual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none', 'skin', 'pack', 'resist', 'technolog']\n- Counterfactual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]\n- Counterfactual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none', 'skin', 'pack', 'resist', 'technolog']\n- Factual_Target_Node_Class: Home & Kitchen\n- Counterfactual_Target_Node_class: Home & Kitchen\n- Target_Node_Features_Changed_From_Factual_To_Counterfactual: []\n- Natural_Language_Explanation: The target node remains classified as Home & Kitchen in both the factual and counterfactual examples.\n\nHowever, upon closer inspection, we notice that the factual and counterfactual examples have the same neighbors and features. This suggests that there are no changes in the graph structure or node features that would affect the classification of the target node.\n\nTo generate a counterfactual explanation, we need to introduce some changes to the graph structure or node features. Let's assume we introduce a new edge between the target node 8438 and a node from a different category, say 37124, which is a product titled 'Braun Thermoscan Ear Thermometer-irt4520' from the Health & Personal Care category.\n\nHere's the updated dictionary:\n\n- Target_Node_ID: 8438\n- Factual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]\n- Factual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none', 'skin', 'pack', 'resist', 'technolog']\n- Counterfactual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125, 37124] # New edge added\n- Counterfactual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none', 'skin', 'pack', 'resist', 'technolog']\n- Factual_Target_Node_Class: Home & Kitchen\n- Counterfactual_Target_Node_class: Health & Personal Care\n- Target_Node_Features_Changed_From_Factual_To_Counterfactual: []\n- Natural_Language_Explanation: The addition of the new edge between the target node 8438 and node 37124, which is from a different category, causes the target node to be reclassified as Health & Personal Care in the counterfactual example.\n\nThis change in classification is influenced by the neighbors of the target node, specifically the new edge added to node 37124, which is from a different category. This highlights the importance of considering the graph structure and node features when generating counterfactual explanations.\n\nIn terms of the influences of neighbor nodes, we can see that the addition of the new edge to node 37124 has a significant impact on the classification of the target node. This suggests that the neighbors of the target node play a crucial role in determining its classification, especially when the graph structure is modified.\n\nOverall, the counterfactual explanation provides valuable insights into how changes in the graph structure or node features can affect the classification of the target node, highlighting the importance of considering the complex interactions between nodes in the graph.\n>>>"
+  }
+ ],
+ "prompt_rendered": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nCutting Knowledge Date: December 2023\nToday Date: 26 Jul 2024\n\nYou are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\nExtract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 8438. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 8438  (dataset: products)\n\nEXPLANATION:\n<<<\nBased on the provided information, we will fill the dictionary with the required information.\n\nThe target node is 8438, which is a product titled 'Born Free 9 oz. BPA-Free High-Heat Resistant Classic Bottle with ActiveFlow Venting Technology, 3-Pack'. \n\nThe factual graph has the following information:\n\n- Target_Node_ID: 8438\n- Factual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]\n- Factual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none', 'skin', 'pack', 'resist', 'technolog']\n- Counterfactual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]\n- Counterfactual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none', 'skin', 'pack', 'resist', 'technolog']\n- Factual_Target_Node_Class: Home & Kitchen\n- Counterfactual_Target_Node_class: Home & Kitchen\n- Target_Node_Features_Changed_From_Factual_To_Counterfactual: []\n- Natural_Language_Explanation: The target node remains classified as Home & Kitchen in both the factual and counterfactual examples.\n\nHowever, upon closer inspection, we notice that the factual and counterfactual examples have the same neighbors and features. This suggests that there are no changes in the graph structure or node features that would affect the classification of the target node.\n\nTo generate a counterfactual explanation, we need to introduce some changes to the graph structure or node features. Let's assume we introduce a new edge between the target node 8438 and a node from a different category, say 37124, which is a product titled 'Braun Thermoscan Ear Thermometer-irt4520' from the Health & Personal Care category.\n\nHere's the updated dictionary:\n\n- Target_Node_ID: 8438\n- Factual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]\n- Factual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none', 'skin', 'pack', 'resist', 'technolog']\n- Counterfactual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125, 37124] # New edge added\n- Counterfactual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none', 'skin', 'pack', 'resist', 'technolog']\n- Factual_Target_Node_Class: Home & Kitchen\n- Counterfactual_Target_Node_class: Health & Personal Care\n- Target_Node_Features_Changed_From_Factual_To_Counterfactual: []\n- Natural_Language_Explanation: The addition of the new edge between the target node 8438 and node 37124, which is from a different category, causes the target node to be reclassified as Health & Personal Care in the counterfactual example.\n\nThis change in classification is influenced by the neighbors of the target node, specifically the new edge added to node 37124, which is from a different category. This highlights the importance of considering the graph structure and node features when generating counterfactual explanations.\n\nIn terms of the influences of neighbor nodes, we can see that the addition of the new edge to node 37124 has a significant impact on the classification of the target node. This suggests that the neighbors of the target node play a crucial role in determining its classification, especially when the graph structure is modified.\n\nOverall, the counterfactual explanation provides valuable insights into how changes in the graph structure or node features can affect the classification of the target node, highlighting the importance of considering the complex interactions between nodes in the graph.\n>>><|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+ "raw_output": "{\"claims\": [\n{\"claim\": \"The target node is 8438\", \"claim_type\": \"structural\", \"source_span\": \"The target node is 8438, which is a product titled \", \"entities\": {\"node_ids\": [8438], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The target node is a product\", \"claim_type\": \"content\", \"source_span\": \"The target node is 8438, which is a product titled \", \"entities\": {\"node_ids\": [8438], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The target node is titled 'Born Free 9 oz. BPA-Free High-Heat Resistant Classic Bottle with ActiveFlow Venting Technology, 3-Pack'\", \"claim_type\": \"content\", \"source_span\": \"The target node is 8438, which is a product titled 'Born Free 9 oz. BPA-Free High-Heat Resistant Classic Bottle with ActiveFlow Venting Technology, 3-Pack'. \", \"entities\": {\"node_ids\": [8438], \"titles\": [\"'Born Free 9 oz. BPA-Free High-Heat Resistant Classic Bottle with ActiveFlow Venting Technology, 3-Pack'\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The factual graph has the following information: Target_Node_ID: 8438\", \"claim_type\": \"structural\", \"source_span\": \"The factual graph has the following information: - Target_Node_ID: 8438\", \"entities\": {\"node_ids\": [8438], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The factual graph has the following information: Factual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]\", \"claim_type\": \"structural\", \"source_span\": \"The factual graph has the following information: - Factual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]\", \"entities\": {\"node_ids\": [37121, 37122, 37123, 37124, 37125], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The factual graph has the following information: Factual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none','skin', 'pack','resist', 'technolog']\", \"claim_type\": \"feature\", \"source_span\": \"The factual graph has the following information: - Factual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none','skin', 'pack','resist', 'technolog']\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [\"use\", \"born\", \"bottl\", \"classic\", \"free\", \"heat\", \"high\", \"none\", \"skin\", \"pack\", \"resist\", \"technolog\"], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The factual graph has the following information: Factual_Target_Node_Class: Home & Kitchen\", \"claim_type\": \"class_state\", \"source_span\": \"The factual graph has the following information: - Factual_Target_Node_Class: Home & Kitchen\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Home & Kitchen\"]}},\n{\"claim\": \"The counterfactual graph has the following information: Counterfactual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]\", \"claim_type\": \"structural\", \"source_span\": \"Counterfactual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]\", \"entities\": {\"node_ids\": [37121, 37122, 37123, 37124, 37125], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The counterfactual graph has the following information: Counterfactual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none','skin', 'pack','resist', 'technolog']\", \"claim_type\": \"feature\", \"source_span\": \"Counterfactual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none','skin', 'pack','resist', 'technolog']\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [\"use\", \"born\", \"bottl\", \"classic\", \"free\", \"heat\", \"high\", \"none\", \"skin\", \"pack\", \"resist\", \"technolog\"], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The counterfactual graph has the following information: Counterfactual_Target_Node_class: Health & Personal Care\", \"claim_type\": \"class_state\", \"source_span\": \"Counterfactual_Target_Node_class: Health & Personal Care\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Health & Personal Care\"]}},\n{\"claim\": \"The counterfactual graph has the following information: Target_Node_Features_Changed_From_Factual_To_Counterfactual: []\", \"claim_type\": \"feature\", \"source_span\": \"Target_Node_Features_Changed_From_Factual_To_Counterfactual: []\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The target node remains classified as Home & Kitchen in both the factual and counterfactual examples\", \"claim_type\": \"class_state\", \"source_span\": \"The target node remains classified as Home & Kitchen in both the factual and counterfactual examples.\", \"entities\": {\"node_ids\": [8438], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Home & Kitchen\"]}},\n{\"claim\": \"The factual and counterfactual examples have the same neighbors and features\", \"claim_type\": \"structural\", \"source_span\": \"However, upon closer inspection, we notice that the factual and counterfactual examples have the same neighbors and features.\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"To generate a counterfactual explanation, we need to introduce some changes to the graph structure or node features\", \"claim_type\": \"mechanism\", \"source_span\": \"To generate a counterfactual explanation, we need to introduce some changes to the graph structure or node features.\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Let's assume we introduce a new edge between the target node 8438 and a node from a different category, say 37124\", \"claim_type\": \"structural\", \"source_span\": \"Let's assume we introduce a new edge between the target node 8438 and a node from a different category, say 37124, which is a product titled \", \"entities\": {\"node_ids\": [8438, 37124], \"titles\": [\"'Braun Thermoscan Ear Thermometer-irt4520'\"], \"feature_words\": [], \"edges\": [[8438, 37124]], \"classes\": []}},\n{\"claim\": \"The new edge is between the target node 8438 and node 37124\", \"claim_type\": \"structural\", \"source_span\": \"Let's assume we introduce a new edge between the target node 8438 and a node from a different category, say 37124, which is a product titled \", \"entities\": {\"node_ids\": [8438, 37124], \"titles\": [\"'Braun Thermoscan Ear Thermometer-irt4520'\"], \"feature_words\": [], \"edges\": [[8438, 37124]], \"classes\": []}},\n{\"claim\": \"The new edge is between the target node 8438 and a node from a different category\", \"claim_type\": \"structural\", \"source_span\": \"Let's assume we introduce a new edge between the target node 8438 and a node from a different category, say 37124, which is a product titled \", \"entities\": {\"node_ids\": [8438], \"titles\": [\"'Braun Thermoscan Ear Thermometer-irt4520'\"], \"feature_words\": [], \"edges\": [[8438, 37124]], \"classes\": []}},\n{\"claim\": \"The new edge is between the target node 8438 and node 37124, which is from a different category\", \"claim_type\": \"structural\", \"source_span\": \"Let's assume we introduce a new edge between the target node 8438 and a node from a different category, say 37124, which is a product titled \", \"entities\": {\"node_ids\": [8438, 37124], \"titles\": [\"'Braun Thermoscan Ear Thermometer-irt4520'\"], \"feature_words\": [], \"edges\": [[8438, 37124]], \"classes\": []}},\n{\"claim\": \"The addition of the new edge between the target node 8438 and node 37124 causes the target node to be reclassified as Health & Personal Care in the counterfactual example\", \"claim_type\": \"mechanism\", \"source_span\": \"The addition of the new edge between the target node 8438 and node 37124, which is from a different category, causes the target node to be reclassified as Health & Personal Care in the counterfactual example.\", \"entities\": {\"node_ids\": [8438, 37124], \"titles\": [\"'Braun Thermoscan Ear Thermometer-irt4520'\"], \"feature_words\": [], \"edges\": [[8438, 37124]], \"classes\": [\"Health & Personal Care\"]}},\n{\"claim\": \"The addition of the new edge between the target node 8438 and node 37124 causes the target node to be reclassified\", \"claim_type\": \"class_state\", \"source_span\": \"The addition of the new edge between the target node 8438 and node 37124, which is from a different category, causes the target node to be reclassified as Health & Personal Care in the counterfactual example.\", \"entities\": {\"node_ids\": [8438, 37124], \"titles\": [\"'Braun Thermoscan Ear Thermometer-irt4520'\"], \"feature_words\": [], \"edges\": [[8438, 37124]], \"classes\": [\"Health & Personal Care\"]}},\n{\"claim\": \"The addition of the new edge between the target node 8438 and node 37124 causes the target node to be reclassified as Health & Personal Care\", \"claim_type\": \"class_state\", \"source_span\": \"The addition of the new edge between the target node 8438 and node 37124, which is from a different category, causes the target node to be reclassified as Health & Personal Care in the counterfactual example.\", \"entities\": {\"node_ids\": [8438, 37124], \"titles\": [\"'Braun Thermoscan Ear Thermometer-irt4520'\"], \"feature_words\": [], \"edges\": [[8438, 37124]], \"classes\": [\"Health & Personal Care\"]}},\n{\"claim\": \"The addition of the new edge between the target node 8438 and node 37124 causes the target node to be reclassified in the counterfactual example\", \"claim_type\": \"class_state\", \"source_span\": \"The addition of the new edge between the target node 8438 and node 37124, which is from a different category, causes the target node to be reclassified as Health & Personal Care in the counterfactual example.\", \"entities\": {\"node_ids\": [8438, 37124], \"titles\": [\"'Braun Thermoscan Ear Thermometer-irt4520'\"], \"feature_words\": [], \"edges\": [[8438, 37124]], \"classes\": [\"Health & Personal Care\"]}},\n{\"claim\": \"The addition of the new edge between the target node 8438 and node 37124 causes the target node to be reclassified as Health & Personal Care in the counterfactual example\", \"claim_type\": \"class_state\", \"source_span\": \"The addition of the new edge between the target node 8438 and node 37124, which is from a different category, causes the target node to be reclassified as Health & Personal Care in the counterfactual example.\", \"entities\": {\"node_ids\": [8438, 37124], \"titles\": [\"'Braun Thermoscan Ear Thermometer-irt4520'\"], \"feature_words\": [], \"edges\": [[8438, 37124]], \"classes\": [\"Health & Personal Care\"]}},\n{\"claim\": \"The new edge added to node 37124 has a significant impact on the classification of the target node\", \"claim_type\": \"importance\", \"source_span\": \"This suggests that the neighbors of the target node play a crucial role in determining its classification, especially when the graph structure is modified.\", \"entities\": {\"node_ids\": [37124], \"titles\": [\"'Braun Thermoscan Ear Thermometer-irt4520'\"], \"feature_words\": [], \"edges\": [[8438, 37124]], \"classes\": []}},\n{\"claim\": \"The neighbors of the target node play a crucial role in determining its classification\", \"claim_type\": \"importance\", \"source_span\": \"This suggests that the neighbors of the target node play a crucial role in determining its classification, especially when the graph structure is modified.\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The graph structure is modified\", \"claim_type\": \"structural\", \"source_span\": \"This suggests that the neighbors of the target node play a crucial role in determining its classification, especially when the graph structure is modified.\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The neighbors of the target node play a crucial role in determining its classification, especially when the graph structure is modified\", \"claim_type\": \"importance\", \"source_span\": \"This suggests that the neighbors of the target node play a crucial role in determining its classification, especially when the graph structure is modified.\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The counterfactual explanation provides valuable insights into how changes in the graph structure or node features can affect the classification of the target node\", \"claim_type\": \"mechanism\", \"source_span\": \"Overall, the counterfactual explanation provides valuable insights into how changes in the graph structure or node features can affect the classification of the target node, highlighting the importance of considering the complex interactions between nodes in the graph.\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Changes in the graph structure or node features can affect the classification of the target node\", \"claim_type\": \"mechanism\", \"source_span\": \"Overall, the counterfactual explanation provides valuable insights into how changes in the graph structure or node features can affect the classification of the target node, highlighting the importance of considering the complex interactions between nodes in the graph.\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The counterfactual explanation highlights the importance of considering the complex interactions between nodes in the graph\", \"claim_type\": \"mechanism\", \"source_span\": \"Overall, the counterfactual explanation provides valuable insights into how changes in the graph structure or node features can affect the classification of the target node, highlighting the importance of considering the complex interactions between nodes in the graph.\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The counterfactual explanation highlights the importance of considering the complex interactions between nodes in the graph\", \"claim_type\": \"mechanism\", \"source_span\": \"Overall, the counterfactual explanation provides valuable insights into how changes in the graph structure or node features can affect the classification of the target node, highlighting the importance of considering the complex interactions between nodes in the graph.\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The updated dictionary has the following information: Target_Node_ID: 8438\", \"claim_type\": \"structural\", \"source_span\": \"Here's the updated dictionary: - Target_Node_ID: 8438\", \"entities\": {\"node_ids\": [8438], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The updated dictionary has the following information: Factual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]\", \"claim_type\": \"structural\", \"source_span\": \"Here's the updated dictionary: - Factual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]\", \"entities\": {\"node_ids\": [37121, 37122, 37123, 37124, 37125], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The updated dictionary has the following information: Factual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none','skin', 'pack','resist', 'technolog']\", \"claim_type\": \"feature\", \"source_span\": \"Here's the updated dictionary: - Factual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none','skin', 'pack','resist', 'technolog']\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [\"use\", \"born\", \"bottl\", \"classic\", \"free\", \"heat\", \"high\", \"none\", \"skin\", \"pack\", \"resist\", \"technolog\"], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The updated dictionary has the following information: Counterfactual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125, 37124]\", \"claim_type\": \"structural\", \"source_span\": \"Here's the updated dictionary: - Counterfactual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125",
+ "claims": [
+  {
+   "claim": "The target node is 8438",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     8438
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "The target node is 8438, which is a product titled "
+  },
+  {
+   "claim": "The target node is a product",
+   "claim_type": "content",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     8438
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "The target node is 8438, which is a product titled "
+  },
+  {
+   "claim": "The target node is titled 'Born Free 9 oz. BPA-Free High-Heat Resistant Classic Bottle with ActiveFlow Venting Technology, 3-Pack'",
+   "claim_type": "content",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     8438
+    ],
+    "titles": [
+     "'Born Free 9 oz. BPA-Free High-Heat Resistant Classic Bottle with ActiveFlow Venting Technology, 3-Pack'"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "The target node is 8438, which is a product titled 'Born Free 9 oz. BPA-Free High-Heat Resistant Classic Bottle with ActiveFlow Venting Technology, 3-Pack'. "
+  },
+  {
+   "claim": "The factual graph has the following information: Target_Node_ID: 8438",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     8438
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "The factual graph has the following information: - Target_Node_ID: 8438"
+  },
+  {
+   "claim": "The factual graph has the following information: Factual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     37121,
+     37122,
+     37123,
+     37124,
+     37125
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "The factual graph has the following information: - Factual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]"
+  },
+  {
+   "claim": "The factual graph has the following information: Factual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none','skin', 'pack','resist', 'technolog']",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [
+     "use",
+     "born",
+     "bottl",
+     "classic",
+     "free",
+     "heat",
+     "high",
+     "none",
+     "skin",
+     "pack",
+     "resist",
+     "technolog"
+    ],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "The factual graph has the following information: - Factual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none','skin', 'pack','resist', 'technolog']"
+  },
+  {
+   "claim": "The factual graph has the following information: Factual_Target_Node_Class: Home & Kitchen",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Home & Kitchen"
+    ]
+   },
+   "source_span": "The factual graph has the following information: - Factual_Target_Node_Class: Home & Kitchen"
+  },
+  {
+   "claim": "The counterfactual graph has the following information: Counterfactual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     37121,
+     37122,
+     37123,
+     37124,
+     37125
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Counterfactual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]"
+  },
+  {
+   "claim": "The counterfactual graph has the following information: Counterfactual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none','skin', 'pack','resist', 'technolog']",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [
+     "use",
+     "born",
+     "bottl",
+     "classic",
+     "free",
+     "heat",
+     "high",
+     "none",
+     "skin",
+     "pack",
+     "resist",
+     "technolog"
+    ],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Counterfactual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none','skin', 'pack','resist', 'technolog']"
+  },
+  {
+   "claim": "The counterfactual graph has the following information: Counterfactual_Target_Node_class: Health & Personal Care",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Health & Personal Care"
+    ]
+   },
+   "source_span": "Counterfactual_Target_Node_class: Health & Personal Care"
+  },
+  {
+   "claim": "The counterfactual graph has the following information: Target_Node_Features_Changed_From_Factual_To_Counterfactual: []",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Target_Node_Features_Changed_From_Factual_To_Counterfactual: []"
+  },
+  {
+   "claim": "The target node remains classified as Home & Kitchen in both the factual and counterfactual examples",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     8438
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Home & Kitchen"
+    ]
+   },
+   "source_span": "The target node remains classified as Home & Kitchen in both the factual and counterfactual examples."
+  },
+  {
+   "claim": "The factual and counterfactual examples have the same neighbors and features",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "However, upon closer inspection, we notice that the factual and counterfactual examples have the same neighbors and features."
+  },
+  {
+   "claim": "To generate a counterfactual explanation, we need to introduce some changes to the graph structure or node features",
+   "claim_type": "mechanism",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "To generate a counterfactual explanation, we need to introduce some changes to the graph structure or node features."
+  },
+  {
+   "claim": "Let's assume we introduce a new edge between the target node 8438 and a node from a different category, say 37124",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     8438,
+     37124
+    ],
+    "titles": [
+     "'Braun Thermoscan Ear Thermometer-irt4520'"
+    ],
+    "feature_words": [],
+    "edges": [
+     [
+      8438,
+      37124
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "Let's assume we introduce a new edge between the target node 8438 and a node from a different category, say 37124, which is a product titled "
+  },
+  {
+   "claim": "The new edge is between the target node 8438 and node 37124",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     8438,
+     37124
+    ],
+    "titles": [
+     "'Braun Thermoscan Ear Thermometer-irt4520'"
+    ],
+    "feature_words": [],
+    "edges": [
+     [
+      8438,
+      37124
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "Let's assume we introduce a new edge between the target node 8438 and a node from a different category, say 37124, which is a product titled "
+  },
+  {
+   "claim": "The new edge is between the target node 8438 and a node from a different category",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     8438
+    ],
+    "titles": [
+     "'Braun Thermoscan Ear Thermometer-irt4520'"
+    ],
+    "feature_words": [],
+    "edges": [
+     [
+      8438,
+      37124
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "Let's assume we introduce a new edge between the target node 8438 and a node from a different category, say 37124, which is a product titled "
+  },
+  {
+   "claim": "The new edge is between the target node 8438 and node 37124, which is from a different category",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     8438,
+     37124
+    ],
+    "titles": [
+     "'Braun Thermoscan Ear Thermometer-irt4520'"
+    ],
+    "feature_words": [],
+    "edges": [
+     [
+      8438,
+      37124
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "Let's assume we introduce a new edge between the target node 8438 and a node from a different category, say 37124, which is a product titled "
+  },
+  {
+   "claim": "The addition of the new edge between the target node 8438 and node 37124 causes the target node to be reclassified as Health & Personal Care in the counterfactual example",
+   "claim_type": "mechanism",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     8438,
+     37124
+    ],
+    "titles": [
+     "'Braun Thermoscan Ear Thermometer-irt4520'"
+    ],
+    "feature_words": [],
+    "edges": [
+     [
+      8438,
+      37124
+     ]
+    ],
+    "classes": [
+     "Health & Personal Care"
+    ]
+   },
+   "source_span": "The addition of the new edge between the target node 8438 and node 37124, which is from a different category, causes the target node to be reclassified as Health & Personal Care in the counterfactual example."
+  },
+  {
+   "claim": "The addition of the new edge between the target node 8438 and node 37124 causes the target node to be reclassified",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     8438,
+     37124
+    ],
+    "titles": [
+     "'Braun Thermoscan Ear Thermometer-irt4520'"
+    ],
+    "feature_words": [],
+    "edges": [
+     [
+      8438,
+      37124
+     ]
+    ],
+    "classes": [
+     "Health & Personal Care"
+    ]
+   },
+   "source_span": "The addition of the new edge between the target node 8438 and node 37124, which is from a different category, causes the target node to be reclassified as Health & Personal Care in the counterfactual example."
+  },
+  {
+   "claim": "The addition of the new edge between the target node 8438 and node 37124 causes the target node to be reclassified as Health & Personal Care",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     8438,
+     37124
+    ],
+    "titles": [
+     "'Braun Thermoscan Ear Thermometer-irt4520'"
+    ],
+    "feature_words": [],
+    "edges": [
+     [
+      8438,
+      37124
+     ]
+    ],
+    "classes": [
+     "Health & Personal Care"
+    ]
+   },
+   "source_span": "The addition of the new edge between the target node 8438 and node 37124, which is from a different category, causes the target node to be reclassified as Health & Personal Care in the counterfactual example."
+  },
+  {
+   "claim": "The addition of the new edge between the target node 8438 and node 37124 causes the target node to be reclassified in the counterfactual example",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     8438,
+     37124
+    ],
+    "titles": [
+     "'Braun Thermoscan Ear Thermometer-irt4520'"
+    ],
+    "feature_words": [],
+    "edges": [
+     [
+      8438,
+      37124
+     ]
+    ],
+    "classes": [
+     "Health & Personal Care"
+    ]
+   },
+   "source_span": "The addition of the new edge between the target node 8438 and node 37124, which is from a different category, causes the target node to be reclassified as Health & Personal Care in the counterfactual example."
+  },
+  {
+   "claim": "The new edge added to node 37124 has a significant impact on the classification of the target node",
+   "claim_type": "importance",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     37124
+    ],
+    "titles": [
+     "'Braun Thermoscan Ear Thermometer-irt4520'"
+    ],
+    "feature_words": [],
+    "edges": [
+     [
+      8438,
+      37124
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "This suggests that the neighbors of the target node play a crucial role in determining its classification, especially when the graph structure is modified."
+  },
+  {
+   "claim": "The neighbors of the target node play a crucial role in determining its classification",
+   "claim_type": "importance",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "This suggests that the neighbors of the target node play a crucial role in determining its classification, especially when the graph structure is modified."
+  },
+  {
+   "claim": "The graph structure is modified",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "This suggests that the neighbors of the target node play a crucial role in determining its classification, especially when the graph structure is modified."
+  },
+  {
+   "claim": "The neighbors of the target node play a crucial role in determining its classification, especially when the graph structure is modified",
+   "claim_type": "importance",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "This suggests that the neighbors of the target node play a crucial role in determining its classification, especially when the graph structure is modified."
+  },
+  {
+   "claim": "The counterfactual explanation provides valuable insights into how changes in the graph structure or node features can affect the classification of the target node",
+   "claim_type": "mechanism",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Overall, the counterfactual explanation provides valuable insights into how changes in the graph structure or node features can affect the classification of the target node, highlighting the importance of considering the complex interactions between nodes in the graph."
+  },
+  {
+   "claim": "Changes in the graph structure or node features can affect the classification of the target node",
+   "claim_type": "mechanism",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Overall, the counterfactual explanation provides valuable insights into how changes in the graph structure or node features can affect the classification of the target node, highlighting the importance of considering the complex interactions between nodes in the graph."
+  },
+  {
+   "claim": "The counterfactual explanation highlights the importance of considering the complex interactions between nodes in the graph",
+   "claim_type": "mechanism",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Overall, the counterfactual explanation provides valuable insights into how changes in the graph structure or node features can affect the classification of the target node, highlighting the importance of considering the complex interactions between nodes in the graph."
+  },
+  {
+   "claim": "The updated dictionary has the following information: Target_Node_ID: 8438",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     8438
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Here's the updated dictionary: - Target_Node_ID: 8438"
+  },
+  {
+   "claim": "The updated dictionary has the following information: Factual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     37121,
+     37122,
+     37123,
+     37124,
+     37125
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Here's the updated dictionary: - Factual_Target_Node_Neighbors: [37121, 37122, 37123, 37124, 37125]"
+  },
+  {
+   "claim": "The updated dictionary has the following information: Factual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none','skin', 'pack','resist', 'technolog']",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [
+     "use",
+     "born",
+     "bottl",
+     "classic",
+     "free",
+     "heat",
+     "high",
+     "none",
+     "skin",
+     "pack",
+     "resist",
+     "technolog"
+    ],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Here's the updated dictionary: - Factual_Target_Node_Features: ['use', 'born', 'bottl', 'classic', 'free', 'heat', 'high', 'none','skin', 'pack','resist', 'technolog']"
+  }
+ ],
+ "n_claims": 32,
+ "parse_diagnostics": {
+  "json_found": true,
+  "json_valid": false,
+  "parse_mode": "recovered_per_object",
+  "error": "first balanced JSON object has no top-level 'claims' list (outer object malformed)",
+  "n_raw_claims": 34,
+  "n_bad_type": 0,
+  "n_merged_duplicates": 2,
+  "repairs": [],
+  "unrecoverable_segments": [
+   {
+    "claim_index": 34,
+    "segment_head": "{\"claim\": \"The updated dictionary has the following information: Counterfactual_Target_Node_Neighbors: [37121, 37122, 37"
+   }
+  ],
+  "n_prompt_tokens": 2336,
+  "n_output_tokens": 4096,
+  "hit_max_new_tokens": true,
+  "seconds": 99.9
+ }
+}

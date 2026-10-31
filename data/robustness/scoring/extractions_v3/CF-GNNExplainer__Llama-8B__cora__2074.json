@@ -1,0 +1,427 @@
+{
+ "run_id": "CF-GNNExplainer__Llama-8B__cora__2074",
+ "method": "CF-GNNExplainer",
+ "config": "Llama-8B",
+ "dataset": "cora",
+ "node": "2074",
+ "source_file": "./llm-graph-cf/data/results/cf-gnnexplainer-canonical_Meta-Llama-3.1-8B-Instruct_cora_standard_Response.json",
+ "source_locator": "[410][1]",
+ "text_scope": "whole output",
+ "input_text": "Based on the provided information, I will generate the dictionary for the counterfactual explanation.\n\nThe target node is 2074, which is classified as Case_Based. To generate the counterfactual explanation, I will apply adjacency matrix perturbation to the graph. After perturbing the adjacency matrix, the new classification of the target node 2074 is changed to Theory.\n\nHere is the dictionary:\n\nNode_Differences = [2074]\n\nEdge_Differences = [(2074, 1636), (2074, 2607)]\n\nFactual_Target_Node_Neighbors = [1636, 2607]\nCounterfactual_Target_Node_Neighbors = [1636, 2607]\n\nFactual_Target_Node_Features = ['inform', 'review', 'handl', 'evid', 'featur', 'exampl', 'heurist', 'contextu', 'discuss', 'machin', 'implicit', 'manag', 'result', 'effect', 'strategi', 'work', 'supervis', 'method', 'hybrid']\nCounterfactual_Target_Node_Features = ['inform', 'review', 'handl', 'evid', 'featur', 'exampl', 'heurist', 'contextu', 'discuss', 'machin', 'implicit', 'manag', 'result', 'effect', 'strategi', 'work', 'supervis', 'method', 'hybrid']\n\nFactual_Target_Node_Class = 'Case_Based'\nCounterfactual_Target_Node_class = 'Theory'\n\nTarget_Node_Features_Changed_From_Factual_To_Counterfactual = []\n\nNatural_Language_Explanation = \"The target node 2074 was initially classified as Case_Based. However, after perturbing the adjacency matrix, its classification changed to Theory. This change is influenced by the removal of the edge between nodes 2074 and 2607, which was a strong connection between the two nodes. The removal of this edge led to a decrease in the influence of the Case_Based class on the target node, resulting in a shift towards the Theory class.\"\n\nThe change in classification for the target node 2074 can be attributed to the removal of the edge between nodes 2074 and 2607. This edge was a strong connection between the two nodes, and its removal led to a decrease in the influence of the Case_Based class on the target node. As a result, the target node shifted towards the Theory class.\n\nThe neighbors of the target node 2074, namely nodes 1636 and 2607, also played a significant role in the change in classification. Node 1636 is a strong influencer of the Case_Based class, while node 2607 is a strong influencer of the Theory class. The removal of the edge between nodes 2074 and 2607 reduced the influence of node 2607 on the target node, leading to a decrease in the Theory class influence and an increase in the Case_Based class influence. However, the overall influence of node 1636 on the target node remained strong, leading to a shift towards the Theory class.\n\nIn conclusion, the change in classification for the target node 2074 can be attributed to the removal of the edge between nodes 2074 and 2607, which reduced the influence of the Case_Based class and increased the influence of the Theory class. The neighbors of the target node, particularly nodes 1636 and 2607, played a significant role in this change.",
+ "text_scored_sha256_16": "aaa839f3be458c38",
+ "model": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+ "prompt_version": "v3",
+ "generation": {
+  "dtype": "float16",
+  "do_sample": false,
+  "temperature": 0,
+  "max_new_tokens": 4096
+ },
+ "gpu": "NVIDIA A100-SXM4-80GB",
+ "versions": {
+  "torch": "2.4.1+cu121",
+  "transformers": "4.44.2"
+ },
+ "prompt_messages": [
+  {
+   "role": "system",
+   "content": "You are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only."
+  },
+  {
+   "role": "user",
+   "content": "Extract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 2074. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 2074  (dataset: cora)\n\nEXPLANATION:\n<<<\nBased on the provided information, I will generate the dictionary for the counterfactual explanation.\n\nThe target node is 2074, which is classified as Case_Based. To generate the counterfactual explanation, I will apply adjacency matrix perturbation to the graph. After perturbing the adjacency matrix, the new classification of the target node 2074 is changed to Theory.\n\nHere is the dictionary:\n\nNode_Differences = [2074]\n\nEdge_Differences = [(2074, 1636), (2074, 2607)]\n\nFactual_Target_Node_Neighbors = [1636, 2607]\nCounterfactual_Target_Node_Neighbors = [1636, 2607]\n\nFactual_Target_Node_Features = ['inform', 'review', 'handl', 'evid', 'featur', 'exampl', 'heurist', 'contextu', 'discuss', 'machin', 'implicit', 'manag', 'result', 'effect', 'strategi', 'work', 'supervis', 'method', 'hybrid']\nCounterfactual_Target_Node_Features = ['inform', 'review', 'handl', 'evid', 'featur', 'exampl', 'heurist', 'contextu', 'discuss', 'machin', 'implicit', 'manag', 'result', 'effect', 'strategi', 'work', 'supervis', 'method', 'hybrid']\n\nFactual_Target_Node_Class = 'Case_Based'\nCounterfactual_Target_Node_class = 'Theory'\n\nTarget_Node_Features_Changed_From_Factual_To_Counterfactual = []\n\nNatural_Language_Explanation = \"The target node 2074 was initially classified as Case_Based. However, after perturbing the adjacency matrix, its classification changed to Theory. This change is influenced by the removal of the edge between nodes 2074 and 2607, which was a strong connection between the two nodes. The removal of this edge led to a decrease in the influence of the Case_Based class on the target node, resulting in a shift towards the Theory class.\"\n\nThe change in classification for the target node 2074 can be attributed to the removal of the edge between nodes 2074 and 2607. This edge was a strong connection between the two nodes, and its removal led to a decrease in the influence of the Case_Based class on the target node. As a result, the target node shifted towards the Theory class.\n\nThe neighbors of the target node 2074, namely nodes 1636 and 2607, also played a significant role in the change in classification. Node 1636 is a strong influencer of the Case_Based class, while node 2607 is a strong influencer of the Theory class. The removal of the edge between nodes 2074 and 2607 reduced the influence of node 2607 on the target node, leading to a decrease in the Theory class influence and an increase in the Case_Based class influence. However, the overall influence of node 1636 on the target node remained strong, leading to a shift towards the Theory class.\n\nIn conclusion, the change in classification for the target node 2074 can be attributed to the removal of the edge between nodes 2074 and 2607, which reduced the influence of the Case_Based class and increased the influence of the Theory class. The neighbors of the target node, particularly nodes 1636 and 2607, played a significant role in this change.\n>>>"
+  }
+ ],
+ "prompt_rendered": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nCutting Knowledge Date: December 2023\nToday Date: 26 Jul 2024\n\nYou are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\nExtract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 2074. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 2074  (dataset: cora)\n\nEXPLANATION:\n<<<\nBased on the provided information, I will generate the dictionary for the counterfactual explanation.\n\nThe target node is 2074, which is classified as Case_Based. To generate the counterfactual explanation, I will apply adjacency matrix perturbation to the graph. After perturbing the adjacency matrix, the new classification of the target node 2074 is changed to Theory.\n\nHere is the dictionary:\n\nNode_Differences = [2074]\n\nEdge_Differences = [(2074, 1636), (2074, 2607)]\n\nFactual_Target_Node_Neighbors = [1636, 2607]\nCounterfactual_Target_Node_Neighbors = [1636, 2607]\n\nFactual_Target_Node_Features = ['inform', 'review', 'handl', 'evid', 'featur', 'exampl', 'heurist', 'contextu', 'discuss', 'machin', 'implicit', 'manag', 'result', 'effect', 'strategi', 'work', 'supervis', 'method', 'hybrid']\nCounterfactual_Target_Node_Features = ['inform', 'review', 'handl', 'evid', 'featur', 'exampl', 'heurist', 'contextu', 'discuss', 'machin', 'implicit', 'manag', 'result', 'effect', 'strategi', 'work', 'supervis', 'method', 'hybrid']\n\nFactual_Target_Node_Class = 'Case_Based'\nCounterfactual_Target_Node_class = 'Theory'\n\nTarget_Node_Features_Changed_From_Factual_To_Counterfactual = []\n\nNatural_Language_Explanation = \"The target node 2074 was initially classified as Case_Based. However, after perturbing the adjacency matrix, its classification changed to Theory. This change is influenced by the removal of the edge between nodes 2074 and 2607, which was a strong connection between the two nodes. The removal of this edge led to a decrease in the influence of the Case_Based class on the target node, resulting in a shift towards the Theory class.\"\n\nThe change in classification for the target node 2074 can be attributed to the removal of the edge between nodes 2074 and 2607. This edge was a strong connection between the two nodes, and its removal led to a decrease in the influence of the Case_Based class on the target node. As a result, the target node shifted towards the Theory class.\n\nThe neighbors of the target node 2074, namely nodes 1636 and 2607, also played a significant role in the change in classification. Node 1636 is a strong influencer of the Case_Based class, while node 2607 is a strong influencer of the Theory class. The removal of the edge between nodes 2074 and 2607 reduced the influence of node 2607 on the target node, leading to a decrease in the Theory class influence and an increase in the Case_Based class influence. However, the overall influence of node 1636 on the target node remained strong, leading to a shift towards the Theory class.\n\nIn conclusion, the change in classification for the target node 2074 can be attributed to the removal of the edge between nodes 2074 and 2607, which reduced the influence of the Case_Based class and increased the influence of the Theory class. The neighbors of the target node, particularly nodes 1636 and 2607, played a significant role in this change.\n>>><|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+ "raw_output": "{\"claims\": [{\"claim\": \"The target node is 2074.\", \"claim_type\": \"structural\", \"source_span\": \"The target node is 2074, which is classified as Case_Based.\", \"entities\": {\"node_ids\": [2074], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"The target node is classified as Case_Based.\", \"claim_type\": \"class_state\", \"source_span\": \"The target node is 2074, which is classified as Case_Based.\", \"entities\": {\"node_ids\": [2074], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Case_Based\"]}}, {\"claim\": \"The new classification of the target node 2074 is changed to Theory.\", \"claim_type\": \"class_state\", \"source_span\": \"After perturbing the adjacency matrix, the new classification of the target node 2074 is changed to Theory.\", \"entities\": {\"node_ids\": [2074], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Theory\"]}}, {\"claim\": \"Node_Differences = [2074].\", \"claim_type\": \"structural\", \"source_span\": \"Node_Differences = [2074]\", \"entities\": {\"node_ids\": [2074], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"Edge_Differences = [(2074, 1636), (2074, 2607)].\", \"claim_type\": \"structural\", \"source_span\": \"Edge_Differences = [(2074, 1636), (2074, 2607)]\", \"entities\": {\"node_ids\": [2074, 1636, 2607], \"titles\": [], \"feature_words\": [], \"edges\": [(2074, 1636), (2074, 2607)], \"classes\": []}}, {\"claim\": \"Factual_Target_Node_Neighbors = [1636, 2607].\", \"claim_type\": \"structural\", \"source_span\": \"Factual_Target_Node_Neighbors = [1636, 2607]\", \"entities\": {\"node_ids\": [1636, 2607], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"Counterfactual_Target_Node_Neighbors = [1636, 2607].\", \"claim_type\": \"structural\", \"source_span\": \"Counterfactual_Target_Node_Neighbors = [1636, 2607]\", \"entities\": {\"node_ids\": [1636, 2607], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"Factual_Target_Node_Features = ['inform','review', 'handl', 'evid', 'featur', 'exampl', 'heurist', 'contextu', 'discuss','machin', 'implicit','manag','result', 'effect','strategi', 'work','supervis','method', 'hybrid'].\", \"claim_type\": \"feature\", \"source_span\": \"Factual_Target_Node_Features = ['inform','review', 'handl', 'evid', 'featur', 'exampl', 'heurist', 'contextu', 'discuss','machin', 'implicit','manag','result', 'effect','strategi', 'work','supervis','method', 'hybrid']\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [\"inform\", \"review\", \"handl\", \"evid\", \"featur\", \"exampl\", \"heurist\", \"contextu\", \"discuss\", \"machin\", \"implicit\", \"manag\", \"result\", \"effect\", \"strategi\", \"work\", \"supervis\", \"method\", \"hybrid\"], \"edges\": [], \"classes\": []}}, {\"claim\": \"Counterfactual_Target_Node_Features = ['inform','review', 'handl', 'evid', 'featur', 'exampl', 'heurist', 'contextu', 'discuss','machin', 'implicit','manag','result', 'effect','strategi', 'work','supervis','method', 'hybrid'].\", \"claim_type\": \"feature\", \"source_span\": \"Counterfactual_Target_Node_Features = ['inform','review', 'handl', 'evid', 'featur', 'exampl', 'heurist', 'contextu', 'discuss','machin', 'implicit','manag','result', 'effect','strategi', 'work','supervis','method', 'hybrid']\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [\"inform\", \"review\", \"handl\", \"evid\", \"featur\", \"exampl\", \"heurist\", \"contextu\", \"discuss\", \"machin\", \"implicit\", \"manag\", \"result\", \"effect\", \"strategi\", \"work\", \"supervis\", \"method\", \"hybrid\"], \"edges\": [], \"classes\": []}}, {\"claim\": \"Factual_Target_Node_Class = 'Case_Based'.\", \"claim_type\": \"class_state\", \"source_span\": \"Factual_Target_Node_Class = 'Case_Based'\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Case_Based\"]}}, {\"claim\": \"Counterfactual_Target_Node_class = 'Theory'.\", \"claim_type\": \"class_state\", \"source_span\": \"Counterfactual_Target_Node_class = 'Theory'\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Theory\"]}}, {\"claim\": \"Target_Node_Features_Changed_From_Factual_To_Counterfactual = [].\", \"claim_type\": \"feature\", \"source_span\": \"Target_Node_Features_Changed_From_Factual_To_Counterfactual = []\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"The removal of the edge between nodes 2074 and 2607 reduced the influence of the Case_Based class and increased the influence of the Theory class.\", \"claim_type\": \"mechanism\", \"source_span\": \"The change in classification for the target node 2074 can be attributed to the removal of the edge between nodes 2074 and 2607, which reduced the influence of the Case_Based class and increased the influence of the Theory class.\", \"entities\": {\"node_ids\": [2074, 2607], \"titles\": [], \"feature_words\": [], \"edges\": [(2074, 2607)], \"classes\": [\"Case_Based\", \"Theory\"]}}, {\"claim\": \"Node 1636 is a strong influencer of the Case_Based class.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 1636 is a strong influencer of the Case_Based class, while node 2607 is a strong influencer of the Theory class.\", \"entities\": {\"node_ids\": [1636], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Case_Based\"]}}, {\"claim\": \"Node 2607 is a strong influencer of the Theory class.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 1636 is a strong influencer of the Case_Based class, while node 2607 is a strong influencer of the Theory class.\", \"entities\": {\"node_ids\": [2607], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Theory\"]}}, {\"claim\": \"The removal of the edge between nodes 2074 and 2607 reduced the influence of node 2607 on the target node.\", \"claim_type\": \"mechanism\", \"source_span\": \"The removal of the edge between nodes 2074 and 2607 reduced the influence of the Case_Based class and increased the influence of the Theory class.\", \"entities\": {\"node_ids\": [2074, 2607], \"titles\": [], \"feature_words\": [], \"edges\": [(2074, 2607)], \"classes\": [\"Case_Based\", \"Theory\"]}}, {\"claim\": \"The overall influence of node 1636 on the target node remained strong.\", \"claim_type\": \"neighbor\", \"source_span\": \"However, the overall influence of node 1636 on the target node remained strong, leading to a shift towards the Theory class.\", \"entities\": {\"node_ids\": [1636], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"The change in classification for the target node 2074 can be attributed to the removal of the edge between nodes 2074 and 2607.\", \"claim_type\": \"mechanism\", \"source_span\": \"The change in classification for the target node 2074 can be attributed to the removal of the edge between nodes 2074 and 2607.\", \"entities\": {\"node_ids\": [2074, 2607], \"titles\": [], \"feature_words\": [], \"edges\": [(2074, 2607)], \"classes\": []}}, {\"claim\": \"The neighbors of the target node 2074, namely nodes 1636 and 2607, also played a significant role in the change in classification.\", \"claim_type\": \"neighbor\", \"source_span\": \"The neighbors of the target node 2074, namely nodes 1636 and 2607, also played a significant role in the change in classification.\", \"entities\": {\"node_ids\": [1636, 2607], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"Node 1636 is a strong influencer of the Case_Based class, while node 2607 is a strong influencer of the Theory class.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 1636 is a strong influencer of the Case_Based class, while node 2607 is a strong influencer of the Theory class.\", \"entities\": {\"node_ids\": [1636, 2607], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Case_Based\", \"Theory\"]}}, {\"claim\": \"The removal of the edge between nodes 2074 and 2607 led to a decrease in the influence of the Case_Based class on the target node.\", \"claim_type\": \"mechanism\", \"source_span\": \"The removal of this edge led to a decrease in the influence of the Case_Based class on the target node, resulting in a shift towards the Theory class.\", \"entities\": {\"node_ids\": [2074, 2607], \"titles\": [], \"feature_words\": [], \"edges\": [(2074, 2607)], \"classes\": [\"Case_Based\", \"Theory\"]}}, {\"claim\": \"The target node shifted towards the Theory class.\", \"claim_type\": \"content\", \"source_span\": \"The removal of this edge led to a decrease in the influence of the Case_Based class on the target node, resulting in a shift towards the Theory class.\", \"entities\": {\"node_ids\": [2074], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Theory\"]}}, {\"claim\": \"The removal of the edge between nodes 2074 and 2607 reduced the influence of node 2607 on the target node, leading to a decrease in the Theory class influence and an increase in the Case_Based class influence.\", \"claim_type\": \"mechanism\", \"source_span\": \"The removal of the edge between nodes 2074 and 2607 reduced the influence of node 2607 on the target node, leading to a decrease in the Theory class influence and an increase in the Case_Based class influence.\", \"entities\": {\"node_ids\": [2074, 2607], \"titles\": [], \"feature_words\": [], \"edges\": [(2074, 2607)], \"classes\": [\"Case_Based\", \"Theory\"]}}, {\"claim\": \"The overall influence of node 1636 on the target node remained strong, leading to a shift towards the Theory class.\", \"claim_type\": \"neighbor\", \"source_span\": \"However, the overall influence of node 1636 on the target node remained strong, leading to a shift towards the Theory class.\", \"entities\": {\"node_ids\": [1636], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Theory\"]}}, {\"claim\": \"The change in classification for the target node 2074 can be attributed to the removal of the edge between nodes 2074 and 2607, which reduced the influence of the Case_Based class and increased the influence of the Theory class.\", \"claim_type\": \"mechanism\", \"source_span\": \"In conclusion, the change in classification for the target node 2074 can be attributed to the removal of the edge between nodes 2074 and 2607, which reduced the influence of the Case_Based class and increased the influence of the Theory class.\", \"entities\": {\"node_ids\": [2074, 2607], \"titles\": [], \"feature_words\": [], \"edges\": [(2074, 2607)], \"classes\": [\"Case_Based\", \"Theory\"]}}, {\"claim\": \"The neighbors of the target node, particularly nodes 1636 and 2607, played a significant role in this change.\", \"claim_type\": \"neighbor\", \"source_span\": \"In conclusion, the change in classification for the target node 2074 can be attributed to the removal of the edge between nodes 2074 and 2607, which reduced the influence of the Case_Based class and increased the influence of the Theory class. The neighbors of the target node, particularly nodes 1636 and 2607, played a significant role in this change.\", \"entities\": {\"node_ids\": [1636, 2607], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"The Natural_Language_Explanation is 'The target node 2074 was initially classified as Case_Based. However, after perturbing the adjacency matrix, its classification changed to Theory. This change is influenced by the removal of the edge between nodes 2074 and 2607, which was a strong connection between the two nodes. The removal of this edge led to a decrease in the influence of the Case_Based class on the target node, resulting in a shift towards the Theory class.'\", \"claim_type\": \"Natural_Language_Explanation\", \"source_span\": \"Natural_Language_Explanation = \\\"The target node 2074 was initially classified as Case_Based. However, after perturbing the adjacency matrix, its classification changed to Theory. This change is influenced by the removal of the edge between nodes 2074 and 2607, which was a strong connection between the two nodes. The removal of this edge led to a decrease in the influence of the Case_Based class on the target node, resulting in a shift towards the Theory class.\\\"\", \"entities\": {\"node_ids\": [2074, 2607], \"titles\": [], \"feature_words\": [], \"edges\": [(2074, 2607)], \"classes\": [\"Case_Based\", \"Theory\"]}}]}",
+ "claims": [
+  {
+   "claim": "The target node is 2074.",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     2074
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "The target node is 2074, which is classified as Case_Based."
+  },
+  {
+   "claim": "The target node is classified as Case_Based.",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     2074
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Case_Based"
+    ]
+   },
+   "source_span": "The target node is 2074, which is classified as Case_Based."
+  },
+  {
+   "claim": "The new classification of the target node 2074 is changed to Theory.",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     2074
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Theory"
+    ]
+   },
+   "source_span": "After perturbing the adjacency matrix, the new classification of the target node 2074 is changed to Theory."
+  },
+  {
+   "claim": "Node_Differences = [2074].",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     2074
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node_Differences = [2074]"
+  },
+  {
+   "claim": "Factual_Target_Node_Neighbors = [1636, 2607].",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1636,
+     2607
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Factual_Target_Node_Neighbors = [1636, 2607]"
+  },
+  {
+   "claim": "Counterfactual_Target_Node_Neighbors = [1636, 2607].",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1636,
+     2607
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Counterfactual_Target_Node_Neighbors = [1636, 2607]"
+  },
+  {
+   "claim": "Factual_Target_Node_Features = ['inform','review', 'handl', 'evid', 'featur', 'exampl', 'heurist', 'contextu', 'discuss','machin', 'implicit','manag','result', 'effect','strategi', 'work','supervis','method', 'hybrid'].",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [
+     "inform",
+     "review",
+     "handl",
+     "evid",
+     "featur",
+     "exampl",
+     "heurist",
+     "contextu",
+     "discuss",
+     "machin",
+     "implicit",
+     "manag",
+     "result",
+     "effect",
+     "strategi",
+     "work",
+     "supervis",
+     "method",
+     "hybrid"
+    ],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Factual_Target_Node_Features = ['inform','review', 'handl', 'evid', 'featur', 'exampl', 'heurist', 'contextu', 'discuss','machin', 'implicit','manag','result', 'effect','strategi', 'work','supervis','method', 'hybrid']"
+  },
+  {
+   "claim": "Counterfactual_Target_Node_Features = ['inform','review', 'handl', 'evid', 'featur', 'exampl', 'heurist', 'contextu', 'discuss','machin', 'implicit','manag','result', 'effect','strategi', 'work','supervis','method', 'hybrid'].",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [
+     "inform",
+     "review",
+     "handl",
+     "evid",
+     "featur",
+     "exampl",
+     "heurist",
+     "contextu",
+     "discuss",
+     "machin",
+     "implicit",
+     "manag",
+     "result",
+     "effect",
+     "strategi",
+     "work",
+     "supervis",
+     "method",
+     "hybrid"
+    ],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Counterfactual_Target_Node_Features = ['inform','review', 'handl', 'evid', 'featur', 'exampl', 'heurist', 'contextu', 'discuss','machin', 'implicit','manag','result', 'effect','strategi', 'work','supervis','method', 'hybrid']"
+  },
+  {
+   "claim": "Factual_Target_Node_Class = 'Case_Based'.",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Case_Based"
+    ]
+   },
+   "source_span": "Factual_Target_Node_Class = 'Case_Based'"
+  },
+  {
+   "claim": "Counterfactual_Target_Node_class = 'Theory'.",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Theory"
+    ]
+   },
+   "source_span": "Counterfactual_Target_Node_class = 'Theory'"
+  },
+  {
+   "claim": "Target_Node_Features_Changed_From_Factual_To_Counterfactual = [].",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Target_Node_Features_Changed_From_Factual_To_Counterfactual = []"
+  },
+  {
+   "claim": "Node 1636 is a strong influencer of the Case_Based class.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1636
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Case_Based"
+    ]
+   },
+   "source_span": "Node 1636 is a strong influencer of the Case_Based class, while node 2607 is a strong influencer of the Theory class."
+  },
+  {
+   "claim": "Node 2607 is a strong influencer of the Theory class.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     2607
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Theory"
+    ]
+   },
+   "source_span": "Node 1636 is a strong influencer of the Case_Based class, while node 2607 is a strong influencer of the Theory class."
+  },
+  {
+   "claim": "The overall influence of node 1636 on the target node remained strong.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1636
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "However, the overall influence of node 1636 on the target node remained strong, leading to a shift towards the Theory class."
+  },
+  {
+   "claim": "The neighbors of the target node 2074, namely nodes 1636 and 2607, also played a significant role in the change in classification.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1636,
+     2607
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "The neighbors of the target node 2074, namely nodes 1636 and 2607, also played a significant role in the change in classification."
+  },
+  {
+   "claim": "Node 1636 is a strong influencer of the Case_Based class, while node 2607 is a strong influencer of the Theory class.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1636,
+     2607
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Case_Based",
+     "Theory"
+    ]
+   },
+   "source_span": "Node 1636 is a strong influencer of the Case_Based class, while node 2607 is a strong influencer of the Theory class."
+  },
+  {
+   "claim": "The target node shifted towards the Theory class.",
+   "claim_type": "content",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     2074
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Theory"
+    ]
+   },
+   "source_span": "The removal of this edge led to a decrease in the influence of the Case_Based class on the target node, resulting in a shift towards the Theory class."
+  },
+  {
+   "claim": "The overall influence of node 1636 on the target node remained strong, leading to a shift towards the Theory class.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1636
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Theory"
+    ]
+   },
+   "source_span": "However, the overall influence of node 1636 on the target node remained strong, leading to a shift towards the Theory class."
+  },
+  {
+   "claim": "The neighbors of the target node, particularly nodes 1636 and 2607, played a significant role in this change.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1636,
+     2607
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "In conclusion, the change in classification for the target node 2074 can be attributed to the removal of the edge between nodes 2074 and 2607, which reduced the influence of the Case_Based class and increased the influence of the Theory class. The neighbors of the target node, particularly nodes 1636 and 2607, played a significant role in this change."
+  }
+ ],
+ "n_claims": 19,
+ "parse_diagnostics": {
+  "json_found": true,
+  "json_valid": false,
+  "parse_mode": "recovered_per_object",
+  "error": "JSONDecodeError: Expecting value: line 1 column 1329 (char 1328)",
+  "n_raw_claims": 19,
+  "n_bad_type": 0,
+  "n_merged_duplicates": 0,
+  "repairs": [],
+  "unrecoverable_segments": [
+   {
+    "claim_index": 4,
+    "segment_head": "{\"claim\": \"Edge_Differences = [(2074, 1636), (2074, 2607)].\", \"claim_type\": \"structural\", \"source_span\": \"Edge_Differenc"
+   },
+   {
+    "claim_index": 12,
+    "segment_head": "{\"claim\": \"The removal of the edge between nodes 2074 and 2607 reduced the influence of the Case_Based class and increas"
+   },
+   {
+    "claim_index": 15,
+    "segment_head": "{\"claim\": \"The removal of the edge between nodes 2074 and 2607 reduced the influence of node 2607 on the target node.\", "
+   },
+   {
+    "claim_index": 17,
+    "segment_head": "{\"claim\": \"The change in classification for the target node 2074 can be attributed to the removal of the edge between no"
+   },
+   {
+    "claim_index": 20,
+    "segment_head": "{\"claim\": \"The removal of the edge between nodes 2074 and 2607 led to a decrease in the influence of the Case_Based clas"
+   },
+   {
+    "claim_index": 22,
+    "segment_head": "{\"claim\": \"The removal of the edge between nodes 2074 and 2607 reduced the influence of node 2607 on the target node, le"
+   },
+   {
+    "claim_index": 24,
+    "segment_head": "{\"claim\": \"The change in classification for the target node 2074 can be attributed to the removal of the edge between no"
+   },
+   {
+    "claim_index": 26,
+    "segment_head": "{\"claim\": \"The Natural_Language_Explanation is 'The target node 2074 was initially classified as Case_Based. However, af"
+   }
+  ],
+  "n_prompt_tokens": 2209,
+  "n_output_tokens": 3281,
+  "hit_max_new_tokens": false,
+  "seconds": 79.8
+ }
+}

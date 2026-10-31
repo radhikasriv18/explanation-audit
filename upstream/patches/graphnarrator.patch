@@ -1,0 +1,987 @@
+diff --git a/clm.py b/clm.py
+index 270e2ee..6e5f1eb 100644
+--- a/clm.py
++++ b/clm.py
+@@ -7,7 +7,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, HybridCache
+ 
+ 
+ class CLM:
+-    def __init__(self, model_id: str = "google/gemma-2-2b", device: str = "cuda"):
++    def __init__(self, model_id: str = "google/gemma-2-2b-it", device: str = "cuda"):
+         self.tokenizer = AutoTokenizer.from_pretrained(
+             model_id,
+             device_map=device,
+diff --git a/dataset.py b/dataset.py
+index 55c9fc8..b9d100c 100644
+--- a/dataset.py
++++ b/dataset.py
+@@ -191,8 +191,19 @@ class CORA:
+     """
+ 
+     @classmethod
+-    def load(cls, seed):
+-        data, text = cls.get_raw_text_cora(use_text=True, seed=seed)
++    def load(cls, seed, data_path=None, training_size=0.6, validation_size=0.2):
++        if data_path:
++            data = torch.load(data_path, map_location="cpu")
++            text = None
++            if hasattr(data, "raw_text"):
++                text = data.raw_text
++            elif hasattr(data, "text"):
++                text = data.text
++            num_classes = len(data.label_names) if hasattr(data, "label_names") else 7
++            return data, text, num_classes
++        data, text = cls.get_raw_text_cora(
++            use_text=True, seed=seed, training_size=training_size, validation_size=validation_size
++        )
+         return data, text, 7
+ 
+     @classmethod
+@@ -350,3 +361,24 @@ class DBLP:
+         data.test_mask[test_indices] = True
+ 
+         return data
++
++
++class Products:
++    @classmethod
++    def load(cls, data_path, split_path=None):
++        data = torch.load(data_path, map_location="cpu")
++        text = data.raw_text if hasattr(data, "raw_text") else None
++        num_classes = len(data.label_names) if hasattr(data, "label_names") else int(data.y.max().item() + 1)
++
++        # Build eval_mask from split file (200 eval nodes) so GraphNarrator
++        # only processes the same eval set as GSPELL and llm-graph-cf.
++        if split_path is not None:
++            import numpy as np
++            splits = np.load(split_path)
++            if "eval_idx" in splits:
++                eval_idx = splits["eval_idx"]
++                eval_mask = torch.zeros(data.num_nodes, dtype=torch.bool)
++                eval_mask[torch.as_tensor(eval_idx, dtype=torch.long)] = True
++                data.eval_mask = eval_mask
++
++        return data, text, num_classes
+diff --git a/filter.py b/filter.py
+index 44c7a02..f82f879 100644
+--- a/filter.py
++++ b/filter.py
+@@ -31,7 +31,7 @@ class XAIEvaluator:
+ 
+     def initialize_mlm(self):
+         if self.MLM is None:
+-            self.MLM = CLM(model_id="google/gemma-2-2b", device=self.device)
++            self.MLM = CLM(model_id="google/gemma-2-2b-it", device=self.device)
+ 
+     def extract_parameters(
+         self,
+diff --git a/free_text_explanation.py b/free_text_explanation.py
+index 9e30ccf..21abbc5 100644
+--- a/free_text_explanation.py
++++ b/free_text_explanation.py
+@@ -4,7 +4,9 @@ import time
+ from pathlib import Path
+ from typing import Literal, Union
+ 
+-from openai import OpenAI
++from openai import OpenAI, RateLimitError
++from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
++import torch
+ 
+ from log import logger
+ from tag import TAG
+@@ -160,6 +162,74 @@ In summary, the classification of ROOT node into "Probabilistic Methods" is well
+ (P.S.: 1. make sure to complete both the reasoning section and then Free-Text Explanation section with the same structure as exemplified above.
+ 2. make good use of the importance (saliency) score behind each word as your guidance to generate the better explanation. However, it is not necessary to directly quote the saliency score.
+ 3. use the *whole* graph structure you constructed during reasoning for the format of the explanation. Indents and node indexes are necessary, which representing the hierarchy of the graph.)
++""",
++        "v_products": """The following verbalized graph contains important words in the text of each nodes. These words (each with corresponding importance score in the bracket) contribute to the classification of Node 0 into one of the Amazon product categories. Edges represent co-purchase relationships between products.
++Generate a concise, human-readable explanation that justifies the classification result of Node 0 by identifying and explaining the relevant inner-node features (i.e., keywords) and inter-node relationships (i.e., graph structure). The explanation should focus on how these factors contribute to the classification label.
++
++## Example
++
++### Verbalized Graph
++<verbalized-graph>{example_verbalized_graph}</verbalized-graph>
++
++### Classification Label
++Sports & Outdoors
++
++### Reasoning
++
++0. Graph Structure Reconstruction:
++
++In the provided verbalized graph, the ROOT node (first line) is the target for classification.
++Single-digit indexed nodes are direct neighbors of ROOT.
++Double-digit indexed nodes are:
++  - Two hops away from ROOT
++  - Direct children of their parent node
++
++Thus, the graph structure of this verbalized graph is:
++
++- ROOT (bicycle pump)
++  - Node-1 (inner tube)
++    - Node-1.1 (tire lever)
++    - Node-1.2 (patch kit)
++  - Node-2 (road tire)
++    - Node-2.1 (bike chain)
++    - Node-2.2 (saddle)
++
++1. Word-Level Evaluation:
++
++Keywords with high saliency scores in ROOT — "pump" (0.08), "bike" (0.07), "bicycle" (0.06), "psi" (0.06), "pressure" (0.06), "presta" (0.05), "schrader" (0.05) — are strongly associated with cycling equipment. These directly indicate the product belongs to "Sports & Outdoors" (cycling accessories). More generic terms like "product" (0.02) and "amazon" (0.01) carry negligible saliency and contribute little.
++
++2. Graph-Level Aggregation:
++
++Node-1 (inner tube, keywords: "tube" (0.05), "road" (0.04), "bike" (0.04)) and Node-2 (road tire, keywords: "tire" (0.03), "cycling" (0.02)) are direct neighbors with moderate saliency, identifying cycling-specific accessories whose close proximity to ROOT reinforces the classification. Indirect neighbors — Node-1.1 (tire lever), Node-1.2 (patch kit), Node-2.1 (chain), Node-2.2 (saddle) — are all bicycle components, collectively confirming a cycling context across both hops.
++
++### Free-Text Explanation
++```markdown
++The classification of ROOT into "Sports & Outdoors" is supported by its own keywords and the co-purchase neighborhood.
++
++ROOT: Keywords like "pump" (0.08), "bike" (0.07), and "psi" (0.06) clearly identify this as a high-pressure bicycle pump — quintessentially a sports accessory.
++  - Node-1: An inner tube (keywords: "tube" (0.05), "road" (0.04), "bike" (0.04)) is a direct cycling component, reinforcing the Sports & Outdoors context.
++    - Node-1.1 ~ Node-1.2: Tire levers and patch kits are bicycle repair tools, supporting the cycling category.
++  - Node-2: A road bike tire (keywords: "tire" (0.03), "cycling" (0.02)) further confirms the cycling product ecosystem.
++    - Node-2.1 ~ Node-2.2: A chain and a saddle are additional cycling components, collectively affirming the Sports & Outdoors classification.
++
++In summary, ROOT's own high-saliency keywords strongly signal cycling use, and the entire co-purchase neighborhood consists of bicycle components and accessories, providing robust evidence for the "Sports & Outdoors" category.
++```
++
++## Task
++
++### Verbalized Graph
++<verbalized-graph>{document}</verbalized-graph>
++
++### Classification Label
++{label}
++
++### Reasoning
++
++### Free-Text Explanation
++
++(P.S.: 1. complete both the reasoning section and then Free-Text Explanation section with the same structure as exemplified above.
++2. make good use of the importance (saliency) score behind each word as your guidance. Words with higher scores are more influential for the classification. It is not necessary to quote every score.
++3. use the *whole* graph structure you reconstructed during reasoning for the format of the Free-Text Explanation. Indents and node indexes are necessary, representing the hierarchy of the co-purchase graph.)
+ """,
+     }
+ 
+@@ -202,7 +272,15 @@ Node-2: title efficient inference bayes networks combinatorial optimization prob
+ Node-2.1: title sensitivities alternative conditional probabilities bayesian belief networks abstract show alternative way representing bayesian belief network sensitivities probability distributions. representation equivalent traditional representation conditional probabilities, makes dependencies nodes apparent intuitively easy understand. also propose qr matrix representation sensitivities conditional probabilities efficient, memory requirements computational speed, traditional representation computer based implementations probabilistic inference. use sensitivities show certain class binary networks, computation time approximate probabilistic inference positive upper bound error result independent size network. finally, alternative traditional algorithms use conditional probabilities, describe exact algorithm probabilistic inference uses qr representation sensitivities updates probability distributions nodes network according messages neigh bors. 
+ Node-2.2: title algebraic techniques efficient inference bayesian networks abstract number exact algorithms developed perform probabilistic inference bayesian belief networks recent years. algorithms use graph theoretic techniques analyze exploit network topology. paper, examine problem efficient probabilistic inference belief network combinatorial optimization problem, finding optimal factoring given algebraic expression set probability distributions. define combinatorial optimization problem, optimal factoring problem, discuss application problem belief networks. show optimal factoring provides insight key elements efficient probabilistic inference, present simple, easily implemented algorithms excellent performance. also show use algebraic perspective permits significant extension belief net representation. 
+ Node-2.3: title interpretation complex scenes using bayesian networks abstract object recognition systems, interactions objects scene ignored best interpretation considered set hypothesized objects matches greatest number image features. show image interpretation cast problem finding probable explanation mpe bayesian network models visual physical object interactions. problem determine exact conditional probabilities network shown unimportant, since goal find probable configuration objects, calculate absolute probabilities. furthermore show evaluating configurations feature counting equivalent calculating joint probability configuration using restricted bayesian network, derive assumptions probabilities necessary make bayesian formulation reasonable. 
+-Node-2.4: title case based probability factoring bayesian belief networks abstract bayesian network inference formulated combinatorial optimization problem, concerning computation optimal factoring distribution represented net. since determination optimal factoring computationally hard problem, heuristic greedy strategies able find approximations optimal factoring usually adopted. present paper investigate alternative approach based combination genetic algorithms ga case based reasoning cbr ). show use genetic algorithms improve quality computed factoring case static strategy used mpe computation ), combination ga cbr still provide advantages case dynamic strategies. preliminary results different kinds nets reported. 
++Node-2.4: title case based probability factoring bayesian belief networks abstract bayesian network inference formulated combinatorial optimization problem, concerning computation optimal factoring distribution represented net. since determination optimal factoring computationally hard problem, heuristic greedy strategies able find approximations optimal factoring usually adopted. present paper investigate alternative approach based combination genetic algorithms ga case based reasoning cbr ). show use genetic algorithms improve quality computed factoring case static strategy used mpe computation ), combination ga cbr still provide advantages case dynamic strategies. preliminary results different kinds nets reported.
++""",
++        "v_products": """ROOT: product(0.02) amazon(0.01) title(0.06) content(0.05) vibrelli(0.05) performance(0.04) bike(0.07) pump(0.08) bicycle(0.06) gauge(0.06) content(0.05) high(0.04) pressure(0.06) bike(0.05) pump(0.07) fits(0.04) presta(0.05) schrader(0.05) valve.(0.04) 160(0.03) psi(0.06) aluminum(0.03) alloy(0.03) barrel.(0.04)
++Node-1: product(0.01) amazon(0.01) title(0.03) content(0.03) continental(0.03) race(0.03) tire(0.04) inner(0.04) tube(0.05) road(0.04) bike(0.04) bicycle(0.03)
++Node-1.1: product(0.00) amazon(0.00) title(0.01) content(0.01) pedro's(0.00) tire(0.01) lever(0.01) bicycle(0.00) removal(0.00)
++Node-1.2: product(0.00) amazon(0.00) title(0.00) content(0.00) park(0.00) tool(0.00) gp-2(0.00) patch(0.00) kit(0.00) tube(0.00)
++Node-2: product(0.01) amazon(0.01) title(0.02) content(0.02) vittoria(0.02) zaffiro(0.02) road(0.02) bike(0.02) tire(0.03) 700c(0.02) cycling(0.02) bicycle(0.02) durable(0.01) puncture(0.02) resistant(0.01)
++Node-2.1: product(0.00) amazon(0.00) title(0.00) content(0.00) kmc(0.00) x9(0.00) 9(0.00) speed(0.00) chain(0.00) bicycle(0.00)
++Node-2.2: product(0.00) amazon(0.00) title(0.00) content(0.00) bontrager(0.00) race(0.00) lite(0.00) saddle(0.00) road(0.00) bike(0.00)
+ """,
+     }
+ 
+@@ -221,9 +299,15 @@ Node-2.4: title case based probability factoring bayesian belief networks abstra
+ 
+ class FreeTextExpGenerator:
+     def __init__(self):
+-        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"), base_url=os.getenv("OPENAI_BASE_URL"))
++        api_key = os.getenv("OPENAI_API_KEY")
++        base_url = os.getenv("OPENAI_BASE_URL")
++        self.client = OpenAI(api_key=api_key, base_url=base_url) if api_key else None
+         self.example = None
+         self.template = None
++        self._hf_model = None
++        self._hf_tokenizer = None
++        self._hf_model_id = None
++        self._hf_4bit = False
+ 
+     @staticmethod
+     def save(prompt, response, output_file, system_prompt="You are a helpful AI assistant.", style="OpenAI"):
+@@ -251,6 +335,8 @@ class FreeTextExpGenerator:
+         example_version="latest",
+         example_style="document",
+         use_finetuned=False,
++        use_local_hf=False,
++        use_4bit=False,
+     ):
+         self.template = TemplatesArchive.get(version=template_version)
+         self.example = ExampleGraphCorpus.get(version=example_version, style=example_style)
+@@ -265,19 +351,92 @@ class FreeTextExpGenerator:
+             {"role": "user", "content": prompt},
+         ]
+ 
+-        if not use_finetuned:
+-            assert model is not None, "model is required when not using finetuned model"
+-            # Call OpenAI GPT API
+-            completion = self.client.chat.completions.create(
+-                model=model,
++        if use_local_hf:
++            assert model is not None, "model is required when using local HF model"
++            if self._hf_model is None or self._hf_model_id != model or self._hf_4bit != use_4bit:
++                try:
++                    tokenizer = AutoTokenizer.from_pretrained(model, use_fast=True)
++                except Exception:
++                    tokenizer = AutoTokenizer.from_pretrained(model, use_fast=False)
++                if use_4bit:
++                    bnb_config = BitsAndBytesConfig(
++                        load_in_4bit=True,
++                        bnb_4bit_use_double_quant=True,
++                        bnb_4bit_quant_type="nf4",
++                        bnb_4bit_compute_dtype=torch.float16,
++                    )
++                    llm = AutoModelForCausalLM.from_pretrained(
++                        model,
++                        device_map="auto",
++                        quantization_config=bnb_config,
++                    )
++                else:
++                    llm = AutoModelForCausalLM.from_pretrained(
++                        model,
++                        torch_dtype=torch.float16,
++                        device_map="auto",
++                    )
++                self._hf_model = llm
++                self._hf_tokenizer = tokenizer
++                self._hf_model_id = model
++                self._hf_4bit = use_4bit
++            else:
++                llm = self._hf_model
++                tokenizer = self._hf_tokenizer
++            # Apply chat template into a separate variable so the original
++            # prompt text is preserved for clean storage in the output JSON.
++            formatted_for_llm = tokenizer.apply_chat_template(
++                messages,
++                tokenize=False,
++                add_generation_prompt=True,
++            )
++            inputs = tokenizer(formatted_for_llm, return_tensors="pt").to(llm.device)
++            input_len = inputs["input_ids"].shape[1]
++            outputs = llm.generate(
++                **inputs,
++                max_new_tokens=2048,
++                do_sample=True,
+                 temperature=0.3,
+                 top_p=0.95,
+-                max_tokens=4095,
+-                messages=messages,
+             )
+-            response = completion.choices[0].message.content
++            # Decode only the newly generated tokens to exclude the prompt.
++            response = tokenizer.decode(outputs[0][input_len:], skip_special_tokens=True)
+             return prompt, response
+ 
++        if not use_finetuned:
++            assert model is not None, "model is required when not using finetuned model"
++            assert self.client is not None, "OPENAI_API_KEY is required for OpenAI mode"
++            # Call OpenAI GPT API with retry on transient rate limits.
++            max_attempts = int(os.getenv("OPENAI_RL_MAX_ATTEMPTS", "60"))
++            for attempt in range(1, max_attempts + 1):
++                try:
++                    completion = self.client.chat.completions.create(
++                        model=model,
++                        temperature=0.3,
++                        top_p=0.95,
++                        max_tokens=4095,
++                        messages=messages,
++                    )
++                    response = completion.choices[0].message.content
++                    return prompt, response
++                except RateLimitError as exc:
++                    wait_s = 3
++                    msg = str(exc)
++                    marker = "Please try again in "
++                    if marker in msg and "s." in msg:
++                        try:
++                            wait_s = max(1, int(float(msg.split(marker, 1)[1].split("s.", 1)[0])) + 1)
++                        except Exception:
++                            wait_s = 3
++                    logger.warning(
++                        "Rate limited (attempt %d/%d). Sleeping %ds before retry.",
++                        attempt,
++                        max_attempts,
++                        wait_s,
++                    )
++                    time.sleep(wait_s)
++            raise RuntimeError("OpenAI rate limit persisted after retries.")
++
+         else:
+             # Use finetuned distilled model
+             from distill import LLMFinetuner
+@@ -287,11 +446,15 @@ class FreeTextExpGenerator:
+             return prompt, response
+ 
+ 
+-def generate_explanations(indexs, model_id: str, exp_id: Union[int, str]):
++def generate_explanations(indexs, model_id: str, exp_id: Union[int, str], use_local_hf: bool = False, use_4bit: bool = False, dataset: str = "cora", pkl_dir: str = "outputs/pkls"):
+     generator = FreeTextExpGenerator()
+ 
++    # Select template and example version based on dataset
++    template_version = "v_products" if dataset.lower() == "products" else "v6"
++    example_version = "v_products" if dataset.lower() == "products" else "v1"
++
+     # input dir
+-    pkl_dir = Path("outputs/pkls/")
++    pkl_dir = Path(pkl_dir)
+     # output dir
+     exp_dir = Path(f"outputs/generated_expls-{exp_id}")
+     exp_dir.mkdir(exist_ok=True)
+@@ -318,10 +481,19 @@ def generate_explanations(indexs, model_id: str, exp_id: Union[int, str]):
+             logger.error("stringify graph-%d failed! Error: %s", index, e)
+             continue
+ 
++        # Truncate to ~6000 chars (~3600 LLaMA tokens) for local LLM on V100
++        if use_local_hf and len(document) > 6000:
++            logger.warning("TRUNCATION node=%d original_len=%d truncated_to=6000", index, len(document))
++            document = document[:6000]
++
+         prompt, response = generator.gen(
+             model=model_id,
+             label=label,
+             document=document,
++            template_version=template_version,
++            example_version=example_version,
++            use_local_hf=use_local_hf,
++            use_4bit=use_4bit,
+         )
+ 
+         FreeTextExpGenerator.save(prompt, response, output_file)
+diff --git a/main.py b/main.py
+index 14fcd5b..e7854d8 100644
+--- a/main.py
++++ b/main.py
+@@ -15,7 +15,13 @@ from preprocess import generate_dataset
+ 
+ 
+ # helper function to initiate multiple processes for explanation generation
+-def multiprocess_expl_gen(exp_id, model_id, indexs, num_processes=32):
++def multiprocess_expl_gen(exp_id, model_id, indexs, num_processes=32, use_local_hf=False, hf_4bit=False, dataset="cora", pkl_dir="outputs/pkls"):
++    # With num_processes=1 and local HF, skip subprocess to avoid fork+CUDA deadlock
++    if num_processes == 1 and use_local_hf:
++        generate_explanations(list(indexs), model_id, exp_id, use_local_hf, hf_4bit, dataset, pkl_dir)
++        logger.info("All explanation generation processes finished.")
++        return
++
+     # assign processes
+     procs = []
+     for t in range(num_processes):
+@@ -23,6 +29,10 @@ def multiprocess_expl_gen(exp_id, model_id, indexs, num_processes=32):
+             [indexs[i] for i in range(t, len(indexs), num_processes)],
+             model_id,
+             exp_id,
++            use_local_hf,
++            hf_4bit,
++            dataset,
++            pkl_dir,
+         )
+         proc = multiprocessing.Process(target=generate_explanations, args=params)
+         procs.append(proc)
+@@ -58,17 +68,38 @@ def multiprocess_rejection_sampling(exp_id, devices, indexs, mode):
+ 
+ def manual(args):
+     # -- step by step -- #
++    pkl_dir = Path(args.pkl_dir)
++    pkl_dir.mkdir(parents=True, exist_ok=True)
++
+     # Step 0: Preprocess
+     if 0 in args.step:
+-        generate_dataset(args.seed, args.lm_model, args.gnn_model, args.dataset, args)
++        generate_dataset(args.seed, args.lm_model, args.gnn_model, args.dataset, args, cora_data_path=args.cora_data_path, products_data_path=args.products_data_path, split_path=args.split_path, pkl_dir=pkl_dir)
+ 
+     # Step 1: Dataset Generation
+     if 1 in args.step:
+-        multiprocess_expl_gen(args.exp_id, args.model_id, indexs=range(2708))
++        pkl_ids = sorted(int(p.stem) for p in pkl_dir.glob("*.pkl"))
++        if pkl_ids:
++            indexs = pkl_ids
++            logger.info("Step 1 will process %d existing pkl files from %s", len(indexs), pkl_dir)
++        else:
++            indexs = range(args.num_eval_nodes)
++            logger.warning("No pkl files found in %s; falling back to range(%d).", pkl_dir, args.num_eval_nodes)
++        multiprocess_expl_gen(
++            args.exp_id,
++            args.model_id,
++            indexs=indexs,
++            num_processes=args.num_processes,
++            use_local_hf=args.use_local_hf,
++            hf_4bit=args.hf_4bit,
++            dataset=args.dataset,
++            pkl_dir=str(pkl_dir),
++        )
+ 
+     # Step 2: Rejection Sampling
+     if 2 in args.step:
+-        multiprocess_rejection_sampling(exp_id=args.exp_id, devices=args.devices, indexs=range(2708), mode="auto")
++        pkl_ids = sorted(int(p.stem) for p in pkl_dir.glob("*.pkl"))
++        step2_indexs = pkl_ids if pkl_ids else range(args.num_eval_nodes)
++        multiprocess_rejection_sampling(exp_id=args.exp_id, devices=args.devices, indexs=step2_indexs, mode="auto")
+ 
+     # # step 3: Self-Training
+     if 3 in args.step:
+@@ -84,7 +115,14 @@ def auto(args):
+ 
+     for exp_id in range(args.resume, args.num_iterations):
+         # -- step 1: expl generation -- #
+-        multiprocess_expl_gen(exp_id=exp_id, model_id=model_id, indexs=range(0, 2000), num_processes=args.num_processes)
++        multiprocess_expl_gen(
++            exp_id=exp_id,
++            model_id=model_id,
++            indexs=range(0, 2000),
++            num_processes=args.num_processes,
++            use_local_hf=args.use_local_hf,
++            hf_4bit=args.hf_4bit,
++        )
+         # -- step 2: rejection sampling -- #
+         multiprocess_rejection_sampling(exp_id=exp_id, devices=args.devices, indexs=range(0, 2000), mode="auto")
+         # -- step 3: self-training -- #
+@@ -100,7 +138,14 @@ def abl_sali(args):
+ 
+     for exp_id in range(args.resume, args.num_iterations):
+         # -- step 1: expl generation -- #
+-        multiprocess_expl_gen(exp_id=exp_id, model_id=model_id, indexs=range(0, 500), num_processes=args.num_processes)
++        multiprocess_expl_gen(
++            exp_id=exp_id,
++            model_id=model_id,
++            indexs=range(0, 500),
++            num_processes=args.num_processes,
++            use_local_hf=args.use_local_hf,
++            hf_4bit=args.hf_4bit,
++        )
+         # -- step 2: rejection sampling -- #
+         multiprocess_rejection_sampling(exp_id=exp_id, devices=args.devices, indexs=range(0, 500), mode="abl_sali")
+         # -- step 3: self-training -- #
+@@ -116,7 +161,14 @@ def abl_fait(args):
+ 
+     for exp_id in range(args.resume, args.num_iterations):
+         # -- step 1: expl generation -- #
+-        multiprocess_expl_gen(exp_id=exp_id, model_id=model_id, indexs=range(0, 500), num_processes=args.num_processes)
++        multiprocess_expl_gen(
++            exp_id=exp_id,
++            model_id=model_id,
++            indexs=range(0, 500),
++            num_processes=args.num_processes,
++            use_local_hf=args.use_local_hf,
++            hf_4bit=args.hf_4bit,
++        )
+         # -- step 2: rejection sampling -- #
+         multiprocess_rejection_sampling(exp_id=exp_id, devices=args.devices, indexs=range(0, 500), mode="abl_fait")
+         # -- step 3: self-training -- #
+@@ -132,7 +184,14 @@ def abl_brev(args):
+ 
+     for exp_id in range(args.resume, args.num_iterations):
+         # -- step 1: expl generation -- #
+-        multiprocess_expl_gen(exp_id=exp_id, model_id=model_id, indexs=range(0, 500), num_processes=args.num_processes)
++        multiprocess_expl_gen(
++            exp_id=exp_id,
++            model_id=model_id,
++            indexs=range(0, 500),
++            num_processes=args.num_processes,
++            use_local_hf=args.use_local_hf,
++            hf_4bit=args.hf_4bit,
++        )
+         # -- step 2: rejection sampling -- #
+         multiprocess_rejection_sampling(exp_id=exp_id, devices=args.devices, indexs=range(0, 500), mode="abl_brev")
+         # -- step 3: self-training -- #
+@@ -196,7 +255,14 @@ def rand(args):
+         # generate sample_step times expls for each sampled node
+         for sample_step in range(1, args.sample_steps + 1):
+             subexp_id = str(exp_id) + "s" + str(sample_step)
+-            multiprocess_expl_gen(exp_id=subexp_id, model_id=model_id, indexs=rand_nodes, num_processes=args.num_processes)  # step 1
++            multiprocess_expl_gen(
++                exp_id=subexp_id,
++                model_id=model_id,
++                indexs=rand_nodes,
++                num_processes=args.num_processes,
++                use_local_hf=args.use_local_hf,
++                hf_4bit=args.hf_4bit,
++            )  # step 1
+             multiprocess_rejection_sampling(
+                 exp_id=subexp_id, devices=args.devices, indexs=rand_nodes, mode="identical"
+             )  # step 2
+@@ -221,11 +287,20 @@ def parse():
+     parser = argparse.ArgumentParser()
+     # fmt: off
+     parser.add_argument("--seed", type=int, default=0)
++    parser.add_argument("--cora_data_path", type=str, default=None)
++    parser.add_argument("--products_data_path", type=str, default=None)
++    parser.add_argument("--split_path", type=str, default=None, help="Path to .npz split file (for Products eval_idx)")
++    parser.add_argument("--num_eval_nodes", type=int, default=2708, help="Fallback eval node count if no pkls found")
++    parser.add_argument("--gnn_ckpt", type=str, default=None, help="Override path for the step-0 GNN checkpoint (default: GNN_{dataset}_seed_{seed}.pt in CWD)")
++    parser.add_argument("--max_nodes", type=int, default=None, help="Cap the number of eval nodes step 0 processes (for sanity checks)")
++    parser.add_argument("--pkl_dir", type=str, default="outputs/pkls", help="Directory for pkl files (use dataset-specific path to avoid overwriting)")
+     parser.add_argument("--lm_model", type=str, default="bert-base-uncased")
+     parser.add_argument("--gnn_model", type=str, default="SAGE")
+     parser.add_argument("--dataset", type=str, default="cora")
+     parser.add_argument("--exp_id", type=int, default=None, help="indicate the number of experiment iteration")
+     parser.add_argument("--model_id", type=str)
++    parser.add_argument("--use_local_hf", action="store_true", help="Use local HF model for explanations")
++    parser.add_argument("--hf_4bit", action="store_true", help="Load local HF model in 4-bit")
+     parser.add_argument("--step", type=int, nargs="+", default=[0, 1, 2, 3, 4])
+     parser.add_argument("--device", type=str, default="cuda")
+     parser.add_argument("--devices", nargs='+', type=str, default=["cuda:0", "cuda:1"], help="List of devices to use (e.g., cuda:0 cuda:1)")
+diff --git a/models/joint_model.py b/models/joint_model.py
+index 202ec22..3cf1ad8 100644
+--- a/models/joint_model.py
++++ b/models/joint_model.py
+@@ -95,7 +95,8 @@ class LM_GNN_Joint_Model(Module):
+         node_attribution_scores = gnn_explanation.node_mask.float()
+ 
+         # Do LRP for Bert
+-        R = torch.zeros(input_ids.shape[0], 512, 768)
++       # R = torch.zeros(input_ids.shape[0], 512, 768)
++        R = torch.zeros(input_ids.shape[0], input_ids.shape[1], 768, device=input_ids.device)
+         batch_size = 1
+         for i in range(0, input_ids.shape[0], batch_size):
+             text_emb = self.bert(
+diff --git a/preprocess.py b/preprocess.py
+index ed9d8c5..9895bbd 100644
+--- a/preprocess.py
++++ b/preprocess.py
+@@ -7,52 +7,62 @@ from torch_geometric.loader import NeighborLoader
+ from tqdm import tqdm
+ from transformers import AutoTokenizer
+ 
+-from dataset import CORA, DBLP, BookHistory, Encoder
++from dataset import CORA, DBLP, BookHistory, Products, Encoder
+ from log import logger
+ from models.joint_model import LM_GNN_Joint_Model, init_hooks_lrp
+ from tag import TAG, Node
+ from utils import safe_zip
+ 
+ 
+-def train(DATASET, ckpt_dir, SEED=42, LM_MODEL="bert-base-uncased", GNN_MODEL="SAGE"):
+-    # == load dataset ==
+-    if DATASET == "dblp":
++def train(
++    DATASET,
++    ckpt_dir="checkpoints",
++    SEED=42,
++    LM_MODEL="bert-base-uncased",
++    GNN_MODEL="SAGE",
++    resume_ckpt=None,
++    cora_data_path=None,
++    products_data_path=None,
++    split_path=None,
++):
++    dataset_name = DATASET.lower()
++    if dataset_name == "dblp":
+         data, text, num_classes = DBLP.load()
+-    elif DATASET == "cora":
+-        data, text, num_classes = CORA.load(seed=SEED)
+-    elif DATASET == "book_history":
++    elif dataset_name == "cora":
++        data, text, num_classes = CORA.load(seed=SEED, data_path=cora_data_path)
++    elif dataset_name == "book_history":
+         data, text, num_classes = BookHistory.load()
++    elif dataset_name == "products":
++        data, text, num_classes = Products.load(data_path=products_data_path, split_path=split_path)
+     else:
+-        raise NotImplementedError
++        raise NotImplementedError(f"Unsupported dataset: {DATASET}")
++
++    # PyG loaders expect tensor-like attributes; remove raw text stored on data
++    if hasattr(data, "raw_text"):
++        delattr(data, "raw_text")
++    if hasattr(data, "text"):
++        delattr(data, "text")
++
++    ckpt_dir_path = Path(ckpt_dir)
++    ckpt_dir_path.mkdir(parents=True, exist_ok=True)
+ 
+     data = data.to("cuda")
+ 
+     encoder = Encoder()  # natural language encoder
+ 
+     model = LM_GNN_Joint_Model(lm_model_name=LM_MODEL, gnn_model_name=GNN_MODEL, out_dim=num_classes).to("cuda")
+-    best_val_accuracy = 0
+-
+-    if True:
+-        # load_from_ckpt
+-        model.gnn.load_state_dict(torch.load(f"{ckpt_dir}/GNN_dblp_seed_{SEED}_epoch_?.pt"))
+-        # Validation Loop
+-        model.eval()
+-        with torch.no_grad():
+-            subgraph_loader = NeighborLoader(data, num_neighbors=[10] * 2, batch_size=512, input_nodes=data.val_mask)
+-            predictions = []
+-            ground_truths = []
+-            for batch in subgraph_loader:
+-                embs = torch.concat([encoder.encode(text[i]).detach().cpu() for i in batch.n_id.tolist()]).to("cuda")
+-                edge_index = batch.edge_index.to("cuda")
+-                logits = model.forward_gnn(embs, edge_index)
+-                pred = torch.argmax(logits, dim=1)
+-                predictions.append(pred)
+-                ground_truths.append(batch.y)
+-            predictions = torch.concat(predictions, dim=0)
+-            ground_truths = torch.concat(ground_truths, dim=0)
+-            correct = (predictions == ground_truths).float()
+-            accuracy = correct.sum() / len(correct)
+-        best_val_accuracy = accuracy  # best validation accuracy
++    best_val_accuracy = 0.0
++    best_model_state = model.state_dict()
++    ckpt_prefix = f"GNN_{dataset_name}_seed_{SEED}"
++
++    if resume_ckpt:
++        ckpt_path = Path(resume_ckpt)
++        if ckpt_path.exists():
++            logger.info("Resuming training from %s", ckpt_path)
++            model.gnn.load_state_dict(torch.load(ckpt_path))
++            best_model_state = model.state_dict()
++        else:
++            logger.warning("Resume checkpoint %s not found. Starting from scratch.", ckpt_path)
+ 
+     optimizer = AdamW(model.parameters(), lr=1e-5, weight_decay=0.00)
+ 
+@@ -62,7 +72,7 @@ def train(DATASET, ckpt_dir, SEED=42, LM_MODEL="bert-base-uncased", GNN_MODEL="S
+     # log GPU VRAM usage
+     logger.info("GPU VRAM usage: %.2f GB", torch.cuda.memory_allocated() / 1024 / 1024 / 1024)
+ 
+-    EPOCHS = 100
++    EPOCHS = 5
+     BATCH_SIZE = 16
+     for epoch in range(EPOCHS):
+         total_loss = 0
+@@ -131,7 +141,7 @@ def train(DATASET, ckpt_dir, SEED=42, LM_MODEL="bert-base-uncased", GNN_MODEL="S
+         if accuracy > best_val_accuracy:
+             best_val_accuracy = accuracy
+             best_model_state = model.state_dict()
+-            torch.save(model.gnn.state_dict(), f'{ckpt_dir}/GNN_dblp_seed_{SEED}_epoch_{epoch}.pt')
++            torch.save(model.gnn.state_dict(), ckpt_dir_path / f"{ckpt_prefix}_epoch_{epoch}.pt")
+ 
+         avg_train_loss = total_loss / step / BATCH_SIZE
+         logger.info(f"Training loss: {avg_train_loss}")
+@@ -145,7 +155,9 @@ def train(DATASET, ckpt_dir, SEED=42, LM_MODEL="bert-base-uncased", GNN_MODEL="S
+         predictions = []
+         ground_truths = []
+ 
+-        for batch in subgraph_loader:
++        for step, batch in enumerate(subgraph_loader):
++            if step >= 100:
++                break
+             embs = torch.concat([encoder.encode(text[i]).detach().cpu() for i in batch.n_id.tolist()]).to("cuda")
+             edge_index = batch.edge_index.to("cuda")
+             logits = model.forward_gnn(embs, edge_index)
+@@ -157,32 +169,65 @@ def train(DATASET, ckpt_dir, SEED=42, LM_MODEL="bert-base-uncased", GNN_MODEL="S
+ 
+         correct = (predictions == ground_truths).float()
+         accuracy = correct.sum() / len(correct)
+-        print(f"Test Accuracy: {accuracy}")
++        print(f"Test Accuracy (sampled): {accuracy}")
++
++    final_ckpt = ckpt_dir_path / f"{ckpt_prefix}.pt"
++    torch.save(model.gnn.state_dict(), final_ckpt)
++    root_ckpt = Path(f"{ckpt_prefix}.pt")
++    torch.save(model.gnn.state_dict(), root_ckpt)
++    logger.info("Saved GNN checkpoint to %s and %s", final_ckpt, root_ckpt)
+ 
+     return accuracy.cpu()
+ 
+ 
+-def generate_dataset(SEED, LM_MODEL, GNN_MODEL, DATASET, args):
++def generate_dataset(SEED, LM_MODEL, GNN_MODEL, DATASET, args, cora_data_path=None, products_data_path=None, split_path=None, pkl_dir=None):
+     # == Load Datasets ==
+-    if DATASET == "cora":
+-        data, text, num_classes = CORA.load(seed=SEED)
+-    elif DATASET == "book_history":
++    dataset_name = DATASET.lower()
++    if dataset_name == "cora":
++        data, text, num_classes = CORA.load(seed=SEED, data_path=cora_data_path)
++    elif dataset_name == "book_history":
+         data, text, num_classes = BookHistory.load()
+-    elif DATASET == "dblp":
++    elif dataset_name == "dblp":
+         data, text, num_classes = DBLP.load()
++    elif dataset_name == "products":
++        data, text, num_classes = Products.load(data_path=products_data_path, split_path=split_path)
+     else:
+         raise NotImplementedError
+ 
++    # PyG loaders expect tensor-like attributes; remove raw text stored on data
++    if hasattr(data, "raw_text"):
++        delattr(data, "raw_text")
++    if hasattr(data, "text"):
++        delattr(data, "text")
++
+     data = data.to(args.device)
+ 
+     tokenizer = AutoTokenizer.from_pretrained(LM_MODEL)
+ 
+-    subgraph_loader = NeighborLoader(data, num_neighbors=[10] * 2, batch_size=1, input_nodes=data.train_mask)
++    # Use eval_mask (200 nodes) when available (Products), else fall back to test_mask
++    eval_nodes_mask = data.eval_mask if hasattr(data, "eval_mask") else data.test_mask
++    subgraph_loader = NeighborLoader(data, num_neighbors=[10] * 2, batch_size=1, input_nodes=eval_nodes_mask)
+ 
+     # == Load Model ==
+     model = LM_GNN_Joint_Model(lm_model_name=LM_MODEL, gnn_model_name=GNN_MODEL, out_dim=num_classes)
+     model.to(args.device)
+-    model.gnn.load_state_dict(torch.load(f"GNN_dblp_seed_{SEED}.pt"))
++    gnn_ckpt_override = getattr(args, "gnn_ckpt", None)
++    if gnn_ckpt_override:
++        ckpt_to_load = Path(gnn_ckpt_override)
++        if not ckpt_to_load.exists():
++            raise FileNotFoundError(f"--gnn_ckpt override not found: {ckpt_to_load}")
++        logger.info("Using --gnn_ckpt override: %s", ckpt_to_load)
++    else:
++        primary_ckpt = Path(f"GNN_{dataset_name}_seed_{SEED}.pt")
++        legacy_ckpt = Path(f"GNN_dblp_seed_{SEED}.pt")
++        if primary_ckpt.exists():
++            ckpt_to_load = primary_ckpt
++        elif legacy_ckpt.exists():
++            logger.warning("Using legacy checkpoint name %s", legacy_ckpt)
++            ckpt_to_load = legacy_ckpt
++        else:
++            raise FileNotFoundError(f"Checkpoint not found: {primary_ckpt} or {legacy_ckpt}")
++    model.gnn.load_state_dict(torch.load(ckpt_to_load))
+     model.eval()
+ 
+     # == Load Optimizer ==
+@@ -192,49 +237,122 @@ def generate_dataset(SEED, LM_MODEL, GNN_MODEL, DATASET, args):
+     # == Explain ==
+ 
+     def id2label(idx):
+-        # cora dataset
+-        # labels = [
+-        #     "Case Based",  # 0
+-        #     "Genetic Algorithms",  # 1
+-        #     "Neural Networks",  # 2
+-        #     "Probabilistic Methods",  # 3
+-        #     "Reinforcement Learning",  # 4
+-        #     "Rule Learning",  # 5
+-        #     "Theory",  # 6
+-        # ]
+-
+-        # dblp dataset
+-        return data.label_dict[idx]
+-
++        if hasattr(data, "label_names") and data.label_names is not None:
++            return data.label_names[idx]
++        elif DATASET == "cora":
++            labels = [
++                "Case_Based",
++                "Genetic_Algorithms",
++                "Neural_Networks",
++                "Probabilistic_Methods",
++                "Reinforcement_Learning",
++                "Rule_Learning",
++                "Theory",
++            ]
++            return labels[idx]
++        else:
++            return data.label_dict[idx]
++
++    preferred_max_length = int(getattr(args, "token_max_length", 384))
++    min_max_length = int(getattr(args, "min_token_max_length", 256))
++    fallback_step = int(getattr(args, "token_max_length_step", 64))
++    if fallback_step <= 0:
++        fallback_step = 64
++    if min_max_length > preferred_max_length:
++        min_max_length = preferred_max_length
++
++    fallback_lengths = []
++    current = preferred_max_length
++    while current >= min_max_length:
++        fallback_lengths.append(current)
++        current -= fallback_step
++    if fallback_lengths[-1] != min_max_length:
++        fallback_lengths.append(min_max_length)
++
++    if pkl_dir is None:
++        pkl_dir = Path("outputs/pkls")
++    pkl_dir = Path(pkl_dir)
++    pkl_dir.mkdir(parents=True, exist_ok=True)
++
++    max_eval_nodes = int(eval_nodes_mask.sum().item())
++    max_nodes_override = getattr(args, "max_nodes", None)
++    if max_nodes_override:
++        max_eval_nodes = min(max_eval_nodes, max_nodes_override)
++        logger.info("--max_nodes override: capping at %d nodes", max_eval_nodes)
+     for index, batch in enumerate(subgraph_loader):
+-        if index >= 2500:
++        if index >= max_eval_nodes:
+             break
+ 
+-        output_pkl = Path(f"outputs/pkls/{index}.pkl")
++        output_pkl = pkl_dir / f"{index}.pkl"
+         if output_pkl.exists():
+             continue
+ 
+         start = time.time()
+         edge_index = batch.edge_index
+         sampled_node_ids = batch.n_id.tolist()
+-        X = tokenizer([text[i] for i in sampled_node_ids], padding="max_length", truncation=True, max_length=512)
+-        input_ids = torch.tensor(X["input_ids"]).to(args.device)
+-        attention_mask = torch.tensor(X["attention_mask"]).to(args.device)
+ 
+         # == Saliency-based explanation ==
+-        try:
+-            embedding_scores, node_scores, prediction = model.explain(input_ids, attention_mask, edge_index)
+-        except torch.cuda.OutOfMemoryError:
+-            logger.warning(f"out of memory! Skip sample-{index}")
++        explain_result = None
++        used_max_length = None
++        for max_length in fallback_lengths:
++            X = tokenizer(
++                [text[i] for i in sampled_node_ids],
++                padding="max_length",
++                truncation=True,
++                max_length=max_length,
++            )
++            input_ids = torch.tensor(X["input_ids"]).to(args.device)
++            attention_mask = torch.tensor(X["attention_mask"]).to(args.device)
++
++            try:
++                explain_result = model.explain(input_ids, attention_mask, edge_index)
++                used_max_length = max_length
++                break
++            except torch.cuda.OutOfMemoryError:
++                logger.warning(
++                    "out of memory at max_length=%d for sample-%d, retrying with shorter length",
++                    max_length,
++                    index,
++                )
++                torch.cuda.empty_cache()
++                continue
++
++        if explain_result is None:
++            logger.warning(
++                "out of memory! Skip sample-%d after trying lengths: %s",
++                index,
++                fallback_lengths,
++            )
+             continue
++        embedding_scores, node_scores, prediction = explain_result
+ 
+         optimizer.zero_grad()
+         # token_scores = torch.abs(embedding_scores).sum(dim=-1)
+         token_scores = embedding_scores.sum(dim=-1)
+-        token_scores = token_scores.detach().numpy()
++        # token_scores = token_scores.detach().numpy()
++        token_scores = token_scores.detach().cpu().numpy()
++
+ 
+         # initialize the text on output document nodes
+         graph = TAG()
++        # store global id mapping for evaluation
++        sampled_node_ids = batch.n_id.tolist()
++        root_global_id = None
++        if hasattr(batch, "input_id"):
++            try:
++                root_global_id = int(batch.input_id[0])
++            except Exception:
++                root_global_id = None
++        if root_global_id is None:
++            root_global_id = sampled_node_ids[0]
++        try:
++            root_local_id = sampled_node_ids.index(root_global_id)
++        except ValueError:
++            root_local_id = 0
++        graph.global_nids = sampled_node_ids
++        graph.root_global_id = root_global_id
++        graph.root_local_id = root_local_id
++
+         for i in range(input_ids.shape[0]):
+             tokens = tokenizer.convert_ids_to_tokens(input_ids[i])
+             # sentence = tokenizer.convert_tokens_to_string(tokens)
+@@ -276,7 +394,7 @@ def generate_dataset(SEED, LM_MODEL, GNN_MODEL, DATASET, args):
+         # print(saliency_map := graph.text(style="document"))
+         graph.save(output_pkl)
+         end = time.time()
+-        logger.info("batch-%d prepared. Time: %.2fs", index, end - start)
++        logger.info("batch-%d prepared at max_length=%d. Time: %.2fs", index, used_max_length, end - start)
+ 
+ 
+ def compute_embeddings(batch_size, dataset):
+@@ -300,17 +418,64 @@ def compute_embeddings(batch_size, dataset):
+ 
+ 
+ if __name__ == "__main__":
+-    # == train GNN models ==
+-    train(SEED=42, LM_MODEL="bert-base-uncased", GNN_MODEL="SAGE", DATASET="dblp")
+-
+-    # == save pkls ==
+-    # import argparse
+-    # parser = argparse.ArgumentParser()
+-    # parser.add_argument("--seed", type=int, default=42)
+-    # parser.add_argument("--lm_model", type=str, default="bert-base-uncased")
+-    # parser.add_argument("--gnn_model", type=str, default="SAGE")
+-    # parser.add_argument("--dataset", type=str, default="dblp")
+-    # parser.add_argument("--device", type=str, default="cuda" if torch.cuda.is_available() else "cpu")
+-    # args = parser.parse_args()
+-
+-    # generate_dataset(args.seed, args.lm_model, args.gnn_model, args.dataset, args)
++    import argparse
++    from types import SimpleNamespace
++
++    default_device = "cuda" if torch.cuda.is_available() else "cpu"
++    parser = argparse.ArgumentParser(description="GraphNarrator preprocessing utilities")
++    parser.add_argument("--mode", choices=["train", "generate", "embeddings"], default="train")
++    parser.add_argument("--dataset", type=str, default="dblp")
++    parser.add_argument("--seed", type=int, default=42)
++    parser.add_argument("--cora_data_path", type=str, default=None)
++    parser.add_argument("--products_data_path", type=str, default=None)
++    parser.add_argument("--split_path", type=str, default=None)
++    parser.add_argument("--lm_model", type=str, default="bert-base-uncased")
++    parser.add_argument("--gnn_model", type=str, default="SAGE")
++    parser.add_argument("--ckpt_dir", type=str, default="checkpoints")
++    parser.add_argument("--resume_ckpt", type=str, default=None)
++    parser.add_argument("--device", type=str, default=default_device)
++    parser.add_argument("--batch_size", type=int, default=512, help="Batch size for embedding computation")
++    parser.add_argument(
++        "--token_max_length",
++        type=int,
++        default=384,
++        help="Initial token max_length for explanation generation",
++    )
++    parser.add_argument(
++        "--min_token_max_length",
++        type=int,
++        default=256,
++        help="Minimum token max_length to fallback to on OOM",
++    )
++    parser.add_argument(
++        "--token_max_length_step",
++        type=int,
++        default=64,
++        help="Decrement step for max_length fallback on OOM",
++    )
++    args = parser.parse_args()
++
++    dataset = args.dataset.lower()
++
++    if args.mode == "train":
++        train(
++            DATASET=dataset,
++            ckpt_dir=args.ckpt_dir,
++            SEED=args.seed,
++            LM_MODEL=args.lm_model,
++            GNN_MODEL=args.gnn_model,
++            resume_ckpt=args.resume_ckpt,
++            cora_data_path=args.cora_data_path,
++            products_data_path=args.products_data_path,
++            split_path=args.split_path,
++        )
++    elif args.mode == "generate":
++        runtime_args = SimpleNamespace(
++            device=args.device,
++            token_max_length=args.token_max_length,
++            min_token_max_length=args.min_token_max_length,
++            token_max_length_step=args.token_max_length_step,
++        )
++        generate_dataset(args.seed, args.lm_model, args.gnn_model, dataset, runtime_args, cora_data_path=args.cora_data_path)
++    elif args.mode == "embeddings":
++        compute_embeddings(args.batch_size, args.dataset.upper())
+diff --git a/tag.py b/tag.py
+index 60c200e..2f27c6d 100644
+--- a/tag.py
++++ b/tag.py
+@@ -143,6 +143,10 @@ class TAG:
+         self.edges = [[], []]
+         self.prediction = None
+         self.ground_truth = None
++        # Optional metadata for mapping local node ids to global ids
++        self.global_nids = None
++        self.root_global_id = None
++        self.root_local_id = None
+ 
+     def set_labels(self, prediction, ground_truth):
+         self.prediction = prediction

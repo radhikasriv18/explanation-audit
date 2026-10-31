@@ -1,0 +1,386 @@
+{
+  "seed": 42,
+  "n_per_dataset": 30,
+  "datasets": {
+    "cora": {
+      "pool_size": 177,
+      "excluded_cf_keys": [
+        "3",
+        "67",
+        "71",
+        "192",
+        "260",
+        "262",
+        "532"
+      ],
+      "nodes": [
+        {
+          "global_node_id": 154,
+          "cf_key": "28",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 160,
+          "cf_key": "29",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 262,
+          "cf_key": "47",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 487,
+          "cf_key": "78",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 510,
+          "cf_key": "85",
+          "dataset": "cora",
+          "is_survey": true
+        },
+        {
+          "global_node_id": 876,
+          "cf_key": "164",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 975,
+          "cf_key": "184",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 1020,
+          "cf_key": "195",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 1062,
+          "cf_key": "203",
+          "dataset": "cora",
+          "is_survey": true
+        },
+        {
+          "global_node_id": 1191,
+          "cf_key": "237",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 1294,
+          "cf_key": "255",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 1440,
+          "cf_key": "281",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 1443,
+          "cf_key": "282",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 1585,
+          "cf_key": "312",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 1678,
+          "cf_key": "331",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 1687,
+          "cf_key": "338",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 1773,
+          "cf_key": "355",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 1782,
+          "cf_key": "357",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 1816,
+          "cf_key": "366",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 1959,
+          "cf_key": "390",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 2074,
+          "cf_key": "410",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 2135,
+          "cf_key": "417",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 2214,
+          "cf_key": "433",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 2257,
+          "cf_key": "442",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 2334,
+          "cf_key": "463",
+          "dataset": "cora",
+          "is_survey": true
+        },
+        {
+          "global_node_id": 2431,
+          "cf_key": "476",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 2443,
+          "cf_key": "480",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 2539,
+          "cf_key": "498",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 2617,
+          "cf_key": "520",
+          "dataset": "cora",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 2635,
+          "cf_key": "523",
+          "dataset": "cora",
+          "is_survey": false
+        }
+      ]
+    },
+    "products": {
+      "pool_size": 60,
+      "excluded_cf_keys": [],
+      "nodes": [
+        {
+          "global_node_id": 1691,
+          "cf_key": "2",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 1852,
+          "cf_key": "3",
+          "dataset": "products",
+          "is_survey": true
+        },
+        {
+          "global_node_id": 1958,
+          "cf_key": "4",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 3305,
+          "cf_key": "7",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 4736,
+          "cf_key": "13",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 4798,
+          "cf_key": "15",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 8438,
+          "cf_key": "29",
+          "dataset": "products",
+          "is_survey": true
+        },
+        {
+          "global_node_id": 8485,
+          "cf_key": "30",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 8728,
+          "cf_key": "32",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 12464,
+          "cf_key": "42",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 14760,
+          "cf_key": "49",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 15065,
+          "cf_key": "50",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 18243,
+          "cf_key": "61",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 19140,
+          "cf_key": "65",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 19356,
+          "cf_key": "66",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 21445,
+          "cf_key": "73",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 22915,
+          "cf_key": "78",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 23324,
+          "cf_key": "83",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 25079,
+          "cf_key": "93",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 30322,
+          "cf_key": "112",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 30739,
+          "cf_key": "115",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 32166,
+          "cf_key": "116",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 32390,
+          "cf_key": "117",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 33376,
+          "cf_key": "118",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 36811,
+          "cf_key": "138",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 38815,
+          "cf_key": "145",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 39419,
+          "cf_key": "147",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 40286,
+          "cf_key": "150",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 47510,
+          "cf_key": "182",
+          "dataset": "products",
+          "is_survey": false
+        },
+        {
+          "global_node_id": 51874,
+          "cf_key": "193",
+          "dataset": "products",
+          "is_survey": false
+        }
+      ]
+    }
+  }
+}

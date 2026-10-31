@@ -1,0 +1,750 @@
+{
+ "run_id": "CF-GNNExplainer__Llama-8B__cora__1585",
+ "method": "CF-GNNExplainer",
+ "config": "Llama-8B",
+ "dataset": "cora",
+ "node": "1585",
+ "source_file": "./llm-graph-cf/data/results/cf-gnnexplainer-canonical_Meta-Llama-3.1-8B-Instruct_cora_standard_Response.json",
+ "source_locator": "[312][1]",
+ "text_scope": "whole output",
+ "input_text": "To generate the dictionary, we will use the provided factual graph and the counterfactual example. We will identify the target node and its neighbors, and then compare the differences between the factual and counterfactual examples.\n\nThe target node is node 565, which is a product titled 'Title: Machine Learning Learning to Predict by the Methods of Temporal Differences Keywords: Increme' with key attributes: predict, futur, past, increment, class, keyword, articl, behavior, wherea, machin, incomplet, system, special, procedur, result, tempor, experi, introduc, known, differ, method, convent and is connected with the nodes 2, 34, 57, 60, 82, 85, 92, 103, 118, 128, 173, 239, 244, 283, 294, 295, 305, 306, 333, 367, 385, 410, 425, 465, 466, 477, 478, 492, 502, 523, 548, 554, 564, 566, 575, 601, 621, 633, 644, 671, 691, 738, 773, 842, 882, 910, 1012, 1213, 1316, 1373, 1376, 1378, 1401, 1438, 1440, 1529, 1540, 1546, 1585, 1616, 1676, 1727, 1741, 1782, 1790, 1859, 1957, 1975, 2027, 2118, 2442, 2472, 2480, 2485, 2628, 2629, 2642, 2672.\n\nThe neighbors of node 565 are:\n\n* Node 2: A product titled 'Title: Submitted to NIPS96, Section: Applications. Preference: Oral presentation Reinforcement Learn'\n* Node 34: A product titled 'Title: Using a Case Base of Surfaces to Speed-Up Reinforcement Learning'\n* Node 57: A product titled 'Title: Markov Decision Processes in Large State Spaces'\n* Node 60: A product titled 'Title: The Efficient Learning of Multiple Task Sequences'\n* Node 82: A product titled 'Title: A Reinforcement Learning Approach to Job-shop Scheduling'\n* Node 85: A product titled 'Title: Q-Learning with Hidden-Unit Restarting'\n* Node 92: A product titled 'Title: Learning Analytically and Inductively'\n* Node 103: A product titled 'Title: NEUROCONTROL BY REINFORCEMENT LEARNING'\n* Node 118: A product titled 'Title: Learning to Race: Experiments with a Simulated Race Car'\n* Node 128: A product titled 'Title: Optimal Attitude Control of Satellites by Artificial Neural Networks: a Pilot Study'\n* Node 173: A product titled 'Title: An Upper Bound on the Loss from Approximate Optimal-Value Functions'\n* Node 239: A product titled 'Title: Robust Value Function Approximation by Working Backwards Computing an accurate value function'\n* Node 244: A product titled 'Title: Building Intelligent Agents for Web-Based Tasks: A Theory-Refinement Approach'\n* Node 283: A product titled 'Title: A Local Learning Algorithm for Dynamic Feedforward and Recurrent Networks'\n* Node 294: A product titled 'Title: References elements that can solve difficult learning control problems. on Simulation of Adap'\n* Node 295: A product titled 'Title: A Neuro-Dynamic Programming Approach to Retailer Inventory Management 1'\n* Node 305: A product titled 'Title: Solving Combinatorial Optimization Tasks by Reinforcement Learning: A General Methodology App'\n* Node 306: A product titled 'Title: Learning Curve Bounds for Markov Decision Processes with Undiscounted Rewards'\n* Node 333: A product titled 'Title: A Comparison of Action Selection Learning Methods'\n* Node 367: A product titled 'Title: Machine Learning,  Explanation-Based Learning and Reinforcement Learning: A Unified View'\n* Node 385: A product titled 'Title: Modeling the Student with Reinforcement Learning'\n* Node 410: A product titled 'Title: High-Performance Job-Shop Scheduling With A Time-Delay TD() Network'\n* Node 425: A product titled 'Title: Reinforcement Learning, Neural Networks and PI Control Applied to a Heating Coil'\n* Node 465: A product titled 'Title: Strategy Learning with Multilayer Connectionist Representations 1'\n* Node 466: A product titled 'Title: On the Computational Economics of Reinforcement Learning'\n* Node 477: A product titled 'Title: Forward models: Supervised learning with a distal teacher'\n* Node 478: A product titled 'Title: An Improved Algorithm for Incremental Induction of Decision Trees'\n* Node 492: A product titled 'Title: Approximating Optimal Policies for Partially Observable Stochastic Domains'\n* Node 502: A product titled 'Title: Fast Online Q()'\n* Node 523: A product titled 'Title: Some studies in machine learning using the game of checkers. IBM Journal, 3(3):211-229, 1959.'\n* Node 548: A product titled 'Title: Value Function Based Production Scheduling'\n* Node 552: A product titled 'Title: Learning to Act using Real-Time Dynamic Programming'\n* Node 554: A product titled 'Title: Reinforcement Learning Algorithms for Average-Payoff Markovian Decision Processes'\n* Node 564: A product titled 'Title: Reinforcement Learning with Soft State Aggregation'\n* Node 566: A product titled 'Title: Integrated Architectures for Learning, Planning, and Reacting Based on Approximating Dynamic'\n* Node 575: A product titled 'Title: Issues in Using Function Approximation for Reinforcement Learning'\n* Node 601: A product titled 'Title: Active Gesture Recognition using Partially Observable Markov Decision Processes'\n* Node 621: A product titled 'Title: Reinforcement Learning Methods for Continuous-Time Markov Decision Problems'\n* Node 633: A product titled 'Title: Chapter 1 Reinforcement Learning for Planning and Control'\n* Node 644: A product titled 'Title: Multi-criteria reinforcement learning'\n* Node 671: A product titled 'Title: Learning to Achieve Goals'\n* Node 691: A product titled 'Title: Reinforcement Learning in the Multi-Robot Domain'\n* Node 738: A product titled 'Title: On the Convergence of Stochastic Iterative Dynamic Programming Algorithms'\n* Node 773: A product titled 'Title: Reinforcement Learning with Imitation in Heterogeneous Multi-Agent Systems'\n* Node 842: A product titled 'Title: Metrics for Temporal Difference Learning'\n* Node 882: A product titled 'Title: Learning To Play the Game of Chess'\n* Node 910: A product titled 'Title: Learning Sequential Decision Rules Using Simulation Models and Competition'\n* Node 1012: A product titled 'Title: TDLeaf(): Combining Temporal Difference learning with game-tree search.'\n* Node 1183: A product titled 'Title: Hierarchical Reinforcement Learning with the MAXQ Value Function Decomposition'\n* Node 1213: A product titled 'Title: Learning in Multi-Robot Systems'\n* Node 1316: A product titled 'Title: KnightCap: A chess program that learns by combining TD() with minimax search'\n* Node 1373: A product titled 'Title: Direct Multi-Step Time Series Prediction Using TD()'\n* Node 1376: A product titled 'Title: Near-Optimal Performance for Reinforcement Learning in Polynomial Time'\n* Node 1378: A product titled 'Title: Generalization in Reinforcement Learning: Safely Approximating the Value Function'\n* Node 1401: A product titled 'Title: Using Case-Based Reasoning as a Reinforcement Learning Framework for Optimization with Changi'\n* Node 1438: A product titled 'Title: Learning from undiscounted delayed rewards'\n* Node 1440: A product titled 'Title: Value Function Approximations and Job-Shop Scheduling'\n* Node 1459: A product titled 'Title: Generalized Markov Decision Processes: Dynamic-programming and Reinforcement-learning Algorit'\n* Node 1529: A product titled 'Title: Explanation Based Learning: A Comparison of Symbolic and Neural Network Approaches'\n* Node 1540: A product titled 'Title: MultiPlayer Residual Advantage Learning With General Function Approximation'\n* Node 1546: A product titled 'Title: Analytical Mean Squared Error Curves in Temporal Difference Learning'\n* Node 1585: A product titled 'Title: Q-Learning for Bandit Problems'\n* Node 1616: A product titled 'Title: NeuroDraughts: the role of representation, search, training regime and architecture in a TD d'\n* Node 1664: A product titled 'Title: \"What is the best thing to do right now?\": getting beyond greedy exploration'\n* Node 1676: A product titled 'Title: TD Learning of Game Evaluation Functions with Hierarchical Neural Architectures'\n* Node 1697: A product titled 'Title: Neural Network Exploration Using Optimal Experiment Design'\n* Node 1727: A product titled 'Title: Machine Learning, 22(1/2/3):95-121, 1996. On the Worst-case Analysis of Temporal-difference L'\n* Node 1741: A product titled 'Title: Reinforcement Learning Algorithm",
+ "text_scored_sha256_16": "76e5cb861d1d9e2d",
+ "model": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+ "prompt_version": "v3",
+ "generation": {
+  "dtype": "float16",
+  "do_sample": false,
+  "temperature": 0,
+  "max_new_tokens": 4096
+ },
+ "gpu": "NVIDIA A100-SXM4-80GB",
+ "versions": {
+  "torch": "2.4.1+cu121",
+  "transformers": "4.44.2"
+ },
+ "prompt_messages": [
+  {
+   "role": "system",
+   "content": "You are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only."
+  },
+  {
+   "role": "user",
+   "content": "Extract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 1585. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 1585  (dataset: cora)\n\nEXPLANATION:\n<<<\nTo generate the dictionary, we will use the provided factual graph and the counterfactual example. We will identify the target node and its neighbors, and then compare the differences between the factual and counterfactual examples.\n\nThe target node is node 565, which is a product titled 'Title: Machine Learning Learning to Predict by the Methods of Temporal Differences Keywords: Increme' with key attributes: predict, futur, past, increment, class, keyword, articl, behavior, wherea, machin, incomplet, system, special, procedur, result, tempor, experi, introduc, known, differ, method, convent and is connected with the nodes 2, 34, 57, 60, 82, 85, 92, 103, 118, 128, 173, 239, 244, 283, 294, 295, 305, 306, 333, 367, 385, 410, 425, 465, 466, 477, 478, 492, 502, 523, 548, 554, 564, 566, 575, 601, 621, 633, 644, 671, 691, 738, 773, 842, 882, 910, 1012, 1213, 1316, 1373, 1376, 1378, 1401, 1438, 1440, 1529, 1540, 1546, 1585, 1616, 1676, 1727, 1741, 1782, 1790, 1859, 1957, 1975, 2027, 2118, 2442, 2472, 2480, 2485, 2628, 2629, 2642, 2672.\n\nThe neighbors of node 565 are:\n\n* Node 2: A product titled 'Title: Submitted to NIPS96, Section: Applications. Preference: Oral presentation Reinforcement Learn'\n* Node 34: A product titled 'Title: Using a Case Base of Surfaces to Speed-Up Reinforcement Learning'\n* Node 57: A product titled 'Title: Markov Decision Processes in Large State Spaces'\n* Node 60: A product titled 'Title: The Efficient Learning of Multiple Task Sequences'\n* Node 82: A product titled 'Title: A Reinforcement Learning Approach to Job-shop Scheduling'\n* Node 85: A product titled 'Title: Q-Learning with Hidden-Unit Restarting'\n* Node 92: A product titled 'Title: Learning Analytically and Inductively'\n* Node 103: A product titled 'Title: NEUROCONTROL BY REINFORCEMENT LEARNING'\n* Node 118: A product titled 'Title: Learning to Race: Experiments with a Simulated Race Car'\n* Node 128: A product titled 'Title: Optimal Attitude Control of Satellites by Artificial Neural Networks: a Pilot Study'\n* Node 173: A product titled 'Title: An Upper Bound on the Loss from Approximate Optimal-Value Functions'\n* Node 239: A product titled 'Title: Robust Value Function Approximation by Working Backwards Computing an accurate value function'\n* Node 244: A product titled 'Title: Building Intelligent Agents for Web-Based Tasks: A Theory-Refinement Approach'\n* Node 283: A product titled 'Title: A Local Learning Algorithm for Dynamic Feedforward and Recurrent Networks'\n* Node 294: A product titled 'Title: References elements that can solve difficult learning control problems. on Simulation of Adap'\n* Node 295: A product titled 'Title: A Neuro-Dynamic Programming Approach to Retailer Inventory Management 1'\n* Node 305: A product titled 'Title: Solving Combinatorial Optimization Tasks by Reinforcement Learning: A General Methodology App'\n* Node 306: A product titled 'Title: Learning Curve Bounds for Markov Decision Processes with Undiscounted Rewards'\n* Node 333: A product titled 'Title: A Comparison of Action Selection Learning Methods'\n* Node 367: A product titled 'Title: Machine Learning,  Explanation-Based Learning and Reinforcement Learning: A Unified View'\n* Node 385: A product titled 'Title: Modeling the Student with Reinforcement Learning'\n* Node 410: A product titled 'Title: High-Performance Job-Shop Scheduling With A Time-Delay TD() Network'\n* Node 425: A product titled 'Title: Reinforcement Learning, Neural Networks and PI Control Applied to a Heating Coil'\n* Node 465: A product titled 'Title: Strategy Learning with Multilayer Connectionist Representations 1'\n* Node 466: A product titled 'Title: On the Computational Economics of Reinforcement Learning'\n* Node 477: A product titled 'Title: Forward models: Supervised learning with a distal teacher'\n* Node 478: A product titled 'Title: An Improved Algorithm for Incremental Induction of Decision Trees'\n* Node 492: A product titled 'Title: Approximating Optimal Policies for Partially Observable Stochastic Domains'\n* Node 502: A product titled 'Title: Fast Online Q()'\n* Node 523: A product titled 'Title: Some studies in machine learning using the game of checkers. IBM Journal, 3(3):211-229, 1959.'\n* Node 548: A product titled 'Title: Value Function Based Production Scheduling'\n* Node 552: A product titled 'Title: Learning to Act using Real-Time Dynamic Programming'\n* Node 554: A product titled 'Title: Reinforcement Learning Algorithms for Average-Payoff Markovian Decision Processes'\n* Node 564: A product titled 'Title: Reinforcement Learning with Soft State Aggregation'\n* Node 566: A product titled 'Title: Integrated Architectures for Learning, Planning, and Reacting Based on Approximating Dynamic'\n* Node 575: A product titled 'Title: Issues in Using Function Approximation for Reinforcement Learning'\n* Node 601: A product titled 'Title: Active Gesture Recognition using Partially Observable Markov Decision Processes'\n* Node 621: A product titled 'Title: Reinforcement Learning Methods for Continuous-Time Markov Decision Problems'\n* Node 633: A product titled 'Title: Chapter 1 Reinforcement Learning for Planning and Control'\n* Node 644: A product titled 'Title: Multi-criteria reinforcement learning'\n* Node 671: A product titled 'Title: Learning to Achieve Goals'\n* Node 691: A product titled 'Title: Reinforcement Learning in the Multi-Robot Domain'\n* Node 738: A product titled 'Title: On the Convergence of Stochastic Iterative Dynamic Programming Algorithms'\n* Node 773: A product titled 'Title: Reinforcement Learning with Imitation in Heterogeneous Multi-Agent Systems'\n* Node 842: A product titled 'Title: Metrics for Temporal Difference Learning'\n* Node 882: A product titled 'Title: Learning To Play the Game of Chess'\n* Node 910: A product titled 'Title: Learning Sequential Decision Rules Using Simulation Models and Competition'\n* Node 1012: A product titled 'Title: TDLeaf(): Combining Temporal Difference learning with game-tree search.'\n* Node 1183: A product titled 'Title: Hierarchical Reinforcement Learning with the MAXQ Value Function Decomposition'\n* Node 1213: A product titled 'Title: Learning in Multi-Robot Systems'\n* Node 1316: A product titled 'Title: KnightCap: A chess program that learns by combining TD() with minimax search'\n* Node 1373: A product titled 'Title: Direct Multi-Step Time Series Prediction Using TD()'\n* Node 1376: A product titled 'Title: Near-Optimal Performance for Reinforcement Learning in Polynomial Time'\n* Node 1378: A product titled 'Title: Generalization in Reinforcement Learning: Safely Approximating the Value Function'\n* Node 1401: A product titled 'Title: Using Case-Based Reasoning as a Reinforcement Learning Framework for Optimization with Changi'\n* Node 1438: A product titled 'Title: Learning from undiscounted delayed rewards'\n* Node 1440: A product titled 'Title: Value Function Approximations and Job-Shop Scheduling'\n* Node 1459: A product titled 'Title: Generalized Markov Decision Processes: Dynamic-programming and Reinforcement-learning Algorit'\n* Node 1529: A product titled 'Title: Explanation Based Learning: A Comparison of Symbolic and Neural Network Approaches'\n* Node 1540: A product titled 'Title: MultiPlayer Residual Advantage Learning With General Function Approximation'\n* Node 1546: A product titled 'Title: Analytical Mean Squared Error Curves in Temporal Difference Learning'\n* Node 1585: A product titled 'Title: Q-Learning for Bandit Problems'\n* Node 1616: A product titled 'Title: NeuroDraughts: the role of representation, search, training regime and architecture in a TD d'\n* Node 1664: A product titled 'Title: \"What is the best thing to do right now?\": getting beyond greedy exploration'\n* Node 1676: A product titled 'Title: TD Learning of Game Evaluation Functions with Hierarchical Neural Architectures'\n* Node 1697: A product titled 'Title: Neural Network Exploration Using Optimal Experiment Design'\n* Node 1727: A product titled 'Title: Machine Learning, 22(1/2/3):95-121, 1996. On the Worst-case Analysis of Temporal-difference L'\n* Node 1741: A product titled 'Title: Reinforcement Learning Algorithm\n>>>"
+  }
+ ],
+ "prompt_rendered": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nCutting Knowledge Date: December 2023\nToday Date: 26 Jul 2024\n\nYou are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\nExtract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 1585. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 1585  (dataset: cora)\n\nEXPLANATION:\n<<<\nTo generate the dictionary, we will use the provided factual graph and the counterfactual example. We will identify the target node and its neighbors, and then compare the differences between the factual and counterfactual examples.\n\nThe target node is node 565, which is a product titled 'Title: Machine Learning Learning to Predict by the Methods of Temporal Differences Keywords: Increme' with key attributes: predict, futur, past, increment, class, keyword, articl, behavior, wherea, machin, incomplet, system, special, procedur, result, tempor, experi, introduc, known, differ, method, convent and is connected with the nodes 2, 34, 57, 60, 82, 85, 92, 103, 118, 128, 173, 239, 244, 283, 294, 295, 305, 306, 333, 367, 385, 410, 425, 465, 466, 477, 478, 492, 502, 523, 548, 554, 564, 566, 575, 601, 621, 633, 644, 671, 691, 738, 773, 842, 882, 910, 1012, 1213, 1316, 1373, 1376, 1378, 1401, 1438, 1440, 1529, 1540, 1546, 1585, 1616, 1676, 1727, 1741, 1782, 1790, 1859, 1957, 1975, 2027, 2118, 2442, 2472, 2480, 2485, 2628, 2629, 2642, 2672.\n\nThe neighbors of node 565 are:\n\n* Node 2: A product titled 'Title: Submitted to NIPS96, Section: Applications. Preference: Oral presentation Reinforcement Learn'\n* Node 34: A product titled 'Title: Using a Case Base of Surfaces to Speed-Up Reinforcement Learning'\n* Node 57: A product titled 'Title: Markov Decision Processes in Large State Spaces'\n* Node 60: A product titled 'Title: The Efficient Learning of Multiple Task Sequences'\n* Node 82: A product titled 'Title: A Reinforcement Learning Approach to Job-shop Scheduling'\n* Node 85: A product titled 'Title: Q-Learning with Hidden-Unit Restarting'\n* Node 92: A product titled 'Title: Learning Analytically and Inductively'\n* Node 103: A product titled 'Title: NEUROCONTROL BY REINFORCEMENT LEARNING'\n* Node 118: A product titled 'Title: Learning to Race: Experiments with a Simulated Race Car'\n* Node 128: A product titled 'Title: Optimal Attitude Control of Satellites by Artificial Neural Networks: a Pilot Study'\n* Node 173: A product titled 'Title: An Upper Bound on the Loss from Approximate Optimal-Value Functions'\n* Node 239: A product titled 'Title: Robust Value Function Approximation by Working Backwards Computing an accurate value function'\n* Node 244: A product titled 'Title: Building Intelligent Agents for Web-Based Tasks: A Theory-Refinement Approach'\n* Node 283: A product titled 'Title: A Local Learning Algorithm for Dynamic Feedforward and Recurrent Networks'\n* Node 294: A product titled 'Title: References elements that can solve difficult learning control problems. on Simulation of Adap'\n* Node 295: A product titled 'Title: A Neuro-Dynamic Programming Approach to Retailer Inventory Management 1'\n* Node 305: A product titled 'Title: Solving Combinatorial Optimization Tasks by Reinforcement Learning: A General Methodology App'\n* Node 306: A product titled 'Title: Learning Curve Bounds for Markov Decision Processes with Undiscounted Rewards'\n* Node 333: A product titled 'Title: A Comparison of Action Selection Learning Methods'\n* Node 367: A product titled 'Title: Machine Learning,  Explanation-Based Learning and Reinforcement Learning: A Unified View'\n* Node 385: A product titled 'Title: Modeling the Student with Reinforcement Learning'\n* Node 410: A product titled 'Title: High-Performance Job-Shop Scheduling With A Time-Delay TD() Network'\n* Node 425: A product titled 'Title: Reinforcement Learning, Neural Networks and PI Control Applied to a Heating Coil'\n* Node 465: A product titled 'Title: Strategy Learning with Multilayer Connectionist Representations 1'\n* Node 466: A product titled 'Title: On the Computational Economics of Reinforcement Learning'\n* Node 477: A product titled 'Title: Forward models: Supervised learning with a distal teacher'\n* Node 478: A product titled 'Title: An Improved Algorithm for Incremental Induction of Decision Trees'\n* Node 492: A product titled 'Title: Approximating Optimal Policies for Partially Observable Stochastic Domains'\n* Node 502: A product titled 'Title: Fast Online Q()'\n* Node 523: A product titled 'Title: Some studies in machine learning using the game of checkers. IBM Journal, 3(3):211-229, 1959.'\n* Node 548: A product titled 'Title: Value Function Based Production Scheduling'\n* Node 552: A product titled 'Title: Learning to Act using Real-Time Dynamic Programming'\n* Node 554: A product titled 'Title: Reinforcement Learning Algorithms for Average-Payoff Markovian Decision Processes'\n* Node 564: A product titled 'Title: Reinforcement Learning with Soft State Aggregation'\n* Node 566: A product titled 'Title: Integrated Architectures for Learning, Planning, and Reacting Based on Approximating Dynamic'\n* Node 575: A product titled 'Title: Issues in Using Function Approximation for Reinforcement Learning'\n* Node 601: A product titled 'Title: Active Gesture Recognition using Partially Observable Markov Decision Processes'\n* Node 621: A product titled 'Title: Reinforcement Learning Methods for Continuous-Time Markov Decision Problems'\n* Node 633: A product titled 'Title: Chapter 1 Reinforcement Learning for Planning and Control'\n* Node 644: A product titled 'Title: Multi-criteria reinforcement learning'\n* Node 671: A product titled 'Title: Learning to Achieve Goals'\n* Node 691: A product titled 'Title: Reinforcement Learning in the Multi-Robot Domain'\n* Node 738: A product titled 'Title: On the Convergence of Stochastic Iterative Dynamic Programming Algorithms'\n* Node 773: A product titled 'Title: Reinforcement Learning with Imitation in Heterogeneous Multi-Agent Systems'\n* Node 842: A product titled 'Title: Metrics for Temporal Difference Learning'\n* Node 882: A product titled 'Title: Learning To Play the Game of Chess'\n* Node 910: A product titled 'Title: Learning Sequential Decision Rules Using Simulation Models and Competition'\n* Node 1012: A product titled 'Title: TDLeaf(): Combining Temporal Difference learning with game-tree search.'\n* Node 1183: A product titled 'Title: Hierarchical Reinforcement Learning with the MAXQ Value Function Decomposition'\n* Node 1213: A product titled 'Title: Learning in Multi-Robot Systems'\n* Node 1316: A product titled 'Title: KnightCap: A chess program that learns by combining TD() with minimax search'\n* Node 1373: A product titled 'Title: Direct Multi-Step Time Series Prediction Using TD()'\n* Node 1376: A product titled 'Title: Near-Optimal Performance for Reinforcement Learning in Polynomial Time'\n* Node 1378: A product titled 'Title: Generalization in Reinforcement Learning: Safely Approximating the Value Function'\n* Node 1401: A product titled 'Title: Using Case-Based Reasoning as a Reinforcement Learning Framework for Optimization with Changi'\n* Node 1438: A product titled 'Title: Learning from undiscounted delayed rewards'\n* Node 1440: A product titled 'Title: Value Function Approximations and Job-Shop Scheduling'\n* Node 1459: A product titled 'Title: Generalized Markov Decision Processes: Dynamic-programming and Reinforcement-learning Algorit'\n* Node 1529: A product titled 'Title: Explanation Based Learning: A Comparison of Symbolic and Neural Network Approaches'\n* Node 1540: A product titled 'Title: MultiPlayer Residual Advantage Learning With General Function Approximation'\n* Node 1546: A product titled 'Title: Analytical Mean Squared Error Curves in Temporal Difference Learning'\n* Node 1585: A product titled 'Title: Q-Learning for Bandit Problems'\n* Node 1616: A product titled 'Title: NeuroDraughts: the role of representation, search, training regime and architecture in a TD d'\n* Node 1664: A product titled 'Title: \"What is the best thing to do right now?\": getting beyond greedy exploration'\n* Node 1676: A product titled 'Title: TD Learning of Game Evaluation Functions with Hierarchical Neural Architectures'\n* Node 1697: A product titled 'Title: Neural Network Exploration Using Optimal Experiment Design'\n* Node 1727: A product titled 'Title: Machine Learning, 22(1/2/3):95-121, 1996. On the Worst-case Analysis of Temporal-difference L'\n* Node 1741: A product titled 'Title: Reinforcement Learning Algorithm\n>>><|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+ "raw_output": "{\"claims\": [\n{\"claim\": \"The target node is node 565.\", \"claim_type\": \"structural\", \"source_span\": \"The target node is node 565, which is a product titled \", \"entities\": {\"node_ids\": [565], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The target node is a product titled 'Title: Machine Learning Learning to Predict by the Methods of Temporal Differences Keywords: Increme'.\", \"claim_type\": \"content\", \"source_span\": \"The target node is a product titled \", \"entities\": {\"node_ids\": [565], \"titles\": [\"Machine Learning Learning to Predict by the Methods of Temporal Differences Keywords: Increme\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The target node has key attributes: predict, futur, past, increment, class, keyword, articl, behavior, wherea, machin, incomplet, system, special, procedur, result, tempor, experi, introduc, known, differ, method, convent and.\", \"claim_type\": \"feature\", \"source_span\": \"The target node has key attributes: predict, futur, past, increment, class, keyword, articl, behavior, wherea, machin, incomplet, system, special, procedur, result, tempor, experi, introduc, known, differ, method, convent and\", \"entities\": {\"node_ids\": [565], \"titles\": [], \"feature_words\": [\"predict\", \"futur\", \"past\", \"increment\", \"class\", \"keyword\", \"articl\", \"behavior\", \"wherea\", \"machin\", \"incomplet\", \"system\", \"special\", \"procedur\", \"result\", \"tempor\", \"experi\", \"introduc\", \"known\", \"differ\", \"method\", \"convent\"], \"edges\": [], \"classes\": []}},\n{\"claim\": \"The target node is connected with the nodes 2, 34, 57, 60, 82, 85, 92, 103, 118, 128, 173, 239, 244, 283, 294, 295, 305, 306, 333, 367, 385, 410, 425, 465, 466, 477, 478, 492, 502, 523, 548, 552, 554, 564, 566, 575, 601, 621, 633, 644, 671, 691, 738, 773, 842, 882, 910, 1012, 1213, 1316, 1373, 1376, 1378, 1401, 1438, 1440, 1529, 1540, 1546, 1585, 1616, 1676, 1727, 1741, 1782, 1790, 1859, 1957, 1975, 2027, 2118, 2442, 2472, 2480, 2485, 2628, 2629, 2642, 2672.\", \"claim_type\": \"structural\", \"source_span\": \"The target node is connected with the nodes 2, 34, 57, 60, 82, 85, 92, 103, 118, 128, 173, 239, 244, 283, 294, 295, 305, 306, 333, 367, 385, 410, 425, 465, 466, 477, 478, 492, 502, 523, 548, 552, 554, 564, 566, 575, 601, 621, 633, 644, 671, 691, 738, 773, 842, 882, 910, 1012, 1213, 1316, 1373, 1376, 1378, 1401, 1438, 1440, 1529, 1540, 1546, 1585, 1616, 1676, 1727, 1741, 1782, 1790, 1859, 1957, 1975, 2027, 2118, 2442, 2472, 2480, 2485, 2628, 2629, 2642, 2672.\", \"entities\": {\"node_ids\": [2, 34, 57, 60, 82, 85, 92, 103, 118, 128, 173, 239, 244, 283, 294, 295, 305, 306, 333, 367, 385, 410, 425, 465, 466, 477, 478, 492, 502, 523, 548, 552, 554, 564, 566, 575, 601, 621, 633, 644, 671, 691, 738, 773, 842, 882, 910, 1012, 1213, 1316, 1373, 1376, 1378, 1401, 1438, 1440, 1529, 1540, 1546, 1585, 1616, 1676, 1727, 1741, 1782, 1790, 1859, 1957, 1975, 2027, 2118, 2442, 2472, 2480, 2485, 2628, 2629, 2642, 2672], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 2 is a product titled 'Title: Submitted to NIPS96, Section: Applications. Preference: Oral presentation Reinforcement Learn'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 2: A product titled \", \"entities\": {\"node_ids\": [2], \"titles\": [\"Submitted to NIPS96, Section: Applications. Preference: Oral presentation Reinforcement Learn\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 34 is a product titled 'Title: Using a Case Base of Surfaces to Speed-Up Reinforcement Learning'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 34: A product titled \", \"entities\": {\"node_ids\": [34], \"titles\": [\"Using a Case Base of Surfaces to Speed-Up Reinforcement Learning\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 57 is a product titled 'Title: Markov Decision Processes in Large State Spaces'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 57: A product titled \", \"entities\": {\"node_ids\": [57], \"titles\": [\"Markov Decision Processes in Large State Spaces\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 60 is a product titled 'Title: The Efficient Learning of Multiple Task Sequences'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 60: A product titled \", \"entities\": {\"node_ids\": [60], \"titles\": [\"The Efficient Learning of Multiple Task Sequences\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 82 is a product titled 'Title: A Reinforcement Learning Approach to Job-shop Scheduling'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 82: A product titled \", \"entities\": {\"node_ids\": [82], \"titles\": [\"A Reinforcement Learning Approach to Job-shop Scheduling\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 85 is a product titled 'Title: Q-Learning with Hidden-Unit Restarting'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 85: A product titled \", \"entities\": {\"node_ids\": [85], \"titles\": [\"Q-Learning with Hidden-Unit Restarting\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 92 is a product titled 'Title: Learning Analytically and Inductively'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 92: A product titled \", \"entities\": {\"node_ids\": [92], \"titles\": [\"Learning Analytically and Inductively\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 103 is a product titled 'Title: NEUROCONTROL BY REINFORCEMENT LEARNING'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 103: A product titled \", \"entities\": {\"node_ids\": [103], \"titles\": [\"NEUROCONTROL BY REINFORCEMENT LEARNING\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 118 is a product titled 'Title: Learning to Race: Experiments with a Simulated Race Car'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 118: A product titled \", \"entities\": {\"node_ids\": [118], \"titles\": [\"Learning to Race: Experiments with a Simulated Race Car\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 128 is a product titled 'Title: Optimal Attitude Control of Satellites by Artificial Neural Networks: a Pilot Study'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 128: A product titled \", \"entities\": {\"node_ids\": [128], \"titles\": [\"Optimal Attitude Control of Satellites by Artificial Neural Networks: a Pilot Study\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 173 is a product titled 'Title: An Upper Bound on the Loss from Approximate Optimal-Value Functions'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 173: A product titled \", \"entities\": {\"node_ids\": [173], \"titles\": [\"An Upper Bound on the Loss from Approximate Optimal-Value Functions\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 239 is a product titled 'Title: Robust Value Function Approximation by Working Backwards Computing an accurate value function'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 239: A product titled \", \"entities\": {\"node_ids\": [239], \"titles\": [\"Robust Value Function Approximation by Working Backwards Computing an accurate value function\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 244 is a product titled 'Title: Building Intelligent Agents for Web-Based Tasks: A Theory-Refinement Approach'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 244: A product titled \", \"entities\": {\"node_ids\": [244], \"titles\": [\"Building Intelligent Agents for Web-Based Tasks: A Theory-Refinement Approach\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 283 is a product titled 'Title: A Local Learning Algorithm for Dynamic Feedforward and Recurrent Networks'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 283: A product titled \", \"entities\": {\"node_ids\": [283], \"titles\": [\"A Local Learning Algorithm for Dynamic Feedforward and Recurrent Networks\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 294 is a product titled 'Title: References elements that can solve difficult learning control problems. on Simulation of Adap'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 294: A product titled \", \"entities\": {\"node_ids\": [294], \"titles\": [\"References elements that can solve difficult learning control problems. on Simulation of Adap\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 295 is a product titled 'Title: A Neuro-Dynamic Programming Approach to Retailer Inventory Management 1'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 295: A product titled \", \"entities\": {\"node_ids\": [295], \"titles\": [\"A Neuro-Dynamic Programming Approach to Retailer Inventory Management 1\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 305 is a product titled 'Title: Solving Combinatorial Optimization Tasks by Reinforcement Learning: A General Methodology App'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 305: A product titled \", \"entities\": {\"node_ids\": [305], \"titles\": [\"Solving Combinatorial Optimization Tasks by Reinforcement Learning: A General Methodology App\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 306 is a product titled 'Title: Learning Curve Bounds for Markov Decision Processes with Undiscounted Rewards'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 306: A product titled \", \"entities\": {\"node_ids\": [306], \"titles\": [\"Learning Curve Bounds for Markov Decision Processes with Undiscounted Rewards\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 333 is a product titled 'Title: A Comparison of Action Selection Learning Methods'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 333: A product titled \", \"entities\": {\"node_ids\": [333], \"titles\": [\"A Comparison of Action Selection Learning Methods\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 367 is a product titled 'Title: Machine Learning,  Explanation-Based Learning and Reinforcement Learning: A Unified View'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 367: A product titled \", \"entities\": {\"node_ids\": [367], \"titles\": [\"Machine Learning,  Explanation-Based Learning and Reinforcement Learning: A Unified View\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 385 is a product titled 'Title: Modeling the Student with Reinforcement Learning'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 385: A product titled \", \"entities\": {\"node_ids\": [385], \"titles\": [\"Modeling the Student with Reinforcement Learning\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 410 is a product titled 'Title: High-Performance Job-Shop Scheduling With A Time-Delay TD() Network'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 410: A product titled \", \"entities\": {\"node_ids\": [410], \"titles\": [\"High-Performance Job-Shop Scheduling With A Time-Delay TD() Network\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 425 is a product titled 'Title: Reinforcement Learning, Neural Networks and PI Control Applied to a Heating Coil'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 425: A product titled \", \"entities\": {\"node_ids\": [425], \"titles\": [\"Reinforcement Learning, Neural Networks and PI Control Applied to a Heating Coil\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 465 is a product titled 'Title: Strategy Learning with Multilayer Connectionist Representations 1'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 465: A product titled \", \"entities\": {\"node_ids\": [465], \"titles\": [\"Strategy Learning with Multilayer Connectionist Representations 1\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 466 is a product titled 'Title: On the Computational Economics of Reinforcement Learning'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 466: A product titled \", \"entities\": {\"node_ids\": [466], \"titles\": [\"On the Computational Economics of Reinforcement Learning\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 477 is a product titled 'Title: Forward models: Supervised learning with a distal teacher'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 477: A product titled \", \"entities\": {\"node_ids\": [477], \"titles\": [\"Forward models: Supervised learning with a distal teacher\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 478 is a product titled 'Title: An Improved Algorithm for Incremental Induction of Decision Trees'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 478: A product titled \", \"entities\": {\"node_ids\": [478], \"titles\": [\"An Improved Algorithm for Incremental Induction of Decision Trees\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 492 is a product titled 'Title: Approximating Optimal Policies for Partially Observable Stochastic Domains'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 492: A product titled \", \"entities\": {\"node_ids\": [492], \"titles\": [\"Approximating Optimal Policies for Partially Observable Stochastic Domains\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 502 is a product titled 'Title: Fast Online Q()'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 502: A product titled \", \"entities\": {\"node_ids\": [502], \"titles\": [\"Fast Online Q()\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 523 is a product titled 'Title: Some studies in machine learning using the game of checkers. IBM Journal, 3(3):211-229, 1959.'\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 523: A product titled \", \"entities\": {\"node_ids\": [523], \"titles\": [\"Some studies in machine learning using the game of checkers. IBM Journal, 3(3):211-229, 1959.\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 548 is a product titled 'Title: Value Function Based Production Scheduling'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 548: A product titled \", \"entities\": {\"node_ids\": [548], \"titles\": [\"Value Function Based Production Scheduling\"], \"feature_words\": [], \"edges\": [], \"classes\": []}},\n{\"claim\": \"Node 552 is a product titled 'Title: Learning to Act using Real-Time Dynamic Programming'.\", \"claim_type\": \"neighbor\", \"source_span\": \"Node 552: A product titled \", \"entities\": {\"node_ids\":",
+ "claims": [
+  {
+   "claim": "The target node is node 565.",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     565
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "The target node is node 565, which is a product titled "
+  },
+  {
+   "claim": "The target node is a product titled 'Title: Machine Learning Learning to Predict by the Methods of Temporal Differences Keywords: Increme'.",
+   "claim_type": "content",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     565
+    ],
+    "titles": [
+     "Machine Learning Learning to Predict by the Methods of Temporal Differences Keywords: Increme"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "The target node is a product titled "
+  },
+  {
+   "claim": "The target node has key attributes: predict, futur, past, increment, class, keyword, articl, behavior, wherea, machin, incomplet, system, special, procedur, result, tempor, experi, introduc, known, differ, method, convent and.",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     565
+    ],
+    "titles": [],
+    "feature_words": [
+     "predict",
+     "futur",
+     "past",
+     "increment",
+     "class",
+     "keyword",
+     "articl",
+     "behavior",
+     "wherea",
+     "machin",
+     "incomplet",
+     "system",
+     "special",
+     "procedur",
+     "result",
+     "tempor",
+     "experi",
+     "introduc",
+     "known",
+     "differ",
+     "method",
+     "convent"
+    ],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "The target node has key attributes: predict, futur, past, increment, class, keyword, articl, behavior, wherea, machin, incomplet, system, special, procedur, result, tempor, experi, introduc, known, differ, method, convent and"
+  },
+  {
+   "claim": "The target node is connected with the nodes 2, 34, 57, 60, 82, 85, 92, 103, 118, 128, 173, 239, 244, 283, 294, 295, 305, 306, 333, 367, 385, 410, 425, 465, 466, 477, 478, 492, 502, 523, 548, 552, 554, 564, 566, 575, 601, 621, 633, 644, 671, 691, 738, 773, 842, 882, 910, 1012, 1213, 1316, 1373, 1376, 1378, 1401, 1438, 1440, 1529, 1540, 1546, 1585, 1616, 1676, 1727, 1741, 1782, 1790, 1859, 1957, 1975, 2027, 2118, 2442, 2472, 2480, 2485, 2628, 2629, 2642, 2672.",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     2,
+     34,
+     57,
+     60,
+     82,
+     85,
+     92,
+     103,
+     118,
+     128,
+     173,
+     239,
+     244,
+     283,
+     294,
+     295,
+     305,
+     306,
+     333,
+     367,
+     385,
+     410,
+     425,
+     465,
+     466,
+     477,
+     478,
+     492,
+     502,
+     523,
+     548,
+     552,
+     554,
+     564,
+     566,
+     575,
+     601,
+     621,
+     633,
+     644,
+     671,
+     691,
+     738,
+     773,
+     842,
+     882,
+     910,
+     1012,
+     1213,
+     1316,
+     1373,
+     1376,
+     1378,
+     1401,
+     1438,
+     1440,
+     1529,
+     1540,
+     1546,
+     1585,
+     1616,
+     1676,
+     1727,
+     1741,
+     1782,
+     1790,
+     1859,
+     1957,
+     1975,
+     2027,
+     2118,
+     2442,
+     2472,
+     2480,
+     2485,
+     2628,
+     2629,
+     2642,
+     2672
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "The target node is connected with the nodes 2, 34, 57, 60, 82, 85, 92, 103, 118, 128, 173, 239, 244, 283, 294, 295, 305, 306, 333, 367, 385, 410, 425, 465, 466, 477, 478, 492, 502, 523, 548, 552, 554, 564, 566, 575, 601, 621, 633, 644, 671, 691, 738, 773, 842, 882, 910, 1012, 1213, 1316, 1373, 1376, 1378, 1401, 1438, 1440, 1529, 1540, 1546, 1585, 1616, 1676, 1727, 1741, 1782, 1790, 1859, 1957, 1975, 2027, 2118, 2442, 2472, 2480, 2485, 2628, 2629, 2642, 2672."
+  },
+  {
+   "claim": "Node 2 is a product titled 'Title: Submitted to NIPS96, Section: Applications. Preference: Oral presentation Reinforcement Learn'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     2
+    ],
+    "titles": [
+     "Submitted to NIPS96, Section: Applications. Preference: Oral presentation Reinforcement Learn"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 2: A product titled "
+  },
+  {
+   "claim": "Node 34 is a product titled 'Title: Using a Case Base of Surfaces to Speed-Up Reinforcement Learning'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     34
+    ],
+    "titles": [
+     "Using a Case Base of Surfaces to Speed-Up Reinforcement Learning"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 34: A product titled "
+  },
+  {
+   "claim": "Node 57 is a product titled 'Title: Markov Decision Processes in Large State Spaces'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     57
+    ],
+    "titles": [
+     "Markov Decision Processes in Large State Spaces"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 57: A product titled "
+  },
+  {
+   "claim": "Node 60 is a product titled 'Title: The Efficient Learning of Multiple Task Sequences'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     60
+    ],
+    "titles": [
+     "The Efficient Learning of Multiple Task Sequences"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 60: A product titled "
+  },
+  {
+   "claim": "Node 82 is a product titled 'Title: A Reinforcement Learning Approach to Job-shop Scheduling'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     82
+    ],
+    "titles": [
+     "A Reinforcement Learning Approach to Job-shop Scheduling"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 82: A product titled "
+  },
+  {
+   "claim": "Node 85 is a product titled 'Title: Q-Learning with Hidden-Unit Restarting'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     85
+    ],
+    "titles": [
+     "Q-Learning with Hidden-Unit Restarting"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 85: A product titled "
+  },
+  {
+   "claim": "Node 92 is a product titled 'Title: Learning Analytically and Inductively'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     92
+    ],
+    "titles": [
+     "Learning Analytically and Inductively"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 92: A product titled "
+  },
+  {
+   "claim": "Node 103 is a product titled 'Title: NEUROCONTROL BY REINFORCEMENT LEARNING'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     103
+    ],
+    "titles": [
+     "NEUROCONTROL BY REINFORCEMENT LEARNING"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 103: A product titled "
+  },
+  {
+   "claim": "Node 118 is a product titled 'Title: Learning to Race: Experiments with a Simulated Race Car'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     118
+    ],
+    "titles": [
+     "Learning to Race: Experiments with a Simulated Race Car"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 118: A product titled "
+  },
+  {
+   "claim": "Node 128 is a product titled 'Title: Optimal Attitude Control of Satellites by Artificial Neural Networks: a Pilot Study'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     128
+    ],
+    "titles": [
+     "Optimal Attitude Control of Satellites by Artificial Neural Networks: a Pilot Study"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 128: A product titled "
+  },
+  {
+   "claim": "Node 173 is a product titled 'Title: An Upper Bound on the Loss from Approximate Optimal-Value Functions'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     173
+    ],
+    "titles": [
+     "An Upper Bound on the Loss from Approximate Optimal-Value Functions"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 173: A product titled "
+  },
+  {
+   "claim": "Node 239 is a product titled 'Title: Robust Value Function Approximation by Working Backwards Computing an accurate value function'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     239
+    ],
+    "titles": [
+     "Robust Value Function Approximation by Working Backwards Computing an accurate value function"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 239: A product titled "
+  },
+  {
+   "claim": "Node 244 is a product titled 'Title: Building Intelligent Agents for Web-Based Tasks: A Theory-Refinement Approach'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     244
+    ],
+    "titles": [
+     "Building Intelligent Agents for Web-Based Tasks: A Theory-Refinement Approach"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 244: A product titled "
+  },
+  {
+   "claim": "Node 283 is a product titled 'Title: A Local Learning Algorithm for Dynamic Feedforward and Recurrent Networks'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     283
+    ],
+    "titles": [
+     "A Local Learning Algorithm for Dynamic Feedforward and Recurrent Networks"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 283: A product titled "
+  },
+  {
+   "claim": "Node 294 is a product titled 'Title: References elements that can solve difficult learning control problems. on Simulation of Adap'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     294
+    ],
+    "titles": [
+     "References elements that can solve difficult learning control problems. on Simulation of Adap"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 294: A product titled "
+  },
+  {
+   "claim": "Node 295 is a product titled 'Title: A Neuro-Dynamic Programming Approach to Retailer Inventory Management 1'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     295
+    ],
+    "titles": [
+     "A Neuro-Dynamic Programming Approach to Retailer Inventory Management 1"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 295: A product titled "
+  },
+  {
+   "claim": "Node 305 is a product titled 'Title: Solving Combinatorial Optimization Tasks by Reinforcement Learning: A General Methodology App'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     305
+    ],
+    "titles": [
+     "Solving Combinatorial Optimization Tasks by Reinforcement Learning: A General Methodology App"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 305: A product titled "
+  },
+  {
+   "claim": "Node 306 is a product titled 'Title: Learning Curve Bounds for Markov Decision Processes with Undiscounted Rewards'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     306
+    ],
+    "titles": [
+     "Learning Curve Bounds for Markov Decision Processes with Undiscounted Rewards"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 306: A product titled "
+  },
+  {
+   "claim": "Node 333 is a product titled 'Title: A Comparison of Action Selection Learning Methods'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     333
+    ],
+    "titles": [
+     "A Comparison of Action Selection Learning Methods"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 333: A product titled "
+  },
+  {
+   "claim": "Node 367 is a product titled 'Title: Machine Learning,  Explanation-Based Learning and Reinforcement Learning: A Unified View'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     367
+    ],
+    "titles": [
+     "Machine Learning,  Explanation-Based Learning and Reinforcement Learning: A Unified View"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 367: A product titled "
+  },
+  {
+   "claim": "Node 385 is a product titled 'Title: Modeling the Student with Reinforcement Learning'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     385
+    ],
+    "titles": [
+     "Modeling the Student with Reinforcement Learning"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 385: A product titled "
+  },
+  {
+   "claim": "Node 410 is a product titled 'Title: High-Performance Job-Shop Scheduling With A Time-Delay TD() Network'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     410
+    ],
+    "titles": [
+     "High-Performance Job-Shop Scheduling With A Time-Delay TD() Network"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 410: A product titled "
+  },
+  {
+   "claim": "Node 425 is a product titled 'Title: Reinforcement Learning, Neural Networks and PI Control Applied to a Heating Coil'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     425
+    ],
+    "titles": [
+     "Reinforcement Learning, Neural Networks and PI Control Applied to a Heating Coil"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 425: A product titled "
+  },
+  {
+   "claim": "Node 465 is a product titled 'Title: Strategy Learning with Multilayer Connectionist Representations 1'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     465
+    ],
+    "titles": [
+     "Strategy Learning with Multilayer Connectionist Representations 1"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 465: A product titled "
+  },
+  {
+   "claim": "Node 466 is a product titled 'Title: On the Computational Economics of Reinforcement Learning'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     466
+    ],
+    "titles": [
+     "On the Computational Economics of Reinforcement Learning"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 466: A product titled "
+  },
+  {
+   "claim": "Node 477 is a product titled 'Title: Forward models: Supervised learning with a distal teacher'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     477
+    ],
+    "titles": [
+     "Forward models: Supervised learning with a distal teacher"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 477: A product titled "
+  },
+  {
+   "claim": "Node 478 is a product titled 'Title: An Improved Algorithm for Incremental Induction of Decision Trees'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     478
+    ],
+    "titles": [
+     "An Improved Algorithm for Incremental Induction of Decision Trees"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 478: A product titled "
+  },
+  {
+   "claim": "Node 492 is a product titled 'Title: Approximating Optimal Policies for Partially Observable Stochastic Domains'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     492
+    ],
+    "titles": [
+     "Approximating Optimal Policies for Partially Observable Stochastic Domains"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 492: A product titled "
+  },
+  {
+   "claim": "Node 502 is a product titled 'Title: Fast Online Q()'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     502
+    ],
+    "titles": [
+     "Fast Online Q()"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 502: A product titled "
+  },
+  {
+   "claim": "Node 523 is a product titled 'Title: Some studies in machine learning using the game of checkers. IBM Journal, 3(3):211-229, 1959.'",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     523
+    ],
+    "titles": [
+     "Some studies in machine learning using the game of checkers. IBM Journal, 3(3):211-229, 1959."
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 523: A product titled "
+  },
+  {
+   "claim": "Node 548 is a product titled 'Title: Value Function Based Production Scheduling'.",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     548
+    ],
+    "titles": [
+     "Value Function Based Production Scheduling"
+    ],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 548: A product titled "
+  }
+ ],
+ "n_claims": 35,
+ "parse_diagnostics": {
+  "json_found": true,
+  "json_valid": false,
+  "parse_mode": "recovered_per_object",
+  "error": "first balanced JSON object has no top-level 'claims' list (outer object malformed)",
+  "n_raw_claims": 35,
+  "n_bad_type": 0,
+  "n_merged_duplicates": 0,
+  "repairs": [],
+  "unrecoverable_segments": [
+   {
+    "claim_index": 35,
+    "segment_head": "{\"claim\": \"Node 552 is a product titled 'Title: Learning to Act using Real-Time Dynamic Programming'.\", \"claim_type\": \"n"
+   }
+  ],
+  "n_prompt_tokens": 3534,
+  "n_output_tokens": 4096,
+  "hit_max_new_tokens": true,
+  "seconds": 105.3
+ }
+}

@@ -1,0 +1,11 @@
+text_id,method,config,dataset,node,n_extracted,n_final,n_span_fail,n_dropped,n_merged,hit_max_new_tokens,parse_mode,packet_chars
+CF-GNNExplainer__Llama-8B__cora__154,CF-GNNExplainer,Llama-8B,cora,154,17,17,0,0,0,False,strict,56322
+CF-GNNExplainer__Llama-8B__cora__160,CF-GNNExplainer,Llama-8B,cora,160,17,15,0,0,2,False,strict,40059
+CF-GNNExplainer__Llama-8B__cora__975,CF-GNNExplainer,Llama-8B,cora,975,11,11,0,0,0,False,strict,91631
+CF-GNNExplainer__Llama-8B__cora__1020,CF-GNNExplainer,Llama-8B,cora,1020,12,12,0,0,0,False,strict,88606
+CF-GNNExplainer__Llama-8B__cora__1443,CF-GNNExplainer,Llama-8B,cora,1443,7,7,0,0,0,False,recovered_per_object,23607
+CF-GNNExplainer__Llama-8B__cora__1585,CF-GNNExplainer,Llama-8B,cora,1585,35,35,3,0,0,True,recovered_per_object,186350
+CF-GNNExplainer__Llama-8B__cora__1816,CF-GNNExplainer,Llama-8B,cora,1816,17,16,0,1,0,False,strict,70530
+CF-GNNExplainer__Llama-8B__cora__1959,CF-GNNExplainer,Llama-8B,cora,1959,17,14,0,2,1,False,strict,32870
+CF-GNNExplainer__Llama-8B__cora__2334,CF-GNNExplainer,Llama-8B,cora,2334,6,6,0,0,0,False,strict,55825
+CF-GNNExplainer__Llama-8B__products__1691,CF-GNNExplainer,Llama-8B,products,1691,13,12,0,0,1,False,recovered_per_object,36307

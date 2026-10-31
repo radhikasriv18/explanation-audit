@@ -1,0 +1,206 @@
+{
+ "run_id": "CF-GNNExplainer__Llama-8B__cora__1440",
+ "method": "CF-GNNExplainer",
+ "config": "Llama-8B",
+ "dataset": "cora",
+ "node": "1440",
+ "source_file": "./llm-graph-cf/data/results/cf-gnnexplainer-canonical_Meta-Llama-3.1-8B-Instruct_cora_standard_Response.json",
+ "source_locator": "[281][1]",
+ "text_scope": "whole output",
+ "input_text": "To generate the counterfactual explanation, we first need to identify the target node and its classification. Let's assume the target node is 1440, which is classified as Neural_Networks.\n\nNext, we need to find the counterfactual example, which is a node with a different classification. Let's assume the counterfactual example is node 1540, which is classified as Reinforcement_Learning.\n\nNow, let's analyze the differences between the factual and counterfactual examples:\n\nNode 1440 (Factual):\n- Classification: Neural_Networks\n- Features: ['neural', 'network', 'function', 'artifici', 'deploy', 'integr', 'train', 'result', 'control', 'perform', 'compar', 'heat']\n- Neighbors: []\n\nNode 1540 (Counterfactual):\n- Classification: Reinforcement_Learning\n- Features: ['function', 'advantag', 'updat', 'approxim', 'genet', 'type', 'singl', 'requir', 'improv', 'result', 'gener', 'instanc']\n- Neighbors: []\n\nTo generate the counterfactual explanation, we need to identify the changes that occurred between the factual and counterfactual examples. In this case, the main differences are:\n\n1. Classification: The target node was classified as Neural_Networks, but the counterfactual example is classified as Reinforcement_Learning.\n2. Features: The features of the target node include words related to neural networks, while the counterfactual example includes words related to reinforcement learning.\n\nTo explain the change in classification, we can say that the target node's features were modified to include words related to reinforcement learning, which led to a change in its classification.\n\nAs for the influence of neighboring nodes, since the target node has no neighbors, there is no influence from neighboring nodes.\n\nHere is the filled dictionary:\n\ninfos={\n'Target_Node_ID': 1440,\n'Factual_Target_Node_Neighbors': [],\n'Factual_Target_Node_Features': ['neural', 'network', 'function', 'artifici', 'deploy', 'integr', 'train', 'result', 'control', 'perform', 'compar', 'heat'],\n'Counterfactual_Target_Node_Neighbors': [],\n'Counterfactual_Target_Node_Features': ['function', 'advantag', 'updat', 'approxim', 'genet', 'type', 'singl', 'requir', 'improv', 'result', 'gener', 'instanc'],\n'Factual_Target_Node_Class': 'Neural_Networks',\n'Counterfactual_Target_Node_class': 'Reinforcement_Learning',\n'Target_Node_Features_Changed_From_Factual_To_Counterfactual': ['neural', 'network', 'function', 'artifici', 'deploy', 'integr', 'train', 'result', 'control', 'perform', 'compar', 'heat'],\n'Natural_Language_Explanation': 'The target node\\'s features were modified to include words related to reinforcement learning, which led to a change in its classification.'\n}\n\nNote that the explanation is a simplified version of the actual changes that occurred between the factual and counterfactual examples. In a real-world scenario, the explanation would likely be more detailed and nuanced.",
+ "text_scored_sha256_16": "728b6391a150338a",
+ "model": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+ "prompt_version": "v3",
+ "generation": {
+  "dtype": "float16",
+  "do_sample": false,
+  "temperature": 0,
+  "max_new_tokens": 4096
+ },
+ "gpu": "NVIDIA A100-SXM4-80GB",
+ "versions": {
+  "torch": "2.4.1+cu121",
+  "transformers": "4.44.2"
+ },
+ "prompt_messages": [
+  {
+   "role": "system",
+   "content": "You are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only."
+  },
+  {
+   "role": "user",
+   "content": "Extract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 1440. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 1440  (dataset: cora)\n\nEXPLANATION:\n<<<\nTo generate the counterfactual explanation, we first need to identify the target node and its classification. Let's assume the target node is 1440, which is classified as Neural_Networks.\n\nNext, we need to find the counterfactual example, which is a node with a different classification. Let's assume the counterfactual example is node 1540, which is classified as Reinforcement_Learning.\n\nNow, let's analyze the differences between the factual and counterfactual examples:\n\nNode 1440 (Factual):\n- Classification: Neural_Networks\n- Features: ['neural', 'network', 'function', 'artifici', 'deploy', 'integr', 'train', 'result', 'control', 'perform', 'compar', 'heat']\n- Neighbors: []\n\nNode 1540 (Counterfactual):\n- Classification: Reinforcement_Learning\n- Features: ['function', 'advantag', 'updat', 'approxim', 'genet', 'type', 'singl', 'requir', 'improv', 'result', 'gener', 'instanc']\n- Neighbors: []\n\nTo generate the counterfactual explanation, we need to identify the changes that occurred between the factual and counterfactual examples. In this case, the main differences are:\n\n1. Classification: The target node was classified as Neural_Networks, but the counterfactual example is classified as Reinforcement_Learning.\n2. Features: The features of the target node include words related to neural networks, while the counterfactual example includes words related to reinforcement learning.\n\nTo explain the change in classification, we can say that the target node's features were modified to include words related to reinforcement learning, which led to a change in its classification.\n\nAs for the influence of neighboring nodes, since the target node has no neighbors, there is no influence from neighboring nodes.\n\nHere is the filled dictionary:\n\ninfos={\n'Target_Node_ID': 1440,\n'Factual_Target_Node_Neighbors': [],\n'Factual_Target_Node_Features': ['neural', 'network', 'function', 'artifici', 'deploy', 'integr', 'train', 'result', 'control', 'perform', 'compar', 'heat'],\n'Counterfactual_Target_Node_Neighbors': [],\n'Counterfactual_Target_Node_Features': ['function', 'advantag', 'updat', 'approxim', 'genet', 'type', 'singl', 'requir', 'improv', 'result', 'gener', 'instanc'],\n'Factual_Target_Node_Class': 'Neural_Networks',\n'Counterfactual_Target_Node_class': 'Reinforcement_Learning',\n'Target_Node_Features_Changed_From_Factual_To_Counterfactual': ['neural', 'network', 'function', 'artifici', 'deploy', 'integr', 'train', 'result', 'control', 'perform', 'compar', 'heat'],\n'Natural_Language_Explanation': 'The target node\\'s features were modified to include words related to reinforcement learning, which led to a change in its classification.'\n}\n\nNote that the explanation is a simplified version of the actual changes that occurred between the factual and counterfactual examples. In a real-world scenario, the explanation would likely be more detailed and nuanced.\n>>>"
+  }
+ ],
+ "prompt_rendered": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nCutting Knowledge Date: December 2023\nToday Date: 26 Jul 2024\n\nYou are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\nExtract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 1440. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 1440  (dataset: cora)\n\nEXPLANATION:\n<<<\nTo generate the counterfactual explanation, we first need to identify the target node and its classification. Let's assume the target node is 1440, which is classified as Neural_Networks.\n\nNext, we need to find the counterfactual example, which is a node with a different classification. Let's assume the counterfactual example is node 1540, which is classified as Reinforcement_Learning.\n\nNow, let's analyze the differences between the factual and counterfactual examples:\n\nNode 1440 (Factual):\n- Classification: Neural_Networks\n- Features: ['neural', 'network', 'function', 'artifici', 'deploy', 'integr', 'train', 'result', 'control', 'perform', 'compar', 'heat']\n- Neighbors: []\n\nNode 1540 (Counterfactual):\n- Classification: Reinforcement_Learning\n- Features: ['function', 'advantag', 'updat', 'approxim', 'genet', 'type', 'singl', 'requir', 'improv', 'result', 'gener', 'instanc']\n- Neighbors: []\n\nTo generate the counterfactual explanation, we need to identify the changes that occurred between the factual and counterfactual examples. In this case, the main differences are:\n\n1. Classification: The target node was classified as Neural_Networks, but the counterfactual example is classified as Reinforcement_Learning.\n2. Features: The features of the target node include words related to neural networks, while the counterfactual example includes words related to reinforcement learning.\n\nTo explain the change in classification, we can say that the target node's features were modified to include words related to reinforcement learning, which led to a change in its classification.\n\nAs for the influence of neighboring nodes, since the target node has no neighbors, there is no influence from neighboring nodes.\n\nHere is the filled dictionary:\n\ninfos={\n'Target_Node_ID': 1440,\n'Factual_Target_Node_Neighbors': [],\n'Factual_Target_Node_Features': ['neural', 'network', 'function', 'artifici', 'deploy', 'integr', 'train', 'result', 'control', 'perform', 'compar', 'heat'],\n'Counterfactual_Target_Node_Neighbors': [],\n'Counterfactual_Target_Node_Features': ['function', 'advantag', 'updat', 'approxim', 'genet', 'type', 'singl', 'requir', 'improv', 'result', 'gener', 'instanc'],\n'Factual_Target_Node_Class': 'Neural_Networks',\n'Counterfactual_Target_Node_class': 'Reinforcement_Learning',\n'Target_Node_Features_Changed_From_Factual_To_Counterfactual': ['neural', 'network', 'function', 'artifici', 'deploy', 'integr', 'train', 'result', 'control', 'perform', 'compar', 'heat'],\n'Natural_Language_Explanation': 'The target node\\'s features were modified to include words related to reinforcement learning, which led to a change in its classification.'\n}\n\nNote that the explanation is a simplified version of the actual changes that occurred between the factual and counterfactual examples. In a real-world scenario, the explanation would likely be more detailed and nuanced.\n>>><|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+ "raw_output": "{\n  \"claims\": [\n    {\n      \"claim\": \"The target node is 1440.\",\n      \"claim_type\": \"structural\",\n      \"source_span\": \"To generate the counterfactual explanation, we first need to identify the target node and its classification. Let's assume the target node is 1440\",\n      \"entities\": {\n        \"node_ids\": [1440],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"The target node is classified as Neural_Networks.\",\n      \"claim_type\": \"class_state\",\n      \"source_span\": \"which is classified as Neural_Networks\",\n      \"entities\": {\n        \"node_ids\": [1440],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Neural_Networks\"]\n      }\n    },\n    {\n      \"claim\": \"Node 1540 is classified as Reinforcement_Learning.\",\n      \"claim_type\": \"class_state\",\n      \"source_span\": \"Let's assume the counterfactual example is node 1540, which is classified as Reinforcement_Learning\",\n      \"entities\": {\n        \"node_ids\": [1540],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Reinforcement_Learning\"]\n      }\n    },\n    {\n      \"claim\": \"The target node has no neighbors.\",\n      \"claim_type\": \"structural\",\n      \"source_span\": \"Node 1440 (Factual): - Neighbors: []\",\n      \"entities\": {\n        \"node_ids\": [1440],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"The target node's features include words related to neural networks.\",\n      \"claim_type\": \"feature\",\n      \"source_span\": \"The features of the target node include words related to neural networks\",\n      \"entities\": {\n        \"node_ids\": [1440],\n        \"titles\": [],\n        \"feature_words\": [\"neural\", \"network\"],\n        \"edges\": [],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"The counterfactual example's features include words related to reinforcement learning.\",\n      \"claim_type\": \"feature\",\n      \"source_span\": \"while the counterfactual example includes words related to reinforcement learning\",\n      \"entities\": {\n        \"node_ids\": [1540],\n        \"titles\": [],\n        \"feature_words\": [\"reinforcement\", \"learning\"],\n        \"edges\": [],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"The target node's features were modified to include words related to reinforcement learning.\",\n      \"claim_type\": \"mechanism\",\n      \"source_span\": \"The target node's features were modified to include words related to reinforcement learning, which led to a change in its classification\",\n      \"entities\": {\n        \"node_ids\": [1440],\n        \"titles\": [],\n        \"feature_words\": [\"reinforcement\", \"learning\"],\n        \"edges\": [],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"The target node's classification changed from Neural_Networks to Reinforcement_Learning.\",\n      \"claim_type\": \"class_state\",\n      \"source_span\": \"1. Classification: The target node was classified as Neural_Networks, but the counterfactual example is classified as Reinforcement_Learning\",\n      \"entities\": {\n        \"node_ids\": [1440],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Neural_Networks\", \"Reinforcement_Learning\"]\n      }\n    },\n    {\n      \"claim\": \"The target node has no neighbors that influenced its classification.\",\n      \"claim_type\": \"structural\",\n      \"source_span\": \"As for the influence of neighboring nodes, since the target node has no neighbors, there is no influence from neighboring nodes\",\n      \"entities\": {\n        \"node_ids\": [1440],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": []\n      }\n    }\n  ]\n}",
+ "claims": [
+  {
+   "claim": "The target node is 1440.",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1440
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "To generate the counterfactual explanation, we first need to identify the target node and its classification. Let's assume the target node is 1440"
+  },
+  {
+   "claim": "The target node is classified as Neural_Networks.",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1440
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Neural_Networks"
+    ]
+   },
+   "source_span": "which is classified as Neural_Networks"
+  },
+  {
+   "claim": "Node 1540 is classified as Reinforcement_Learning.",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1540
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Reinforcement_Learning"
+    ]
+   },
+   "source_span": "Let's assume the counterfactual example is node 1540, which is classified as Reinforcement_Learning"
+  },
+  {
+   "claim": "The target node has no neighbors.",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1440
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Node 1440 (Factual): - Neighbors: []"
+  },
+  {
+   "claim": "The target node's features include words related to neural networks.",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1440
+    ],
+    "titles": [],
+    "feature_words": [
+     "neural",
+     "network"
+    ],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "The features of the target node include words related to neural networks"
+  },
+  {
+   "claim": "The counterfactual example's features include words related to reinforcement learning.",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1540
+    ],
+    "titles": [],
+    "feature_words": [
+     "reinforcement",
+     "learning"
+    ],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "while the counterfactual example includes words related to reinforcement learning"
+  },
+  {
+   "claim": "The target node's features were modified to include words related to reinforcement learning.",
+   "claim_type": "mechanism",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1440
+    ],
+    "titles": [],
+    "feature_words": [
+     "reinforcement",
+     "learning"
+    ],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "The target node's features were modified to include words related to reinforcement learning, which led to a change in its classification"
+  },
+  {
+   "claim": "The target node's classification changed from Neural_Networks to Reinforcement_Learning.",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1440
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Neural_Networks",
+     "Reinforcement_Learning"
+    ]
+   },
+   "source_span": "1. Classification: The target node was classified as Neural_Networks, but the counterfactual example is classified as Reinforcement_Learning"
+  },
+  {
+   "claim": "The target node has no neighbors that influenced its classification.",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1440
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "As for the influence of neighboring nodes, since the target node has no neighbors, there is no influence from neighboring nodes"
+  }
+ ],
+ "n_claims": 9,
+ "parse_diagnostics": {
+  "json_found": true,
+  "json_valid": true,
+  "parse_mode": "strict",
+  "error": null,
+  "n_raw_claims": 9,
+  "n_bad_type": 0,
+  "n_merged_duplicates": 0,
+  "repairs": [],
+  "unrecoverable_segments": [],
+  "n_prompt_tokens": 2167,
+  "n_output_tokens": 887,
+  "hit_max_new_tokens": false,
+  "seconds": 21.7
+ }
+}

@@ -1,0 +1,67 @@
+textstat 0.7.13, scipy 1.13.1
+
+== 0. Output quality (all nodes)
+cora (job 51247846): n=542 | empty 0 | no Support line 4 | repetition loop 58 | malformed (either) 62 | raw v3 repetition flag 399 | batches without Support line 109/4103
+products (job 50765167): n=200 | empty 0 | no Support line 3 | repetition loop 57 | malformed (either) 58 | raw v3 repetition flag 166 | batches without Support line 78/670
+
+== 1. Readability (FK components), non-empty texts
+cora: n=542 FK=16.73 W/S=19.29 Syl/W=2.101 S/expl=84.58 W/expl=1445.3 | sensitivity: FK with 'assistant' role header kept 16.84 | FK excluding malformed 16.20 (n=480)
+products: n=200 FK=14.69 W/S=27.99 Syl/W=1.641 S/expl=52.65 W/expl=959.5 | sensitivity: FK with 'assistant' role header kept 14.78 | FK excluding malformed 12.95 (n=142)
+
+== 2. FK by correctness (canonical GraphSAGE pred vs true label), two-sided Mann-Whitney U
+cora: correct 16.79 (n=486) / incorrect 16.21 (n=56)  U=13733.0 p=0.911
+products: correct 15.73 (n=142) / incorrect 12.15 (n=58)  U=4081.0 p=0.922
+
+== 3. Halstead volume per word, non-empty
+cora: 7.12 (n=542)
+products: 7.04 (n=200)
+
+== 4. Entity graph (v5), non-empty
+cora: n=542 C_state=36.95 C_cycle=0.85 (median C_state 18.0, C_cycle 0.0)
+products: n=200 C_state=22.48 C_cycle=0.25 (median C_state 12.0, C_cycle 0.0)
+
+== 5. Kruskal-Wallis on FK grade, 4 methods (pairwise MWU, Bonferroni x6)
+cora: GraphXAIN 18.00 (n=542), GraphNarrator 15.05 (n=541), Counterfactual 16.14 (n=151), GSPELL 16.73 (n=542)
+   check: 3-method H=459.93 (existing table reproduced if equal)
+   Kruskal-Wallis H=519.65 p=2.63e-112
+   GraphXAIN vs GraphNarrator: U=256760.5 p=1.27e-101 Bonferroni(x6) p=7.65e-101
+   GraphXAIN vs Counterfactual: U=62196.5 p=1.39e-22 Bonferroni(x6) p=8.32e-22
+   GraphXAIN vs GSPELL: U=231406.0 p=1.9e-60 Bonferroni(x6) p=1.14e-59
+   GraphNarrator vs Counterfactual: U=34580.5 p=0.00392 Bonferroni(x6) p=0.0235
+   GraphNarrator vs GSPELL: U=106641.0 p=8.09e-15 Bonferroni(x6) p=4.85e-14
+   Counterfactual vs GSPELL: U=36987.0 p=0.0706 Bonferroni(x6) p=0.424
+products: GraphXAIN 16.64 (n=200), GraphNarrator 9.52 (n=200), Counterfactual 14.76 (n=55), GSPELL 14.69 (n=200)
+   check: 3-method H=341.46 (existing table reproduced if equal)
+   Kruskal-Wallis H=401.46 p=1.07e-86
+   GraphXAIN vs GraphNarrator: U=39986.0 p=5.96e-67 Bonferroni(x6) p=3.58e-66
+   GraphXAIN vs Counterfactual: U=8512.0 p=5.08e-10 Bonferroni(x6) p=3.05e-09
+   GraphXAIN vs GSPELL: U=34680.0 p=6.15e-37 Bonferroni(x6) p=3.69e-36
+   GraphNarrator vs Counterfactual: U=298.0 p=6.79e-27 Bonferroni(x6) p=4.07e-26
+   GraphNarrator vs GSPELL: U=8730.0 p=1.89e-22 Bonferroni(x6) p=1.13e-21
+   Counterfactual vs GSPELL: U=8239.0 p=1.58e-08 Bonferroni(x6) p=9.45e-08
+
+== 6. Kruskal-Wallis on Halstead volume per word, 4 methods (pairwise MWU, Bonferroni x6)
+cora: GraphXAIN 6.93 (n=542), GraphNarrator 6.12 (n=541), Counterfactual 6.46 (n=151), GSPELL 7.12 (n=542)
+   check: 3-method H=805.80 (existing table reproduced if equal)
+   Kruskal-Wallis H=779.15 p=1.44e-168
+   GraphXAIN vs GraphNarrator: U=293202.0 p=1.76e-178 Bonferroni(x6) p=1.06e-177
+   GraphXAIN vs Counterfactual: U=59607.0 p=8.74e-18 Bonferroni(x6) p=5.24e-17
+   GraphXAIN vs GSPELL: U=118593.0 p=4.04e-08 Bonferroni(x6) p=2.42e-07
+   GraphNarrator vs Counterfactual: U=19894.0 p=4.95e-22 Bonferroni(x6) p=2.97e-21
+   GraphNarrator vs GSPELL: U=48111.5 p=1.16e-81 Bonferroni(x6) p=6.95e-81
+   Counterfactual vs GSPELL: U=24111.0 p=1.11e-14 Bonferroni(x6) p=6.63e-14
+products: GraphXAIN 6.95 (n=200), GraphNarrator 6.09 (n=200), Counterfactual 6.60 (n=55), GSPELL 7.04 (n=200)
+   check: 3-method H=314.76 (existing table reproduced if equal)
+   Kruskal-Wallis H=357.58 p=3.4e-77
+   GraphXAIN vs GraphNarrator: U=39968.0 p=7.6e-67 Bonferroni(x6) p=4.56e-66
+   GraphXAIN vs Counterfactual: U=8169.5 p=3.58e-08 Bonferroni(x6) p=2.15e-07
+   GraphXAIN vs GSPELL: U=18285.5 p=0.138 Bonferroni(x6) p=0.829
+   GraphNarrator vs Counterfactual: U=1588.5 p=6.7e-16 Bonferroni(x6) p=4.02e-15
+   GraphNarrator vs GSPELL: U=2873.5 p=1.18e-49 Bonferroni(x6) p=7.09e-49
+   Counterfactual vs GSPELL: U=3397.5 p=1.43e-05 Bonferroni(x6) p=8.58e-05
+
+== 7. Sensitivity: FK distribution (runaway keyword lists with no sentence punctuation give 1-3 'sentences' of 300-1000 words)
+cora: median FK 15.92 (IQR 14.99-17.23), max 279.3; FK>30: 4 texts (nodes [1810, 2317, 2435, 2579])
+   without FK>30 texts: mean FK 16.08 (n=538), W/S 17.73; correct 16.06 (n=482) / incorrect 16.21 (n=56) p=0.991
+products: median FK 11.82 (IQR 10.44-13.88), max 124.2; FK>30: 8 texts (nodes [23005, 23525, 23701, 36007, 41275, 45477, 51706, 53644])
+   without FK>30 texts: mean FK 12.24 (n=192), W/S 21.38; correct 12.28 (n=134) / incorrect 12.15 (n=58) p=0.448

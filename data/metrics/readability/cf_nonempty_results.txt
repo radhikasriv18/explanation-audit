@@ -1,0 +1,23 @@
+== Checks against old numbers (ALL rows, empties kept)
+cora: n=177 empty=26 meanFK=13.7687 meanVPW=5.5099 | correctness agrees with old CSV 177/177, per-row VPW identical 177/177
+products: n=60 empty=5 meanFK=13.5299 meanVPW=6.0491 | correctness agrees with old CSV 60/60, per-row VPW identical 60/60
+
+== 1. FK by correctness (non-empty), two-sided Mann-Whitney U
+cora: correct 16.23 (n=125) / incorrect 15.70 (n=26)  U=1646.0 p=0.920
+products: correct 15.18 (n=26) / incorrect 14.38 (n=29)  U=448.0 p=0.235
+
+== 2. Pooled FK + Kruskal-Wallis across methods (GraphXAIN/GraphNarrator unchanged)
+cora: GraphXAIN 18.00 (n=542), GraphNarrator 15.05 (n=541), Counterfactual 16.14 (n=151)
+   Kruskal-Wallis H=459.93 p=1.34e-100
+   GraphXAIN vs GraphNarrator: U=256760.5 p=1.27e-101 Bonferroni(x3) p=3.82e-101
+   GraphXAIN vs Counterfactual: U=62196.5 p=1.39e-22 Bonferroni(x3) p=4.16e-22
+   GraphNarrator vs Counterfactual: U=34580.5 p=0.00392 Bonferroni(x3) p=0.0118
+products: GraphXAIN 16.64 (n=200), GraphNarrator 9.52 (n=200), Counterfactual 14.76 (n=55)
+   Kruskal-Wallis H=341.46 p=7.11e-75
+   GraphXAIN vs GraphNarrator: U=39986.0 p=5.96e-67 Bonferroni(x3) p=1.79e-66
+   GraphXAIN vs Counterfactual: U=8512.0 p=5.08e-10 Bonferroni(x3) p=1.52e-09
+   GraphNarrator vs Counterfactual: U=298.0 p=6.79e-27 Bonferroni(x3) p=2.04e-26
+
+== 3. Halstead volume per word (non-empty)
+cora: 6.46 (n=151)
+products: 6.60 (n=55)

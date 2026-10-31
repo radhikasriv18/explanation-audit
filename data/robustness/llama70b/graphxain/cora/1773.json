@@ -1,0 +1,34 @@
+{
+ "method": "graphxain",
+ "dataset": "cora",
+ "global_node_id": 1773,
+ "cf_key": "355",
+ "is_survey": false,
+ "messages": [
+  {
+   "role": "user",
+   "content": "Your goal is to generate a textual narrative explaining why a GNN model made a certain prediction for a target node, based on the output of a GNNExplainer.\n\n### Machine Learning Task:\nMulti-class node classification task that predicts the research area of an academic computer science paper. The model classifies each paper into one of 7 categories: Case_Based, Genetic_Algorithms, Neural_Networks, Probabilistic_Methods, Reinforcement_Learning, Rule_Learning, or Theory.\n\n### Dataset:\nThe Cora citation network contains 2,708 academic computer science papers. Each paper (node) is represented as a bag-of-words feature vector of 1,433 unique Porter-stemmed words derived from the paper's title and abstract \u2014 each feature is binary (1 = word present, 0 = absent). Edges represent undirected citation links between papers. The task is to classify each paper into its research sub-area based on its content and the content of papers it cites or is cited by.\n\n### Target Paper (node 1773):\nTitle: Canonical Momenta Indicators of Financial Markets and Neocortical EEG  \nAbstract: A paradigm of statistical mechanics of financial markets (SMFM) is fit to multivariate financial markets using Adaptive Simulated Annealing (ASA), a global optimization algorithm, to perform maximum likelihood f\n\n### Model Prediction:\n{\n  \"Target Node\": 1773,\n  \"Predicted Class\": \"Neural_Networks\",\n  \"Confidence\": 0.9925\n}\n\n### Target Node's Categorical Features \u2014 Top-7 Most Important BOW Words (GNNExplainer node mask):\nAll Cora BOW features are binary/categorical (word present or absent) \u2014 there are no continuous features for this dataset.\nEach entry: word (Porter-stemmed) | importance score | whether the word is present in the paper (1=yes, 0=no).\n  word='mechanics', importance=0.6194, present_in_paper=1\n  word='model', importance=0.6111, present_in_paper=0\n  word='process', importance=0.6098, present_in_paper=0\n  word='paradigm', importance=0.6032, present_in_paper=1\n  word='markets', importance=0.5925, present_in_paper=1\n  word='financial', importance=0.5834, present_in_paper=1\n  word='canonical', importance=0.5722, present_in_paper=1\n\n### Target Node's Local Graph Structure:\nTotal 1-hop citation degree (all direct neighbors, not just those listed below): 1\nLabel distribution across all 1-hop neighbors (ground-truth class): Neural_Networks=100.0%\n\n### Direct Citation Neighbors \u2014 1-hop (GNNExplainer edge mask, descending importance, top-7 shown):\nThese are papers directly cited by or citing the target paper.\n  Node 2545 | edge_importance=0.8775 | class=Neural_Networks | Title: Volatility of Volatility of Financial Markets  \nAbstract: We present empirical evidence for considering volatility of Eurodollar futures as a stochastic process, requiring a generalization of t\n\n### 2-hop Citation Neighbors (neighbors-of-neighbors, GNNExplainer edge mask, top-10 shown):\nThese papers are not directly connected to the target but are linked through shared citation partners.\n  Node 1795 | edge_importance=0.7843 | class=Neural_Networks | Title: Application of statistical mechanics methodol- ogy to term-structure bond-pricing models, Mathl. Comput. Modelling Application of\nAbstract: The work in progress reported by Wright & Liley shows\n  Node 2178 | edge_importance=0.3131 | class=Neural_Networks | Title: Statistical Mechanics of Nonlinear Nonequilibrium Financial Markets: Applications to Optimized Trading  \nAbstract: A paradigm of statistical mechanics of financial markets (SMFM) using nonlinea\n  Node 2082 | edge_importance=0.1981 | class=Genetic_Algorithms | Title: %A L. Ingber %T Adaptive simulated annealing (ASA): Lessons learned %J Control and Cybernetics Annealing\nAbstract:  \n  Node 1794 | edge_importance=0.1953 | class=Neural_Networks | Title: NONLINEAR NONEQUILIBRIUM NONQUANTUM NONCHAOTIC STATISTICAL MECHANICS OF NEOCORTICAL INTERACTIONS  \nAbstract: The work in progress reported by Wright & Liley shows great promise, primarily becau\n\nGenerate a fluent, cohesive narrative explaining the prediction. Rules:\n\n**Format rules:**\n1) Start the explanation immediately \u2014 no preamble.\n2) Limit the entire answer to 8 sentences or fewer.\n3) Do not use tables or bullet lists \u2014 write a single cohesive paragraph.\n\n**Content rules:**\n1) State clearly what class the model predicted and with what confidence.\n2) Discuss how the top BOW features contributed \u2014 note whether each high-importance word is actually present or absent in the paper.\n3) Discuss how the most influential direct (1-hop) citation neighbors shaped the prediction, describing them by topic or title.\n4) Mention how 2-hop neighbors reinforce the pattern if relevant.\n5) Interpret WHY a feature or connection pushed the prediction in a certain direction.\n6) Do not quote raw importance numbers; use relative language (e.g., \"most influential\", \"strongly associated\").\n7) Use clear language that a general audience can understand.\n"
+  }
+ ],
+ "prompt_chars": 5140,
+ "prompt_tokens": 1202,
+ "leading_bos": 1,
+ "sampling_params": {
+  "temperature": 1.0,
+  "top_p": 0.95,
+  "top_k": 50,
+  "repetition_penalty": 1.1,
+  "max_tokens": 600,
+  "seed": 42
+ },
+ "model_id": "hugging-quants/Meta-Llama-3.1-70B-Instruct-GPTQ-INT4",
+ "revision": "1b0ae7f9d6da8b79f36fdc24912f950ecb2b6e91",
+ "slurm_job_id": "8225328",
+ "status": "ok",
+ "response": "The model predicted that the research area of the target paper, \"Canonical Momenta Indicators of Financial Markets and Neocortical EEG,\" is Neural_Networks with a confidence of 99.25%. This prediction was strongly influenced by the presence of keywords such as \"mechanics,\" \"paradigm,\" \"markets,\" \"financial,\" and \"canonical\" in the paper, which are closely associated with neural networks research. Additionally, the absence of other important words like \"model\" and \"process\" also supported this classification. The most influential neighbor, a paper titled \"Volatility of Volatility of Financial Markets,\" further reinforced the prediction due to its strong connection to neural networks. Furthermore, several 2-hop neighbors, including papers on statistical mechanics methodology and nonlinear nonequilibrium financial markets, also demonstrated a pattern consistent with neural networks research, contributing to the model's confidence in its prediction. Overall, the combination of key words and connections to neighboring papers with similar topics led the model to conclude that the research area of the target paper is likely Neural_Networks.",
+ "output_tokens": 217,
+ "finish_reason": "stop",
+ "hit_max_tokens": false,
+ "gen_seconds": 7.68,
+ "output_tokens_per_sec": 28.25
+}

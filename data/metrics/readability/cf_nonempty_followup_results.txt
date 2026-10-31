@@ -1,0 +1,27 @@
+== 1. FK components, counterfactual, non-empty cleaned texts
+cora: n=151 W/S=26.56 Syl/W=1.811 S/expl=11.60 W/expl=302.9
+products: n=55 W/S=26.81 Syl/W=1.686 S/expl=12.18 W/expl=320.0
+
+== 2. Kruskal-Wallis on Halstead volume per word
+cora: GraphXAIN 6.93 (n=542), GraphNarrator 6.12 (n=541), Counterfactual 6.46 (n=151)
+   Kruskal-Wallis H=805.80 p=1.05e-175
+   GraphXAIN vs GraphNarrator: U=293202.0 p=1.76e-178 Bonferroni(x3) p=5.29e-178
+   GraphXAIN vs Counterfactual: U=59607.0 p=8.74e-18 Bonferroni(x3) p=2.62e-17
+   GraphNarrator vs Counterfactual: U=19894.0 p=4.95e-22 Bonferroni(x3) p=1.49e-21
+products: GraphXAIN 6.95 (n=200), GraphNarrator 6.09 (n=200), Counterfactual 6.60 (n=55)
+   Kruskal-Wallis H=314.76 p=4.47e-69
+   GraphXAIN vs GraphNarrator: U=39968.0 p=7.6e-67 Bonferroni(x3) p=2.28e-66
+   GraphXAIN vs Counterfactual: U=8169.5 p=3.58e-08 Bonferroni(x3) p=1.07e-07
+   GraphNarrator vs Counterfactual: U=1588.5 p=6.7e-16 Bonferroni(x3) p=2.01e-15
+
+== 3. Entity graph (v5 measures), counterfactual
+cora: reproduces existing v5 CSV row-for-row (C_state & C_cycle) 184/184
+   raw_all            n=184 C_state=1.65 C_cycle=0.19
+   raw_7excluded      n=177 C_state=1.69 C_cycle=0.19
+   raw_nonempty_keys  n=151 C_state=1.77 C_cycle=0.18
+   cleaned_nonempty   n=151 C_state=1.61 C_cycle=0.16
+products: reproduces existing v5 CSV row-for-row (C_state & C_cycle) 60/60
+   raw_all            n= 60 C_state=3.78 C_cycle=0.95
+   raw_7excluded      n= 60 C_state=3.78 C_cycle=0.95
+   raw_nonempty_keys  n= 55 C_state=3.67 C_cycle=0.95
+   cleaned_nonempty   n= 55 C_state=3.15 C_cycle=0.87

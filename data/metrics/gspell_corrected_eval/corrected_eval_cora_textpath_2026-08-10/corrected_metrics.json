@@ -1,0 +1,11 @@
+{
+  "n_nodes_evaluated": 542,
+  "fidelity": 0.3062730627306273,
+  "size": 23.5,
+  "comprehensiveness": 0.04751745781885302,
+  "random_baseline": 0.033741581167792044,
+  "alignment": -0.0002403873056723183,
+  "n_raw_citations_total": 19370,
+  "n_removed_hallucinated_total": 0,
+  "hallucination_rate": 0.0
+}

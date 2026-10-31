@@ -1,0 +1,834 @@
+{
+  "summary": {
+    "dataset": "products",
+    "n_eval_nodes": 200,
+    "n_predicted": 200,
+    "graphnarrator_own_accuracy_stochastic": 0.265,
+    "batch_size": 8,
+    "num_neighbors": [
+      10,
+      10
+    ],
+    "seed": 42,
+    "survey_nodes": {
+      "6813": {
+        "true_label": "Beauty",
+        "graphnarrator_own_pred_stochastic": "Beauty"
+      },
+      "1852": {
+        "true_label": "Office Products",
+        "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+      },
+      "8766": {
+        "true_label": "Beauty",
+        "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+      },
+      "8438": {
+        "true_label": "Baby",
+        "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+      }
+    }
+  },
+  "per_node": {
+    "348": {
+      "true_label": "Tools & Home Improvement",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "1191": {
+      "true_label": "Pet Supplies",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "1691": {
+      "true_label": "Baby Products",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "1852": {
+      "true_label": "Office Products",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "1958": {
+      "true_label": "Sports & Outdoors",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "2299": {
+      "true_label": "Musical Instruments",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "3040": {
+      "true_label": "Office Products",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "3305": {
+      "true_label": "Patio, Lawn & Garden",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "3503": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "3988": {
+      "true_label": "Video Games",
+      "graphnarrator_own_pred_stochastic": "Movies & TV"
+    },
+    "4157": {
+      "true_label": "Electronics",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "4548": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "4681": {
+      "true_label": "Beauty",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "4736": {
+      "true_label": "Tools & Home Improvement",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "4782": {
+      "true_label": "Tools & Home Improvement",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "4798": {
+      "true_label": "Tools & Home Improvement",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "4886": {
+      "true_label": "CDs & Vinyl",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "5001": {
+      "true_label": "Beauty",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "5204": {
+      "true_label": "Home & Kitchen",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "5661": {
+      "true_label": "Electronics",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "6050": {
+      "true_label": "Tools & Home Improvement",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "6236": {
+      "true_label": "Electronics",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "6733": {
+      "true_label": "Pet Supplies",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "6813": {
+      "true_label": "Beauty",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "6910": {
+      "true_label": "Automotive",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "7384": {
+      "true_label": "Home & Kitchen",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "7389": {
+      "true_label": "Home & Kitchen",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "7982": {
+      "true_label": "Health & Personal Care",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "8056": {
+      "true_label": "CDs & Vinyl",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "8438": {
+      "true_label": "Baby",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "8485": {
+      "true_label": "Sports & Outdoors",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "8652": {
+      "true_label": "CDs & Vinyl",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "8728": {
+      "true_label": "label 25",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "8766": {
+      "true_label": "Beauty",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "9545": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "9879": {
+      "true_label": "Pet Supplies",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "10192": {
+      "true_label": "Health & Personal Care",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "10483": {
+      "true_label": "Health & Personal Care",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "10543": {
+      "true_label": "Toys & Games",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "11327": {
+      "true_label": "Sports & Outdoors",
+      "graphnarrator_own_pred_stochastic": "Sports & Outdoors"
+    },
+    "12059": {
+      "true_label": "Electronics",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "12061": {
+      "true_label": "Cell Phones & Accessories",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "12464": {
+      "true_label": "label 25",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "12726": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "12744": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "13079": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "14516": {
+      "true_label": "Office Products",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "14537": {
+      "true_label": "Office Products",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "14551": {
+      "true_label": "Office Products",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "14760": {
+      "true_label": "Grocery & Gourmet Food",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "15065": {
+      "true_label": "Electronics",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "15385": {
+      "true_label": "Health & Personal Care",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "15849": {
+      "true_label": "Musical Instruments",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "15950": {
+      "true_label": "Electronics",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "16296": {
+      "true_label": "Beauty",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "16822": {
+      "true_label": "Toys & Games",
+      "graphnarrator_own_pred_stochastic": "Movies & TV"
+    },
+    "17048": {
+      "true_label": "Arts, Crafts & Sewing",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "17278": {
+      "true_label": "Beauty",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "17537": {
+      "true_label": "Toys & Games",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "17822": {
+      "true_label": "Office Products",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "18032": {
+      "true_label": "Tools & Home Improvement",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "18243": {
+      "true_label": "Office Products",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "18497": {
+      "true_label": "Cell Phones & Accessories",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "18944": {
+      "true_label": "Office Products",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "18991": {
+      "true_label": "Tools & Home Improvement",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "19140": {
+      "true_label": "Office Products",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "19356": {
+      "true_label": "Arts, Crafts & Sewing",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "19363": {
+      "true_label": "Home & Kitchen",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "19920": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "20262": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "21066": {
+      "true_label": "Electronics",
+      "graphnarrator_own_pred_stochastic": "Sports & Outdoors"
+    },
+    "21312": {
+      "true_label": "Sports & Outdoors",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "21401": {
+      "true_label": "Sports & Outdoors",
+      "graphnarrator_own_pred_stochastic": "Sports & Outdoors"
+    },
+    "21445": {
+      "true_label": "Sports & Outdoors",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "21477": {
+      "true_label": "Sports & Outdoors",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "21934": {
+      "true_label": "Video Games",
+      "graphnarrator_own_pred_stochastic": "Movies & TV"
+    },
+    "22706": {
+      "true_label": "Pet Supplies",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "22907": {
+      "true_label": "Beauty",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "22915": {
+      "true_label": "Health & Personal Care",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "23005": {
+      "true_label": "Beauty",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "23017": {
+      "true_label": "Health & Personal Care",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "23045": {
+      "true_label": "Health & Personal Care",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "23167": {
+      "true_label": "Sports & Outdoors",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "23324": {
+      "true_label": "Clothing, Shoes & Jewelry",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "23525": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "23701": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "23875": {
+      "true_label": "Beauty",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "23888": {
+      "true_label": "Beauty",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "24464": {
+      "true_label": "Automotive",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "24600": {
+      "true_label": "Tools & Home Improvement",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "24608": {
+      "true_label": "Tools & Home Improvement",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "24742": {
+      "true_label": "Tools & Home Improvement",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "24930": {
+      "true_label": "Movies & TV",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "25079": {
+      "true_label": "Movies & TV",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "25103": {
+      "true_label": "Movies & TV",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "25344": {
+      "true_label": "Beauty",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "26599": {
+      "true_label": "Automotive",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "26626": {
+      "true_label": "Pet Supplies",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "26687": {
+      "true_label": "Automotive",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "26732": {
+      "true_label": "Beauty",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "26895": {
+      "true_label": "Baby",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "27072": {
+      "true_label": "Beauty",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "27397": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "28044": {
+      "true_label": "Industrial & Scientific",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "29075": {
+      "true_label": "Sports & Outdoors",
+      "graphnarrator_own_pred_stochastic": "Movies & TV"
+    },
+    "29164": {
+      "true_label": "Movies & TV",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "29513": {
+      "true_label": "Electronics",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "29531": {
+      "true_label": "Electronics",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "29606": {
+      "true_label": "Electronics",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "29706": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "29895": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "30240": {
+      "true_label": "CDs & Vinyl",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "30322": {
+      "true_label": "Movies & TV",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "30333": {
+      "true_label": "CDs & Vinyl",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "30483": {
+      "true_label": "Arts, Crafts & Sewing",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "30739": {
+      "true_label": "Home & Kitchen",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "32166": {
+      "true_label": "Electronics",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "32390": {
+      "true_label": "Sports & Outdoors",
+      "graphnarrator_own_pred_stochastic": "Home & Kitchen"
+    },
+    "33376": {
+      "true_label": "Toys & Games",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "33424": {
+      "true_label": "Home & Kitchen",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "33476": {
+      "true_label": "Home & Kitchen",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "33658": {
+      "true_label": "Home & Kitchen",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "33739": {
+      "true_label": "Home & Kitchen",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "34060": {
+      "true_label": "Sports & Outdoors",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "34546": {
+      "true_label": "Toys & Games",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "34622": {
+      "true_label": "Toys & Games",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "34995": {
+      "true_label": "Toys & Games",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "35101": {
+      "true_label": "Toys & Games",
+      "graphnarrator_own_pred_stochastic": "Movies & TV"
+    },
+    "35121": {
+      "true_label": "Toys & Games",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "35272": {
+      "true_label": "Office Products",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "35306": {
+      "true_label": "Health & Personal Care",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "35731": {
+      "true_label": "CDs & Vinyl",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "36002": {
+      "true_label": "Home & Kitchen",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "36007": {
+      "true_label": "Home & Kitchen",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "36152": {
+      "true_label": "Baby Products",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "36182": {
+      "true_label": "Office Products",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "36678": {
+      "true_label": "Pet Supplies",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "36793": {
+      "true_label": "Health & Personal Care",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "36811": {
+      "true_label": "Beauty",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "36892": {
+      "true_label": "Health & Personal Care",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "36923": {
+      "true_label": "Health & Personal Care",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "37221": {
+      "true_label": "Sports & Outdoors",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "37775": {
+      "true_label": "CDs & Vinyl",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "37929": {
+      "true_label": "CDs & Vinyl",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "38206": {
+      "true_label": "Beauty",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "38815": {
+      "true_label": "Tools & Home Improvement",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "39331": {
+      "true_label": "Toys & Games",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "39419": {
+      "true_label": "Toys & Games",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "40150": {
+      "true_label": "Pet Supplies",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "40262": {
+      "true_label": "Home & Kitchen",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "40286": {
+      "true_label": "Toys & Games",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "40611": {
+      "true_label": "Toys & Games",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "40705": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "40923": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "40975": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "41157": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "41275": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "41298": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "41316": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "41474": {
+      "true_label": "CDs & Vinyl",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "41517": {
+      "true_label": "CDs & Vinyl",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "41614": {
+      "true_label": "label 25",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "42081": {
+      "true_label": "Pet Supplies",
+      "graphnarrator_own_pred_stochastic": "Movies & TV"
+    },
+    "42109": {
+      "true_label": "Pet Supplies",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "42186": {
+      "true_label": "Pet Supplies",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "42602": {
+      "true_label": "Cell Phones & Accessories",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "42622": {
+      "true_label": "Cell Phones & Accessories",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "43231": {
+      "true_label": "Sports & Outdoors",
+      "graphnarrator_own_pred_stochastic": "Movies & TV"
+    },
+    "43535": {
+      "true_label": "CDs & Vinyl",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "43608": {
+      "true_label": "CDs & Vinyl",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "43813": {
+      "true_label": "Pet Supplies",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "44135": {
+      "true_label": "Health & Personal Care",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "44149": {
+      "true_label": "Toys & Games",
+      "graphnarrator_own_pred_stochastic": "Movies & TV"
+    },
+    "44183": {
+      "true_label": "Toys & Games",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "44508": {
+      "true_label": "Toys & Games",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "44718": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "45324": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "45393": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "45454": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "45475": {
+      "true_label": "Health & Personal Care",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "45477": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "47177": {
+      "true_label": "Sports & Outdoors",
+      "graphnarrator_own_pred_stochastic": "Sports & Outdoors"
+    },
+    "47510": {
+      "true_label": "label 25",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "47875": {
+      "true_label": "Pet Supplies",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "48117": {
+      "true_label": "Pet Supplies",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "48226": {
+      "true_label": "Movies & TV",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "49090": {
+      "true_label": "CDs & Vinyl",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "49267": {
+      "true_label": "Tools & Home Improvement",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "49473": {
+      "true_label": "Cell Phones & Accessories",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "50338": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "50349": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "51559": {
+      "true_label": "Cell Phones & Accessories",
+      "graphnarrator_own_pred_stochastic": "Beauty"
+    },
+    "51706": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "51874": {
+      "true_label": "Health & Personal Care",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "52045": {
+      "true_label": "Cell Phones & Accessories",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "52224": {
+      "true_label": "Electronics",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "52810": {
+      "true_label": "Patio, Lawn & Garden",
+      "graphnarrator_own_pred_stochastic": "Health & Personal Care"
+    },
+    "53408": {
+      "true_label": "Pet Supplies",
+      "graphnarrator_own_pred_stochastic": "Cell Phones & Accessories"
+    },
+    "53644": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    },
+    "53931": {
+      "true_label": "Books",
+      "graphnarrator_own_pred_stochastic": "Books"
+    }
+  }
+}

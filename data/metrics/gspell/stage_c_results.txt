@@ -1,0 +1,87 @@
+join check GraphXAIN/cora: FK texts 542, VPW texts 542, matched node ids 542, FK-only [], VPW-only []
+join check GraphNarrator/cora: FK texts 541, VPW texts 541, matched node ids 541, FK-only [], VPW-only []
+join check GraphXAIN/products: FK texts 200, VPW texts 200, matched node ids 200, FK-only [], VPW-only []
+join check GraphNarrator/products: FK texts 200, VPW texts 200, matched node ids 200, FK-only [], VPW-only []
+
+== FK > 30 texts and means with / without them
+dataset  method           n_FK  FK>30   FK all   FK ≤30  n_VPW  VPW all  VPW ≤30  nodes with FK>30
+cora     GraphXAIN         542      0    18.00    18.00    542     6.93     6.93  
+cora     GraphNarrator     541      0    15.05    15.05    541     6.12     6.12  
+cora     Counterfactual    151      1    16.14    15.94    151     6.46     6.45  1585
+cora     GSPELL            542      4    16.73    16.08    542     7.12     7.13  1810 2317 2435 2579
+products GraphXAIN         200      0    16.64    16.64    200     6.95     6.95  
+products GraphNarrator     200      0     9.52     9.52    200     6.09     6.09  
+products Counterfactual     55      0    14.76    14.76     55     6.60     6.60  
+products GSPELL            200      8    14.69    12.24    200     7.04     7.10  23005 23525 23701 36007 41275 45477 51706 53644
+
+== Kruskal-Wallis on FK grade, 4 methods, all texts (pairwise MWU, Bonferroni x6)
+cora: GraphXAIN 18.00 (n=542), GraphNarrator 15.05 (n=541), Counterfactual 16.14 (n=151), GSPELL 16.73 (n=542)
+   Kruskal-Wallis H=519.65 p=2.63e-112
+   GraphXAIN vs GraphNarrator: U=256760.5 p=1.27e-101 Bonferroni(x6) p=7.65e-101
+   GraphXAIN vs Counterfactual: U=62196.5 p=1.39e-22 Bonferroni(x6) p=8.32e-22
+   GraphXAIN vs GSPELL: U=231406.0 p=1.9e-60 Bonferroni(x6) p=1.14e-59
+   GraphNarrator vs Counterfactual: U=34580.5 p=0.00392 Bonferroni(x6) p=0.0235
+   GraphNarrator vs GSPELL: U=106641.0 p=8.09e-15 Bonferroni(x6) p=4.85e-14
+   Counterfactual vs GSPELL: U=36987.0 p=0.0706 Bonferroni(x6) p=0.424
+products: GraphXAIN 16.64 (n=200), GraphNarrator 9.52 (n=200), Counterfactual 14.76 (n=55), GSPELL 14.69 (n=200)
+   Kruskal-Wallis H=401.46 p=1.07e-86
+   GraphXAIN vs GraphNarrator: U=39986.0 p=5.96e-67 Bonferroni(x6) p=3.58e-66
+   GraphXAIN vs Counterfactual: U=8512.0 p=5.08e-10 Bonferroni(x6) p=3.05e-09
+   GraphXAIN vs GSPELL: U=34680.0 p=6.15e-37 Bonferroni(x6) p=3.69e-36
+   GraphNarrator vs Counterfactual: U=298.0 p=6.79e-27 Bonferroni(x6) p=4.07e-26
+   GraphNarrator vs GSPELL: U=8730.0 p=1.89e-22 Bonferroni(x6) p=1.13e-21
+   Counterfactual vs GSPELL: U=8239.0 p=1.58e-08 Bonferroni(x6) p=9.45e-08
+
+== Kruskal-Wallis on Halstead volume per word, 4 methods, all texts (pairwise MWU, Bonferroni x6)
+cora: GraphXAIN 6.93 (n=542), GraphNarrator 6.12 (n=541), Counterfactual 6.46 (n=151), GSPELL 7.12 (n=542)
+   Kruskal-Wallis H=779.15 p=1.44e-168
+   GraphXAIN vs GraphNarrator: U=293202.0 p=1.76e-178 Bonferroni(x6) p=1.06e-177
+   GraphXAIN vs Counterfactual: U=59607.0 p=8.74e-18 Bonferroni(x6) p=5.24e-17
+   GraphXAIN vs GSPELL: U=118593.0 p=4.04e-08 Bonferroni(x6) p=2.42e-07
+   GraphNarrator vs Counterfactual: U=19894.0 p=4.95e-22 Bonferroni(x6) p=2.97e-21
+   GraphNarrator vs GSPELL: U=48111.5 p=1.16e-81 Bonferroni(x6) p=6.95e-81
+   Counterfactual vs GSPELL: U=24111.0 p=1.11e-14 Bonferroni(x6) p=6.63e-14
+products: GraphXAIN 6.95 (n=200), GraphNarrator 6.09 (n=200), Counterfactual 6.60 (n=55), GSPELL 7.04 (n=200)
+   Kruskal-Wallis H=357.58 p=3.4e-77
+   GraphXAIN vs GraphNarrator: U=39968.0 p=7.6e-67 Bonferroni(x6) p=4.56e-66
+   GraphXAIN vs Counterfactual: U=8169.5 p=3.58e-08 Bonferroni(x6) p=2.15e-07
+   GraphXAIN vs GSPELL: U=18285.5 p=0.138 Bonferroni(x6) p=0.829
+   GraphNarrator vs Counterfactual: U=1588.5 p=6.7e-16 Bonferroni(x6) p=4.02e-15
+   GraphNarrator vs GSPELL: U=2873.5 p=1.18e-49 Bonferroni(x6) p=7.09e-49
+   Counterfactual vs GSPELL: U=3397.5 p=1.43e-05 Bonferroni(x6) p=8.58e-05
+
+== Kruskal-Wallis on FK grade, 4 methods, sensitivity: FK > 30 texts removed (pairwise MWU, Bonferroni x6)
+cora: GraphXAIN 18.00 (n=542), GraphNarrator 15.05 (n=541), Counterfactual 15.94 (n=150), GSPELL 16.08 (n=538)
+   Kruskal-Wallis H=525.71 p=1.28e-113
+   GraphXAIN vs GraphNarrator: U=256760.5 p=1.27e-101 Bonferroni(x6) p=7.65e-101
+   GraphXAIN vs Counterfactual: U=62196.5 p=2.69e-23 Bonferroni(x6) p=1.61e-22
+   GraphXAIN vs GSPELL: U=231406.0 p=1.24e-62 Bonferroni(x6) p=7.46e-62
+   GraphNarrator vs Counterfactual: U=34580.5 p=0.00559 Bonferroni(x6) p=0.0335
+   GraphNarrator vs GSPELL: U=106641.0 p=3.01e-14 Bonferroni(x6) p=1.8e-13
+   Counterfactual vs GSPELL: U=36448.0 p=0.0699 Bonferroni(x6) p=0.419
+products: GraphXAIN 16.64 (n=200), GraphNarrator 9.52 (n=200), Counterfactual 14.76 (n=55), GSPELL 12.24 (n=192)
+   Kruskal-Wallis H=417.11 p=4.35e-90
+   GraphXAIN vs GraphNarrator: U=39986.0 p=5.96e-67 Bonferroni(x6) p=3.58e-66
+   GraphXAIN vs Counterfactual: U=8512.0 p=5.08e-10 Bonferroni(x6) p=3.05e-09
+   GraphXAIN vs GSPELL: U=34680.0 p=2.43e-43 Bonferroni(x6) p=1.46e-42
+   GraphNarrator vs Counterfactual: U=298.0 p=6.79e-27 Bonferroni(x6) p=4.07e-26
+   GraphNarrator vs GSPELL: U=8730.0 p=1e-20 Bonferroni(x6) p=6.01e-20
+   Counterfactual vs GSPELL: U=8239.0 p=2.41e-10 Bonferroni(x6) p=1.44e-09
+
+== Kruskal-Wallis on Halstead volume per word, 4 methods, sensitivity: FK > 30 texts removed (pairwise MWU, Bonferroni x6)
+cora: GraphXAIN 6.93 (n=542), GraphNarrator 6.12 (n=541), Counterfactual 6.45 (n=150), GSPELL 7.13 (n=538)
+   Kruskal-Wallis H=788.79 p=1.17e-170
+   GraphXAIN vs GraphNarrator: U=293202.0 p=1.76e-178 Bonferroni(x6) p=1.06e-177
+   GraphXAIN vs Counterfactual: U=59607.0 p=2.15e-18 Bonferroni(x6) p=1.29e-17
+   GraphXAIN vs GSPELL: U=116548.0 p=1.15e-08 Bonferroni(x6) p=6.89e-08
+   GraphNarrator vs Counterfactual: U=19894.0 p=1.14e-21 Bonferroni(x6) p=6.84e-21
+   GraphNarrator vs GSPELL: U=46512.5 p=2.11e-83 Bonferroni(x6) p=1.27e-82
+   Counterfactual vs GSPELL: U=23161.5 p=1.41e-15 Bonferroni(x6) p=8.43e-15
+products: GraphXAIN 6.95 (n=200), GraphNarrator 6.09 (n=200), Counterfactual 6.60 (n=55), GSPELL 7.10 (n=192)
+   Kruskal-Wallis H=376.26 p=3.07e-81
+   GraphXAIN vs GraphNarrator: U=39968.0 p=7.6e-67 Bonferroni(x6) p=4.56e-66
+   GraphXAIN vs Counterfactual: U=8169.5 p=3.58e-08 Bonferroni(x6) p=2.15e-07
+   GraphXAIN vs GSPELL: U=16711.5 p=0.0265 Bonferroni(x6) p=0.159
+   GraphNarrator vs Counterfactual: U=1588.5 p=6.7e-16 Bonferroni(x6) p=4.02e-15
+   GraphNarrator vs GSPELL: U=1767.0 p=1.68e-54 Bonferroni(x6) p=1.01e-53
+   Counterfactual vs GSPELL: U=3021.0 p=1.33e-06 Bonferroni(x6) p=8e-06

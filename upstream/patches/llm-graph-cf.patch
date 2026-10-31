@@ -1,0 +1,262 @@
+diff --git a/data/kb.py b/data/kb.py
+index 623c92f..d12d10a 100644
+--- a/data/kb.py
++++ b/data/kb.py
+@@ -36,6 +36,19 @@ Usage in Machine Learning:
+ """
+ 
+ 
++products_description = """
++The Amazon Products dataset (ogbn-products) is a large-scale co-purchase graph of Amazon products. It is commonly used for node classification benchmarks in graph learning research.
++Features:
++Each node represents an Amazon product and is described by a 2,000-dimensional bag-of-words feature vector derived from the product's title and description text. A value of 1 at a given dimension indicates the presence of the corresponding word in the product text.
++Graph Structure:
++Edges connect products that are frequently co-purchased together on Amazon (i.e., customers who bought one product also bought the other). The graph is undirected.
++Nodes: 54,025 products.
++Edges: Co-purchase links between products.
++Classes:
++Products are categorized into one of 47 Amazon top-level product categories, including:
++Home & Kitchen, Health & Personal Care, Beauty, Sports & Outdoors, Books, Patio Lawn & Garden, Toys & Games, CDs & Vinyl, Cell Phones & Accessories, Grocery & Gourmet Food, Arts Crafts & Sewing, Clothing Shoes & Jewelry, Electronics, Movies & TV, Software, Video Games, Automotive, Pet Supplies, Office Products, Industrial & Scientific, Musical Instruments, Tools & Home Improvement, Baby Products, and others.
++"""
++
+ aids_dataset_description = """ The AIDS dataset is a graph classification benchmark widely used to evaluate graph neural networks (GNNs) in tasks related to molecular property prediction. It provides a structured representation of molecular compounds, where each molecule is encoded as a graph. In these graphs, nodes represent atoms, edges represent chemical bonds, and each graph corresponds to a molecule labeled as either active (a) or inactive (i) against HIV.
+ 
+ Node Features and Labels
+diff --git a/main.py b/main.py
+index aaa7be3..bbcac48 100644
+--- a/main.py
++++ b/main.py
+@@ -7,8 +7,8 @@ def main():
+     parser.add_argument(
+         '--model_name',
+         type=str,
+-        default='phi_4B',
+-        help='Parameters value (default: 0.5)'
++        default='llama_8B',
++        help='LLM model key from MODEL_MAPPING (default: llama_8B = meta-llama/Llama-3.1-8B-Instruct)'
+     )
+     parser.add_argument(
+         '--temperature',
+@@ -44,8 +44,14 @@ def main():
+     parser.add_argument(
+         '--explainer',
+         type=str,
+-        default="cf-gnnfeatures",
+-        help='Explanation'
++        default="cf-gnnfeatures-canonical",
++        help='Explainer folder name under data/{dataset}/ (default: cf-gnnfeatures-canonical)'
++    )
++    parser.add_argument(
++        '--seed',
++        type=int,
++        default=42,
++        help='Random seed used as prefix in CF JSON filenames (default: 42)'
+     )
+     
+     parser.add_argument(
+@@ -80,7 +86,8 @@ def main():
+                     repetition_penalty=args.repetition_penalty,
+                     explainer=args.explainer,
+                     prompt_type=args.prompt_type,
+-                    max_model_len=args.max_model_len)
++                    max_model_len=args.max_model_len,
++                    seed=args.seed)
+ 
+ if __name__ == "__main__":
+     main()
+diff --git a/src/llms_m.py b/src/llms_m.py
+index 3eea3e7..643c802 100644
+--- a/src/llms_m.py
++++ b/src/llms_m.py
+@@ -1,9 +1,10 @@
+ from transformers import AutoTokenizer
+ import json
++import os
+ import torch
+ from tqdm import tqdm
+ from vllm import LLM, SamplingParams
+-from data.kb import cora_description, citeseer_description, get_system_prompt
++from data.kb import cora_description, citeseer_description, products_description, get_system_prompt
+ import random
+ import numpy as np
+ import time
+@@ -14,7 +15,7 @@ MODEL_MAPPING = {
+     "phi_14B_Q8_GGUF": "ssmits/Phi-3-medium-128k-instruct-Q8_0-GGUF",  # 128k
+     "mistral_7B": "mistralai/Mistral-7B-Instruct-v0.3",  # 32k
+     "smollm2_2B": "HuggingFaceTB/SmolLM2-1.7B-Instruct",  # 8k
+-    "llama_8B": "meta-llama/Llama-3.1-8B-Instruct",  # 128k
++    "llama_8B": "meta-llama/Meta-Llama-3.1-8B-Instruct",  # 128k
+     "llama_3B": "meta-llama/Llama-3.2-3B-Instruct",  # 128k
+     "qwen_0.5B": "Qwen/Qwen2.5-0.5B-Instruct",  # 128k
+     "qwen_1.5B": "Qwen/Qwen2.5-1.5B-Instruct",  # 128k
+@@ -48,56 +49,80 @@ def set_full_reproducibility(seed=42):
+     torch.backends.cudnn.deterministic = True
+     torch.backends.cudnn.benchmark = False
+ 
+-def get_explanations_mistral_vllm(model_name, temperature, top_p, dataset, max_tokens, repetition_penalty, explainer, prompt_type:str, max_model_len: int =7000):
+-    set_full_reproducibility()
++def get_explanations_mistral_vllm(model_name, temperature, top_p, dataset, max_tokens, repetition_penalty, explainer, prompt_type:str, max_model_len: int =7000, seed: int = 42):
++    set_full_reproducibility(seed)
+ 
+-    perturbation_type: str = "node features" if explainer == "cf-gnnfeatures" else "adjacency matrix"
++    perturbation_type: str = "node features" if "cf-gnnfeatures" in explainer else "adjacency matrix"
+     model_name = MODEL_MAPPING[model_name]
+ 
+     tokenizer = AutoTokenizer.from_pretrained(model_name)
+-    sampling_params = SamplingParams(temperature=temperature, top_p=top_p, repetition_penalty=repetition_penalty, max_tokens=max_tokens, top_k=10)
++    sampling_params = SamplingParams(temperature=temperature, top_p=top_p, repetition_penalty=repetition_penalty, max_tokens=max_tokens, top_k=10, seed=seed)
+ 
+     # Input the model name or path. Can be GPTQ or AWQ models.
+-    llm = LLM(model=model_name, gpu_memory_utilization=0.1, max_model_len=max_model_len, max_num_seqs=1)  # Reduced GPU utilization to avoid OOM
++    llm = LLM(model=model_name, gpu_memory_utilization=0.8, max_model_len=32000, max_num_seqs=1)  # Reduced GPU utilization to avoid OOM
+ 
+     data_path: str = f"data/{dataset}/{explainer}"
+     extension: str = "json"
+-    dataset_description: str = cora_description if dataset == "cora" else citeseer_description
+-
+-    with open(f"{data_path}/random_seed_42_counterfactual_graph_descriptions.{extension}", 'r', encoding='utf-8') as file1:
++    if dataset == "cora":
++        dataset_description: str = cora_description
++    elif dataset == "products":
++        dataset_description: str = products_description
++    else:
++        dataset_description: str = citeseer_description
++
++    with open(f"{data_path}/random_seed_{seed}_counterfactual_graph_descriptions.{extension}", 'r', encoding='utf-8') as file1:
+         data1 = json.load(file1)
+ 
+-    with open(f"{data_path}/random_seed_42_factual_graph_descriptions.{extension}", 'r', encoding='utf-8') as file2:
++    with open(f"{data_path}/random_seed_{seed}_factual_graph_descriptions.{extension}", 'r', encoding='utf-8') as file2:
+         data2 = json.load(file2)
+ 
+-    responses = {}
++    output_file = f"data/results/{explainer}_{model_name.split('/')[1]}_{dataset}_{prompt_type}_Response.json"
++    if os.path.exists(output_file):
++        with open(output_file, 'r', encoding='utf-8') as f:
++            responses = json.load(f)
++        print(f"Resuming from {output_file} ({len(responses)} nodes already done)")
++    else:
++        responses = {}
++
++    save_every = 5
++    processed = 0
+     prompt = ""
+     for key, value in tqdm(data1.items()):
++        if key in responses:
++            continue
+         
++        # Detect canonical format: factual_graph_descriptions already contains both
++        # "given the factual graph: ... and given the counterfactual example: ..."
++        # In that case use CANONICAL_PROMPT to avoid duplicating the CF description.
++        is_canonical_format = str(data2[key]).strip().lower().startswith("given the factual graph")
++
+         if prompt_type == "few":
+             from .prompts import FEW_SHOT_PROMPT
+-            
+             prompt = FEW_SHOT_PROMPT.format(data2[key], data1[key], dataset_description)
+-            
+-        
++
+         elif prompt_type == "zero":
+             from .prompts import ZERO_SHOT_PROMPT
+-            
+-            prompt = ZERO_SHOT_PROMPT.format(data2[key], data1[key])
+-            
+-        
++            if is_canonical_format:
++                prompt = ZERO_SHOT_PROMPT.format(data2[key], "")
++            else:
++                prompt = ZERO_SHOT_PROMPT.format(data2[key], data1[key])
++
+         elif prompt_type == "standard":
+-            from .prompts import STANDARD_PROMPT
+-                 
+-            prompt = STANDARD_PROMPT.format(data2[key], data1[key], dataset_description)
+-    
++            if is_canonical_format:
++                from .prompts import CANONICAL_PROMPT
++                prompt = CANONICAL_PROMPT.format(
++                    combined_description=data2[key], kb=dataset_description
++                )
++            else:
++                from .prompts import STANDARD_PROMPT
++                prompt = STANDARD_PROMPT.format(data2[key], data1[key], dataset_description)
++
+         else:
+-            
+             raise ValueError("prompt_type values does not exist!")
+ 
+         # Prepare the messages for the model
+         messages = [
+-            {"role": "system", "content": get_system_prompt(perturbation_type=perturbation_type, task="graph")},
++            {"role": "system", "content": get_system_prompt(perturbation_type=perturbation_type, task="node")},
+             {"role": "user", "content": prompt}
+         ]
+ 
+@@ -108,7 +133,7 @@ def get_explanations_mistral_vllm(model_name, temperature, top_p, dataset, max_t
+             add_generation_prompt=True
+         )
+         
+-        if len(text) > max_model_len:
++        if len(text) > 200000:  # character limit, separate from vLLM token limit
+             continue
+         
+         try:
+@@ -126,7 +151,7 @@ def get_explanations_mistral_vllm(model_name, temperature, top_p, dataset, max_t
+             # Retry with reduced GPU utilization if possible
+             try:
+                 # Reduce GPU memory utilization for retry
+-                llm = LLM(model=model_name, gpu_memory_utilization=1.0, max_model_len=max_model_len, max_num_seqs=1)
++                llm = LLM(model=model_name, gpu_memory_utilization=0.7, max_model_len=4096, max_num_seqs=1)
+                 with torch.no_grad():
+                     outputs = llm.generate([text], sampling_params=sampling_params)
+             except RuntimeError as retry_e:
+@@ -142,6 +167,9 @@ def get_explanations_mistral_vllm(model_name, temperature, top_p, dataset, max_t
+             else:
+                 print(f"Unexpected error: {e}")
+             continue
++        except ValueError as val_e:
++            print(f"Prompt too long, skipping node {key}: {val_e}")
++            continue
+         except AssertionError as assert_e:
+             print(f"Assertion error: {assert_e}")
+             continue
+@@ -153,14 +181,20 @@ def get_explanations_mistral_vllm(model_name, temperature, top_p, dataset, max_t
+ 
+         print(generated_text)
+         responses[key] = (prompt, generated_text)
++        processed += 1
+ 
+         # Delete large variables to release memory
+         del generated_text
+         del outputs
+ 
+-    # Save the responses to a JSON file
+-    output_file = f"data/results/{explainer}_{model_name.split('/')[1]}_{dataset}_{prompt_type}_Response.json"
+-    with open(output_file, 'w', encoding='utf-8') as output:
+-        json.dump(responses, output, indent=4)
++        # Incremental save every save_every nodes
++        if processed % save_every == 0:
++            with open(output_file, 'w', encoding='utf-8') as f:
++                json.dump(responses, f, indent=4)
++            print(f"Checkpoint saved ({len(responses)} total nodes done)")
++
++    # Final save
++    with open(output_file, 'w', encoding='utf-8') as f:
++        json.dump(responses, f, indent=4)
+ 
+     print(f"Responses saved to {output_file}.")
+diff --git a/src/prompts.py b/src/prompts.py
+index 253d2d2..0309d5f 100644
+--- a/src/prompts.py
++++ b/src/prompts.py
+@@ -1,3 +1,9 @@
++# Used when data2[key] already contains "given the factual graph: ... and given the counterfactual example: ..."
++# (canonical format — avoids duplicating the counterfactual description)
++CANONICAL_PROMPT = """{combined_description}
++                    and given the knowledge base about the dataset: {kb}, fill the dictionary!
++                    and provide an explanation about the change in classification for the target node, please evaluate also the influences of neighbors nodes."""
++
+ STANDARD_PROMPT =   """
+                     Given the factual graph: {} and given the counterfactual example: {}
+                     and given the knowledge base about the dataset: {}, fill the dictionary!

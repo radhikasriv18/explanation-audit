@@ -1,0 +1,76 @@
+{
+  "cora": {
+    "n_not_found": 344,
+    "n_isolation_would_flip": 43,
+    "n_isolation_still_no_flip": 301,
+    "examples_would_flip_but_search_missed": [
+      {
+        "node": 114,
+        "orig_pred": 6,
+        "isolated_pred": 1,
+        "subgraph_size": 3
+      },
+      {
+        "node": 130,
+        "orig_pred": 6,
+        "isolated_pred": 5,
+        "subgraph_size": 34
+      },
+      {
+        "node": 284,
+        "orig_pred": 0,
+        "isolated_pred": 2,
+        "subgraph_size": 18
+      },
+      {
+        "node": 417,
+        "orig_pred": 6,
+        "isolated_pred": 2,
+        "subgraph_size": 5
+      },
+      {
+        "node": 459,
+        "orig_pred": 6,
+        "isolated_pred": 2,
+        "subgraph_size": 37
+      }
+    ]
+  },
+  "products": {
+    "n_not_found": 140,
+    "n_isolation_would_flip": 12,
+    "n_isolation_still_no_flip": 128,
+    "examples_would_flip_but_search_missed": [
+      {
+        "node": 3988,
+        "orig_pred": 15,
+        "isolated_pred": 13,
+        "subgraph_size": 27
+      },
+      {
+        "node": 8652,
+        "orig_pred": 7,
+        "isolated_pred": 4,
+        "subgraph_size": 23
+      },
+      {
+        "node": 15385,
+        "orig_pred": 1,
+        "isolated_pred": 6,
+        "subgraph_size": 7
+      },
+      {
+        "node": 18991,
+        "orig_pred": 10,
+        "isolated_pred": 5,
+        "subgraph_size": 7
+      },
+      {
+        "node": 21312,
+        "orig_pred": 3,
+        "isolated_pred": 0,
+        "subgraph_size": 7
+      }
+    ]
+  }
+}

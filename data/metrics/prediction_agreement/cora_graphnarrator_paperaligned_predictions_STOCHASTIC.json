@@ -1,0 +1,2203 @@
+{
+  "summary": {
+    "dataset": "cora",
+    "n_eval_nodes": 542,
+    "n_predicted": 542,
+    "graphnarrator_own_accuracy_stochastic": 0.7158671586715867,
+    "agreement_vs_canonical_stochastic": 0.7047970479704797,
+    "batch_size": 16,
+    "num_neighbors": [
+      10,
+      10
+    ],
+    "seed": 42,
+    "survey_nodes": {
+      "510": {
+        "true_label": "Probabilistic_Methods",
+        "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+      },
+      "2334": {
+        "true_label": "Genetic_Algorithms",
+        "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+      },
+      "1062": {
+        "true_label": "Theory",
+        "graphnarrator_own_pred_stochastic": "Neural_Networks"
+      },
+      "884": {
+        "true_label": "Theory",
+        "graphnarrator_own_pred_stochastic": "Theory"
+      }
+    }
+  },
+  "per_node": {
+    "1": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "4": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "11": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "16": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "19": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "21": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "34": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "35": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "36": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "38": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "46": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "50": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "64": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "75": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "89": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "90": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "95": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "98": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "103": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "114": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "116": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "119": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "122": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "127": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "130": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "143": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "146": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "153": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "154": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "160": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "161": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "172": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "180": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "186": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "189": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "190": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "197": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "200": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "201": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "202": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "206": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "216": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "225": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "234": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "241": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "245": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "253": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "262": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "264": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "268": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "284": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "293": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "301": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "317": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "330": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "335": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "337": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "356": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "369": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "378": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "379": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "391": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "392": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "395": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "396": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "397": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "399": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "400": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "403": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "412": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "417": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "418": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "452": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "455": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "459": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "466": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "469": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "474": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "487": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "488": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "492": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "496": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "499": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "502": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "504": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "510": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "512": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "515": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "524": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "537": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "540": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "546": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "550": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "559": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "562": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "563": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "569": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "574": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "580": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "586": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "595": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "600": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "606": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "608": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "616": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "623": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "625": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "627": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "633": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "635": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "639": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "640": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "641": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "646": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "648": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "652": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "656": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "658": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "659": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "663": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "675": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "681": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "683": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "684": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "698": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "699": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "702": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "703": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "709": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "713": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "717": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "728": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "732": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "740": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "747": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "750": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "753": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "763": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "766": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "769": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "773": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "775": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "779": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "784": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "791": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "795": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "797": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "804": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "815": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "823": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "825": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "828": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "830": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "833": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "835": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "837": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "850": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "851": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "853": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "854": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "860": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "863": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "870": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "872": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "876": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "877": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "878": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "880": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "884": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "894": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "895": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "896": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "920": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "928": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "933": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "953": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "954": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "955": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "956": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "957": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "959": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "960": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "971": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "972": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "975": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "977": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "980": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "991": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "992": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "995": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "996": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1008": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "1012": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "1015": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1016": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1020": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1021": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1028": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1038": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1045": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1051": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1059": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1060": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1062": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1065": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1066": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1069": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1076": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1077": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1081": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "1082": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "1092": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1095": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1115": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1119": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1122": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1126": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1129": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1130": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1136": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1139": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1141": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1147": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1148": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1150": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1152": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1153": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1154": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1155": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1156": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1158": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1162": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1166": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1167": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1180": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "1183": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "1184": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1191": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1197": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1205": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1209": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1212": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1214": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1215": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1217": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1218": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1219": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1227": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1238": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1243": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1257": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1267": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1275": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "1282": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1291": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1294": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1296": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1297": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1300": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1306": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1312": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "1324": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1327": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1346": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1348": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1354": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1363": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1365": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1367": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1369": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1384": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1388": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1390": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1400": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1408": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1409": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1415": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1416": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1434": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1438": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "1439": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1440": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "1443": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1445": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "1470": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1478": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1479": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1482": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1484": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1485": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1492": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1495": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1496": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1500": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1504": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1515": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1516": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1519": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "1520": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1522": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1527": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1528": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1529": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1531": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1534": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1540": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "1542": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1548": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1568": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1570": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1571": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1579": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1585": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "1589": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1595": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1597": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1603": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1625": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1630": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1631": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1634": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1635": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1636": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1638": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1643": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1648": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1649": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "1661": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1663": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1664": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1676": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1678": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1679": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1680": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1682": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1683": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1685": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1686": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "1687": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "1693": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "1695": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1696": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1698": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1704": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1705": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1707": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1715": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1722": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1733": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1734": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1751": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1757": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1758": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1759": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1768": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1773": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1781": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "1782": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1785": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1787": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1794": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1796": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1799": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1802": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1806": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1810": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1816": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1819": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "1821": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1823": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1827": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1841": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1843": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1853": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1856": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1863": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1881": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "1884": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1890": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1892": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "1895": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1899": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1903": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1906": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1919": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "1923": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1930": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1931": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1955": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "1958": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1959": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1969": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "1974": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1981": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "1982": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1986": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "1996": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "1998": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2006": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "2027": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2038": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2041": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "2047": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2049": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2056": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2061": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "2062": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2065": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2068": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2070": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2074": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "2076": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2082": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2085": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2088": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2101": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "2109": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2135": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "2139": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2141": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "2143": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2146": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "2156": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "2160": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2169": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2182": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "2191": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2197": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2198": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "2199": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2200": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2205": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2207": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "2214": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2224": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2233": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2235": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2237": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2238": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2239": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2253": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "2255": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2257": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2264": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2265": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2267": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2269": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2274": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2277": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2278": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2281": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2294": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "2298": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2300": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "2301": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2306": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2308": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2311": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2317": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2323": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2324": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2327": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2331": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "2334": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2335": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2336": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2343": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2352": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2363": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2368": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "2385": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2391": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "2393": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2408": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2414": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2420": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2431": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "2432": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2433": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2435": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2443": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "2449": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "2450": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "2452": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2454": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2459": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2470": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "2473": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "2489": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "2499": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2507": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2510": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2513": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2517": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2532": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2533": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2534": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2535": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2539": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "2542": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2553": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2556": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "2558": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2559": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2561": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2562": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2568": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "2570": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2572": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2573": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2579": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2583": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2586": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2591": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "2597": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2598": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2602": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2608": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2612": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2613": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2617": {
+      "true_label": "Rule_Learning",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "2631": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2633": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "2635": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2637": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2638": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2641": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2645": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Case_Based"
+    },
+    "2647": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2648": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2652": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Rule_Learning"
+    },
+    "2655": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "2658": {
+      "true_label": "Case_Based",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2660": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2675": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    },
+    "2676": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Neural_Networks"
+    },
+    "2684": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2686": {
+      "true_label": "Neural_Networks",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2687": {
+      "true_label": "Reinforcement_Learning",
+      "graphnarrator_own_pred_stochastic": "Reinforcement_Learning"
+    },
+    "2688": {
+      "true_label": "Genetic_Algorithms",
+      "graphnarrator_own_pred_stochastic": "Genetic_Algorithms"
+    },
+    "2690": {
+      "true_label": "Theory",
+      "graphnarrator_own_pred_stochastic": "Probabilistic_Methods"
+    },
+    "2700": {
+      "true_label": "Probabilistic_Methods",
+      "graphnarrator_own_pred_stochastic": "Theory"
+    }
+  }
+}

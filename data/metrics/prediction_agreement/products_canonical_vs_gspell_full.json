@@ -1,0 +1,1034 @@
+{
+  "summary": {
+    "dataset": "products",
+    "n_eval_nodes": 200,
+    "gspell_vs_canonical_agreement": 1.0,
+    "canonical_accuracy": 0.71,
+    "gspell_own_accuracy": 0.71,
+    "note": "GSPELL's Products checkpoint is the canonical weights re-keyed (gen_products_canonical_data.py), not an independently trained model -- this agreement number is expected to be ~1.0 by construction, not a meaningful independence check.",
+    "survey_nodes": {
+      "6813": {
+        "true_label": "Beauty",
+        "canonical_pred": "Beauty",
+        "gspell_own_pred": "Beauty"
+      },
+      "1852": {
+        "true_label": "Office Products",
+        "canonical_pred": "Health & Personal Care",
+        "gspell_own_pred": "Health & Personal Care"
+      },
+      "8766": {
+        "true_label": "Beauty",
+        "canonical_pred": "Beauty",
+        "gspell_own_pred": "Beauty"
+      },
+      "8438": {
+        "true_label": "Baby",
+        "canonical_pred": "Health & Personal Care",
+        "gspell_own_pred": "Health & Personal Care"
+      }
+    }
+  },
+  "per_node": {
+    "348": {
+      "true_label": "Tools & Home Improvement",
+      "canonical_pred": "Patio, Lawn & Garden",
+      "gspell_own_pred": "Patio, Lawn & Garden"
+    },
+    "1191": {
+      "true_label": "Pet Supplies",
+      "canonical_pred": "Pet Supplies",
+      "gspell_own_pred": "Pet Supplies"
+    },
+    "1691": {
+      "true_label": "Baby Products",
+      "canonical_pred": "Beauty",
+      "gspell_own_pred": "Beauty"
+    },
+    "1852": {
+      "true_label": "Office Products",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "1958": {
+      "true_label": "Sports & Outdoors",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "2299": {
+      "true_label": "Musical Instruments",
+      "canonical_pred": "Musical Instruments",
+      "gspell_own_pred": "Musical Instruments"
+    },
+    "3040": {
+      "true_label": "Office Products",
+      "canonical_pred": "Office Products",
+      "gspell_own_pred": "Office Products"
+    },
+    "3305": {
+      "true_label": "Patio, Lawn & Garden",
+      "canonical_pred": "Arts, Crafts & Sewing",
+      "gspell_own_pred": "Arts, Crafts & Sewing"
+    },
+    "3503": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "3988": {
+      "true_label": "Video Games",
+      "canonical_pred": "Video Games",
+      "gspell_own_pred": "Video Games"
+    },
+    "4157": {
+      "true_label": "Electronics",
+      "canonical_pred": "Cell Phones & Accessories",
+      "gspell_own_pred": "Cell Phones & Accessories"
+    },
+    "4548": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "4681": {
+      "true_label": "Beauty",
+      "canonical_pred": "Beauty",
+      "gspell_own_pred": "Beauty"
+    },
+    "4736": {
+      "true_label": "Tools & Home Improvement",
+      "canonical_pred": "Industrial & Scientific",
+      "gspell_own_pred": "Industrial & Scientific"
+    },
+    "4782": {
+      "true_label": "Tools & Home Improvement",
+      "canonical_pred": "Patio, Lawn & Garden",
+      "gspell_own_pred": "Patio, Lawn & Garden"
+    },
+    "4798": {
+      "true_label": "Tools & Home Improvement",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "4886": {
+      "true_label": "CDs & Vinyl",
+      "canonical_pred": "Movies & TV",
+      "gspell_own_pred": "Movies & TV"
+    },
+    "5001": {
+      "true_label": "Beauty",
+      "canonical_pred": "Beauty",
+      "gspell_own_pred": "Beauty"
+    },
+    "5204": {
+      "true_label": "Home & Kitchen",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "5661": {
+      "true_label": "Electronics",
+      "canonical_pred": "Cell Phones & Accessories",
+      "gspell_own_pred": "Cell Phones & Accessories"
+    },
+    "6050": {
+      "true_label": "Tools & Home Improvement",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "6236": {
+      "true_label": "Electronics",
+      "canonical_pred": "Cell Phones & Accessories",
+      "gspell_own_pred": "Cell Phones & Accessories"
+    },
+    "6733": {
+      "true_label": "Pet Supplies",
+      "canonical_pred": "Pet Supplies",
+      "gspell_own_pred": "Pet Supplies"
+    },
+    "6813": {
+      "true_label": "Beauty",
+      "canonical_pred": "Beauty",
+      "gspell_own_pred": "Beauty"
+    },
+    "6910": {
+      "true_label": "Automotive",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "7384": {
+      "true_label": "Home & Kitchen",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "7389": {
+      "true_label": "Home & Kitchen",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "7982": {
+      "true_label": "Health & Personal Care",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "8056": {
+      "true_label": "CDs & Vinyl",
+      "canonical_pred": "CDs & Vinyl",
+      "gspell_own_pred": "CDs & Vinyl"
+    },
+    "8438": {
+      "true_label": "Baby",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "8485": {
+      "true_label": "Sports & Outdoors",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "8652": {
+      "true_label": "CDs & Vinyl",
+      "canonical_pred": "CDs & Vinyl",
+      "gspell_own_pred": "CDs & Vinyl"
+    },
+    "8728": {
+      "true_label": "label 25",
+      "canonical_pred": "Beauty",
+      "gspell_own_pred": "Beauty"
+    },
+    "8766": {
+      "true_label": "Beauty",
+      "canonical_pred": "Beauty",
+      "gspell_own_pred": "Beauty"
+    },
+    "9545": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "9879": {
+      "true_label": "Pet Supplies",
+      "canonical_pred": "Pet Supplies",
+      "gspell_own_pred": "Pet Supplies"
+    },
+    "10192": {
+      "true_label": "Health & Personal Care",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "10483": {
+      "true_label": "Health & Personal Care",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "10543": {
+      "true_label": "Toys & Games",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "11327": {
+      "true_label": "Sports & Outdoors",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "12059": {
+      "true_label": "Electronics",
+      "canonical_pred": "Electronics",
+      "gspell_own_pred": "Electronics"
+    },
+    "12061": {
+      "true_label": "Cell Phones & Accessories",
+      "canonical_pred": "Cell Phones & Accessories",
+      "gspell_own_pred": "Cell Phones & Accessories"
+    },
+    "12464": {
+      "true_label": "label 25",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "12726": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "12744": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "13079": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "14516": {
+      "true_label": "Office Products",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "14537": {
+      "true_label": "Office Products",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "14551": {
+      "true_label": "Office Products",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "14760": {
+      "true_label": "Grocery & Gourmet Food",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "15065": {
+      "true_label": "Electronics",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "15385": {
+      "true_label": "Health & Personal Care",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "15849": {
+      "true_label": "Musical Instruments",
+      "canonical_pred": "Electronics",
+      "gspell_own_pred": "Electronics"
+    },
+    "15950": {
+      "true_label": "Electronics",
+      "canonical_pred": "Electronics",
+      "gspell_own_pred": "Electronics"
+    },
+    "16296": {
+      "true_label": "Beauty",
+      "canonical_pred": "Beauty",
+      "gspell_own_pred": "Beauty"
+    },
+    "16822": {
+      "true_label": "Toys & Games",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "17048": {
+      "true_label": "Arts, Crafts & Sewing",
+      "canonical_pred": "Arts, Crafts & Sewing",
+      "gspell_own_pred": "Arts, Crafts & Sewing"
+    },
+    "17278": {
+      "true_label": "Beauty",
+      "canonical_pred": "Beauty",
+      "gspell_own_pred": "Beauty"
+    },
+    "17537": {
+      "true_label": "Toys & Games",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "17822": {
+      "true_label": "Office Products",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "18032": {
+      "true_label": "Tools & Home Improvement",
+      "canonical_pred": "Tools & Home Improvement",
+      "gspell_own_pred": "Tools & Home Improvement"
+    },
+    "18243": {
+      "true_label": "Office Products",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "18497": {
+      "true_label": "Cell Phones & Accessories",
+      "canonical_pred": "Cell Phones & Accessories",
+      "gspell_own_pred": "Cell Phones & Accessories"
+    },
+    "18944": {
+      "true_label": "Office Products",
+      "canonical_pred": "Arts, Crafts & Sewing",
+      "gspell_own_pred": "Arts, Crafts & Sewing"
+    },
+    "18991": {
+      "true_label": "Tools & Home Improvement",
+      "canonical_pred": "Arts, Crafts & Sewing",
+      "gspell_own_pred": "Arts, Crafts & Sewing"
+    },
+    "19140": {
+      "true_label": "Office Products",
+      "canonical_pred": "Arts, Crafts & Sewing",
+      "gspell_own_pred": "Arts, Crafts & Sewing"
+    },
+    "19356": {
+      "true_label": "Arts, Crafts & Sewing",
+      "canonical_pred": "Arts, Crafts & Sewing",
+      "gspell_own_pred": "Arts, Crafts & Sewing"
+    },
+    "19363": {
+      "true_label": "Home & Kitchen",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "19920": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "20262": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "21066": {
+      "true_label": "Electronics",
+      "canonical_pred": "Electronics",
+      "gspell_own_pred": "Electronics"
+    },
+    "21312": {
+      "true_label": "Sports & Outdoors",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "21401": {
+      "true_label": "Sports & Outdoors",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "21445": {
+      "true_label": "Sports & Outdoors",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "21477": {
+      "true_label": "Sports & Outdoors",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "21934": {
+      "true_label": "Video Games",
+      "canonical_pred": "Video Games",
+      "gspell_own_pred": "Video Games"
+    },
+    "22706": {
+      "true_label": "Pet Supplies",
+      "canonical_pred": "Pet Supplies",
+      "gspell_own_pred": "Pet Supplies"
+    },
+    "22907": {
+      "true_label": "Beauty",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "22915": {
+      "true_label": "Health & Personal Care",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "23005": {
+      "true_label": "Beauty",
+      "canonical_pred": "Beauty",
+      "gspell_own_pred": "Beauty"
+    },
+    "23017": {
+      "true_label": "Health & Personal Care",
+      "canonical_pred": "Beauty",
+      "gspell_own_pred": "Beauty"
+    },
+    "23045": {
+      "true_label": "Health & Personal Care",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "23167": {
+      "true_label": "Sports & Outdoors",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "23324": {
+      "true_label": "Clothing, Shoes & Jewelry",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "23525": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "23701": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "23875": {
+      "true_label": "Beauty",
+      "canonical_pred": "Beauty",
+      "gspell_own_pred": "Beauty"
+    },
+    "23888": {
+      "true_label": "Beauty",
+      "canonical_pred": "Beauty",
+      "gspell_own_pred": "Beauty"
+    },
+    "24464": {
+      "true_label": "Automotive",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "24600": {
+      "true_label": "Tools & Home Improvement",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "24608": {
+      "true_label": "Tools & Home Improvement",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "24742": {
+      "true_label": "Tools & Home Improvement",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "24930": {
+      "true_label": "Movies & TV",
+      "canonical_pred": "Movies & TV",
+      "gspell_own_pred": "Movies & TV"
+    },
+    "25079": {
+      "true_label": "Movies & TV",
+      "canonical_pred": "Movies & TV",
+      "gspell_own_pred": "Movies & TV"
+    },
+    "25103": {
+      "true_label": "Movies & TV",
+      "canonical_pred": "Movies & TV",
+      "gspell_own_pred": "Movies & TV"
+    },
+    "25344": {
+      "true_label": "Beauty",
+      "canonical_pred": "Beauty",
+      "gspell_own_pred": "Beauty"
+    },
+    "26599": {
+      "true_label": "Automotive",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "26626": {
+      "true_label": "Pet Supplies",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "26687": {
+      "true_label": "Automotive",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "26732": {
+      "true_label": "Beauty",
+      "canonical_pred": "Beauty",
+      "gspell_own_pred": "Beauty"
+    },
+    "26895": {
+      "true_label": "Baby",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "27072": {
+      "true_label": "Beauty",
+      "canonical_pred": "Beauty",
+      "gspell_own_pred": "Beauty"
+    },
+    "27397": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "28044": {
+      "true_label": "Industrial & Scientific",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "29075": {
+      "true_label": "Sports & Outdoors",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "29164": {
+      "true_label": "Movies & TV",
+      "canonical_pred": "Movies & TV",
+      "gspell_own_pred": "Movies & TV"
+    },
+    "29513": {
+      "true_label": "Electronics",
+      "canonical_pred": "Cell Phones & Accessories",
+      "gspell_own_pred": "Cell Phones & Accessories"
+    },
+    "29531": {
+      "true_label": "Electronics",
+      "canonical_pred": "Electronics",
+      "gspell_own_pred": "Electronics"
+    },
+    "29606": {
+      "true_label": "Electronics",
+      "canonical_pred": "Electronics",
+      "gspell_own_pred": "Electronics"
+    },
+    "29706": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "29895": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "30240": {
+      "true_label": "CDs & Vinyl",
+      "canonical_pred": "CDs & Vinyl",
+      "gspell_own_pred": "CDs & Vinyl"
+    },
+    "30322": {
+      "true_label": "Movies & TV",
+      "canonical_pred": "CDs & Vinyl",
+      "gspell_own_pred": "CDs & Vinyl"
+    },
+    "30333": {
+      "true_label": "CDs & Vinyl",
+      "canonical_pred": "CDs & Vinyl",
+      "gspell_own_pred": "CDs & Vinyl"
+    },
+    "30483": {
+      "true_label": "Arts, Crafts & Sewing",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "30739": {
+      "true_label": "Home & Kitchen",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "32166": {
+      "true_label": "Electronics",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "32390": {
+      "true_label": "Sports & Outdoors",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "33376": {
+      "true_label": "Toys & Games",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "33424": {
+      "true_label": "Home & Kitchen",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "33476": {
+      "true_label": "Home & Kitchen",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "33658": {
+      "true_label": "Home & Kitchen",
+      "canonical_pred": "Patio, Lawn & Garden",
+      "gspell_own_pred": "Patio, Lawn & Garden"
+    },
+    "33739": {
+      "true_label": "Home & Kitchen",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "34060": {
+      "true_label": "Sports & Outdoors",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "34546": {
+      "true_label": "Toys & Games",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "34622": {
+      "true_label": "Toys & Games",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "34995": {
+      "true_label": "Toys & Games",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "35101": {
+      "true_label": "Toys & Games",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "35121": {
+      "true_label": "Toys & Games",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "35272": {
+      "true_label": "Office Products",
+      "canonical_pred": "Office Products",
+      "gspell_own_pred": "Office Products"
+    },
+    "35306": {
+      "true_label": "Health & Personal Care",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "35731": {
+      "true_label": "CDs & Vinyl",
+      "canonical_pred": "CDs & Vinyl",
+      "gspell_own_pred": "CDs & Vinyl"
+    },
+    "36002": {
+      "true_label": "Home & Kitchen",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "36007": {
+      "true_label": "Home & Kitchen",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "36152": {
+      "true_label": "Baby Products",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "36182": {
+      "true_label": "Office Products",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "36678": {
+      "true_label": "Pet Supplies",
+      "canonical_pred": "Pet Supplies",
+      "gspell_own_pred": "Pet Supplies"
+    },
+    "36793": {
+      "true_label": "Health & Personal Care",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "36811": {
+      "true_label": "Beauty",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "36892": {
+      "true_label": "Health & Personal Care",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "36923": {
+      "true_label": "Health & Personal Care",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "37221": {
+      "true_label": "Sports & Outdoors",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "37775": {
+      "true_label": "CDs & Vinyl",
+      "canonical_pred": "CDs & Vinyl",
+      "gspell_own_pred": "CDs & Vinyl"
+    },
+    "37929": {
+      "true_label": "CDs & Vinyl",
+      "canonical_pred": "CDs & Vinyl",
+      "gspell_own_pred": "CDs & Vinyl"
+    },
+    "38206": {
+      "true_label": "Beauty",
+      "canonical_pred": "Beauty",
+      "gspell_own_pred": "Beauty"
+    },
+    "38815": {
+      "true_label": "Tools & Home Improvement",
+      "canonical_pred": "Tools & Home Improvement",
+      "gspell_own_pred": "Tools & Home Improvement"
+    },
+    "39331": {
+      "true_label": "Toys & Games",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "39419": {
+      "true_label": "Toys & Games",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "40150": {
+      "true_label": "Pet Supplies",
+      "canonical_pred": "Pet Supplies",
+      "gspell_own_pred": "Pet Supplies"
+    },
+    "40262": {
+      "true_label": "Home & Kitchen",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "40286": {
+      "true_label": "Toys & Games",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "40611": {
+      "true_label": "Toys & Games",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "40705": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "40923": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "40975": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "41157": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "41275": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "41298": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "41316": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "41474": {
+      "true_label": "CDs & Vinyl",
+      "canonical_pred": "CDs & Vinyl",
+      "gspell_own_pred": "CDs & Vinyl"
+    },
+    "41517": {
+      "true_label": "CDs & Vinyl",
+      "canonical_pred": "CDs & Vinyl",
+      "gspell_own_pred": "CDs & Vinyl"
+    },
+    "41614": {
+      "true_label": "label 25",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "42081": {
+      "true_label": "Pet Supplies",
+      "canonical_pred": "Pet Supplies",
+      "gspell_own_pred": "Pet Supplies"
+    },
+    "42109": {
+      "true_label": "Pet Supplies",
+      "canonical_pred": "Pet Supplies",
+      "gspell_own_pred": "Pet Supplies"
+    },
+    "42186": {
+      "true_label": "Pet Supplies",
+      "canonical_pred": "Pet Supplies",
+      "gspell_own_pred": "Pet Supplies"
+    },
+    "42602": {
+      "true_label": "Cell Phones & Accessories",
+      "canonical_pred": "Cell Phones & Accessories",
+      "gspell_own_pred": "Cell Phones & Accessories"
+    },
+    "42622": {
+      "true_label": "Cell Phones & Accessories",
+      "canonical_pred": "Cell Phones & Accessories",
+      "gspell_own_pred": "Cell Phones & Accessories"
+    },
+    "43231": {
+      "true_label": "Sports & Outdoors",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "43535": {
+      "true_label": "CDs & Vinyl",
+      "canonical_pred": "CDs & Vinyl",
+      "gspell_own_pred": "CDs & Vinyl"
+    },
+    "43608": {
+      "true_label": "CDs & Vinyl",
+      "canonical_pred": "CDs & Vinyl",
+      "gspell_own_pred": "CDs & Vinyl"
+    },
+    "43813": {
+      "true_label": "Pet Supplies",
+      "canonical_pred": "Pet Supplies",
+      "gspell_own_pred": "Pet Supplies"
+    },
+    "44135": {
+      "true_label": "Health & Personal Care",
+      "canonical_pred": "Health & Personal Care",
+      "gspell_own_pred": "Health & Personal Care"
+    },
+    "44149": {
+      "true_label": "Toys & Games",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "44183": {
+      "true_label": "Toys & Games",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "44508": {
+      "true_label": "Toys & Games",
+      "canonical_pred": "Toys & Games",
+      "gspell_own_pred": "Toys & Games"
+    },
+    "44718": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "45324": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "45393": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "45454": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "45475": {
+      "true_label": "Health & Personal Care",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "45477": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "47177": {
+      "true_label": "Sports & Outdoors",
+      "canonical_pred": "Sports & Outdoors",
+      "gspell_own_pred": "Sports & Outdoors"
+    },
+    "47510": {
+      "true_label": "label 25",
+      "canonical_pred": "Video Games",
+      "gspell_own_pred": "Video Games"
+    },
+    "47875": {
+      "true_label": "Pet Supplies",
+      "canonical_pred": "Pet Supplies",
+      "gspell_own_pred": "Pet Supplies"
+    },
+    "48117": {
+      "true_label": "Pet Supplies",
+      "canonical_pred": "Pet Supplies",
+      "gspell_own_pred": "Pet Supplies"
+    },
+    "48226": {
+      "true_label": "Movies & TV",
+      "canonical_pred": "Movies & TV",
+      "gspell_own_pred": "Movies & TV"
+    },
+    "49090": {
+      "true_label": "CDs & Vinyl",
+      "canonical_pred": "CDs & Vinyl",
+      "gspell_own_pred": "CDs & Vinyl"
+    },
+    "49267": {
+      "true_label": "Tools & Home Improvement",
+      "canonical_pred": "Cell Phones & Accessories",
+      "gspell_own_pred": "Cell Phones & Accessories"
+    },
+    "49473": {
+      "true_label": "Cell Phones & Accessories",
+      "canonical_pred": "Cell Phones & Accessories",
+      "gspell_own_pred": "Cell Phones & Accessories"
+    },
+    "50338": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "50349": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "51559": {
+      "true_label": "Cell Phones & Accessories",
+      "canonical_pred": "Cell Phones & Accessories",
+      "gspell_own_pred": "Cell Phones & Accessories"
+    },
+    "51706": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "51874": {
+      "true_label": "Health & Personal Care",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "52045": {
+      "true_label": "Cell Phones & Accessories",
+      "canonical_pred": "Cell Phones & Accessories",
+      "gspell_own_pred": "Cell Phones & Accessories"
+    },
+    "52224": {
+      "true_label": "Electronics",
+      "canonical_pred": "Electronics",
+      "gspell_own_pred": "Electronics"
+    },
+    "52810": {
+      "true_label": "Patio, Lawn & Garden",
+      "canonical_pred": "Home & Kitchen",
+      "gspell_own_pred": "Home & Kitchen"
+    },
+    "53408": {
+      "true_label": "Pet Supplies",
+      "canonical_pred": "Pet Supplies",
+      "gspell_own_pred": "Pet Supplies"
+    },
+    "53644": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    },
+    "53931": {
+      "true_label": "Books",
+      "canonical_pred": "Books",
+      "gspell_own_pred": "Books"
+    }
+  }
+}

@@ -1,0 +1,546 @@
+{
+ "run_id": "CF-GNNExplainer__Llama-8B__cora__1782",
+ "method": "CF-GNNExplainer",
+ "config": "Llama-8B",
+ "dataset": "cora",
+ "node": "1782",
+ "source_file": "./llm-graph-cf/data/results/cf-gnnexplainer-canonical_Meta-Llama-3.1-8B-Instruct_cora_standard_Response.json",
+ "source_locator": "[357][1]",
+ "text_scope": "whole output",
+ "input_text": "To generate the dictionary, we will consider the target node as the node 1782, which is classified as Neural_Networks. We will then analyze the changes in the graph structure and node features that would cause the target node to be classified as Reinforcement_Learning.\n\nNode_Differences = [1782]\n\nEdge_Differences = [(1782, 134), (1782, 294), (1782, 565), (1782, 566)]\n\nTarget_Node_ID = 1782\nFactual_Target_Node_Neighbors = [294, 565, 566]\nFactual_Target_Node_Features = ['network', 'practic', 'limit', 'optim', 'artifici', 'cycl', 'depend', 'case', 'neural', 'sourc', 'posit', 'describ', 'error', 'control', 'studi', 'select', 'applic']\nCounterfactual_Target_Node_Neighbors = [294, 565, 566]\nCounterfactual_Target_Node_Features = ['network', 'practic', 'limit', 'optim', 'artifici', 'cycl', 'depend', 'case', 'neural', 'sourc', 'posit', 'describ', 'error', 'control', 'studi', 'select', 'applic']\nTarget_Node_Features_Changed_From_Factual_To_Counterfactual = []\nNatural_Language_Explanation = \"The target node 1782 was initially classified as Neural_Networks but after analyzing the changes in the graph structure and node features, it was determined that the node should be classified as Reinforcement_Learning. The neighbors of the target node, 294, 565, and 566, were already classified as Reinforcement_Learning, which influenced the change in classification. Additionally, the features of the target node remained the same, indicating that the change in classification was not due to any changes in the node's characteristics.\"\n\nThe change in classification for the target node 1782 from Neural_Networks to Reinforcement_Learning was influenced by the presence of its neighbors, 294, 565, and 566, which were already classified as Reinforcement_Learning. The features of the target node remained the same, indicating that the change in classification was not due to any changes in the node's characteristics.\n\nIn the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning. This suggests that the target node is likely to be classified as Reinforcement_Learning as well, given the influence of its neighbors.\n\nIn the counterfactual graph, the target node 1782 is still connected to the nodes 294, 565, and 566, but its classification remains the same as in the factual graph. However, the features of the target node remain the same, indicating that there are no changes in the node's characteristics that would cause it to be classified differently.\n\nTherefore, the change in classification for the target node 1782 from Neural_Networks to Reinforcement_Learning can be attributed to the influence of its neighbors, rather than any changes in the node's features.",
+ "text_scored_sha256_16": "9bba084abeaa4ecb",
+ "model": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+ "prompt_version": "v3",
+ "generation": {
+  "dtype": "float16",
+  "do_sample": false,
+  "temperature": 0,
+  "max_new_tokens": 4096
+ },
+ "gpu": "NVIDIA A100-SXM4-80GB",
+ "versions": {
+  "torch": "2.4.1+cu121",
+  "transformers": "4.44.2"
+ },
+ "prompt_messages": [
+  {
+   "role": "system",
+   "content": "You are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only."
+  },
+  {
+   "role": "user",
+   "content": "Extract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 1782. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 1782  (dataset: cora)\n\nEXPLANATION:\n<<<\nTo generate the dictionary, we will consider the target node as the node 1782, which is classified as Neural_Networks. We will then analyze the changes in the graph structure and node features that would cause the target node to be classified as Reinforcement_Learning.\n\nNode_Differences = [1782]\n\nEdge_Differences = [(1782, 134), (1782, 294), (1782, 565), (1782, 566)]\n\nTarget_Node_ID = 1782\nFactual_Target_Node_Neighbors = [294, 565, 566]\nFactual_Target_Node_Features = ['network', 'practic', 'limit', 'optim', 'artifici', 'cycl', 'depend', 'case', 'neural', 'sourc', 'posit', 'describ', 'error', 'control', 'studi', 'select', 'applic']\nCounterfactual_Target_Node_Neighbors = [294, 565, 566]\nCounterfactual_Target_Node_Features = ['network', 'practic', 'limit', 'optim', 'artifici', 'cycl', 'depend', 'case', 'neural', 'sourc', 'posit', 'describ', 'error', 'control', 'studi', 'select', 'applic']\nTarget_Node_Features_Changed_From_Factual_To_Counterfactual = []\nNatural_Language_Explanation = \"The target node 1782 was initially classified as Neural_Networks but after analyzing the changes in the graph structure and node features, it was determined that the node should be classified as Reinforcement_Learning. The neighbors of the target node, 294, 565, and 566, were already classified as Reinforcement_Learning, which influenced the change in classification. Additionally, the features of the target node remained the same, indicating that the change in classification was not due to any changes in the node's characteristics.\"\n\nThe change in classification for the target node 1782 from Neural_Networks to Reinforcement_Learning was influenced by the presence of its neighbors, 294, 565, and 566, which were already classified as Reinforcement_Learning. The features of the target node remained the same, indicating that the change in classification was not due to any changes in the node's characteristics.\n\nIn the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning. This suggests that the target node is likely to be classified as Reinforcement_Learning as well, given the influence of its neighbors.\n\nIn the counterfactual graph, the target node 1782 is still connected to the nodes 294, 565, and 566, but its classification remains the same as in the factual graph. However, the features of the target node remain the same, indicating that there are no changes in the node's characteristics that would cause it to be classified differently.\n\nTherefore, the change in classification for the target node 1782 from Neural_Networks to Reinforcement_Learning can be attributed to the influence of its neighbors, rather than any changes in the node's features.\n>>>"
+  }
+ ],
+ "prompt_rendered": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nCutting Knowledge Date: December 2023\nToday Date: 26 Jul 2024\n\nYou are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\nExtract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 1782. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 1782  (dataset: cora)\n\nEXPLANATION:\n<<<\nTo generate the dictionary, we will consider the target node as the node 1782, which is classified as Neural_Networks. We will then analyze the changes in the graph structure and node features that would cause the target node to be classified as Reinforcement_Learning.\n\nNode_Differences = [1782]\n\nEdge_Differences = [(1782, 134), (1782, 294), (1782, 565), (1782, 566)]\n\nTarget_Node_ID = 1782\nFactual_Target_Node_Neighbors = [294, 565, 566]\nFactual_Target_Node_Features = ['network', 'practic', 'limit', 'optim', 'artifici', 'cycl', 'depend', 'case', 'neural', 'sourc', 'posit', 'describ', 'error', 'control', 'studi', 'select', 'applic']\nCounterfactual_Target_Node_Neighbors = [294, 565, 566]\nCounterfactual_Target_Node_Features = ['network', 'practic', 'limit', 'optim', 'artifici', 'cycl', 'depend', 'case', 'neural', 'sourc', 'posit', 'describ', 'error', 'control', 'studi', 'select', 'applic']\nTarget_Node_Features_Changed_From_Factual_To_Counterfactual = []\nNatural_Language_Explanation = \"The target node 1782 was initially classified as Neural_Networks but after analyzing the changes in the graph structure and node features, it was determined that the node should be classified as Reinforcement_Learning. The neighbors of the target node, 294, 565, and 566, were already classified as Reinforcement_Learning, which influenced the change in classification. Additionally, the features of the target node remained the same, indicating that the change in classification was not due to any changes in the node's characteristics.\"\n\nThe change in classification for the target node 1782 from Neural_Networks to Reinforcement_Learning was influenced by the presence of its neighbors, 294, 565, and 566, which were already classified as Reinforcement_Learning. The features of the target node remained the same, indicating that the change in classification was not due to any changes in the node's characteristics.\n\nIn the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning. This suggests that the target node is likely to be classified as Reinforcement_Learning as well, given the influence of its neighbors.\n\nIn the counterfactual graph, the target node 1782 is still connected to the nodes 294, 565, and 566, but its classification remains the same as in the factual graph. However, the features of the target node remain the same, indicating that there are no changes in the node's characteristics that would cause it to be classified differently.\n\nTherefore, the change in classification for the target node 1782 from Neural_Networks to Reinforcement_Learning can be attributed to the influence of its neighbors, rather than any changes in the node's features.\n>>><|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+ "raw_output": "{\"claims\": [{\"claim\": \"node 1782 is classified as Neural_Networks\", \"claim_type\": \"class_state\", \"source_span\": \"To generate the dictionary, we will consider the target node as the node 1782, which is classified as Neural_Networks.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Neural_Networks\"]}}, {\"claim\": \"node 1782 is classified as Reinforcement_Learning\", \"claim_type\": \"class_state\", \"source_span\": \"The target node 1782 was initially classified as Neural_Networks but after analyzing the changes in the graph structure and node features, it was determined that the node should be classified as Reinforcement_Learning.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Reinforcement_Learning\"]}}, {\"claim\": \"node 1782 is connected to node 294\", \"claim_type\": \"structural\", \"source_span\": \"In the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning.\", \"entities\": {\"node_ids\": [1782, 294], \"titles\": [], \"feature_words\": [], \"edges\": [[1782, 294]], \"classes\": [\"Reinforcement_Learning\"]}}, {\"claim\": \"node 1782 is connected to node 565\", \"claim_type\": \"structural\", \"source_span\": \"In the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning.\", \"entities\": {\"node_ids\": [1782, 565], \"titles\": [], \"feature_words\": [], \"edges\": [[1782, 565]], \"classes\": [\"Reinforcement_Learning\"]}}, {\"claim\": \"node 1782 is connected to node 566\", \"claim_type\": \"structural\", \"source_span\": \"In the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning.\", \"entities\": {\"node_ids\": [1782, 566], \"titles\": [], \"feature_words\": [], \"edges\": [[1782, 566]], \"classes\": [\"Reinforcement_Learning\"]}}, {\"claim\": \"node 294 is classified as Reinforcement_Learning\", \"claim_type\": \"class_state\", \"source_span\": \"In the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning.\", \"entities\": {\"node_ids\": [294], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Reinforcement_Learning\"]}}, {\"claim\": \"node 565 is classified as Reinforcement_Learning\", \"claim_type\": \"class_state\", \"source_span\": \"In the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning.\", \"entities\": {\"node_ids\": [565], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Reinforcement_Learning\"]}}, {\"claim\": \"node 566 is classified as Reinforcement_Learning\", \"claim_type\": \"class_state\", \"source_span\": \"In the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning.\", \"entities\": {\"node_ids\": [566], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Reinforcement_Learning\"]}}, {\"claim\": \"node 1782 is connected to nodes 294, 565, and 566\", \"claim_type\": \"structural\", \"source_span\": \"In the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning.\", \"entities\": {\"node_ids\": [1782, 294, 565, 566], \"titles\": [], \"feature_words\": [], \"edges\": [[1782, 294], [1782, 565], [1782, 566]], \"classes\": [\"Reinforcement_Learning\"]}}, {\"claim\": \"node 1782 has features network, practic, limit, optim, artifici, cycl, depend, case, neural, sourc, posit, describ, error, control, studi, select, applic\", \"claim_type\": \"feature\", \"source_span\": \"Factual_Target_Node_Features = ['network', 'practic', 'limit', 'optim', 'artifici', 'cycl', 'depend', 'case', 'neural','sourc', 'posit', 'describ', 'error', 'control','studi','select', 'applic']\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [\"network\", \"practic\", \"limit\", \"optim\", \"artifici\", \"cycl\", \"depend\", \"case\", \"neural\", \"sourc\", \"posit\", \"describ\", \"error\", \"control\", \"studi\", \"select\", \"applic\"], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has features network, practic, limit, optim, artifici, cycl, depend, case, neural, sourc, posit, describ, error, control, studi, select, applic in the counterfactual graph\", \"claim_type\": \"feature\", \"source_span\": \"Counterfactual_Target_Node_Features = ['network', 'practic', 'limit', 'optim', 'artifici', 'cycl', 'depend', 'case', 'neural','sourc', 'posit', 'describ', 'error', 'control','studi','select', 'applic']\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [\"network\", \"practic\", \"limit\", \"optim\", \"artifici\", \"cycl\", \"depend\", \"case\", \"neural\", \"sourc\", \"posit\", \"describ\", \"error\", \"control\", \"studi\", \"select\", \"applic\"], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has no changed features from factual to counterfactual graph\", \"claim_type\": \"feature\", \"source_span\": \"Target_Node_Features_Changed_From_Factual_To_Counterfactual = []\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 is connected to nodes 294, 565, and 566 in the counterfactual graph\", \"claim_type\": \"structural\", \"source_span\": \"In the counterfactual graph, the target node 1782 is still connected to the nodes 294, 565, and 566, but its classification remains the same as in the factual graph.\", \"entities\": {\"node_ids\": [1782, 294, 565, 566], \"titles\": [], \"feature_words\": [], \"edges\": [[1782, 294], [1782, 565], [1782, 566]], \"classes\": []}}, {\"claim\": \"the change in classification for node 1782 is due to the influence of its neighbors\", \"claim_type\": \"mechanism\", \"source_span\": \"Therefore, the change in classification for the target node 1782 from Neural_Networks to Reinforcement_Learning can be attributed to the influence of its neighbors, rather than any changes in the node's features.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 was initially classified as Neural_Networks\", \"claim_type\": \"class_state\", \"source_span\": \"The target node 1782 was initially classified as Neural_Networks but after analyzing the changes in the graph structure and node features, it was determined that the node should be classified as Reinforcement_Learning.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Neural_Networks\"]}}, {\"claim\": \"node 1782 was classified as Reinforcement_Learning after analyzing the changes in the graph structure and node features\", \"claim_type\": \"class_state\", \"source_span\": \"The target node 1782 was initially classified as Neural_Networks but after analyzing the changes in the graph structure and node features, it was determined that the node should be classified as Reinforcement_Learning.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Reinforcement_Learning\"]}}, {\"claim\": \"node 1782 has the same features as in the factual graph\", \"claim_type\": \"feature\", \"source_span\": \"However, the features of the target node remain the same, indicating that the change in classification was not due to any changes in the node's characteristics.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 is connected to nodes 294, 565, and 566 in the factual graph\", \"claim_type\": \"structural\", \"source_span\": \"In the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning.\", \"entities\": {\"node_ids\": [1782, 294, 565, 566], \"titles\": [], \"feature_words\": [], \"edges\": [[1782, 294], [1782, 565], [1782, 566]], \"classes\": [\"Reinforcement_Learning\"]}}, {\"claim\": \"node 1782 is connected to nodes 294, 565, and 566 in the counterfactual graph\", \"claim_type\": \"structural\", \"source_span\": \"In the counterfactual graph, the target node 1782 is still connected to the nodes 294, 565, and 566, but its classification remains the same as in the factual graph.\", \"entities\": {\"node_ids\": [1782, 294, 565, 566], \"titles\": [], \"feature_words\": [], \"edges\": [[1782, 294], [1782, 565], [1782, 566]], \"classes\": []}}, {\"claim\": \"node 1782 has the same features as in the counterfactual graph\", \"claim_type\": \"feature\", \"source_span\": \"However, the features of the target node remain the same, indicating that the change in classification was not due to any changes in the node's characteristics.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has the same classification as in the factual graph in the counterfactual graph\", \"claim_type\": \"class_state\", \"source_span\": \"In the counterfactual graph, the target node 1782 is still connected to the nodes 294, 565, and 566, but its classification remains the same as in the factual graph.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has the same classification as in the counterfactual graph as in the factual graph\", \"claim_type\": \"class_state\", \"source_span\": \"In the counterfactual graph, the target node 1782 is still connected to the nodes 294, 565, and 566, but its classification remains the same as in the factual graph.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has the same classification as in the factual graph\", \"claim_type\": \"class_state\", \"source_span\": \"However, the features of the target node remain the same, indicating that the change in classification was not due to any changes in the node's characteristics.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has the same classification as in the counterfactual graph\", \"claim_type\": \"class_state\", \"source_span\": \"However, the features of the target node remain the same, indicating that the change in classification was not due to any changes in the node's characteristics.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has the same classification as in the factual and counterfactual graph\", \"claim_type\": \"class_state\", \"source_span\": \"However, the features of the target node remain the same, indicating that the change in classification was not due to any changes in the node's characteristics.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has the same classification as in the factual and counterfactual graph\", \"claim_type\": \"class_state\", \"source_span\": \"Therefore, the change in classification for the target node 1782 from Neural_Networks to Reinforcement_Learning can be attributed to the influence of its neighbors, rather than any changes in the node's features.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has the same classification as in the factual graph\", \"claim_type\": \"class_state\", \"source_span\": \"Therefore, the change in classification for the target node 1782 from Neural_Networks to Reinforcement_Learning can be attributed to the influence of its neighbors, rather than any changes in the node's features.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has the same classification as in the counterfactual graph\", \"claim_type\": \"class_state\", \"source_span\": \"Therefore, the change in classification for the target node 1782 from Neural_Networks to Reinforcement_Learning can be attributed to the influence of its neighbors, rather than any changes in the node's features.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has the same classification as in the factual and counterfactual graph\", \"claim_type\": \"class_state\", \"source_span\": \"Therefore, the change in classification for the target node 1782 from Neural_Networks to Reinforcement_Learning can be attributed to the influence of its neighbors, rather than any changes in the node's features.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has the same classification as in the factual and counterfactual graph\", \"claim_type\": \"class_state\", \"source_span\": \"The change in classification for the target node 1782 from Neural_Networks to Reinforcement_Learning was influenced by the presence of its neighbors, 294, 565, and 566, which were already classified as Reinforcement_Learning.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has the same classification as in the factual and counterfactual graph\", \"claim_type\": \"class_state\", \"source_span\": \"The features of the target node remained the same, indicating that the change in classification was not due to any changes in the node's characteristics.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has the same classification as in the factual and counterfactual graph\", \"claim_type\": \"class_state\", \"source_span\": \"The neighbors of the target node, 294, 565, and 566, were already classified as Reinforcement_Learning, which influenced the change in classification.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has the same classification as in the factual and counterfactual graph\", \"claim_type\": \"class_state\", \"source_span\": \"Additionally, the features of the target node remained the same, indicating that the change in classification was not due to any changes in the node's characteristics.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has the same classification as in the factual and counterfactual graph\", \"claim_type\": \"class_state\", \"source_span\": \"The change in classification for the target node 1782 from Neural_Networks to Reinforcement_Learning can be attributed to the influence of its neighbors, rather than any changes in the node's features.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has the same classification as in the factual and counterfactual graph\", \"claim_type\": \"class_state\", \"source_span\": \"In the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has the same classification as in the factual and counterfactual graph\", \"claim_type\": \"class_state\", \"source_span\": \"However, the features of the target node remain the same, indicating that the change in classification was not due to any changes in the node's characteristics.\", \"entities\": {\"node_ids\": [1782], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1782 has the same classification as in the factual and counterfactual graph\", \"claim_type\": \"class_state\", \"source_span\": \"In the counterfactual graph, the target node 1782 is still connected to the nodes 294, 565, and 566, but its classification remains the same as in the factual graph.\", \"entities\": {\"node_ids\": [1782], \"titles",
+ "claims": [
+  {
+   "claim": "node 1782 is classified as Neural_Networks",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Neural_Networks"
+    ]
+   },
+   "source_span": "To generate the dictionary, we will consider the target node as the node 1782, which is classified as Neural_Networks."
+  },
+  {
+   "claim": "node 1782 is classified as Reinforcement_Learning",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Reinforcement_Learning"
+    ]
+   },
+   "source_span": "The target node 1782 was initially classified as Neural_Networks but after analyzing the changes in the graph structure and node features, it was determined that the node should be classified as Reinforcement_Learning."
+  },
+  {
+   "claim": "node 1782 is connected to node 294",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782,
+     294
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      1782,
+      294
+     ]
+    ],
+    "classes": [
+     "Reinforcement_Learning"
+    ]
+   },
+   "source_span": "In the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning."
+  },
+  {
+   "claim": "node 1782 is connected to node 565",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782,
+     565
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      1782,
+      565
+     ]
+    ],
+    "classes": [
+     "Reinforcement_Learning"
+    ]
+   },
+   "source_span": "In the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning."
+  },
+  {
+   "claim": "node 1782 is connected to node 566",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782,
+     566
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      1782,
+      566
+     ]
+    ],
+    "classes": [
+     "Reinforcement_Learning"
+    ]
+   },
+   "source_span": "In the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning."
+  },
+  {
+   "claim": "node 294 is classified as Reinforcement_Learning",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     294
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Reinforcement_Learning"
+    ]
+   },
+   "source_span": "In the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning."
+  },
+  {
+   "claim": "node 565 is classified as Reinforcement_Learning",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     565
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Reinforcement_Learning"
+    ]
+   },
+   "source_span": "In the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning."
+  },
+  {
+   "claim": "node 566 is classified as Reinforcement_Learning",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     566
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Reinforcement_Learning"
+    ]
+   },
+   "source_span": "In the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning."
+  },
+  {
+   "claim": "node 1782 is connected to nodes 294, 565, and 566",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782,
+     294,
+     565,
+     566
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      1782,
+      294
+     ],
+     [
+      1782,
+      565
+     ],
+     [
+      1782,
+      566
+     ]
+    ],
+    "classes": [
+     "Reinforcement_Learning"
+    ]
+   },
+   "source_span": "In the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning."
+  },
+  {
+   "claim": "node 1782 has features network, practic, limit, optim, artifici, cycl, depend, case, neural, sourc, posit, describ, error, control, studi, select, applic",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782
+    ],
+    "titles": [],
+    "feature_words": [
+     "network",
+     "practic",
+     "limit",
+     "optim",
+     "artifici",
+     "cycl",
+     "depend",
+     "case",
+     "neural",
+     "sourc",
+     "posit",
+     "describ",
+     "error",
+     "control",
+     "studi",
+     "select",
+     "applic"
+    ],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Factual_Target_Node_Features = ['network', 'practic', 'limit', 'optim', 'artifici', 'cycl', 'depend', 'case', 'neural','sourc', 'posit', 'describ', 'error', 'control','studi','select', 'applic']"
+  },
+  {
+   "claim": "node 1782 has features network, practic, limit, optim, artifici, cycl, depend, case, neural, sourc, posit, describ, error, control, studi, select, applic in the counterfactual graph",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782
+    ],
+    "titles": [],
+    "feature_words": [
+     "network",
+     "practic",
+     "limit",
+     "optim",
+     "artifici",
+     "cycl",
+     "depend",
+     "case",
+     "neural",
+     "sourc",
+     "posit",
+     "describ",
+     "error",
+     "control",
+     "studi",
+     "select",
+     "applic"
+    ],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Counterfactual_Target_Node_Features = ['network', 'practic', 'limit', 'optim', 'artifici', 'cycl', 'depend', 'case', 'neural','sourc', 'posit', 'describ', 'error', 'control','studi','select', 'applic']"
+  },
+  {
+   "claim": "node 1782 has no changed features from factual to counterfactual graph",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Target_Node_Features_Changed_From_Factual_To_Counterfactual = []"
+  },
+  {
+   "claim": "node 1782 is connected to nodes 294, 565, and 566 in the counterfactual graph",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782,
+     294,
+     565,
+     566
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      1782,
+      294
+     ],
+     [
+      1782,
+      565
+     ],
+     [
+      1782,
+      566
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "In the counterfactual graph, the target node 1782 is still connected to the nodes 294, 565, and 566, but its classification remains the same as in the factual graph."
+  },
+  {
+   "claim": "the change in classification for node 1782 is due to the influence of its neighbors",
+   "claim_type": "mechanism",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Therefore, the change in classification for the target node 1782 from Neural_Networks to Reinforcement_Learning can be attributed to the influence of its neighbors, rather than any changes in the node's features."
+  },
+  {
+   "claim": "node 1782 was initially classified as Neural_Networks",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Neural_Networks"
+    ]
+   },
+   "source_span": "The target node 1782 was initially classified as Neural_Networks but after analyzing the changes in the graph structure and node features, it was determined that the node should be classified as Reinforcement_Learning."
+  },
+  {
+   "claim": "node 1782 was classified as Reinforcement_Learning after analyzing the changes in the graph structure and node features",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Reinforcement_Learning"
+    ]
+   },
+   "source_span": "The target node 1782 was initially classified as Neural_Networks but after analyzing the changes in the graph structure and node features, it was determined that the node should be classified as Reinforcement_Learning."
+  },
+  {
+   "claim": "node 1782 has the same features as in the factual graph",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "However, the features of the target node remain the same, indicating that the change in classification was not due to any changes in the node's characteristics."
+  },
+  {
+   "claim": "node 1782 is connected to nodes 294, 565, and 566 in the factual graph",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782,
+     294,
+     565,
+     566
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      1782,
+      294
+     ],
+     [
+      1782,
+      565
+     ],
+     [
+      1782,
+      566
+     ]
+    ],
+    "classes": [
+     "Reinforcement_Learning"
+    ]
+   },
+   "source_span": "In the factual graph, the target node 1782 is connected to the nodes 294, 565, and 566, which are all classified as Reinforcement_Learning."
+  },
+  {
+   "claim": "node 1782 has the same features as in the counterfactual graph",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "However, the features of the target node remain the same, indicating that the change in classification was not due to any changes in the node's characteristics."
+  },
+  {
+   "claim": "node 1782 has the same classification as in the factual graph in the counterfactual graph",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "In the counterfactual graph, the target node 1782 is still connected to the nodes 294, 565, and 566, but its classification remains the same as in the factual graph."
+  },
+  {
+   "claim": "node 1782 has the same classification as in the counterfactual graph as in the factual graph",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "In the counterfactual graph, the target node 1782 is still connected to the nodes 294, 565, and 566, but its classification remains the same as in the factual graph."
+  },
+  {
+   "claim": "node 1782 has the same classification as in the factual graph",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "However, the features of the target node remain the same, indicating that the change in classification was not due to any changes in the node's characteristics."
+  },
+  {
+   "claim": "node 1782 has the same classification as in the counterfactual graph",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "However, the features of the target node remain the same, indicating that the change in classification was not due to any changes in the node's characteristics."
+  },
+  {
+   "claim": "node 1782 has the same classification as in the factual and counterfactual graph",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1782
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "However, the features of the target node remain the same, indicating that the change in classification was not due to any changes in the node's characteristics."
+  }
+ ],
+ "n_claims": 24,
+ "parse_diagnostics": {
+  "json_found": true,
+  "json_valid": false,
+  "parse_mode": "recovered_per_object",
+  "error": "first balanced JSON object has no top-level 'claims' list (outer object malformed)",
+  "n_raw_claims": 36,
+  "n_bad_type": 0,
+  "n_merged_duplicates": 12,
+  "repairs": [],
+  "unrecoverable_segments": [
+   {
+    "claim_index": 36,
+    "segment_head": "{\"claim\": \"node 1782 has the same classification as in the factual and counterfactual graph\", \"claim_type\": \"class_state"
+   }
+  ],
+  "n_prompt_tokens": 2144,
+  "n_output_tokens": 4096,
+  "hit_max_new_tokens": true,
+  "seconds": 100.6
+ }
+}

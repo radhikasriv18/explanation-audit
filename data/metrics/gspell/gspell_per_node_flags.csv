@@ -1,0 +1,743 @@
+dataset,job,node,n_batches,n_empty_batches,n_batches_without_support,empty,has_support,repetition_flagged,rep_line_repeat,rep_worst_line_repeat_count,rep_token_repeat,malformed,pred,true,correct,n_cited_ids,n_cited_outside_batches,fk_with_role_header,C_state,C_cycle,eg_N,eg_E,eg_P
+cora,51247846,1,7,0,1,False,True,True,True,8,False,True,Rule_Learning,Rule_Learning,True,42,0,19.86545,27,0,28,27,1
+cora,51247846,4,1,0,0,False,True,False,False,2,False,False,Probabilistic_Methods,Probabilistic_Methods,True,2,0,18.52714285714286,2,0,3,2,1
+cora,51247846,11,2,0,0,False,True,False,False,3,False,False,Genetic_Algorithms,Genetic_Algorithms,True,15,0,14.77392977770796,9,0,10,9,1
+cora,51247846,16,16,0,3,False,True,True,True,11,True,True,Reinforcement_Learning,Reinforcement_Learning,True,81,0,20.761771302854694,64,2,65,66,1
+cora,51247846,19,10,0,0,False,True,True,True,32,False,True,Theory,Neural_Networks,False,50,0,15.155806308610405,46,0,47,46,1
+cora,51247846,21,12,0,0,False,True,True,True,20,False,True,Reinforcement_Learning,Reinforcement_Learning,True,70,0,16.649734571299252,57,0,58,57,1
+cora,51247846,34,24,0,2,False,True,True,True,32,False,True,Reinforcement_Learning,Reinforcement_Learning,True,143,1,18.51455124596475,115,0,116,115,1
+cora,51247846,35,1,0,0,False,True,False,False,3,False,False,Reinforcement_Learning,Reinforcement_Learning,True,15,0,18.208045112781956,5,0,6,5,1
+cora,51247846,36,11,0,0,False,True,True,True,22,False,True,Neural_Networks,Neural_Networks,True,61,0,14.436540572836929,54,0,55,54,1
+cora,51247846,38,4,0,0,False,True,False,False,4,False,False,Genetic_Algorithms,Genetic_Algorithms,True,21,0,18.58502354788069,18,0,19,18,1
+cora,51247846,46,3,0,0,False,True,True,True,14,False,True,Neural_Networks,Neural_Networks,True,20,9,16.480952380952385,20,0,21,20,1
+cora,51247846,50,4,0,1,False,True,True,True,11,False,True,Case_Based,Case_Based,True,32,0,7.565617064499747,13,1,14,14,1
+cora,51247846,64,5,0,1,False,True,True,True,34,False,True,Case_Based,Case_Based,True,24,1,7.757341385854236,12,0,13,12,1
+cora,51247846,75,9,0,5,False,True,True,True,67,False,True,Case_Based,Case_Based,True,40,0,7.806197897208733,32,0,33,32,1
+cora,51247846,89,16,0,1,False,True,True,True,44,False,True,Theory,Theory,True,133,27,17.562040273227606,87,0,88,87,1
+cora,51247846,90,1,0,0,False,True,False,False,3,False,False,Neural_Networks,Neural_Networks,True,4,0,19.778840206185567,4,0,5,4,1
+cora,51247846,95,3,0,0,False,True,True,True,9,False,True,Probabilistic_Methods,Probabilistic_Methods,True,16,0,15.610832247557006,14,1,15,15,1
+cora,51247846,98,3,0,0,False,True,True,True,8,False,True,Theory,Theory,True,17,0,17.354813759859777,15,0,16,15,1
+cora,51247846,103,20,0,0,False,True,True,True,26,True,True,Reinforcement_Learning,Reinforcement_Learning,True,137,0,18.10830840268577,99,0,100,99,1
+cora,51247846,114,1,0,0,False,True,False,False,2,False,False,Theory,Theory,True,2,0,15.404046511627907,2,0,3,2,1
+cora,51247846,116,6,0,1,False,True,True,True,8,True,True,Case_Based,Case_Based,True,41,0,14.03841991065731,22,0,23,22,1
+cora,51247846,119,10,0,2,False,True,True,True,17,True,True,Case_Based,Rule_Learning,False,65,0,21.78557412112708,40,1,41,41,1
+cora,51247846,122,3,0,0,False,True,False,False,4,False,False,Neural_Networks,Neural_Networks,True,12,0,15.306199527186767,12,0,13,12,1
+cora,51247846,127,22,0,0,False,True,True,True,46,False,True,Neural_Networks,Neural_Networks,True,131,0,14.906003344481608,107,2,108,109,1
+cora,51247846,130,7,0,0,False,True,True,True,12,False,True,Theory,Theory,True,59,0,16.327360120333,33,0,34,33,1
+cora,51247846,143,3,0,0,False,True,True,True,5,False,True,Neural_Networks,Neural_Networks,True,12,0,16.15395411605938,12,0,13,12,1
+cora,51247846,146,26,0,0,False,True,True,True,66,False,True,Neural_Networks,Neural_Networks,True,145,0,14.862531635852925,130,2,131,132,1
+cora,51247846,153,21,0,0,False,True,True,True,36,False,True,Reinforcement_Learning,Neural_Networks,False,125,0,16.59656403877054,104,3,105,107,1
+cora,51247846,154,9,0,0,False,True,True,True,23,False,True,Neural_Networks,Neural_Networks,True,49,2,15.18402327234632,44,3,45,47,1
+cora,51247846,160,4,0,0,False,True,True,True,7,False,True,Neural_Networks,Neural_Networks,True,17,0,15.35706424936387,17,0,18,17,1
+cora,51247846,161,5,0,0,False,True,True,True,9,False,True,Probabilistic_Methods,Probabilistic_Methods,True,30,0,15.565956291999314,25,1,26,26,1
+cora,51247846,172,10,0,0,False,True,True,True,13,False,True,Case_Based,Case_Based,True,52,0,14.796045526138155,47,0,48,47,1
+cora,51247846,180,3,0,0,False,True,True,True,8,False,True,Neural_Networks,Neural_Networks,True,12,0,14.270683624801276,12,0,13,12,1
+cora,51247846,186,25,0,0,False,True,True,True,47,False,True,Reinforcement_Learning,Reinforcement_Learning,True,153,8,17.633120518816487,129,0,130,129,1
+cora,51247846,189,36,0,0,False,True,True,True,74,False,True,Genetic_Algorithms,Genetic_Algorithms,True,239,0,16.387050839382095,177,15,178,192,1
+cora,51247846,190,3,0,0,False,True,True,True,7,False,True,Neural_Networks,Neural_Networks,True,15,0,13.9968115942029,15,0,16,15,1
+cora,51247846,197,5,0,0,False,True,True,True,10,False,True,Reinforcement_Learning,Reinforcement_Learning,True,27,0,17.10281148564295,22,1,23,23,1
+cora,51247846,200,3,0,0,False,True,True,True,6,False,True,Neural_Networks,Neural_Networks,True,15,0,16.259016817593793,13,0,14,13,1
+cora,51247846,201,18,0,0,False,True,True,True,33,False,True,Neural_Networks,Neural_Networks,True,105,0,15.115196390511255,90,2,91,92,1
+cora,51247846,202,27,0,0,False,True,True,True,48,False,True,Neural_Networks,Neural_Networks,True,152,0,15.482644375610672,135,1,136,136,1
+cora,51247846,206,5,0,0,False,True,True,True,9,False,True,Neural_Networks,Neural_Networks,True,21,0,14.952570869990225,21,0,22,21,1
+cora,51247846,216,2,0,1,False,True,False,False,4,False,False,Rule_Learning,Rule_Learning,True,12,0,14.067810110692687,10,0,11,10,1
+cora,51247846,225,6,0,0,False,True,True,True,10,False,True,Case_Based,Case_Based,True,44,2,14.801626038730127,28,0,29,28,1
+cora,51247846,234,17,0,0,False,True,True,True,59,False,True,Neural_Networks,Neural_Networks,True,110,0,14.694673582995954,84,0,85,84,1
+cora,51247846,241,1,0,0,False,True,False,False,3,False,False,Neural_Networks,Neural_Networks,True,5,0,20.96064705882353,4,0,5,4,1
+cora,51247846,245,2,0,0,False,True,True,True,7,False,True,Case_Based,Case_Based,True,19,0,14.122151456310679,9,0,10,9,1
+cora,51247846,253,3,0,0,False,True,True,True,11,False,True,Neural_Networks,Neural_Networks,True,20,0,15.349320719602982,15,0,16,15,1
+cora,51247846,262,9,0,0,False,True,True,True,26,False,True,Case_Based,Case_Based,True,58,0,14.872233412666162,42,2,43,44,1
+cora,51247846,264,11,0,0,False,True,True,True,40,False,True,Theory,Theory,True,79,0,15.518514418900924,52,0,53,52,1
+cora,51247846,268,6,0,0,False,True,True,True,16,False,True,Neural_Networks,Neural_Networks,True,28,0,15.305652042588537,27,0,28,27,1
+cora,51247846,284,4,0,2,False,True,True,True,10,False,True,Case_Based,Case_Based,True,29,0,15.06944579629062,12,0,13,12,1
+cora,51247846,293,7,0,0,False,True,True,True,16,False,True,Neural_Networks,Neural_Networks,True,32,0,14.596393087008344,31,0,32,31,1
+cora,51247846,301,2,0,0,False,True,False,False,3,False,False,Neural_Networks,Neural_Networks,True,8,0,15.57049399198932,8,0,9,8,1
+cora,51247846,317,1,0,0,False,True,False,False,3,False,False,Theory,Theory,True,7,0,12.063634453781514,5,0,6,5,1
+cora,51247846,330,25,0,0,False,True,True,True,53,False,True,Neural_Networks,Neural_Networks,True,150,0,14.927889135828337,123,2,124,125,1
+cora,51247846,335,14,0,0,False,True,True,True,12,False,True,Rule_Learning,Rule_Learning,True,122,0,15.241348530237786,69,3,70,72,1
+cora,51247846,337,2,0,0,False,True,True,True,5,False,True,Neural_Networks,Neural_Networks,True,14,0,16.26460106382979,8,0,9,8,1
+cora,51247846,356,1,0,0,False,True,False,False,3,False,False,Neural_Networks,Neural_Networks,True,5,0,15.74331683168317,5,0,6,5,1
+cora,51247846,369,15,0,0,False,True,True,True,36,False,True,Neural_Networks,Neural_Networks,True,87,0,15.73627796461168,74,0,75,74,1
+cora,51247846,378,21,0,1,False,True,True,True,25,False,True,Rule_Learning,Theory,False,205,0,16.25676204182545,100,4,101,104,1
+cora,51247846,379,1,0,0,False,True,False,False,1,False,False,Rule_Learning,Rule_Learning,True,2,0,18.046632653061227,2,0,3,2,1
+cora,51247846,391,16,0,0,False,True,True,True,42,False,True,Neural_Networks,Neural_Networks,True,87,0,15.775371043597868,79,0,80,79,1
+cora,51247846,392,4,0,0,False,True,True,True,6,False,True,Probabilistic_Methods,Probabilistic_Methods,True,19,0,15.573718874052691,18,0,19,18,1
+cora,51247846,395,35,0,0,False,True,True,True,58,False,True,Genetic_Algorithms,Genetic_Algorithms,True,220,0,17.024098176018537,171,5,172,176,1
+cora,51247846,396,9,0,0,False,True,True,True,21,False,True,Theory,Rule_Learning,False,66,11,14.341337303114639,49,0,50,49,1
+cora,51247846,397,17,0,0,False,True,True,True,46,False,True,Neural_Networks,Neural_Networks,True,110,0,15.485365971943793,83,0,84,83,1
+cora,51247846,399,16,0,0,False,True,True,True,32,False,True,Neural_Networks,Neural_Networks,True,91,2,14.79905805098775,79,4,80,83,1
+cora,51247846,400,8,0,0,False,True,True,True,24,False,True,Theory,Theory,True,45,0,14.585787194763785,34,4,35,38,1
+cora,51247846,403,3,0,0,False,True,True,True,9,False,True,Genetic_Algorithms,Genetic_Algorithms,True,15,0,15.773463949843261,13,0,14,13,1
+cora,51247846,412,10,0,0,False,True,True,True,6,False,True,Reinforcement_Learning,Reinforcement_Learning,True,65,0,15.926803825404612,47,2,48,49,1
+cora,51247846,417,1,0,0,False,True,False,False,3,False,False,Theory,Rule_Learning,False,9,0,17.33045520231214,4,3,5,7,1
+cora,51247846,418,8,0,0,False,True,True,True,19,False,True,Theory,Theory,True,53,0,14.144763284641375,39,0,40,39,1
+cora,51247846,452,2,0,0,False,True,False,False,4,False,False,Probabilistic_Methods,Probabilistic_Methods,True,9,0,17.100161290322585,9,0,10,9,1
+cora,51247846,455,9,0,0,False,True,True,True,6,False,True,Reinforcement_Learning,Reinforcement_Learning,True,44,0,16.38584826970826,42,0,43,42,1
+cora,51247846,459,8,0,0,False,True,True,True,26,False,True,Theory,Theory,True,74,8,16.353931958407045,44,1,45,45,1
+cora,51247846,466,26,0,0,False,True,True,True,30,False,True,Reinforcement_Learning,Reinforcement_Learning,True,183,0,18.47418408152735,129,7,130,136,1
+cora,51247846,469,3,0,0,False,True,True,True,9,False,True,Theory,Neural_Networks,False,13,0,17.09649321266968,12,0,13,12,1
+cora,51247846,474,5,0,1,False,True,True,True,27,False,True,Neural_Networks,Neural_Networks,True,36,1,18.073260296664404,26,0,27,26,1
+cora,51247846,487,3,0,0,False,True,False,False,3,False,False,Neural_Networks,Neural_Networks,True,12,1,14.215310344827586,12,0,13,12,1
+cora,51247846,488,8,0,0,False,True,True,True,31,False,True,Theory,Theory,True,66,12,15.877578906709832,42,0,43,42,1
+cora,51247846,492,19,0,2,False,True,True,True,23,False,True,Reinforcement_Learning,Reinforcement_Learning,True,104,0,20.421547752073334,86,1,87,87,1
+cora,51247846,496,2,0,0,False,True,True,True,7,False,True,Neural_Networks,Neural_Networks,True,15,0,15.063911371237463,10,0,11,10,1
+cora,51247846,499,7,0,0,False,True,True,True,19,False,True,Probabilistic_Methods,Probabilistic_Methods,True,31,0,15.929160305343512,31,0,32,31,1
+cora,51247846,502,34,0,0,False,True,True,True,49,False,True,Reinforcement_Learning,Reinforcement_Learning,True,204,0,16.98061473750062,167,1,168,168,1
+cora,51247846,504,1,0,0,False,True,True,True,6,False,True,Genetic_Algorithms,Neural_Networks,False,9,8,17.6630303030303,9,0,10,9,1
+cora,51247846,510,4,0,0,False,True,True,True,17,False,True,Neural_Networks,Probabilistic_Methods,False,33,17,17.242348551360845,33,0,34,33,1
+cora,51247846,512,3,0,0,False,True,True,True,5,False,True,Neural_Networks,Neural_Networks,True,18,0,16.03336652746547,13,0,14,13,1
+cora,51247846,515,2,0,0,False,True,False,False,4,False,False,Probabilistic_Methods,Probabilistic_Methods,True,7,0,17.687289088863896,7,0,8,7,1
+cora,51247846,524,9,0,0,False,True,True,True,12,False,True,Neural_Networks,Neural_Networks,True,48,0,16.05357372132447,43,1,44,44,1
+cora,51247846,537,3,0,0,False,True,True,True,6,False,True,Genetic_Algorithms,Genetic_Algorithms,True,12,0,18.102580086580087,12,0,13,12,1
+cora,51247846,540,9,0,0,False,True,True,True,9,False,True,Case_Based,Case_Based,True,59,0,12.350303312820383,44,1,45,45,1
+cora,51247846,546,34,0,2,False,True,True,True,52,False,True,Genetic_Algorithms,Genetic_Algorithms,True,202,1,18.76952725320533,160,1,161,161,1
+cora,51247846,550,10,0,0,False,True,True,True,30,False,True,Theory,Theory,True,60,1,18.12317225288285,48,0,49,48,1
+cora,51247846,559,14,0,0,False,True,True,True,33,False,True,Reinforcement_Learning,Reinforcement_Learning,True,101,11,17.71887536830827,77,0,78,77,1
+cora,51247846,562,9,0,1,False,True,True,True,14,False,True,Reinforcement_Learning,Reinforcement_Learning,True,46,0,21.325755863539445,37,1,38,38,1
+cora,51247846,563,37,0,0,False,True,True,True,49,False,True,Reinforcement_Learning,Reinforcement_Learning,True,237,0,17.13198069335161,185,7,186,192,1
+cora,51247846,569,12,0,0,False,True,True,True,29,False,True,Theory,Theory,True,93,0,15.752440124708553,60,1,61,61,1
+cora,51247846,574,11,0,0,False,True,True,True,33,False,True,Theory,Theory,True,72,0,16.413408943534467,54,0,55,54,1
+cora,51247846,580,6,0,3,False,True,True,True,48,True,True,Case_Based,Case_Based,True,25,0,13.409861347655262,17,0,18,17,1
+cora,51247846,586,1,0,0,False,True,False,False,1,False,False,Neural_Networks,Neural_Networks,True,4,0,17.054414414414413,4,0,5,4,1
+cora,51247846,595,1,0,0,False,True,False,False,3,False,False,Neural_Networks,Neural_Networks,True,10,0,15.878355627306277,5,6,6,11,1
+cora,51247846,600,21,0,0,False,True,True,True,45,False,True,Neural_Networks,Neural_Networks,True,132,8,15.1928925282667,109,1,110,110,1
+cora,51247846,606,35,0,0,False,True,True,True,54,False,True,Genetic_Algorithms,Genetic_Algorithms,True,213,9,17.535868202745686,178,4,179,182,1
+cora,51247846,608,12,0,0,False,True,True,True,26,False,True,Neural_Networks,Neural_Networks,True,69,10,15.555720992622408,66,0,67,66,1
+cora,51247846,616,5,0,0,False,True,True,True,16,False,True,Neural_Networks,Neural_Networks,True,40,14,15.478697226437866,35,1,36,36,1
+cora,51247846,623,5,0,0,False,True,False,False,3,False,False,Probabilistic_Methods,Probabilistic_Methods,True,29,0,15.821563192904659,23,0,24,23,1
+cora,51247846,625,2,0,0,False,True,True,True,5,False,True,Theory,Neural_Networks,False,16,1,16.7082304526749,10,0,11,10,1
+cora,51247846,627,4,0,0,False,True,True,True,6,False,True,Neural_Networks,Neural_Networks,True,24,0,14.354512793733686,18,0,19,18,1
+cora,51247846,633,34,0,0,False,True,True,True,64,False,True,Reinforcement_Learning,Reinforcement_Learning,True,202,1,17.167245630325542,164,1,165,165,1
+cora,51247846,635,21,0,0,False,True,True,True,162,True,True,Theory,Theory,True,174,29,15.021399533183423,132,2,133,134,1
+cora,51247846,639,5,0,0,False,True,True,True,14,False,True,Probabilistic_Methods,Probabilistic_Methods,True,28,4,16.041527476560677,25,1,26,26,1
+cora,51247846,640,16,0,1,False,True,True,True,36,False,True,Theory,Theory,True,94,7,20.05894646266643,77,0,78,77,1
+cora,51247846,641,2,0,0,False,True,False,False,3,False,False,Probabilistic_Methods,Probabilistic_Methods,True,9,0,15.848130511463843,8,0,9,8,1
+cora,51247846,646,1,0,0,False,True,False,False,2,False,False,Probabilistic_Methods,Probabilistic_Methods,True,3,0,19.763013698630136,3,0,4,3,1
+cora,51247846,648,1,0,0,False,True,False,False,1,False,False,Neural_Networks,Neural_Networks,True,4,0,15.227192982456142,4,0,5,4,1
+cora,51247846,652,1,0,0,False,True,False,False,3,False,False,Rule_Learning,Rule_Learning,True,5,0,14.28371794871795,5,0,6,5,1
+cora,51247846,656,3,0,0,False,True,True,True,9,False,True,Reinforcement_Learning,Reinforcement_Learning,True,24,0,22.942615803814714,15,2,16,17,1
+cora,51247846,658,47,0,0,False,True,True,True,82,False,True,Genetic_Algorithms,Genetic_Algorithms,True,279,0,16.69693957209942,233,6,234,239,1
+cora,51247846,659,36,0,1,False,True,True,True,71,False,True,Genetic_Algorithms,Neural_Networks,False,218,0,17.79189901870158,174,10,175,184,1
+cora,51247846,663,2,0,0,False,True,True,True,6,False,True,Neural_Networks,Neural_Networks,True,16,0,13.94545570797489,9,0,10,9,1
+cora,51247846,675,10,0,1,False,True,True,True,15,False,True,Rule_Learning,Rule_Learning,True,90,0,16.60186590111643,47,2,48,49,1
+cora,51247846,681,3,0,0,False,True,True,True,7,False,True,Genetic_Algorithms,Genetic_Algorithms,True,24,0,16.37171519498409,14,1,15,15,1
+cora,51247846,683,13,0,2,False,True,True,True,24,False,True,Case_Based,Case_Based,True,91,0,18.098696279625674,54,0,55,54,1
+cora,51247846,684,5,0,0,False,True,True,True,18,False,True,Probabilistic_Methods,Probabilistic_Methods,True,33,0,16.81669246646027,25,0,26,25,1
+cora,51247846,698,15,0,0,False,True,True,True,22,False,True,Neural_Networks,Neural_Networks,True,80,0,14.861419457118554,73,3,74,76,1
+cora,51247846,699,25,0,1,False,True,True,True,55,False,True,Reinforcement_Learning,Reinforcement_Learning,True,150,17,17.876140806767754,134,11,135,145,1
+cora,51247846,702,1,0,0,False,True,True,True,5,False,True,Genetic_Algorithms,Neural_Networks,False,12,9,19.006629991850044,8,3,9,11,1
+cora,51247846,703,16,0,1,False,True,True,True,39,False,True,Neural_Networks,Neural_Networks,True,81,0,18.377265028460368,73,0,74,73,1
+cora,51247846,709,1,0,0,False,True,False,False,2,False,False,Neural_Networks,Neural_Networks,True,3,0,16.34418604651163,3,0,4,3,1
+cora,51247846,713,3,0,0,False,True,True,True,6,False,True,Probabilistic_Methods,Probabilistic_Methods,True,13,0,16.386579545454545,12,0,13,12,1
+cora,51247846,717,43,0,1,False,True,True,True,107,False,True,Case_Based,Genetic_Algorithms,False,261,0,15.204890886147812,210,1,211,211,1
+cora,51247846,728,6,0,0,False,True,True,True,15,False,True,Genetic_Algorithms,Genetic_Algorithms,True,35,0,17.738418646968352,27,2,28,29,1
+cora,51247846,732,5,0,0,False,True,True,True,27,False,True,Theory,Theory,True,50,12,16.114621174930452,32,0,33,32,1
+cora,51247846,740,11,0,0,False,True,True,True,43,False,True,Theory,Theory,True,64,0,15.603881389617616,53,0,54,53,1
+cora,51247846,747,31,0,0,False,True,True,True,69,False,True,Neural_Networks,Neural_Networks,True,172,0,16.3040615318379,153,1,154,154,1
+cora,51247846,750,1,0,0,False,True,False,False,2,False,False,Neural_Networks,Reinforcement_Learning,False,4,0,15.496034482758628,3,0,4,3,1
+cora,51247846,753,2,0,0,False,True,False,False,3,False,False,Neural_Networks,Neural_Networks,True,9,0,18.428593350383633,9,0,10,9,1
+cora,51247846,763,16,0,0,False,True,True,True,43,False,True,Neural_Networks,Neural_Networks,True,108,0,16.135608657479864,78,7,79,85,1
+cora,51247846,766,8,0,0,False,True,True,True,14,False,True,Neural_Networks,Neural_Networks,True,37,0,15.723129980541142,37,0,38,37,1
+cora,51247846,769,35,0,0,False,True,True,True,52,False,True,Genetic_Algorithms,Genetic_Algorithms,True,244,5,16.857651968621592,176,6,177,182,1
+cora,51247846,773,20,0,1,False,True,True,True,32,True,True,Reinforcement_Learning,Reinforcement_Learning,True,152,24,17.03787144956196,104,0,105,104,1
+cora,51247846,775,5,0,0,False,True,True,True,5,False,True,Reinforcement_Learning,Reinforcement_Learning,True,26,0,16.299350686498858,24,0,25,24,1
+cora,51247846,779,24,0,1,False,True,True,True,54,False,True,Neural_Networks,Neural_Networks,True,146,0,18.097751842751844,116,4,117,120,1
+cora,51247846,784,3,0,0,False,True,True,True,5,False,True,Neural_Networks,Neural_Networks,True,12,0,15.178684210526317,12,0,13,12,1
+cora,51247846,791,5,0,0,False,True,True,True,7,False,True,Theory,Theory,True,36,0,15.781372093023254,23,0,24,23,1
+cora,51247846,795,2,0,0,False,True,False,False,1,False,False,Theory,Theory,True,9,2,11.829352017937225,8,0,9,8,1
+cora,51247846,797,1,0,0,False,True,False,False,2,False,False,Neural_Networks,Neural_Networks,True,3,0,23.130975609756096,3,0,4,3,1
+cora,51247846,804,6,0,0,False,True,True,True,24,False,True,Reinforcement_Learning,Reinforcement_Learning,True,30,0,18.10303571428572,30,0,31,30,1
+cora,51247846,815,2,0,0,False,True,True,True,6,False,True,Genetic_Algorithms,Genetic_Algorithms,True,28,21,17.27761904761905,13,0,14,13,1
+cora,51247846,823,15,0,0,False,True,True,True,27,False,True,Neural_Networks,Neural_Networks,True,75,0,15.4279643619731,74,0,75,74,1
+cora,51247846,825,2,0,1,False,True,True,True,80,False,True,Case_Based,Case_Based,True,7,0,19.159298245614035,3,0,4,3,1
+cora,51247846,828,3,0,0,False,True,True,True,10,False,True,Neural_Networks,Neural_Networks,True,41,7,15.90137362637363,18,0,19,18,1
+cora,51247846,830,2,0,0,False,True,True,True,7,False,True,Neural_Networks,Neural_Networks,True,9,0,15.926000000000002,9,0,10,9,1
+cora,51247846,833,4,0,0,False,True,True,True,5,False,True,Genetic_Algorithms,Genetic_Algorithms,True,26,0,15.126575569358181,17,1,18,18,1
+cora,51247846,835,2,0,0,False,True,False,False,1,False,False,Case_Based,Case_Based,True,9,0,14.383305735660848,9,0,10,9,1
+cora,51247846,837,2,0,0,False,True,True,True,5,False,True,Rule_Learning,Rule_Learning,True,11,0,16.65579949694575,9,1,10,10,1
+cora,51247846,850,1,0,0,False,True,False,False,2,False,False,Neural_Networks,Probabilistic_Methods,False,3,0,19.926464646464648,3,0,4,3,1
+cora,51247846,851,1,0,0,False,True,False,False,4,False,False,Theory,Probabilistic_Methods,False,4,0,18.134022471910118,4,0,5,4,1
+cora,51247846,853,6,0,0,False,True,True,True,21,False,True,Theory,Theory,True,29,0,16.104000000000003,27,0,28,27,1
+cora,51247846,854,5,0,0,False,True,False,False,3,False,False,Genetic_Algorithms,Genetic_Algorithms,True,40,0,17.2519783829955,23,1,24,24,1
+cora,51247846,860,5,0,0,False,True,True,True,6,False,True,Genetic_Algorithms,Genetic_Algorithms,True,21,0,24.061543512606153,21,0,22,21,1
+cora,51247846,863,11,0,0,False,True,True,True,31,False,True,Neural_Networks,Neural_Networks,True,55,0,14.97350150291743,51,0,52,51,1
+cora,51247846,870,8,0,0,False,True,True,True,12,False,True,Reinforcement_Learning,Reinforcement_Learning,True,43,0,16.51477742448331,40,1,41,41,1
+cora,51247846,872,6,0,0,False,True,True,True,20,False,True,Neural_Networks,Neural_Networks,True,28,0,15.72881049483415,27,0,28,27,1
+cora,51247846,876,8,0,0,False,True,True,True,12,False,True,Theory,Theory,True,55,0,16.113826522371188,37,0,38,37,1
+cora,51247846,877,4,0,0,False,True,True,True,10,False,True,Rule_Learning,Rule_Learning,True,25,0,16.26641505364749,20,0,21,20,1
+cora,51247846,878,1,0,0,False,True,False,False,1,False,False,Neural_Networks,Neural_Networks,True,4,0,16.474505494505497,3,0,4,3,1
+cora,51247846,880,2,0,0,False,True,True,True,6,False,True,Genetic_Algorithms,Genetic_Algorithms,True,22,15,16.286648542844716,13,0,14,13,1
+cora,51247846,884,4,0,2,False,True,True,True,8,False,True,Theory,Theory,True,22,0,27.123738107301694,11,0,12,11,1
+cora,51247846,894,1,0,0,False,True,False,False,2,False,False,Probabilistic_Methods,Probabilistic_Methods,True,4,0,16.689027777777778,4,0,5,4,1
+cora,51247846,895,1,0,0,False,True,False,False,2,False,False,Probabilistic_Methods,Probabilistic_Methods,True,10,9,18.352202797202796,10,0,11,10,1
+cora,51247846,896,3,0,0,False,True,True,True,7,False,True,Probabilistic_Methods,Probabilistic_Methods,True,13,0,14.719516077170422,11,0,12,11,1
+cora,51247846,920,4,0,0,False,True,True,True,10,False,True,Neural_Networks,Neural_Networks,True,20,0,15.537268948999724,18,0,19,18,1
+cora,51247846,928,4,0,1,False,True,True,True,8,False,True,Case_Based,Case_Based,True,18,0,11.182400000000005,12,0,13,12,1
+cora,51247846,933,3,0,0,False,True,True,True,5,False,True,Reinforcement_Learning,Reinforcement_Learning,True,21,0,16.532694139194145,14,0,15,14,1
+cora,51247846,953,1,0,0,False,True,True,True,12,False,True,Genetic_Algorithms,Genetic_Algorithms,True,14,13,18.89688144329897,14,0,15,14,1
+cora,51247846,954,16,0,0,False,True,True,True,25,False,True,Probabilistic_Methods,Probabilistic_Methods,True,82,0,15.408064769172661,79,0,80,79,1
+cora,51247846,955,6,0,0,False,True,True,True,16,False,True,Theory,Theory,True,40,0,14.937568033983805,29,0,30,29,1
+cora,51247846,956,5,0,0,False,True,True,True,11,False,True,Genetic_Algorithms,Genetic_Algorithms,True,28,0,17.396659620117372,25,0,26,25,1
+cora,51247846,957,3,0,0,False,True,True,True,12,False,True,Theory,Theory,True,19,0,16.22387096774194,13,0,14,13,1
+cora,51247846,959,5,0,0,False,True,False,False,4,False,False,Genetic_Algorithms,Genetic_Algorithms,True,29,0,16.6017468175389,24,2,25,26,1
+cora,51247846,960,7,0,0,False,True,True,True,12,False,True,Rule_Learning,Rule_Learning,True,47,0,16.212932071870206,34,0,35,34,1
+cora,51247846,971,7,0,0,False,True,True,True,9,False,True,Probabilistic_Methods,Probabilistic_Methods,True,32,0,15.505838206627683,31,0,32,31,1
+cora,51247846,972,1,0,0,False,True,True,True,26,False,True,Genetic_Algorithms,Genetic_Algorithms,True,33,31,18.695625445051032,32,0,33,32,1
+cora,51247846,975,15,0,0,False,True,True,True,39,False,True,Neural_Networks,Neural_Networks,True,78,0,15.56888304636217,72,0,73,72,1
+cora,51247846,977,2,0,0,False,True,False,False,4,False,False,Rule_Learning,Theory,False,9,0,13.480047021943577,9,0,10,9,1
+cora,51247846,980,2,0,0,False,True,True,True,9,False,True,Neural_Networks,Neural_Networks,True,26,18,16.220641989336595,14,0,15,14,1
+cora,51247846,991,4,0,1,False,True,False,False,3,False,False,Case_Based,Case_Based,True,17,0,12.988683271145117,14,0,15,14,1
+cora,51247846,992,5,0,1,False,True,True,True,10,False,True,Case_Based,Case_Based,True,33,0,13.57777777777778,18,10,19,28,1
+cora,51247846,995,9,0,0,False,True,True,True,19,False,True,Genetic_Algorithms,Genetic_Algorithms,True,53,0,16.60661002326737,43,2,44,45,1
+cora,51247846,996,2,0,0,False,True,False,False,4,False,False,Probabilistic_Methods,Probabilistic_Methods,True,10,0,14.937499999999996,10,0,11,10,1
+cora,51247846,1008,4,0,0,False,True,True,True,10,False,True,Rule_Learning,Rule_Learning,True,32,0,16.686984126984125,17,0,18,17,1
+cora,51247846,1012,17,0,0,False,True,True,True,22,False,True,Reinforcement_Learning,Reinforcement_Learning,True,111,0,18.006866129279043,83,0,84,83,1
+cora,51247846,1015,2,0,0,False,True,False,False,4,False,False,Probabilistic_Methods,Probabilistic_Methods,True,8,0,17.549116465863452,8,0,9,8,1
+cora,51247846,1016,6,0,0,False,True,True,True,13,False,True,Genetic_Algorithms,Genetic_Algorithms,True,41,0,19.22125,28,5,29,33,1
+cora,51247846,1020,15,0,2,False,True,True,True,9,False,True,Probabilistic_Methods,Probabilistic_Methods,True,83,3,21.707758903066082,67,3,68,70,1
+cora,51247846,1021,1,0,0,False,True,False,False,4,False,False,Neural_Networks,Neural_Networks,True,5,0,15.779556786703601,5,0,6,5,1
+cora,51247846,1028,3,0,0,False,True,True,True,7,False,True,Neural_Networks,Neural_Networks,True,13,0,17.09591666666667,12,0,13,12,1
+cora,51247846,1038,7,0,0,False,True,True,True,14,False,True,Neural_Networks,Neural_Networks,True,44,0,15.671645865495424,35,4,36,39,1
+cora,51247846,1045,3,0,0,False,True,True,True,6,False,True,Reinforcement_Learning,Reinforcement_Learning,True,20,0,16.586303618052963,14,0,15,14,1
+cora,51247846,1051,2,0,0,False,True,True,True,6,False,True,Neural_Networks,Neural_Networks,True,16,10,16.21796380090498,16,0,17,16,1
+cora,51247846,1059,1,0,0,False,True,False,False,2,False,False,Neural_Networks,Neural_Networks,True,3,0,15.584081632653064,3,0,4,3,1
+cora,51247846,1060,38,0,0,False,True,True,True,51,False,True,Genetic_Algorithms,Genetic_Algorithms,True,242,1,16.324305292256263,189,13,190,202,1
+cora,51247846,1062,3,0,0,False,True,True,True,10,False,True,Neural_Networks,Theory,False,27,10,17.009707903780072,21,0,22,21,1
+cora,51247846,1065,36,0,0,False,True,True,True,81,False,True,Genetic_Algorithms,Genetic_Algorithms,True,227,2,16.000658313520592,179,12,180,191,1
+cora,51247846,1066,3,0,0,False,True,False,False,4,False,False,Neural_Networks,Neural_Networks,True,13,0,15.596006383126344,13,0,14,13,1
+cora,51247846,1069,36,0,0,False,True,True,True,76,False,True,Genetic_Algorithms,Genetic_Algorithms,True,244,7,16.903495146825446,182,9,183,191,1
+cora,51247846,1076,2,0,0,False,True,True,True,5,False,True,Probabilistic_Methods,Probabilistic_Methods,True,9,0,15.615246886120996,9,0,10,9,1
+cora,51247846,1077,4,0,0,False,True,True,True,8,False,True,Genetic_Algorithms,Genetic_Algorithms,True,18,0,16.629035473468196,17,0,18,17,1
+cora,51247846,1081,3,0,0,False,True,True,True,10,False,True,Rule_Learning,Rule_Learning,True,35,0,15.351908617698093,12,0,13,12,1
+cora,51247846,1082,3,0,0,False,True,False,False,3,False,False,Rule_Learning,Rule_Learning,True,17,0,14.79420217209691,13,0,14,13,1
+cora,51247846,1092,6,0,0,False,True,True,True,13,False,True,Theory,Theory,True,51,0,14.722337086092718,29,0,30,29,1
+cora,51247846,1095,3,0,0,False,True,True,True,9,False,True,Theory,Theory,True,11,0,15.79648930753564,11,0,12,11,1
+cora,51247846,1115,2,0,0,False,True,True,True,6,False,True,Neural_Networks,Neural_Networks,True,10,0,15.414741426238436,10,0,11,10,1
+cora,51247846,1119,4,0,0,False,True,True,True,8,False,True,Neural_Networks,Neural_Networks,True,29,0,15.627907645930392,19,0,20,19,1
+cora,51247846,1122,6,0,2,False,True,True,True,10,False,True,Case_Based,Case_Based,True,33,0,14.752837088342226,27,0,28,27,1
+cora,51247846,1126,6,0,1,False,True,True,True,14,False,True,Case_Based,Case_Based,True,37,0,9.209561723280864,22,1,23,23,1
+cora,51247846,1129,4,0,1,False,True,True,True,5,False,True,Neural_Networks,Neural_Networks,True,25,0,15.755042016806723,18,1,19,19,1
+cora,51247846,1130,34,0,0,False,True,True,True,62,False,True,Genetic_Algorithms,Genetic_Algorithms,True,225,2,17.94186751020955,169,5,170,174,1
+cora,51247846,1136,38,0,0,False,True,True,True,62,False,True,Genetic_Algorithms,Genetic_Algorithms,True,260,16,16.62479763212716,203,8,204,211,1
+cora,51247846,1139,36,0,0,False,True,True,True,75,True,True,Genetic_Algorithms,Genetic_Algorithms,True,215,1,17.361130836854667,180,2,181,182,1
+cora,51247846,1141,5,0,0,False,True,True,True,5,False,True,Probabilistic_Methods,Probabilistic_Methods,True,32,0,15.852928571428574,23,0,24,23,1
+cora,51247846,1147,7,0,0,False,True,True,True,17,False,True,Probabilistic_Methods,Probabilistic_Methods,True,39,5,15.363296788674035,37,0,38,37,1
+cora,51247846,1148,5,0,3,False,True,True,True,12,False,True,Case_Based,Case_Based,True,15,7,8.49877338877339,13,0,14,13,1
+cora,51247846,1150,3,0,0,False,True,True,True,5,False,True,Neural_Networks,Neural_Networks,True,13,0,15.17051558752998,12,0,13,12,1
+cora,51247846,1152,1,0,0,False,True,False,False,2,False,False,Case_Based,Case_Based,True,5,2,12.730259009009007,5,0,6,5,1
+cora,51247846,1153,37,0,0,False,True,True,True,75,True,True,Genetic_Algorithms,Genetic_Algorithms,True,221,0,19.053758330299825,182,8,183,190,1
+cora,51247846,1154,2,0,1,False,True,False,False,1,False,False,Case_Based,Case_Based,True,7,0,12.586811426922523,4,1,5,5,1
+cora,51247846,1155,7,0,0,False,True,True,True,9,False,True,Case_Based,Case_Based,True,68,14,14.130794399849496,38,0,39,38,1
+cora,51247846,1156,1,0,0,False,True,True,True,9,False,True,Probabilistic_Methods,Probabilistic_Methods,True,18,17,16.129713313896993,18,0,19,18,1
+cora,51247846,1158,3,0,0,False,True,True,True,5,False,True,Probabilistic_Methods,Probabilistic_Methods,True,12,0,16.803712772542813,12,0,13,12,1
+cora,51247846,1162,1,0,0,False,True,False,False,2,False,False,Probabilistic_Methods,Probabilistic_Methods,True,5,0,13.51992775436484,5,0,6,5,1
+cora,51247846,1166,1,0,0,False,True,True,True,6,False,True,Genetic_Algorithms,Theory,False,9,8,18.228245614035092,9,0,10,9,1
+cora,51247846,1167,1,0,0,False,True,False,False,1,False,False,Genetic_Algorithms,Genetic_Algorithms,True,4,0,15.376321839080461,4,0,5,4,1
+cora,51247846,1180,1,0,0,False,True,False,False,1,False,False,Rule_Learning,Rule_Learning,True,5,0,18.92529411764706,4,0,5,4,1
+cora,51247846,1183,6,0,0,False,True,True,True,9,False,True,Reinforcement_Learning,Reinforcement_Learning,True,31,0,19.627105976944687,27,1,28,28,1
+cora,51247846,1184,5,0,0,False,True,True,True,8,False,True,Genetic_Algorithms,Genetic_Algorithms,True,33,0,16.424068034128677,24,0,25,24,1
+cora,51247846,1191,9,0,0,False,True,True,True,32,False,True,Theory,Theory,True,71,16,15.7884066974827,49,1,50,50,1
+cora,51247846,1197,8,0,1,False,True,True,True,17,False,True,Theory,Theory,True,53,0,22.03582129277567,34,1,35,35,1
+cora,51247846,1205,37,0,0,False,True,True,True,94,False,True,Genetic_Algorithms,Genetic_Algorithms,True,227,0,16.878700957819124,182,7,183,189,1
+cora,51247846,1209,4,0,3,False,True,True,True,65,False,True,Case_Based,Case_Based,True,8,7,4.9491429512981675,7,0,8,7,1
+cora,51247846,1212,5,0,3,False,True,True,True,10,False,True,Case_Based,Case_Based,True,46,0,15.284597438866566,11,0,12,11,1
+cora,51247846,1214,9,0,0,False,True,True,True,14,False,True,Case_Based,Case_Based,True,64,0,15.702560624584848,42,1,43,43,1
+cora,51247846,1215,5,0,3,False,True,True,True,9,False,True,Case_Based,Case_Based,True,18,1,12.590525478580442,12,0,13,12,1
+cora,51247846,1217,1,0,0,False,True,True,True,12,False,True,Reinforcement_Learning,Reinforcement_Learning,True,16,15,16.285502983802214,16,0,17,16,1
+cora,51247846,1218,37,0,0,False,True,True,True,63,False,True,Genetic_Algorithms,Genetic_Algorithms,True,215,1,16.61750052631972,183,5,184,188,1
+cora,51247846,1219,35,0,0,False,True,True,True,71,False,True,Genetic_Algorithms,Genetic_Algorithms,True,242,2,16.923304391316233,173,5,174,178,1
+cora,51247846,1227,1,0,0,False,True,True,True,5,False,True,Theory,Theory,True,10,0,14.407885714285715,5,0,6,5,1
+cora,51247846,1238,12,0,0,False,True,True,True,26,False,True,Theory,Theory,True,92,1,16.897726559112453,61,0,62,61,1
+cora,51247846,1243,4,0,0,False,True,True,True,9,False,True,Neural_Networks,Neural_Networks,True,25,0,15.924468423443894,20,0,21,20,1
+cora,51247846,1257,39,0,0,False,True,True,True,67,False,True,Genetic_Algorithms,Genetic_Algorithms,True,222,1,16.971818491285408,192,5,193,197,1
+cora,51247846,1267,11,0,0,False,True,True,True,21,False,True,Theory,Theory,True,74,0,18.278706306530754,52,1,53,53,1
+cora,51247846,1275,16,0,0,False,True,True,True,12,False,True,Rule_Learning,Rule_Learning,True,142,0,14.929828566186348,79,0,80,79,1
+cora,51247846,1282,3,0,0,False,True,True,True,5,False,True,Neural_Networks,Neural_Networks,True,14,0,16.39161616161616,14,0,15,14,1
+cora,51247846,1291,1,0,0,False,True,False,False,2,False,False,Neural_Networks,Probabilistic_Methods,False,3,0,14.751428571428573,3,0,4,3,1
+cora,51247846,1294,1,0,0,False,True,False,False,2,False,False,Probabilistic_Methods,Probabilistic_Methods,True,2,0,14.087424242424245,2,0,3,2,1
+cora,51247846,1296,7,0,0,False,True,True,True,24,False,True,Theory,Theory,True,46,2,15.03923409090909,35,0,36,35,1
+cora,51247846,1297,2,0,0,False,True,False,False,4,False,False,Case_Based,Rule_Learning,False,19,0,14.945316670523798,9,0,10,9,1
+cora,51247846,1300,1,0,0,False,True,False,False,4,False,False,Neural_Networks,Neural_Networks,True,5,0,12.642912308930011,5,0,6,5,1
+cora,51247846,1306,3,0,0,False,True,True,True,10,False,True,Theory,Theory,True,14,0,14.821981981981985,12,0,13,12,1
+cora,51247846,1312,17,0,0,False,True,True,True,23,False,True,Rule_Learning,Rule_Learning,True,153,3,15.868116431924886,86,7,87,93,1
+cora,51247846,1324,4,0,0,False,True,True,True,15,False,True,Probabilistic_Methods,Probabilistic_Methods,True,25,7,17.48833827375763,23,0,24,23,1
+cora,51247846,1327,11,0,0,False,True,True,True,25,False,True,Rule_Learning,Rule_Learning,True,93,7,14.885701915295389,58,1,59,59,1
+cora,51247846,1346,2,0,0,False,True,False,False,4,False,False,Neural_Networks,Neural_Networks,True,9,0,14.372916666666665,7,1,8,8,1
+cora,51247846,1348,3,0,0,False,True,True,True,5,False,True,Case_Based,Case_Based,True,15,0,8.426000464252557,15,0,16,15,1
+cora,51247846,1354,12,0,3,False,True,True,True,17,False,True,Case_Based,Case_Based,True,78,0,13.855306760436964,48,0,49,48,1
+cora,51247846,1363,9,0,1,False,True,True,True,26,False,True,Theory,Theory,True,61,11,16.416609747767968,51,1,52,52,1
+cora,51247846,1365,4,0,0,False,True,True,True,12,False,True,Neural_Networks,Neural_Networks,True,44,27,17.619337268128167,30,0,31,30,1
+cora,51247846,1367,1,0,1,False,False,False,False,1,False,True,Case_Based,Case_Based,True,1,1,13.98769230769231,1,0,2,1,1
+cora,51247846,1369,3,0,0,False,True,True,True,6,False,True,Genetic_Algorithms,Genetic_Algorithms,True,21,10,17.285354053657823,21,0,22,21,1
+cora,51247846,1384,1,0,0,False,True,False,False,2,False,False,Neural_Networks,Neural_Networks,True,3,0,17.216363636363635,3,0,4,3,1
+cora,51247846,1388,6,0,0,False,True,True,True,20,False,True,Theory,Theory,True,40,0,15.749024131127637,27,1,28,28,1
+cora,51247846,1390,1,0,0,False,True,False,False,4,False,False,Theory,Theory,True,4,0,17.177255639097748,4,0,5,4,1
+cora,51247846,1400,4,0,0,False,True,True,True,12,False,True,Theory,Theory,True,24,0,17.126910425844347,19,0,20,19,1
+cora,51247846,1408,3,0,0,False,True,False,False,2,False,False,Genetic_Algorithms,Genetic_Algorithms,True,16,0,18.712761388286335,13,1,14,14,1
+cora,51247846,1409,7,0,0,False,True,True,True,14,False,True,Genetic_Algorithms,Genetic_Algorithms,True,38,0,16.003385644852138,34,0,35,34,1
+cora,51247846,1415,2,0,0,False,True,False,False,2,False,False,Probabilistic_Methods,Probabilistic_Methods,True,11,0,17.390656894679697,8,0,9,8,1
+cora,51247846,1416,1,0,0,False,True,True,True,5,True,True,Case_Based,Case_Based,True,7,0,10.80714285714286,5,0,6,5,1
+cora,51247846,1434,1,0,0,False,True,False,False,2,False,False,Rule_Learning,Rule_Learning,True,4,0,14.201289506953227,2,0,3,2,1
+cora,51247846,1438,20,0,0,False,True,True,True,23,False,True,Reinforcement_Learning,Reinforcement_Learning,True,144,9,18.743005328894053,105,0,106,105,1
+cora,51247846,1439,1,0,0,False,True,False,False,1,False,False,Genetic_Algorithms,Genetic_Algorithms,True,5,0,14.895384615384618,5,0,6,5,1
+cora,51247846,1440,17,0,0,False,True,True,True,33,False,True,Reinforcement_Learning,Reinforcement_Learning,True,119,0,19.492642318919895,83,1,84,84,1
+cora,51247846,1443,2,0,0,False,True,True,True,6,False,True,Reinforcement_Learning,Reinforcement_Learning,True,12,0,20.615556886227548,7,0,8,7,1
+cora,51247846,1445,8,0,0,False,True,True,True,16,False,True,Case_Based,Rule_Learning,False,51,1,15.058652252252251,41,0,42,41,1
+cora,51247846,1470,4,0,0,False,True,False,False,4,False,False,Neural_Networks,Neural_Networks,True,18,0,13.483462246777169,18,0,19,18,1
+cora,51247846,1478,4,0,0,False,True,True,True,5,False,True,Probabilistic_Methods,Probabilistic_Methods,True,26,0,14.806400770712916,19,1,20,20,1
+cora,51247846,1479,6,0,0,False,True,False,False,3,False,False,Probabilistic_Methods,Probabilistic_Methods,True,27,0,15.039530127142068,27,0,28,27,1
+cora,51247846,1482,3,0,0,False,True,True,True,6,False,True,Theory,Theory,True,17,0,15.112206392694063,13,0,14,13,1
+cora,51247846,1484,8,0,0,False,True,True,True,32,False,True,Theory,Theory,True,55,1,14.649323339218597,38,0,39,38,1
+cora,51247846,1485,3,0,0,False,True,True,True,10,False,True,Neural_Networks,Neural_Networks,True,14,0,14.426940901742412,12,0,13,12,1
+cora,51247846,1492,2,0,0,False,True,False,False,1,False,False,Neural_Networks,Theory,False,11,0,13.325857321652066,10,0,11,10,1
+cora,51247846,1495,3,0,0,False,True,False,False,3,False,False,Genetic_Algorithms,Genetic_Algorithms,True,14,0,15.886447846756155,14,0,15,14,1
+cora,51247846,1496,2,0,1,False,True,False,False,1,False,False,Case_Based,Case_Based,True,2,1,12.367565217391306,2,0,3,2,1
+cora,51247846,1500,5,0,0,False,True,True,True,15,False,True,Theory,Theory,True,25,0,14.16759049773756,24,0,25,24,1
+cora,51247846,1504,2,0,0,False,True,True,True,5,False,True,Probabilistic_Methods,Probabilistic_Methods,True,8,0,13.026787935323387,8,0,9,8,1
+cora,51247846,1515,36,0,1,False,True,True,True,68,False,True,Reinforcement_Learning,Reinforcement_Learning,True,209,11,18.393565827862876,181,2,182,183,1
+cora,51247846,1516,6,0,0,False,True,True,True,7,False,True,Genetic_Algorithms,Genetic_Algorithms,True,37,0,16.916116257490213,29,1,30,30,1
+cora,51247846,1519,2,0,0,False,True,True,True,6,False,True,Rule_Learning,Rule_Learning,True,7,0,11.023039383561642,6,0,7,6,1
+cora,51247846,1520,7,0,0,False,True,True,True,25,False,True,Neural_Networks,Neural_Networks,True,39,7,15.407364226682414,38,0,39,38,1
+cora,51247846,1522,6,0,0,False,True,True,True,17,False,True,Theory,Theory,True,38,0,13.596120322091384,29,0,30,29,1
+cora,51247846,1527,13,0,0,False,True,True,True,26,False,True,Probabilistic_Methods,Probabilistic_Methods,True,83,0,15.796641763085404,64,4,65,68,1
+cora,51247846,1528,4,0,1,False,True,True,True,6,False,True,Theory,Rule_Learning,False,22,0,13.89507773940625,20,0,21,20,1
+cora,51247846,1529,16,0,1,False,True,True,True,20,False,True,Reinforcement_Learning,Reinforcement_Learning,True,102,0,20.203869090521604,74,1,75,75,1
+cora,51247846,1531,6,0,1,False,True,True,True,22,False,True,Case_Based,Case_Based,True,62,16,15.959509605662287,40,1,41,41,1
+cora,51247846,1534,7,0,0,False,True,True,True,20,False,True,Case_Based,Case_Based,True,62,0,11.891295976085107,34,1,35,35,1
+cora,51247846,1540,20,0,0,False,True,True,True,20,True,True,Reinforcement_Learning,Reinforcement_Learning,True,122,0,19.710633540372672,94,0,95,94,1
+cora,51247846,1542,1,0,0,False,True,False,False,3,False,False,Case_Based,Case_Based,True,4,0,15.808823529411772,3,0,4,3,1
+cora,51247846,1548,4,0,0,False,True,True,True,10,False,True,Neural_Networks,Probabilistic_Methods,False,19,0,14.40173469387755,18,0,19,18,1
+cora,51247846,1568,13,0,1,False,True,True,True,36,False,True,Theory,Case_Based,False,104,39,18.03156402007674,86,0,87,86,1
+cora,51247846,1570,6,0,0,False,True,True,True,10,False,True,Theory,Case_Based,False,37,6,14.09628239345674,32,0,33,32,1
+cora,51247846,1571,36,0,1,False,True,True,True,65,False,True,Genetic_Algorithms,Genetic_Algorithms,True,221,1,18.84926582977325,175,4,176,179,1
+cora,51247846,1579,1,0,0,False,True,False,False,3,False,False,Neural_Networks,Neural_Networks,True,5,0,15.032844932844935,5,0,6,5,1
+cora,51247846,1585,17,0,0,False,True,True,True,17,False,True,Reinforcement_Learning,Reinforcement_Learning,True,98,0,17.316458084074373,85,0,86,85,1
+cora,51247846,1589,5,0,0,False,True,True,True,9,False,True,Genetic_Algorithms,Reinforcement_Learning,False,28,0,16.857893561196992,22,1,23,23,1
+cora,51247846,1595,6,0,0,False,True,True,True,17,False,True,Theory,Theory,True,48,2,14.446427552940985,30,0,31,30,1
+cora,51247846,1597,5,0,1,False,True,True,True,39,False,True,Case_Based,Case_Based,True,35,0,10.53193548387097,17,0,18,17,1
+cora,51247846,1603,4,0,0,False,True,True,True,10,False,True,Genetic_Algorithms,Genetic_Algorithms,True,22,0,15.469306652389239,18,0,19,18,1
+cora,51247846,1625,1,0,0,False,True,False,False,2,False,False,Genetic_Algorithms,Reinforcement_Learning,False,4,0,17.74511111111111,3,0,4,3,1
+cora,51247846,1630,3,0,0,False,True,True,True,10,False,True,Neural_Networks,Neural_Networks,True,14,0,15.663442367601252,12,0,13,12,1
+cora,51247846,1631,4,0,0,False,True,True,True,11,False,True,Genetic_Algorithms,Genetic_Algorithms,True,26,0,15.52970494417863,20,1,21,21,1
+cora,51247846,1634,10,0,0,False,True,True,True,21,False,True,Neural_Networks,Neural_Networks,True,51,1,15.986583559168928,50,0,51,50,1
+cora,51247846,1635,2,0,0,False,True,True,True,13,False,True,Case_Based,Case_Based,True,38,30,14.551673350613786,21,0,22,21,1
+cora,51247846,1636,5,0,1,False,True,True,True,10,True,True,Case_Based,Case_Based,True,41,14,13.255717901518643,31,0,32,31,1
+cora,51247846,1638,1,0,0,False,True,False,False,2,False,False,Genetic_Algorithms,Genetic_Algorithms,True,5,0,15.690000000000001,3,0,4,3,1
+cora,51247846,1643,11,0,0,False,True,True,True,10,False,True,Reinforcement_Learning,Reinforcement_Learning,True,69,0,16.876413193620497,55,4,56,59,1
+cora,51247846,1648,1,0,0,False,True,False,False,1,False,False,Case_Based,Case_Based,True,5,0,11.661249999999999,4,0,5,4,1
+cora,51247846,1649,6,0,0,False,True,True,True,9,False,True,Reinforcement_Learning,Reinforcement_Learning,True,32,0,17.209812623274164,29,0,30,29,1
+cora,51247846,1661,11,0,0,False,True,True,True,21,False,True,Theory,Theory,True,73,0,17.438585089141004,51,1,52,52,1
+cora,51247846,1663,3,0,0,False,True,True,True,5,False,True,Genetic_Algorithms,Genetic_Algorithms,True,15,0,19.0194288209607,12,0,13,12,1
+cora,51247846,1664,4,0,0,False,True,True,True,16,False,True,Theory,Neural_Networks,False,31,0,15.398857698721514,19,10,20,29,1
+cora,51247846,1676,29,0,1,False,True,True,True,73,False,True,Neural_Networks,Neural_Networks,True,168,0,20.592837788858088,133,4,134,137,1
+cora,51247846,1678,8,0,1,False,True,True,True,41,False,True,Theory,Theory,True,47,0,17.815454759592736,34,0,35,34,1
+cora,51247846,1679,5,0,1,False,True,True,True,6,False,True,Rule_Learning,Rule_Learning,True,35,0,19.724650864686172,18,0,19,18,1
+cora,51247846,1680,6,0,1,False,True,True,True,12,False,True,Case_Based,Case_Based,True,52,0,13.494705834353326,21,1,22,22,1
+cora,51247846,1682,1,0,0,False,True,False,False,3,False,False,Probabilistic_Methods,Probabilistic_Methods,True,18,17,17.823923076923077,18,0,19,18,1
+cora,51247846,1683,5,0,0,False,True,True,True,19,False,True,Theory,Theory,True,23,0,15.431096705164116,22,0,23,22,1
+cora,51247846,1685,35,0,0,False,True,True,True,81,False,True,Genetic_Algorithms,Genetic_Algorithms,True,226,5,15.90416457847979,176,5,177,181,1
+cora,51247846,1686,3,0,1,False,True,True,True,5,False,True,Rule_Learning,Rule_Learning,True,35,0,17.582926649852883,12,0,13,12,1
+cora,51247846,1687,15,0,0,False,True,True,True,29,False,True,Reinforcement_Learning,Reinforcement_Learning,True,88,0,16.670477308294213,73,0,74,73,1
+cora,51247846,1693,1,0,0,False,True,False,False,4,False,False,Reinforcement_Learning,Reinforcement_Learning,True,4,0,19.848984962406018,4,0,5,4,1
+cora,51247846,1695,5,0,2,False,True,False,False,4,False,False,Case_Based,Case_Based,True,30,0,12.06730309942305,23,0,24,23,1
+cora,51247846,1696,39,0,0,False,True,True,True,74,False,True,Genetic_Algorithms,Genetic_Algorithms,True,280,3,16.37980001535391,191,17,192,208,1
+cora,51247846,1698,14,0,0,False,True,True,True,21,False,True,Case_Based,Case_Based,True,115,1,13.683607309866026,67,0,68,67,1
+cora,51247846,1704,8,0,0,False,True,True,True,13,False,True,Neural_Networks,Neural_Networks,True,45,0,15.615861862461326,37,0,38,37,1
+cora,51247846,1705,4,0,1,False,True,True,True,5,False,True,Theory,Theory,True,21,8,22.49127346657478,19,0,20,19,1
+cora,51247846,1707,2,0,1,False,True,True,True,5,False,True,Case_Based,Case_Based,True,9,0,6.195630108889095,9,0,10,9,1
+cora,51247846,1715,36,0,0,False,True,True,True,73,False,True,Genetic_Algorithms,Genetic_Algorithms,True,216,0,15.941700877738619,179,9,180,188,1
+cora,51247846,1722,3,0,0,False,True,True,True,9,False,True,Probabilistic_Methods,Probabilistic_Methods,True,13,0,15.865814814814819,12,0,13,12,1
+cora,51247846,1733,4,0,0,False,True,True,True,9,False,True,Probabilistic_Methods,Probabilistic_Methods,True,22,0,15.034347899301174,17,0,18,17,1
+cora,51247846,1734,38,0,0,False,True,True,True,66,False,True,Genetic_Algorithms,Genetic_Algorithms,True,230,14,16.53511412747861,199,3,200,202,1
+cora,51247846,1751,1,0,0,False,True,True,True,6,False,True,Neural_Networks,Neural_Networks,True,9,8,16.304668341708545,9,0,10,9,1
+cora,51247846,1757,4,0,0,False,True,True,True,10,False,True,Probabilistic_Methods,Probabilistic_Methods,True,21,0,16.089738496204937,20,0,21,20,1
+cora,51247846,1758,1,0,0,False,True,False,False,2,False,False,Neural_Networks,Reinforcement_Learning,False,3,0,16.505853658536584,3,0,4,3,1
+cora,51247846,1759,1,0,0,False,True,False,False,1,False,False,Probabilistic_Methods,Probabilistic_Methods,True,4,0,15.597758620689657,4,0,5,4,1
+cora,51247846,1768,1,0,0,False,True,False,False,1,False,False,Reinforcement_Learning,Reinforcement_Learning,True,5,0,14.459086294416242,5,0,6,5,1
+cora,51247846,1773,1,0,0,False,True,False,False,4,False,False,Neural_Networks,Neural_Networks,True,5,0,13.405151515151516,5,0,6,5,1
+cora,51247846,1781,1,0,0,False,True,False,False,2,False,False,Rule_Learning,Rule_Learning,True,5,0,12.442264423946465,5,0,6,5,1
+cora,51247846,1782,22,0,1,False,True,True,True,27,False,True,Reinforcement_Learning,Reinforcement_Learning,True,149,7,18.177232203160887,109,8,110,117,1
+cora,51247846,1785,1,0,0,False,True,False,False,3,False,False,Genetic_Algorithms,Genetic_Algorithms,True,4,0,15.404892617449665,4,0,5,4,1
+cora,51247846,1787,5,0,0,False,True,True,True,6,False,True,Neural_Networks,Neural_Networks,True,25,0,15.126671069043951,24,0,25,24,1
+cora,51247846,1794,2,0,0,False,True,True,True,7,False,True,Neural_Networks,Neural_Networks,True,10,0,15.47890678941312,10,0,11,10,1
+cora,51247846,1796,3,0,0,False,True,True,True,17,False,True,Genetic_Algorithms,Genetic_Algorithms,True,40,28,17.46493315508022,25,0,26,25,1
+cora,51247846,1799,35,0,0,False,True,True,True,60,False,True,Genetic_Algorithms,Genetic_Algorithms,True,225,0,16.716806886906323,171,3,172,174,1
+cora,51247846,1802,1,0,0,False,True,False,False,1,False,False,Probabilistic_Methods,Probabilistic_Methods,True,2,0,18.26260869565218,2,0,3,2,1
+cora,51247846,1806,2,0,0,False,True,True,True,5,False,True,Neural_Networks,Neural_Networks,True,6,0,15.434210526315791,6,0,7,6,1
+cora,51247846,1810,1,0,1,False,False,False,False,1,False,True,Neural_Networks,Neural_Networks,True,1,0,279.68193832599127,0,0,1,0,1
+cora,51247846,1816,11,0,0,False,True,True,True,9,False,True,Reinforcement_Learning,Reinforcement_Learning,True,71,0,17.12872495446266,53,1,54,54,1
+cora,51247846,1819,2,0,0,False,True,True,True,7,False,True,Rule_Learning,Rule_Learning,True,16,0,16.276600000000002,9,0,10,9,1
+cora,51247846,1821,2,0,0,False,True,True,True,7,False,True,Neural_Networks,Neural_Networks,True,26,14,17.046222982708937,13,0,14,13,1
+cora,51247846,1823,2,0,0,False,True,True,True,9,False,True,Theory,Theory,True,17,10,15.685325571725574,16,0,17,16,1
+cora,51247846,1827,4,0,0,False,True,True,True,14,False,True,Theory,Theory,True,26,0,15.790763209393347,18,0,19,18,1
+cora,51247846,1841,2,0,0,False,True,False,False,4,False,False,Reinforcement_Learning,Reinforcement_Learning,True,10,0,15.189498746867173,8,0,9,8,1
+cora,51247846,1843,1,0,0,False,True,False,False,2,False,False,Case_Based,Case_Based,True,3,0,16.761904761904763,3,0,4,3,1
+cora,51247846,1853,1,0,0,False,True,False,False,3,False,False,Theory,Theory,True,3,0,16.57514705882353,3,0,4,3,1
+cora,51247846,1856,3,0,0,False,True,False,False,3,False,False,Probabilistic_Methods,Probabilistic_Methods,True,12,0,15.374599056603774,12,0,13,12,1
+cora,51247846,1863,7,0,0,False,True,True,True,11,True,True,Theory,Theory,True,39,0,19.896776615163123,32,0,33,32,1
+cora,51247846,1881,7,0,1,False,True,True,True,7,False,True,Rule_Learning,Rule_Learning,True,57,0,16.651632193611935,35,0,36,35,1
+cora,51247846,1884,7,0,0,False,True,True,True,10,False,True,Neural_Networks,Neural_Networks,True,39,0,14.675258799171843,35,7,36,42,1
+cora,51247846,1890,35,0,0,False,True,True,True,85,False,True,Genetic_Algorithms,Genetic_Algorithms,True,222,11,16.800809311464786,180,6,181,186,1
+cora,51247846,1892,1,0,0,False,True,False,False,3,False,False,Case_Based,Case_Based,True,3,0,15.532722371967655,3,0,4,3,1
+cora,51247846,1895,9,0,0,False,True,True,True,10,False,True,Neural_Networks,Neural_Networks,True,65,0,18.548610394349314,43,0,44,43,1
+cora,51247846,1899,2,0,0,False,True,False,False,4,False,False,Probabilistic_Methods,Probabilistic_Methods,True,11,0,17.134408914728684,8,0,9,8,1
+cora,51247846,1903,1,0,0,False,True,False,False,1,False,False,Neural_Networks,Neural_Networks,True,4,0,19.068322709163343,4,0,5,4,1
+cora,51247846,1906,3,0,0,False,True,False,False,4,False,False,Probabilistic_Methods,Probabilistic_Methods,True,13,0,15.34134129536059,12,0,13,12,1
+cora,51247846,1919,9,0,1,False,True,True,True,5,False,True,Rule_Learning,Rule_Learning,True,74,0,17.134610755758313,45,0,46,45,1
+cora,51247846,1923,4,0,0,False,True,True,True,8,False,True,Neural_Networks,Neural_Networks,True,22,0,13.872953735144314,17,0,18,17,1
+cora,51247846,1930,1,0,0,False,True,True,True,5,False,True,Genetic_Algorithms,Genetic_Algorithms,True,8,7,18.28125319693095,8,0,9,8,1
+cora,51247846,1931,9,0,0,False,True,True,True,14,False,True,Genetic_Algorithms,Genetic_Algorithms,True,57,0,16.31942546583851,43,5,44,48,1
+cora,51247846,1955,2,0,0,False,True,True,True,10,False,True,Rule_Learning,Rule_Learning,True,14,7,15.627017543859651,13,0,14,13,1
+cora,51247846,1958,3,0,0,False,True,True,True,7,False,True,Genetic_Algorithms,Genetic_Algorithms,True,17,0,16.280662144702845,12,0,13,12,1
+cora,51247846,1959,4,0,0,False,True,True,True,5,False,True,Genetic_Algorithms,Genetic_Algorithms,True,19,0,16.97151062155783,17,0,18,17,1
+cora,51247846,1969,3,0,0,False,True,True,True,9,False,True,Reinforcement_Learning,Reinforcement_Learning,True,22,0,15.986497461928934,14,0,15,14,1
+cora,51247846,1974,4,0,0,False,True,True,True,10,False,True,Neural_Networks,Neural_Networks,True,20,0,15.539866131191435,18,0,19,18,1
+cora,51247846,1981,1,0,0,False,True,False,False,3,False,False,Neural_Networks,Neural_Networks,True,3,0,16.26206896551724,3,0,4,3,1
+cora,51247846,1982,7,0,0,False,True,True,True,7,False,True,Probabilistic_Methods,Probabilistic_Methods,True,35,0,15.47632683029159,31,1,32,32,1
+cora,51247846,1986,7,0,0,False,True,True,True,21,False,True,Theory,Theory,True,49,0,15.32867033938652,35,0,36,35,1
+cora,51247846,1996,1,0,0,False,True,True,True,9,False,True,Neural_Networks,Neural_Networks,True,15,14,18.395535714285717,15,0,16,15,1
+cora,51247846,1998,1,0,0,False,True,False,False,1,False,False,Rule_Learning,Neural_Networks,False,3,0,16.791851851851856,1,0,2,1,1
+cora,51247846,2006,1,0,0,False,True,True,True,5,False,True,Theory,Theory,True,6,0,14.194882154882162,4,0,5,4,1
+cora,51247846,2027,19,0,1,False,True,True,True,30,False,True,Neural_Networks,Reinforcement_Learning,False,154,0,19.445216026633393,86,1,87,87,1
+cora,51247846,2038,2,0,0,False,True,False,False,1,False,False,Probabilistic_Methods,Case_Based,False,7,0,14.816727272727274,7,0,8,7,1
+cora,51247846,2041,1,0,0,False,True,True,True,6,False,True,Neural_Networks,Neural_Networks,True,10,9,19.138502262443442,10,0,11,10,1
+cora,51247846,2047,1,0,0,False,True,False,False,2,False,False,Genetic_Algorithms,Genetic_Algorithms,True,2,0,19.49882352941177,2,0,3,2,1
+cora,51247846,2049,2,0,0,False,True,False,False,3,False,False,Neural_Networks,Neural_Networks,True,9,0,14.273170305676857,9,0,10,9,1
+cora,51247846,2056,1,0,0,False,True,False,False,4,False,False,Neural_Networks,Neural_Networks,True,6,0,17.004615384615388,5,0,6,5,1
+cora,51247846,2061,3,0,0,False,True,True,True,6,False,True,Case_Based,Case_Based,True,12,0,14.529106002554279,12,0,13,12,1
+cora,51247846,2062,3,0,0,False,True,True,True,5,False,True,Case_Based,Case_Based,True,13,0,12.24895682591404,11,0,12,11,1
+cora,51247846,2065,1,0,0,False,True,False,False,1,False,False,Genetic_Algorithms,Genetic_Algorithms,True,5,0,17.020962000962005,4,0,5,4,1
+cora,51247846,2068,2,0,0,False,True,True,True,6,False,True,Neural_Networks,Neural_Networks,True,9,0,15.59660784313726,9,0,10,9,1
+cora,51247846,2070,1,0,0,False,True,False,False,1,False,False,Rule_Learning,Rule_Learning,True,2,0,19.250714285714285,2,0,3,2,1
+cora,51247846,2074,3,0,0,False,True,True,True,7,False,True,Theory,Case_Based,False,17,0,13.505935435931313,15,0,16,15,1
+cora,51247846,2076,7,0,0,False,True,True,True,19,False,True,Probabilistic_Methods,Probabilistic_Methods,True,45,0,15.922819298505253,33,3,34,36,1
+cora,51247846,2082,3,0,0,False,True,True,True,8,False,True,Neural_Networks,Genetic_Algorithms,False,18,0,15.705192156862747,14,1,15,15,1
+cora,51247846,2085,2,0,0,False,True,False,False,4,False,False,Neural_Networks,Neural_Networks,True,9,0,16.06286231884058,8,0,9,8,1
+cora,51247846,2088,6,0,0,False,True,True,True,10,False,True,Probabilistic_Methods,Probabilistic_Methods,True,29,0,16.52916579971487,28,0,29,28,1
+cora,51247846,2101,1,0,0,False,True,False,False,1,False,False,Genetic_Algorithms,Genetic_Algorithms,True,7,0,11.318290598290602,5,0,6,5,1
+cora,51247846,2109,1,0,0,False,True,False,False,2,False,False,Neural_Networks,Neural_Networks,True,9,8,15.384285714285713,9,0,10,9,1
+cora,51247846,2135,3,0,0,False,True,False,False,2,False,False,Neural_Networks,Neural_Networks,True,24,0,16.48606297772739,14,0,15,14,1
+cora,51247846,2139,5,0,0,False,True,True,True,10,False,True,Genetic_Algorithms,Genetic_Algorithms,True,32,0,16.01748424369748,24,2,25,26,1
+cora,51247846,2141,1,0,1,False,False,True,True,6,False,True,Theory,Theory,True,5,0,17.895382951653946,5,0,6,5,1
+cora,51247846,2143,1,0,0,False,True,False,False,1,False,False,Neural_Networks,Neural_Networks,True,5,0,15.34815047021944,5,0,6,5,1
+cora,51247846,2146,11,0,0,False,True,True,True,18,False,True,Theory,Theory,True,64,0,14.849595040416222,55,0,56,55,1
+cora,51247846,2156,5,0,0,False,True,False,False,2,False,False,Theory,Theory,True,28,0,20.0786397941681,21,1,22,22,1
+cora,51247846,2160,2,0,0,False,True,True,True,6,False,True,Probabilistic_Methods,Probabilistic_Methods,True,12,0,15.464943473792395,9,3,10,12,1
+cora,51247846,2169,4,0,0,False,True,True,True,8,False,True,Probabilistic_Methods,Probabilistic_Methods,True,21,0,16.206351791530945,19,0,20,19,1
+cora,51247846,2182,8,0,0,False,True,True,True,22,False,True,Theory,Theory,True,66,10,17.45325258168275,40,3,41,43,1
+cora,51247846,2191,2,0,0,False,True,False,False,2,False,False,Neural_Networks,Neural_Networks,True,17,0,16.451020408163263,7,0,8,7,1
+cora,51247846,2197,8,0,1,False,True,True,True,17,True,True,Theory,Theory,True,58,4,16.128995237275493,37,0,38,37,1
+cora,51247846,2198,3,0,0,False,True,True,True,8,False,True,Reinforcement_Learning,Theory,False,15,0,17.812354484732825,12,1,13,13,1
+cora,51247846,2199,4,0,0,False,True,True,True,7,False,True,Genetic_Algorithms,Genetic_Algorithms,True,29,0,17.221145276085036,16,1,17,17,1
+cora,51247846,2200,35,0,0,False,True,True,True,50,False,True,Genetic_Algorithms,Genetic_Algorithms,True,233,28,17.033668641725324,203,1,204,204,1
+cora,51247846,2205,1,0,0,False,True,False,False,1,False,False,Genetic_Algorithms,Genetic_Algorithms,True,6,0,15.65104631217839,4,0,5,4,1
+cora,51247846,2207,1,0,0,False,True,False,False,1,False,False,Theory,Reinforcement_Learning,False,4,0,14.642336956521739,3,0,4,3,1
+cora,51247846,2214,2,0,0,False,True,True,True,6,False,True,Neural_Networks,Neural_Networks,True,10,0,15.472941176470592,10,0,11,10,1
+cora,51247846,2224,2,0,0,False,True,True,True,5,False,True,Neural_Networks,Neural_Networks,True,11,0,18.31774538745388,6,0,7,6,1
+cora,51247846,2233,3,0,0,False,True,False,False,3,False,False,Neural_Networks,Neural_Networks,True,18,0,15.794019607843136,15,1,16,16,1
+cora,51247846,2235,1,0,0,False,True,False,False,3,False,False,Probabilistic_Methods,Probabilistic_Methods,True,5,0,15.52093023255814,5,0,6,5,1
+cora,51247846,2237,1,0,0,False,True,False,False,3,False,False,Genetic_Algorithms,Genetic_Algorithms,True,6,0,16.585014005602243,4,0,5,4,1
+cora,51247846,2238,1,0,0,False,True,False,False,3,False,False,Genetic_Algorithms,Genetic_Algorithms,True,9,4,15.627904819520065,9,0,10,9,1
+cora,51247846,2239,4,0,0,False,True,True,True,10,False,True,Neural_Networks,Neural_Networks,True,24,0,14.91583932853717,18,1,19,19,1
+cora,51247846,2253,2,0,0,False,True,False,False,2,False,False,Rule_Learning,Rule_Learning,True,10,0,14.174157983193279,8,0,9,8,1
+cora,51247846,2255,14,0,0,False,True,True,True,23,False,True,Neural_Networks,Genetic_Algorithms,False,86,14,17.19783992135258,73,1,74,74,1
+cora,51247846,2257,4,0,0,False,True,True,True,28,False,True,Reinforcement_Learning,Genetic_Algorithms,False,33,0,17.75768950526574,16,0,17,16,1
+cora,51247846,2264,1,0,0,False,True,False,False,1,False,False,Case_Based,Genetic_Algorithms,False,2,0,14.266212121212124,1,0,2,1,1
+cora,51247846,2265,34,0,1,False,True,True,True,62,True,True,Genetic_Algorithms,Genetic_Algorithms,True,210,1,21.260768305653276,166,8,167,174,1
+cora,51247846,2267,1,0,0,False,True,False,False,3,False,False,Genetic_Algorithms,Genetic_Algorithms,True,4,0,16.897536041939713,4,0,5,4,1
+cora,51247846,2269,1,0,0,False,True,False,False,2,False,False,Genetic_Algorithms,Genetic_Algorithms,True,5,0,15.845628192032692,5,1,6,6,1
+cora,51247846,2274,34,0,0,False,True,True,True,50,False,True,Genetic_Algorithms,Genetic_Algorithms,True,206,1,17.065773855767606,171,7,172,178,1
+cora,51247846,2277,5,0,0,False,True,True,True,14,False,True,Genetic_Algorithms,Genetic_Algorithms,True,43,12,16.383552028072504,27,0,28,27,1
+cora,51247846,2278,1,0,0,False,True,False,False,2,False,False,Neural_Networks,Neural_Networks,True,4,0,18.460652173913044,4,0,5,4,1
+cora,51247846,2281,2,0,0,False,True,False,False,1,False,False,Genetic_Algorithms,Neural_Networks,False,10,0,17.411492265696086,8,0,9,8,1
+cora,51247846,2294,9,0,2,False,True,True,True,10,True,True,Case_Based,Case_Based,True,56,0,19.99337538660897,34,0,35,34,1
+cora,51247846,2298,34,0,0,False,True,True,True,81,False,True,Genetic_Algorithms,Genetic_Algorithms,True,196,1,17.103568250229028,168,1,169,169,1
+cora,51247846,2300,4,0,0,False,True,True,True,14,False,True,Case_Based,Rule_Learning,False,39,15,14.46875477463713,28,0,29,28,1
+cora,51247846,2301,1,0,0,False,True,False,False,3,False,False,Probabilistic_Methods,Probabilistic_Methods,True,5,0,17.703348540145985,5,0,6,5,1
+cora,51247846,2306,14,0,0,False,True,True,True,33,False,True,Neural_Networks,Neural_Networks,True,75,0,15.370714552205662,70,0,71,70,1
+cora,51247846,2308,1,0,0,False,True,False,False,3,False,False,Genetic_Algorithms,Case_Based,False,4,0,14.412629107981228,4,0,5,4,1
+cora,51247846,2311,3,0,0,False,True,True,True,8,False,True,Probabilistic_Methods,Probabilistic_Methods,True,15,0,15.962086239695623,13,0,14,13,1
+cora,51247846,2317,3,0,0,False,True,True,False,3,True,True,Genetic_Algorithms,Genetic_Algorithms,True,12,0,35.12952591656132,12,0,13,12,1
+cora,51247846,2323,4,0,0,False,True,True,True,11,False,True,Probabilistic_Methods,Probabilistic_Methods,True,21,0,16.475821581851623,20,0,21,20,1
+cora,51247846,2324,2,0,0,False,True,True,True,8,False,True,Theory,Theory,True,9,0,23.153782991202352,9,0,10,9,1
+cora,51247846,2327,5,0,0,False,True,True,True,37,False,True,Theory,Theory,True,27,0,22.095163446104454,24,0,25,24,1
+cora,51247846,2331,2,0,0,False,True,True,True,14,False,True,Theory,Theory,True,19,13,17.623853352366712,19,0,20,19,1
+cora,51247846,2334,5,0,0,False,True,True,True,12,False,True,Genetic_Algorithms,Genetic_Algorithms,True,35,0,15.80194534506716,25,0,26,25,1
+cora,51247846,2335,9,0,0,False,True,True,True,27,False,True,Neural_Networks,Neural_Networks,True,51,0,14.81410342732017,44,0,45,44,1
+cora,51247846,2336,7,0,1,False,True,True,True,9,False,True,Neural_Networks,Neural_Networks,True,50,0,16.002341005142828,35,0,36,35,1
+cora,51247846,2343,10,0,1,False,True,True,True,16,False,True,Neural_Networks,Probabilistic_Methods,False,73,0,15.878828671328673,47,0,48,47,1
+cora,51247846,2352,9,0,0,False,True,True,True,8,False,True,Genetic_Algorithms,Neural_Networks,False,52,0,16.39842325971485,45,0,46,45,1
+cora,51247846,2363,38,0,0,False,True,True,True,76,False,True,Genetic_Algorithms,Genetic_Algorithms,True,240,5,18.31755625366009,191,5,192,196,1
+cora,51247846,2368,3,0,1,False,True,False,False,4,False,False,Reinforcement_Learning,Reinforcement_Learning,True,10,0,19.05507624398074,9,0,10,9,1
+cora,51247846,2385,12,0,0,False,True,True,True,38,False,True,Neural_Networks,Neural_Networks,True,100,0,14.651998624503893,59,0,60,59,1
+cora,51247846,2391,2,0,0,False,True,True,True,5,False,True,Theory,Theory,True,17,1,12.799855777110078,11,0,12,11,1
+cora,51247846,2393,3,0,0,False,True,True,True,14,False,True,Neural_Networks,Neural_Networks,True,39,22,17.067635414884517,22,4,23,26,1
+cora,51247846,2408,7,0,1,False,True,True,True,20,False,True,Theory,Reinforcement_Learning,False,37,0,23.845369114304635,30,0,31,30,1
+cora,51247846,2414,6,0,0,False,True,True,True,15,False,True,Neural_Networks,Neural_Networks,True,29,0,15.74322177822178,28,0,29,28,1
+cora,51247846,2420,5,0,0,False,True,True,True,11,False,True,Probabilistic_Methods,Probabilistic_Methods,True,39,17,17.563027387120652,38,0,39,38,1
+cora,51247846,2431,6,0,0,False,True,True,True,5,False,True,Rule_Learning,Rule_Learning,True,40,0,16.172625164001445,26,0,27,26,1
+cora,51247846,2432,1,0,0,False,True,False,False,1,False,False,Genetic_Algorithms,Reinforcement_Learning,False,2,0,17.57169811320755,2,0,3,2,1
+cora,51247846,2433,1,0,0,False,True,False,False,1,False,False,Reinforcement_Learning,Neural_Networks,False,3,0,16.1239837398374,3,0,4,3,1
+cora,51247846,2435,1,0,0,False,True,False,False,4,False,False,Neural_Networks,Neural_Networks,True,4,0,47.023181818181826,3,0,4,3,1
+cora,51247846,2443,4,0,0,False,True,True,True,5,False,True,Theory,Probabilistic_Methods,False,20,0,14.48508057578712,17,0,18,17,1
+cora,51247846,2449,1,0,0,False,True,False,False,3,False,False,Rule_Learning,Rule_Learning,True,6,0,15.47736898395722,5,0,6,5,1
+cora,51247846,2450,3,0,0,False,True,True,True,5,False,True,Rule_Learning,Rule_Learning,True,33,0,16.724500000000003,15,1,16,16,1
+cora,51247846,2452,2,0,0,False,True,True,True,7,False,True,Neural_Networks,Neural_Networks,True,16,10,17.842522123893804,16,0,17,16,1
+cora,51247846,2454,5,0,0,False,True,True,True,17,False,True,Neural_Networks,Neural_Networks,True,30,9,16.61035087719299,30,0,31,30,1
+cora,51247846,2459,2,0,0,False,True,False,False,4,False,False,Neural_Networks,Neural_Networks,True,7,0,13.770945102932007,7,0,8,7,1
+cora,51247846,2470,3,0,0,False,True,False,False,1,False,False,Genetic_Algorithms,Genetic_Algorithms,True,19,0,17.10891891891892,14,4,15,18,1
+cora,51247846,2473,3,0,0,False,True,True,True,6,False,True,Reinforcement_Learning,Case_Based,False,19,0,17.56289655172414,12,0,13,12,1
+cora,51247846,2489,4,0,2,False,True,True,True,33,False,True,Case_Based,Case_Based,True,49,38,11.150967717998913,40,0,41,40,1
+cora,51247846,2499,7,0,0,False,True,True,True,17,False,True,Neural_Networks,Neural_Networks,True,48,12,16.80479744136461,43,2,44,45,1
+cora,51247846,2507,3,0,0,False,True,True,True,9,False,True,Probabilistic_Methods,Neural_Networks,False,18,0,15.876657364341089,12,1,13,13,1
+cora,51247846,2510,5,0,0,False,True,True,True,6,False,True,Probabilistic_Methods,Probabilistic_Methods,True,23,0,15.501323460695158,22,0,23,22,1
+cora,51247846,2513,11,0,0,False,True,True,True,29,False,True,Neural_Networks,Neural_Networks,True,69,0,14.754427803186413,53,2,54,55,1
+cora,51247846,2517,1,0,0,False,True,False,False,1,False,False,Neural_Networks,Neural_Networks,True,1,0,19.336666666666662,1,0,2,1,1
+cora,51247846,2532,5,0,0,False,True,True,True,12,False,True,Probabilistic_Methods,Probabilistic_Methods,True,24,0,15.343524906680397,22,0,23,22,1
+cora,51247846,2533,1,0,0,False,True,True,True,9,False,True,Neural_Networks,Neural_Networks,True,16,15,18.617124183006542,16,0,17,16,1
+cora,51247846,2534,1,0,0,False,True,True,True,8,False,True,Rule_Learning,Rule_Learning,True,14,13,15.179310344827588,14,0,15,14,1
+cora,51247846,2535,2,0,0,False,True,False,False,1,False,False,Neural_Networks,Neural_Networks,True,7,0,12.879310344827587,7,0,8,7,1
+cora,51247846,2539,4,0,0,False,True,True,True,10,False,True,Rule_Learning,Rule_Learning,True,31,5,17.31783982619859,24,0,25,24,1
+cora,51247846,2542,1,0,0,False,True,False,False,2,False,False,Neural_Networks,Neural_Networks,True,3,0,16.585384615384616,3,0,4,3,1
+cora,51247846,2553,1,0,0,False,True,False,False,3,False,False,Neural_Networks,Neural_Networks,True,4,0,15.531609589041096,4,0,5,4,1
+cora,51247846,2556,2,0,0,False,True,True,True,7,False,True,Case_Based,Case_Based,True,15,0,17.57245098039216,9,0,10,9,1
+cora,51247846,2558,2,0,0,False,True,True,True,5,False,True,Probabilistic_Methods,Probabilistic_Methods,True,9,0,15.990619047619052,8,0,9,8,1
+cora,51247846,2559,6,0,0,False,True,True,True,9,False,True,Probabilistic_Methods,Probabilistic_Methods,True,27,0,14.338038546819035,27,0,28,27,1
+cora,51247846,2561,9,0,0,False,True,True,True,22,False,True,Probabilistic_Methods,Probabilistic_Methods,True,50,7,15.484334664638013,48,0,49,48,1
+cora,51247846,2562,4,0,0,False,True,True,True,9,False,True,Neural_Networks,Neural_Networks,True,19,0,14.55022220223102,18,0,19,18,1
+cora,51247846,2568,6,0,1,False,True,True,True,10,False,True,Case_Based,Case_Based,True,38,0,13.99715944272446,27,1,28,28,1
+cora,51247846,2570,4,0,0,False,True,False,False,3,False,False,Neural_Networks,Neural_Networks,True,17,0,13.575224170235547,16,0,17,16,1
+cora,51247846,2572,1,0,0,False,True,False,False,2,False,False,Neural_Networks,Neural_Networks,True,4,0,19.331186868686874,4,0,5,4,1
+cora,51247846,2573,1,0,0,False,True,True,True,6,False,True,Probabilistic_Methods,Probabilistic_Methods,True,9,8,15.741277445109784,9,0,10,9,1
+cora,51247846,2579,1,0,1,False,False,False,False,1,False,True,Neural_Networks,Neural_Networks,True,1,0,55.83628571428571,0,0,1,0,1
+cora,51247846,2583,9,0,0,False,True,True,True,7,False,True,Theory,Theory,True,56,0,15.372704080822203,43,1,44,44,1
+cora,51247846,2586,4,0,0,False,True,True,True,13,False,True,Neural_Networks,Reinforcement_Learning,False,31,9,16.03451898103209,25,0,26,25,1
+cora,51247846,2591,3,0,0,False,True,False,False,4,False,False,Rule_Learning,Rule_Learning,True,24,0,14.306971877498526,15,0,16,15,1
+cora,51247846,2597,2,0,0,False,True,True,True,9,False,True,Case_Based,Case_Based,True,14,7,15.065725507121275,13,0,14,13,1
+cora,51247846,2598,4,0,0,False,True,True,True,9,False,True,Genetic_Algorithms,Genetic_Algorithms,True,30,9,17.51180844212868,25,0,26,25,1
+cora,51247846,2602,1,0,0,False,True,False,False,2,False,False,Rule_Learning,Rule_Learning,True,8,6,17.26427432216906,8,0,9,8,1
+cora,51247846,2608,3,0,0,False,True,True,True,5,False,True,Neural_Networks,Neural_Networks,True,13,0,16.450452609158685,13,0,14,13,1
+cora,51247846,2612,2,0,0,False,True,True,True,7,False,True,Neural_Networks,Neural_Networks,True,13,7,19.24679487179488,13,0,14,13,1
+cora,51247846,2613,1,0,0,False,True,False,False,4,False,False,Neural_Networks,Genetic_Algorithms,False,6,0,13.094627659574467,5,0,6,5,1
+cora,51247846,2617,11,0,1,False,True,True,True,20,False,True,Rule_Learning,Rule_Learning,True,92,0,18.448951090317554,51,0,52,51,1
+cora,51247846,2631,1,0,0,False,True,True,True,8,False,True,Neural_Networks,Neural_Networks,True,14,13,19.325984363894822,14,0,15,14,1
+cora,51247846,2633,2,0,0,False,True,True,True,6,False,True,Theory,Theory,True,14,0,18.44424157303371,8,0,9,8,1
+cora,51247846,2635,4,0,0,False,True,True,True,13,False,True,Case_Based,Case_Based,True,33,6,14.379385964912284,25,0,26,25,1
+cora,51247846,2637,1,0,0,False,True,False,False,1,False,False,Genetic_Algorithms,Genetic_Algorithms,True,4,0,18.77617805755396,3,0,4,3,1
+cora,51247846,2638,34,0,0,False,True,True,True,58,False,True,Genetic_Algorithms,Genetic_Algorithms,True,227,14,15.996686602870817,176,7,177,183,1
+cora,51247846,2641,3,0,0,False,True,False,False,4,False,False,Genetic_Algorithms,Genetic_Algorithms,True,12,0,19.032857142857143,12,0,13,12,1
+cora,51247846,2645,2,0,0,False,True,True,True,10,False,True,Case_Based,Case_Based,True,15,0,11.99806201550388,10,0,11,10,1
+cora,51247846,2647,3,0,0,False,True,True,True,11,False,True,Reinforcement_Learning,Reinforcement_Learning,True,27,11,17.200963462583513,22,0,23,22,1
+cora,51247846,2648,1,0,0,False,True,False,False,3,False,False,Neural_Networks,Neural_Networks,True,4,0,18.480297872340433,4,0,5,4,1
+cora,51247846,2652,1,0,0,False,True,False,False,4,False,False,Genetic_Algorithms,Case_Based,False,8,0,15.51162752772342,4,0,5,4,1
+cora,51247846,2655,1,0,0,False,True,True,True,5,False,True,Theory,Reinforcement_Learning,False,5,0,14.41357142857143,5,0,6,5,1
+cora,51247846,2658,25,0,0,False,True,True,True,67,False,True,Case_Based,Case_Based,True,140,0,17.30958514707822,125,0,126,125,1
+cora,51247846,2660,5,0,0,False,True,True,True,14,False,True,Probabilistic_Methods,Probabilistic_Methods,True,34,0,15.902271914132381,23,0,24,23,1
+cora,51247846,2675,4,0,0,False,True,True,True,6,False,True,Theory,Theory,True,31,0,14.589551282051286,18,0,19,18,1
+cora,51247846,2676,10,0,0,False,True,True,True,16,False,True,Neural_Networks,Neural_Networks,True,48,0,15.016817713008766,47,0,48,47,1
+cora,51247846,2684,1,0,0,False,True,True,True,5,False,True,Neural_Networks,Neural_Networks,True,8,7,18.580957446808515,8,0,9,8,1
+cora,51247846,2686,3,0,0,False,True,True,True,5,False,True,Neural_Networks,Neural_Networks,True,15,0,15.237100000000002,12,0,13,12,1
+cora,51247846,2687,4,0,0,False,True,True,True,7,False,True,Reinforcement_Learning,Reinforcement_Learning,True,35,16,17.42159591930388,24,0,25,24,1
+cora,51247846,2688,3,0,0,False,True,False,False,3,False,False,Genetic_Algorithms,Genetic_Algorithms,True,18,0,17.12710549258937,13,2,14,15,1
+cora,51247846,2690,4,0,1,False,True,True,True,8,False,True,Theory,Theory,True,17,0,28.9439705882353,16,0,17,16,1
+cora,51247846,2700,1,0,0,False,True,False,False,1,False,False,Probabilistic_Methods,Probabilistic_Methods,True,5,0,17.512000000000004,4,0,5,4,1
+products,50765167,348,20,0,0,False,True,True,True,15,False,True,"Patio, Lawn & Garden",Tools & Home Improvement,False,123,0,12.612246657796653,100,2,101,102,1
+products,50765167,1191,18,0,0,False,True,True,True,287,True,True,Pet Supplies,Pet Supplies,True,132,5,8.213644626398125,88,0,89,88,1
+products,50765167,1691,4,0,1,False,True,True,True,12,True,True,Beauty,Baby Products,False,21,0,12.707333908541852,18,0,19,18,1
+products,50765167,1852,7,0,0,False,True,True,True,8,False,True,Health & Personal Care,Office Products,False,39,0,11.958587454212452,33,0,34,33,1
+products,50765167,1958,12,0,2,False,True,True,True,37,False,True,Sports & Outdoors,Sports & Outdoors,True,80,0,10.423267445283152,58,1,59,59,1
+products,50765167,2299,4,0,0,False,True,True,True,7,False,True,Musical Instruments,Musical Instruments,True,24,0,12.64347904191617,18,0,19,18,1
+products,50765167,3040,4,0,0,False,True,True,True,5,False,True,Office Products,Office Products,True,33,0,12.552096342551295,19,0,20,19,1
+products,50765167,3305,4,0,0,False,True,True,True,7,False,True,"Arts, Crafts & Sewing","Patio, Lawn & Garden",False,38,11,10.90611804624665,28,2,29,30,1
+products,50765167,3503,4,0,0,False,True,True,True,35,False,True,Books,Books,True,48,29,11.34004265402844,42,0,43,42,1
+products,50765167,3988,6,0,0,False,True,True,True,21,False,True,Video Games,Video Games,True,58,25,11.045382702034956,51,0,52,51,1
+products,50765167,4157,12,0,0,False,True,True,True,26,False,True,Cell Phones & Accessories,Electronics,False,69,6,11.197129560425328,61,0,62,61,1
+products,50765167,4548,4,0,1,False,True,True,True,56,True,True,Books,Books,True,181,165,21.96364779874214,175,0,176,175,1
+products,50765167,4681,4,0,1,False,True,True,True,71,False,True,Beauty,Beauty,True,16,0,11.135890287769787,15,0,16,15,1
+products,50765167,4736,4,0,1,False,True,True,True,8,True,True,Industrial & Scientific,Tools & Home Improvement,False,28,2,14.463237365368684,18,0,19,18,1
+products,50765167,4782,13,0,0,False,True,True,True,22,False,True,"Patio, Lawn & Garden",Tools & Home Improvement,False,79,8,12.565919540229885,65,3,66,68,1
+products,50765167,4798,4,0,0,False,True,True,True,5,False,True,Health & Personal Care,Tools & Home Improvement,False,30,1,12.33105986696231,20,2,21,22,1
+products,50765167,4886,4,0,3,False,True,True,True,25,True,True,Movies & TV,CDs & Vinyl,False,208,193,29.78093902156272,200,0,201,200,1
+products,50765167,5001,15,0,5,False,True,True,True,269,True,True,Beauty,Beauty,True,126,32,7.5307709407216485,78,5,79,83,1
+products,50765167,5204,10,0,0,False,True,True,True,16,False,True,Home & Kitchen,Home & Kitchen,True,53,0,11.87929102093809,47,0,48,47,1
+products,50765167,5661,8,0,0,False,True,True,True,11,False,True,Cell Phones & Accessories,Electronics,False,66,17,11.00950866725428,44,3,45,47,1
+products,50765167,6050,4,0,1,False,True,True,True,5,False,True,Home & Kitchen,Tools & Home Improvement,False,40,0,11.25168409808548,20,0,21,20,1
+products,50765167,6236,7,0,0,False,True,True,True,11,False,True,Cell Phones & Accessories,Electronics,False,48,11,11.742808800823472,42,0,43,42,1
+products,50765167,6733,8,0,0,False,True,True,True,16,True,True,Pet Supplies,Pet Supplies,True,51,0,6.962119249986067,37,3,38,40,1
+products,50765167,6813,9,0,2,False,True,True,True,213,True,True,Beauty,Beauty,True,53,0,10.270479228104527,41,0,42,41,1
+products,50765167,6910,10,0,2,False,True,True,True,44,False,True,Sports & Outdoors,Automotive,False,55,0,8.398751673973806,43,3,44,46,1
+products,50765167,7384,7,0,0,False,True,True,True,137,True,True,Home & Kitchen,Home & Kitchen,True,47,3,9.709163889322511,33,0,34,33,1
+products,50765167,7389,4,0,1,False,True,True,True,9,False,True,Home & Kitchen,Home & Kitchen,True,19,0,12.635763075965134,13,0,14,13,1
+products,50765167,7982,8,0,2,False,True,True,True,57,False,True,Health & Personal Care,Health & Personal Care,True,84,36,12.276155852015915,68,3,69,71,1
+products,50765167,8056,5,0,1,False,True,True,True,103,True,True,CDs & Vinyl,CDs & Vinyl,True,23,0,6.461638662185951,19,4,20,23,1
+products,50765167,8438,4,0,1,False,True,True,True,42,True,True,Health & Personal Care,Baby,False,13,0,15.444159197493981,13,0,14,13,1
+products,50765167,8485,12,0,0,False,True,True,True,26,False,True,Sports & Outdoors,Sports & Outdoors,True,76,1,11.70804808834529,59,2,60,61,1
+products,50765167,8652,5,0,2,False,True,True,True,183,True,True,CDs & Vinyl,CDs & Vinyl,True,15,0,8.139858668553334,17,0,18,17,1
+products,50765167,8728,6,0,1,False,True,True,True,15,True,True,Beauty,label 25,False,40,0,7.553952891390278,22,0,23,22,1
+products,50765167,8766,8,0,1,False,True,True,True,33,False,True,Beauty,Beauty,True,61,10,11.314281929813628,50,0,51,50,1
+products,50765167,9545,8,0,2,False,True,True,True,35,True,True,Books,Books,True,114,74,9.072120634920637,66,0,67,66,1
+products,50765167,9879,4,0,0,False,True,True,True,10,False,True,Pet Supplies,Pet Supplies,True,56,32,7.408693225490882,50,0,51,50,1
+products,50765167,10192,11,0,1,False,True,True,True,13,False,True,Health & Personal Care,Health & Personal Care,True,75,0,7.798825210599059,53,0,54,53,1
+products,50765167,10483,15,0,2,False,True,True,True,21,True,True,Health & Personal Care,Health & Personal Care,True,110,8,10.171408293460928,71,2,72,73,1
+products,50765167,10543,4,0,1,False,True,True,True,5,False,True,Toys & Games,Toys & Games,True,20,4,11.821290366534953,15,0,16,15,1
+products,50765167,11327,5,0,0,False,True,True,True,15,False,True,Sports & Outdoors,Sports & Outdoors,True,34,0,10.722862407862412,23,0,24,23,1
+products,50765167,12059,4,0,0,False,True,True,True,14,False,True,Electronics,Electronics,True,27,3,13.687533661597456,19,0,20,19,1
+products,50765167,12061,5,0,0,False,True,True,True,26,False,True,Cell Phones & Accessories,Cell Phones & Accessories,True,26,0,12.121724137931036,25,0,26,25,1
+products,50765167,12464,8,0,0,False,True,True,True,10,False,True,Sports & Outdoors,label 25,False,50,5,9.407408523045437,41,0,42,41,1
+products,50765167,12726,5,0,2,False,True,True,True,51,True,True,Books,Books,True,184,169,24.758566895998936,78,0,79,78,1
+products,50765167,12744,5,0,2,False,True,True,True,12,False,True,Books,Books,True,207,201,10.658258426966295,207,0,208,207,1
+products,50765167,13079,7,0,3,False,True,True,True,271,True,True,Books,Books,True,155,116,22.68494973295633,126,0,127,126,1
+products,50765167,14516,2,0,0,False,True,True,True,9,False,True,Home & Kitchen,Office Products,False,19,8,14.837973684210528,13,0,14,13,1
+products,50765167,14537,2,0,0,False,True,True,True,5,False,True,Sports & Outdoors,Office Products,False,13,6,12.432977149432844,12,0,13,12,1
+products,50765167,14551,2,0,0,False,True,False,False,2,False,False,Home & Kitchen,Office Products,False,7,0,11.708031045751635,7,0,8,7,1
+products,50765167,14760,2,0,0,False,True,True,True,33,True,True,Health & Personal Care,Grocery & Gourmet Food,False,12,6,10.5984626474443,12,0,13,12,1
+products,50765167,15065,2,0,0,False,True,True,True,6,False,True,Sports & Outdoors,Electronics,False,12,0,15.323006211180125,7,0,8,7,1
+products,50765167,15385,2,0,1,False,True,True,True,298,True,True,Health & Personal Care,Health & Personal Care,True,7,5,15.940715950405522,6,0,7,6,1
+products,50765167,15849,2,0,0,False,True,False,False,4,False,False,Electronics,Musical Instruments,False,15,7,13.268939449541286,13,0,14,13,1
+products,50765167,15950,2,0,0,False,True,True,True,17,False,True,Electronics,Electronics,True,22,0,14.509611111111113,6,0,7,6,1
+products,50765167,16296,2,0,0,False,True,True,True,6,True,True,Beauty,Beauty,True,11,0,3.2739062499999996,9,0,10,9,1
+products,50765167,16822,3,0,0,False,True,True,True,70,True,True,Toys & Games,Toys & Games,True,9,0,5.8084815515610195,12,0,13,12,1
+products,50765167,17048,2,0,0,False,True,True,True,5,False,True,"Arts, Crafts & Sewing","Arts, Crafts & Sewing",True,17,5,13.55683848797251,12,1,13,13,1
+products,50765167,17278,2,0,0,False,True,True,True,5,False,True,Beauty,Beauty,True,7,0,8.817829882763778,7,0,8,7,1
+products,50765167,17537,3,0,0,False,True,False,False,2,False,False,Toys & Games,Toys & Games,True,28,6,8.123626623253703,18,0,19,18,1
+products,50765167,17822,3,0,0,False,True,True,True,5,False,True,Home & Kitchen,Office Products,False,13,0,13.9993451066961,12,0,13,12,1
+products,50765167,18032,2,0,0,False,True,False,False,2,False,False,Tools & Home Improvement,Tools & Home Improvement,True,7,0,11.109318222701926,7,0,8,7,1
+products,50765167,18243,3,0,0,False,True,True,True,5,False,True,Health & Personal Care,Office Products,False,18,0,10.70233808744447,15,0,16,15,1
+products,50765167,18497,4,0,1,False,True,True,True,7,False,True,Cell Phones & Accessories,Cell Phones & Accessories,True,27,3,11.246755136986305,20,0,21,20,1
+products,50765167,18944,3,0,1,False,True,True,True,5,True,True,"Arts, Crafts & Sewing",Office Products,False,26,18,12.633965241390346,16,0,17,16,1
+products,50765167,18991,2,0,0,False,True,True,True,6,False,True,"Arts, Crafts & Sewing",Tools & Home Improvement,False,12,3,12.462876762023217,9,0,10,9,1
+products,50765167,19140,1,0,0,False,True,False,False,3,False,False,"Arts, Crafts & Sewing",Office Products,False,6,0,13.341804195804198,5,0,6,5,1
+products,50765167,19356,2,0,0,False,True,True,True,6,False,True,"Arts, Crafts & Sewing","Arts, Crafts & Sewing",True,14,0,13.407211055276381,6,1,7,7,1
+products,50765167,19363,2,0,0,False,True,True,True,7,False,True,Toys & Games,Home & Kitchen,False,17,11,11.763513204672424,17,0,18,17,1
+products,50765167,19920,2,0,0,False,True,True,True,13,False,True,Books,Books,True,122,115,14.803267764298095,121,0,122,121,1
+products,50765167,20262,3,0,1,False,True,False,False,3,False,False,Books,Books,True,13,1,9.462884097035044,10,1,11,11,1
+products,50765167,21066,2,0,0,False,True,False,False,4,False,False,Electronics,Electronics,True,10,0,14.81016790442364,8,0,9,8,1
+products,50765167,21312,2,0,0,False,True,True,True,13,False,True,Sports & Outdoors,Sports & Outdoors,True,23,13,13.189277108433739,19,1,20,20,1
+products,50765167,21401,2,0,0,False,True,True,True,10,False,True,Sports & Outdoors,Sports & Outdoors,True,16,10,13.095378486055779,16,0,17,16,1
+products,50765167,21445,2,0,0,False,True,False,False,4,False,False,Sports & Outdoors,Sports & Outdoors,True,9,0,13.224992207792209,8,0,9,8,1
+products,50765167,21477,2,0,0,False,True,True,True,5,False,True,Sports & Outdoors,Sports & Outdoors,True,9,0,11.40757462686567,8,0,9,8,1
+products,50765167,21934,2,0,0,False,True,True,True,6,False,True,Video Games,Video Games,True,10,0,11.826591545709196,8,0,9,8,1
+products,50765167,22706,2,0,0,False,True,True,True,5,False,True,Pet Supplies,Pet Supplies,True,7,0,9.001080586080587,7,0,8,7,1
+products,50765167,22907,2,0,0,False,True,True,True,16,False,True,Home & Kitchen,Beauty,False,15,8,16.269980620155042,10,0,11,10,1
+products,50765167,22915,2,0,0,False,True,True,True,5,False,True,Health & Personal Care,Health & Personal Care,True,18,6,12.68335030549898,8,0,9,8,1
+products,50765167,23005,2,0,0,False,True,True,True,8,True,True,Beauty,Beauty,True,3,0,115.44307354555434,3,0,4,3,1
+products,50765167,23017,2,0,0,False,True,True,True,14,False,True,Beauty,Health & Personal Care,False,13,6,8.881067634405458,12,0,13,12,1
+products,50765167,23045,2,0,0,False,True,True,True,10,True,True,Health & Personal Care,Health & Personal Care,True,16,9,14.91657910447761,11,0,12,11,1
+products,50765167,23167,3,0,0,False,True,True,True,11,True,True,Sports & Outdoors,Sports & Outdoors,True,25,5,14.50108807766205,16,0,17,16,1
+products,50765167,23324,2,0,0,False,True,True,True,8,False,True,Health & Personal Care,"Clothing, Shoes & Jewelry",False,10,1,6.6082887726672865,10,0,11,10,1
+products,50765167,23525,2,0,1,False,True,True,True,63,False,True,Books,Books,True,90,88,40.989226781857454,20,0,21,20,1
+products,50765167,23701,2,0,1,False,True,True,True,10,False,True,Books,Books,True,145,142,72.18260563380282,144,0,145,144,1
+products,50765167,23875,2,0,0,False,True,True,True,7,False,True,Beauty,Beauty,True,13,6,10.558596895464472,11,0,12,11,1
+products,50765167,23888,2,0,1,False,True,True,True,23,True,True,Beauty,Beauty,True,26,20,9.361903779280826,25,0,26,25,1
+products,50765167,24464,3,0,0,False,True,True,True,13,False,True,Home & Kitchen,Automotive,False,14,0,10.601110442008913,14,0,15,14,1
+products,50765167,24600,2,0,0,False,True,False,False,3,False,False,Health & Personal Care,Tools & Home Improvement,False,12,6,12.34461475743987,12,0,13,12,1
+products,50765167,24608,2,0,0,False,True,True,True,6,False,True,Health & Personal Care,Tools & Home Improvement,False,26,18,12.726389255033865,15,0,16,15,1
+products,50765167,24742,2,0,0,False,True,False,False,1,False,False,Sports & Outdoors,Tools & Home Improvement,False,10,4,11.853416485900215,10,0,11,10,1
+products,50765167,24930,2,0,0,False,True,True,True,5,False,True,Movies & TV,Movies & TV,True,14,3,10.949938517179024,8,0,9,8,1
+products,50765167,25079,2,0,1,False,True,True,True,291,True,True,Movies & TV,Movies & TV,True,4,0,9.933641527001864,4,0,5,4,1
+products,50765167,25103,2,0,1,False,True,True,True,45,False,True,Movies & TV,Movies & TV,True,3,1,17.15830128205128,3,0,4,3,1
+products,50765167,25344,4,0,1,False,True,True,True,67,True,True,Beauty,Beauty,True,20,0,9.44516589250166,13,0,14,13,1
+products,50765167,26599,2,0,0,False,True,False,False,1,False,False,Health & Personal Care,Automotive,False,11,5,12.6675117975118,11,0,12,11,1
+products,50765167,26626,2,0,0,False,True,True,True,9,False,True,Toys & Games,Pet Supplies,False,13,5,13.386305985990237,11,0,12,11,1
+products,50765167,26687,2,0,0,False,True,True,True,25,False,True,Sports & Outdoors,Automotive,False,15,7,5.167013438843032,13,0,14,13,1
+products,50765167,26732,2,0,1,False,True,True,True,22,True,True,Beauty,Beauty,True,20,5,15.752688172043012,10,0,11,10,1
+products,50765167,26895,2,0,0,False,True,True,True,6,False,True,Toys & Games,Baby,False,21,12,12.365463458110522,12,0,13,12,1
+products,50765167,27072,2,0,0,False,True,True,True,6,False,True,Beauty,Beauty,True,17,10,11.536565656565656,11,0,12,11,1
+products,50765167,27397,2,0,0,False,True,True,True,33,True,True,Books,Books,True,58,42,10.106753873457098,36,0,37,36,1
+products,50765167,28044,2,0,0,False,True,False,False,4,False,False,Health & Personal Care,Industrial & Scientific,False,19,10,11.732146078792344,11,0,12,11,1
+products,50765167,29075,1,0,0,False,True,True,True,5,False,True,Sports & Outdoors,Sports & Outdoors,True,5,0,11.42130434782609,5,0,6,5,1
+products,50765167,29164,2,0,1,False,True,True,True,116,False,True,Movies & TV,Movies & TV,True,10,5,10.565759289176093,9,0,10,9,1
+products,50765167,29513,2,0,0,False,True,True,True,30,False,True,Cell Phones & Accessories,Electronics,False,36,30,13.329411259415885,36,0,37,36,1
+products,50765167,29531,2,0,0,False,True,True,True,5,False,True,Electronics,Electronics,True,7,0,13.45054238292828,7,0,8,7,1
+products,50765167,29606,2,0,0,False,True,True,True,19,False,True,Electronics,Electronics,True,24,19,16.311783053622595,15,0,16,15,1
+products,50765167,29706,2,0,1,False,True,True,True,21,False,True,Books,Books,True,36,25,12.576791846991487,30,0,31,30,1
+products,50765167,29895,2,0,1,False,True,True,True,100,False,True,Books,Books,True,5,0,10.799811656005684,4,0,5,4,1
+products,50765167,30240,2,0,0,False,True,False,False,3,False,False,CDs & Vinyl,CDs & Vinyl,True,22,5,10.275650406504067,11,0,12,11,1
+products,50765167,30322,2,0,0,False,True,True,True,26,False,True,CDs & Vinyl,Movies & TV,False,8,0,5.356060606060609,7,0,8,7,1
+products,50765167,30333,3,0,0,False,True,True,True,8,False,True,CDs & Vinyl,CDs & Vinyl,True,14,0,14.973984962406018,14,1,15,15,1
+products,50765167,30483,2,0,0,False,True,True,True,12,False,True,Toys & Games,"Arts, Crafts & Sewing",False,17,10,11.482923351158647,16,0,17,16,1
+products,50765167,30739,1,0,0,False,True,False,False,3,False,False,Home & Kitchen,Home & Kitchen,True,10,0,10.54366666666667,5,0,6,5,1
+products,50765167,32166,2,0,0,False,True,False,False,3,False,False,Sports & Outdoors,Electronics,False,9,0,10.674298747487246,9,0,10,9,1
+products,50765167,32390,2,0,0,False,True,False,False,4,False,False,Sports & Outdoors,Sports & Outdoors,True,16,8,11.824111680663105,14,0,15,14,1
+products,50765167,33376,2,0,0,False,True,True,True,5,False,True,Home & Kitchen,Toys & Games,False,27,13,11.898557251010082,11,1,12,12,1
+products,50765167,33424,2,0,0,False,True,True,True,5,False,True,Home & Kitchen,Home & Kitchen,True,19,12,10.235127840909094,12,0,13,12,1
+products,50765167,33476,2,0,0,False,True,False,False,4,False,False,Home & Kitchen,Home & Kitchen,True,13,5,9.556324324324326,11,0,12,11,1
+products,50765167,33658,2,0,0,False,True,False,False,4,False,False,"Patio, Lawn & Garden",Home & Kitchen,False,9,0,12.117714285714289,8,0,9,8,1
+products,50765167,33739,2,0,0,False,True,True,True,6,False,True,Home & Kitchen,Home & Kitchen,True,13,0,14.469037735849057,7,0,8,7,1
+products,50765167,34060,2,0,1,False,True,True,True,11,False,True,Home & Kitchen,Sports & Outdoors,False,32,26,15.413040123456796,16,0,17,16,1
+products,50765167,34546,3,0,0,False,True,True,True,5,False,True,Toys & Games,Toys & Games,True,17,0,9.25771472392638,14,1,15,15,1
+products,50765167,34622,3,0,0,False,True,True,True,5,True,True,Toys & Games,Toys & Games,True,22,2,9.951523830505987,13,1,14,14,1
+products,50765167,34995,2,0,0,False,True,True,False,2,True,True,Toys & Games,Toys & Games,True,16,4,11.815230076486554,10,0,11,10,1
+products,50765167,35101,2,0,0,False,True,True,True,7,False,True,Toys & Games,Toys & Games,True,20,13,12.448796095613805,19,0,20,19,1
+products,50765167,35121,2,0,0,False,True,True,True,5,False,True,Health & Personal Care,Toys & Games,False,7,0,11.348563743948361,7,0,8,7,1
+products,50765167,35272,3,0,0,False,True,True,True,11,False,True,Office Products,Office Products,True,15,0,12.304847259658583,14,0,15,14,1
+products,50765167,35306,5,0,0,False,True,True,True,7,False,True,Health & Personal Care,Health & Personal Care,True,33,4,11.022894171027463,25,0,26,25,1
+products,50765167,35731,4,0,1,False,True,True,True,243,True,True,CDs & Vinyl,CDs & Vinyl,True,61,7,20.714963761863675,20,0,21,20,1
+products,50765167,36002,2,0,0,False,True,True,True,15,False,True,Home & Kitchen,Home & Kitchen,True,22,8,5.782524399060183,13,0,14,13,1
+products,50765167,36007,2,0,1,False,True,True,True,8,True,True,Home & Kitchen,Home & Kitchen,True,4,1,31.61095238095238,4,0,5,4,1
+products,50765167,36152,2,0,0,False,True,True,True,10,False,True,Books,Baby Products,False,26,14,11.499880952380956,13,0,14,13,1
+products,50765167,36182,2,0,0,False,True,False,False,4,False,False,Toys & Games,Office Products,False,16,0,15.317973856209154,7,1,8,8,1
+products,50765167,36678,2,0,0,False,True,False,False,4,False,False,Pet Supplies,Pet Supplies,True,10,0,9.310693848354791,7,0,8,7,1
+products,50765167,36793,2,0,0,False,True,True,True,5,False,True,Health & Personal Care,Health & Personal Care,True,9,0,11.925029239766083,7,1,8,8,1
+products,50765167,36811,2,0,0,False,True,True,True,7,False,True,Health & Personal Care,Beauty,False,8,0,11.800217557251909,7,0,8,7,1
+products,50765167,36892,2,0,1,False,True,True,True,33,False,True,Health & Personal Care,Health & Personal Care,True,19,12,12.982375997386963,12,0,13,12,1
+products,50765167,36923,2,0,1,False,True,True,False,2,True,True,Health & Personal Care,Health & Personal Care,True,3,0,22.22352192362094,3,0,4,3,1
+products,50765167,37221,3,0,0,False,True,False,False,4,False,False,Sports & Outdoors,Sports & Outdoors,True,21,8,11.696227398873102,15,1,16,16,1
+products,50765167,37775,3,0,1,False,True,True,True,5,False,True,CDs & Vinyl,CDs & Vinyl,True,13,0,17.152189381499728,12,1,13,13,1
+products,50765167,37929,2,0,0,False,True,True,True,6,False,True,CDs & Vinyl,CDs & Vinyl,True,6,0,23.451656232214003,6,0,7,6,1
+products,50765167,38206,2,0,0,False,True,True,True,9,False,True,Beauty,Beauty,True,17,8,10.532517241379313,14,0,15,14,1
+products,50765167,38815,2,0,1,False,True,True,True,9,False,True,Tools & Home Improvement,Tools & Home Improvement,True,50,37,5.283794299925791,20,0,21,20,1
+products,50765167,39331,2,0,0,False,True,True,True,5,False,True,Toys & Games,Toys & Games,True,9,0,11.060777067045727,9,0,10,9,1
+products,50765167,39419,2,0,0,False,True,True,True,5,False,True,Toys & Games,Toys & Games,True,11,5,11.967056277056276,11,0,12,11,1
+products,50765167,40150,3,0,0,False,True,True,True,43,False,True,Pet Supplies,Pet Supplies,True,15,4,5.1413938859000226,15,0,16,15,1
+products,50765167,40262,2,0,0,False,True,False,False,4,False,False,Toys & Games,Home & Kitchen,False,12,0,12.584900000000001,9,0,10,9,1
+products,50765167,40286,5,0,0,False,True,True,True,12,False,True,Toys & Games,Toys & Games,True,25,0,12.928576437587662,24,0,25,24,1
+products,50765167,40611,2,0,0,False,True,False,False,1,False,False,Toys & Games,Toys & Games,True,9,0,10.641379310344828,9,0,10,9,1
+products,50765167,40705,2,0,1,False,True,True,True,52,False,True,Books,Books,True,73,71,25.169393939393945,72,0,73,72,1
+products,50765167,40923,2,0,1,False,True,True,False,4,True,True,Books,Books,True,4,0,18.685097706032284,3,0,4,3,1
+products,50765167,40975,2,0,0,False,True,True,True,12,True,True,Books,Books,True,18,12,14.68529411764706,17,0,18,17,1
+products,50765167,41157,2,0,0,False,True,True,True,12,False,True,Books,Books,True,18,12,16.058391392539026,18,0,19,18,1
+products,50765167,41275,3,0,2,False,True,True,True,240,True,True,Books,Books,True,3,1,106.80071428571429,3,0,4,3,1
+products,50765167,41298,2,0,0,False,True,True,True,13,False,True,Books,Books,True,26,19,6.850352834935176,20,0,21,20,1
+products,50765167,41316,2,0,1,False,True,True,True,7,False,True,Books,Books,True,16,13,13.99155388471178,15,0,16,15,1
+products,50765167,41474,1,0,0,False,True,False,False,3,False,False,CDs & Vinyl,CDs & Vinyl,True,8,0,11.76427397260274,4,0,5,4,1
+products,50765167,41517,2,0,0,False,True,True,True,19,False,True,CDs & Vinyl,CDs & Vinyl,True,30,20,13.259977781892243,26,0,27,26,1
+products,50765167,41614,1,0,0,False,True,False,False,1,False,False,Books,label 25,False,5,0,8.786408745247154,5,0,6,5,1
+products,50765167,42081,2,0,0,False,True,False,False,2,False,False,Pet Supplies,Pet Supplies,True,7,0,10.926339869281048,7,0,8,7,1
+products,50765167,42109,2,0,0,False,True,True,True,10,False,True,Pet Supplies,Pet Supplies,True,16,9,11.662761116530824,15,0,16,15,1
+products,50765167,42186,2,0,0,False,True,False,False,3,False,False,Pet Supplies,Pet Supplies,True,8,0,8.670013106159896,7,0,8,7,1
+products,50765167,42602,4,0,0,False,True,True,True,6,False,True,Cell Phones & Accessories,Cell Phones & Accessories,True,18,1,11.64136398547689,17,0,18,17,1
+products,50765167,42622,2,0,0,False,True,False,False,1,False,False,Cell Phones & Accessories,Cell Phones & Accessories,True,8,0,11.62526315789474,7,0,8,7,1
+products,50765167,43231,2,0,0,False,True,True,True,5,False,True,Sports & Outdoors,Sports & Outdoors,True,10,0,13.561613924050633,8,1,9,9,1
+products,50765167,43535,2,0,0,False,True,True,True,169,True,True,CDs & Vinyl,CDs & Vinyl,True,14,7,15.105366734371476,12,0,13,12,1
+products,50765167,43608,2,0,0,False,True,True,True,144,False,True,CDs & Vinyl,CDs & Vinyl,True,10,4,25.493192019950126,10,0,11,10,1
+products,50765167,43813,2,0,0,False,True,True,True,9,False,True,Pet Supplies,Pet Supplies,True,11,5,11.708102189781027,10,0,11,10,1
+products,50765167,44135,2,0,0,False,True,False,False,4,False,False,Health & Personal Care,Health & Personal Care,True,13,0,12.266927592954993,8,0,9,8,1
+products,50765167,44149,2,0,0,False,True,False,False,2,False,False,Toys & Games,Toys & Games,True,7,0,8.676487603305787,7,0,8,7,1
+products,50765167,44183,2,0,0,False,True,True,True,6,False,True,Toys & Games,Toys & Games,True,18,7,12.364740891814222,13,0,14,13,1
+products,50765167,44508,2,0,1,False,True,True,True,15,False,True,Toys & Games,Toys & Games,True,18,12,28.363581856100108,18,0,19,18,1
+products,50765167,44718,2,0,1,False,True,False,False,4,False,False,Books,Books,True,13,11,12.121318681318684,7,0,8,7,1
+products,50765167,45324,1,0,1,False,False,True,True,27,False,True,Books,Books,True,0,0,2.692299465240641,0,0,1,0,1
+products,50765167,45393,2,0,0,False,True,True,True,229,True,True,Books,Books,True,9,0,7.164816849816852,8,1,9,9,1
+products,50765167,45454,1,0,0,False,True,True,True,14,False,True,Books,Books,True,7,0,28.813429362880886,5,0,6,5,1
+products,50765167,45475,2,0,0,False,True,True,True,6,False,True,Books,Health & Personal Care,False,9,1,18.115978090766827,8,0,9,8,1
+products,50765167,45477,1,0,1,False,False,True,True,8,True,True,Books,Books,True,5,0,124.19446153846152,5,0,6,5,1
+products,50765167,47177,2,0,0,False,True,False,False,4,False,False,Sports & Outdoors,Sports & Outdoors,True,16,8,12.5639501312336,10,0,11,10,1
+products,50765167,47510,2,0,0,False,True,True,True,6,False,True,Video Games,label 25,False,10,0,12.161702127659577,7,0,8,7,1
+products,50765167,47875,2,0,1,False,True,True,True,20,False,True,Pet Supplies,Pet Supplies,True,51,0,4.718762129556783,10,1,11,11,1
+products,50765167,48117,2,0,1,False,True,True,False,4,True,True,Pet Supplies,Pet Supplies,True,7,6,10.535395306447942,7,0,8,7,1
+products,50765167,48226,2,0,0,False,True,True,True,35,False,True,Movies & TV,Movies & TV,True,11,5,6.844582496989162,11,0,12,11,1
+products,50765167,49090,2,0,0,False,True,True,True,8,False,True,CDs & Vinyl,CDs & Vinyl,True,15,0,13.628965715380197,6,0,7,6,1
+products,50765167,49267,2,0,0,False,True,False,False,4,False,False,Cell Phones & Accessories,Tools & Home Improvement,False,7,0,12.561601731601733,7,0,8,7,1
+products,50765167,49473,2,0,0,False,True,True,True,7,False,True,Cell Phones & Accessories,Cell Phones & Accessories,True,11,5,14.06808244387192,11,0,12,11,1
+products,50765167,50338,2,0,1,False,True,True,True,15,False,True,Books,Books,True,36,27,24.36210215482841,18,0,19,18,1
+products,50765167,50349,2,0,0,False,True,True,True,7,False,True,Books,Books,True,12,6,14.138750000000002,12,0,13,12,1
+products,50765167,51559,2,0,0,False,True,True,True,7,False,True,Cell Phones & Accessories,Cell Phones & Accessories,True,17,12,12.151516483516485,17,0,18,17,1
+products,50765167,51706,2,0,2,False,False,True,True,258,True,True,Books,Books,True,0,0,60.536974341507715,0,0,1,0,1
+products,50765167,51874,2,0,0,False,True,True,True,7,False,True,Books,Health & Personal Care,False,12,5,14.158671679197997,11,0,12,11,1
+products,50765167,52045,2,0,0,False,True,True,True,13,False,True,Cell Phones & Accessories,Cell Phones & Accessories,True,19,13,13.789925925925932,19,0,20,19,1
+products,50765167,52224,2,0,0,False,True,True,True,6,False,True,Electronics,Electronics,True,11,2,16.313058823529413,8,0,9,8,1
+products,50765167,52810,2,0,0,False,True,True,True,38,False,True,Home & Kitchen,"Patio, Lawn & Garden",False,41,32,10.076051775129624,38,0,39,38,1
+products,50765167,53408,2,0,0,False,True,True,True,9,True,True,Pet Supplies,Pet Supplies,True,18,8,6.915007110536525,10,0,11,10,1
+products,50765167,53644,3,0,1,False,True,True,True,22,True,True,Books,Books,True,11,2,36.49592505854801,11,0,12,11,1
+products,50765167,53931,2,0,1,False,True,False,False,2,False,False,Books,Books,True,7,0,14.68816955684008,2,0,3,2,1

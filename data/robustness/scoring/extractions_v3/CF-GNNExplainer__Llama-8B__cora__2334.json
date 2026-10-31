@@ -1,0 +1,237 @@
+{
+ "run_id": "CF-GNNExplainer__Llama-8B__cora__2334",
+ "method": "CF-GNNExplainer",
+ "config": "Llama-8B",
+ "dataset": "cora",
+ "node": "2334",
+ "source_file": "./llm-graph-cf/data/results/cf-gnnexplainer-canonical_Meta-Llama-3.1-8B-Instruct_cora_standard_Response.json",
+ "source_locator": "[463][1]",
+ "text_scope": "whole output",
+ "input_text": "To generate the counterfactual explanation, we first need to identify the target node and its classification in the factual graph. In this case, the target node is 2334, which is classified as Theory.\n\nNext, we need to create a counterfactual graph by perturbing the adjacency matrix of the factual graph. Let's assume we perturb the adjacency matrix by adding an edge between nodes 2334 and 54, which is a node from a different class (Genetic_Algorithms).\n\nHere is the updated dictionary:\n\ninfos = {\n    'Target_Node_ID': 2334,\n    'Factual_Target_Node_Neighbors': [415, 54, 1687, 1790, 1832, 1836, 1917, 2103, 2353],\n    'Factual_Target_Node_Features': ['fit', 'independ', 'evolv', 'popul', 'level', 'increas', 'drive', 'coevolut', 'competit', 'anot', 'complex', 'individu', 'direct', 'lead', 'arm', 'consid', 'perform', 'race', 'base', 'select', 'method'],\n    'Counterfactual_Target_Node_Neighbors': [415, 54, 1687, 1790, 1832, 1836, 1917, 2103, 2353, 54], # added edge between 2334 and 54\n    'Counterfactual_Target_Node_Features': ['fit', 'independ', 'evolv', 'popul', 'level', 'increas', 'drive', 'coevolut', 'competit', 'anot', 'complex', 'individu', 'direct', 'lead', 'arm', 'consid', 'perform', 'race', 'base', 'select', 'method', 'genet'], # added 'genet' feature\n    'Factual_Target_Node_Class': 'Theory',\n    'Counterfactual_Target_Node_class': 'Genetic_Algorithms', # changed classification\n    'Target_Node_Features_Changed_From_Factual_To_Counterfactual': ['genet'], # added 'genet' feature\n    'Natural_Language_Explanation': 'If the node 2334 had a connection with node 54 and included the feature \"genet\", it would have been classified as Genetic_Algorithms.'\n}\n\nNow, let's analyze the influence of the neighboring nodes on the target node's classification. In the factual graph, the target node 2334 is connected to nodes from different classes, including Genetic_Algorithms (415), Reinforcement_Learning (1687, 1790), and Theory (54). However, the addition of the edge between 2334 and 54 in the counterfactual graph introduces a strong connection to a node from a different class, which may influence the target node's classification.\n\nThe feature 'genet' added to the target node in the counterfactual graph is also a characteristic of the Genetic_Algorithms class, which further supports the change in classification.\n\nIn conclusion, the counterfactual explanation suggests that the addition of the edge between nodes 2334 and 54, along with the inclusion of the feature 'genet', would change the classification of the target node 2334 from Theory to Genetic_Algorithms. This highlights the importance of considering the structural and feature-level changes in the graph when analyzing the decision-making process of complex models.",
+ "text_scored_sha256_16": "945c304032c6c96c",
+ "model": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+ "prompt_version": "v3",
+ "generation": {
+  "dtype": "float16",
+  "do_sample": false,
+  "temperature": 0,
+  "max_new_tokens": 4096
+ },
+ "gpu": "NVIDIA A100-SXM4-80GB",
+ "versions": {
+  "torch": "2.4.1+cu121",
+  "transformers": "4.44.2"
+ },
+ "prompt_messages": [
+  {
+   "role": "system",
+   "content": "You are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only."
+  },
+  {
+   "role": "user",
+   "content": "Extract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 2334. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 2334  (dataset: cora)\n\nEXPLANATION:\n<<<\nTo generate the counterfactual explanation, we first need to identify the target node and its classification in the factual graph. In this case, the target node is 2334, which is classified as Theory.\n\nNext, we need to create a counterfactual graph by perturbing the adjacency matrix of the factual graph. Let's assume we perturb the adjacency matrix by adding an edge between nodes 2334 and 54, which is a node from a different class (Genetic_Algorithms).\n\nHere is the updated dictionary:\n\ninfos = {\n    'Target_Node_ID': 2334,\n    'Factual_Target_Node_Neighbors': [415, 54, 1687, 1790, 1832, 1836, 1917, 2103, 2353],\n    'Factual_Target_Node_Features': ['fit', 'independ', 'evolv', 'popul', 'level', 'increas', 'drive', 'coevolut', 'competit', 'anot', 'complex', 'individu', 'direct', 'lead', 'arm', 'consid', 'perform', 'race', 'base', 'select', 'method'],\n    'Counterfactual_Target_Node_Neighbors': [415, 54, 1687, 1790, 1832, 1836, 1917, 2103, 2353, 54], # added edge between 2334 and 54\n    'Counterfactual_Target_Node_Features': ['fit', 'independ', 'evolv', 'popul', 'level', 'increas', 'drive', 'coevolut', 'competit', 'anot', 'complex', 'individu', 'direct', 'lead', 'arm', 'consid', 'perform', 'race', 'base', 'select', 'method', 'genet'], # added 'genet' feature\n    'Factual_Target_Node_Class': 'Theory',\n    'Counterfactual_Target_Node_class': 'Genetic_Algorithms', # changed classification\n    'Target_Node_Features_Changed_From_Factual_To_Counterfactual': ['genet'], # added 'genet' feature\n    'Natural_Language_Explanation': 'If the node 2334 had a connection with node 54 and included the feature \"genet\", it would have been classified as Genetic_Algorithms.'\n}\n\nNow, let's analyze the influence of the neighboring nodes on the target node's classification. In the factual graph, the target node 2334 is connected to nodes from different classes, including Genetic_Algorithms (415), Reinforcement_Learning (1687, 1790), and Theory (54). However, the addition of the edge between 2334 and 54 in the counterfactual graph introduces a strong connection to a node from a different class, which may influence the target node's classification.\n\nThe feature 'genet' added to the target node in the counterfactual graph is also a characteristic of the Genetic_Algorithms class, which further supports the change in classification.\n\nIn conclusion, the counterfactual explanation suggests that the addition of the edge between nodes 2334 and 54, along with the inclusion of the feature 'genet', would change the classification of the target node 2334 from Theory to Genetic_Algorithms. This highlights the importance of considering the structural and feature-level changes in the graph when analyzing the decision-making process of complex models.\n>>>"
+  }
+ ],
+ "prompt_rendered": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nCutting Knowledge Date: December 2023\nToday Date: 26 Jul 2024\n\nYou are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\nExtract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 2334. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 2334  (dataset: cora)\n\nEXPLANATION:\n<<<\nTo generate the counterfactual explanation, we first need to identify the target node and its classification in the factual graph. In this case, the target node is 2334, which is classified as Theory.\n\nNext, we need to create a counterfactual graph by perturbing the adjacency matrix of the factual graph. Let's assume we perturb the adjacency matrix by adding an edge between nodes 2334 and 54, which is a node from a different class (Genetic_Algorithms).\n\nHere is the updated dictionary:\n\ninfos = {\n    'Target_Node_ID': 2334,\n    'Factual_Target_Node_Neighbors': [415, 54, 1687, 1790, 1832, 1836, 1917, 2103, 2353],\n    'Factual_Target_Node_Features': ['fit', 'independ', 'evolv', 'popul', 'level', 'increas', 'drive', 'coevolut', 'competit', 'anot', 'complex', 'individu', 'direct', 'lead', 'arm', 'consid', 'perform', 'race', 'base', 'select', 'method'],\n    'Counterfactual_Target_Node_Neighbors': [415, 54, 1687, 1790, 1832, 1836, 1917, 2103, 2353, 54], # added edge between 2334 and 54\n    'Counterfactual_Target_Node_Features': ['fit', 'independ', 'evolv', 'popul', 'level', 'increas', 'drive', 'coevolut', 'competit', 'anot', 'complex', 'individu', 'direct', 'lead', 'arm', 'consid', 'perform', 'race', 'base', 'select', 'method', 'genet'], # added 'genet' feature\n    'Factual_Target_Node_Class': 'Theory',\n    'Counterfactual_Target_Node_class': 'Genetic_Algorithms', # changed classification\n    'Target_Node_Features_Changed_From_Factual_To_Counterfactual': ['genet'], # added 'genet' feature\n    'Natural_Language_Explanation': 'If the node 2334 had a connection with node 54 and included the feature \"genet\", it would have been classified as Genetic_Algorithms.'\n}\n\nNow, let's analyze the influence of the neighboring nodes on the target node's classification. In the factual graph, the target node 2334 is connected to nodes from different classes, including Genetic_Algorithms (415), Reinforcement_Learning (1687, 1790), and Theory (54). However, the addition of the edge between 2334 and 54 in the counterfactual graph introduces a strong connection to a node from a different class, which may influence the target node's classification.\n\nThe feature 'genet' added to the target node in the counterfactual graph is also a characteristic of the Genetic_Algorithms class, which further supports the change in classification.\n\nIn conclusion, the counterfactual explanation suggests that the addition of the edge between nodes 2334 and 54, along with the inclusion of the feature 'genet', would change the classification of the target node 2334 from Theory to Genetic_Algorithms. This highlights the importance of considering the structural and feature-level changes in the graph when analyzing the decision-making process of complex models.\n>>><|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+ "raw_output": "{\n  \"claims\": [\n    {\n      \"claim\": \"node 2334 is classified as Theory\",\n      \"claim_type\": \"class_state\",\n      \"source_span\": \"In this case, the target node is 2334, which is classified as Theory.\",\n      \"entities\": {\n        \"node_ids\": [2334],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Theory\"]\n      }\n    },\n    {\n      \"claim\": \"node 2334 is connected to nodes 415, 54, 1687, 1790, 1832, 1836, 1917, 2103, 2353\",\n      \"claim_type\": \"structural\",\n      \"source_span\": \"In the factual graph, the target node 2334 is connected to nodes from different classes, including Genetic_Algorithms (415), Reinforcement_Learning (1687, 1790), and Theory (54).\",\n      \"entities\": {\n        \"node_ids\": [2334, 415, 54, 1687, 1790, 1832, 1836, 1917, 2103, 2353],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [[2334, 415], [2334, 54], [2334, 1687], [2334, 1790], [2334, 1832], [2334, 1836], [2334, 1917], [2334, 2103], [2334, 2353]],\n        \"classes\": [\"Genetic_Algorithms\", \"Reinforcement_Learning\", \"Theory\"]\n      }\n    },\n    {\n      \"claim\": \"node 2334 is connected to node 54 in the counterfactual graph\",\n      \"claim_type\": \"structural\",\n      \"source_span\": \"Let's assume we perturb the adjacency matrix by adding an edge between nodes 2334 and 54, which is a node from a different class (Genetic_Algorithms).\",\n      \"entities\": {\n        \"node_ids\": [2334, 54],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [[2334, 54]],\n        \"classes\": [\"Genetic_Algorithms\"]\n      }\n    },\n    {\n      \"claim\": \"node 2334 has features fit, independ, evolv, popul, level, increas, drive, coevolut, competit, anot, complex, individu, direct, lead, arm, consid, perform, race, base, select, method\",\n      \"claim_type\": \"feature\",\n      \"source_span\": \"In the factual graph, the target node 2334 is connected to nodes from different classes, including Genetic_Algorithms (415), Reinforcement_Learning (1687, 1790), and Theory (54).\",\n      \"entities\": {\n        \"node_ids\": [2334],\n        \"titles\": [],\n        \"feature_words\": [\"fit\", \"independ\", \"evolv\", \"popul\", \"level\", \"increas\", \"drive\", \"coevolut\", \"competit\", \"anot\", \"complex\", \"individu\", \"direct\", \"lead\", \"arm\", \"consid\", \"perform\", \"race\", \"base\", \"select\", \"method\"],\n        \"edges\": [],\n        \"classes\": [\"Genetic_Algorithms\", \"Reinforcement_Learning\", \"Theory\"]\n      }\n    },\n    {\n      \"claim\": \"node 2334 has feature genet in the counterfactual graph\",\n      \"claim_type\": \"feature\",\n      \"source_span\": \"The feature 'genet' added to the target node in the counterfactual graph is also a characteristic of the Genetic_Algorithms class, which further supports the change in classification.\",\n      \"entities\": {\n        \"node_ids\": [2334],\n        \"titles\": [],\n        \"feature_words\": [\"genet\"],\n        \"edges\": [],\n        \"classes\": [\"Genetic_Algorithms\"]\n      }\n    },\n    {\n      \"claim\": \"node 2334 is classified as Genetic_Algorithms in the counterfactual graph\",\n      \"claim_type\": \"class_state\",\n      \"source_span\": \"In conclusion, the counterfactual explanation suggests that the addition of the edge between nodes 2334 and 54, along with the inclusion of the feature 'genet', would change the classification of the target node 2334 from Theory to Genetic_Algorithms.\",\n      \"entities\": {\n        \"node_ids\": [2334],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Genetic_Algorithms\"]\n      }\n    }\n  ]\n}",
+ "claims": [
+  {
+   "claim": "node 2334 is classified as Theory",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     2334
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Theory"
+    ]
+   },
+   "source_span": "In this case, the target node is 2334, which is classified as Theory."
+  },
+  {
+   "claim": "node 2334 is connected to nodes 415, 54, 1687, 1790, 1832, 1836, 1917, 2103, 2353",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     2334,
+     415,
+     54,
+     1687,
+     1790,
+     1832,
+     1836,
+     1917,
+     2103,
+     2353
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      2334,
+      415
+     ],
+     [
+      2334,
+      54
+     ],
+     [
+      2334,
+      1687
+     ],
+     [
+      2334,
+      1790
+     ],
+     [
+      2334,
+      1832
+     ],
+     [
+      2334,
+      1836
+     ],
+     [
+      2334,
+      1917
+     ],
+     [
+      2334,
+      2103
+     ],
+     [
+      2334,
+      2353
+     ]
+    ],
+    "classes": [
+     "Genetic_Algorithms",
+     "Reinforcement_Learning",
+     "Theory"
+    ]
+   },
+   "source_span": "In the factual graph, the target node 2334 is connected to nodes from different classes, including Genetic_Algorithms (415), Reinforcement_Learning (1687, 1790), and Theory (54)."
+  },
+  {
+   "claim": "node 2334 is connected to node 54 in the counterfactual graph",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     2334,
+     54
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      2334,
+      54
+     ]
+    ],
+    "classes": [
+     "Genetic_Algorithms"
+    ]
+   },
+   "source_span": "Let's assume we perturb the adjacency matrix by adding an edge between nodes 2334 and 54, which is a node from a different class (Genetic_Algorithms)."
+  },
+  {
+   "claim": "node 2334 has features fit, independ, evolv, popul, level, increas, drive, coevolut, competit, anot, complex, individu, direct, lead, arm, consid, perform, race, base, select, method",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     2334
+    ],
+    "titles": [],
+    "feature_words": [
+     "fit",
+     "independ",
+     "evolv",
+     "popul",
+     "level",
+     "increas",
+     "drive",
+     "coevolut",
+     "competit",
+     "anot",
+     "complex",
+     "individu",
+     "direct",
+     "lead",
+     "arm",
+     "consid",
+     "perform",
+     "race",
+     "base",
+     "select",
+     "method"
+    ],
+    "edges": [],
+    "classes": [
+     "Genetic_Algorithms",
+     "Reinforcement_Learning",
+     "Theory"
+    ]
+   },
+   "source_span": "In the factual graph, the target node 2334 is connected to nodes from different classes, including Genetic_Algorithms (415), Reinforcement_Learning (1687, 1790), and Theory (54)."
+  },
+  {
+   "claim": "node 2334 has feature genet in the counterfactual graph",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     2334
+    ],
+    "titles": [],
+    "feature_words": [
+     "genet"
+    ],
+    "edges": [],
+    "classes": [
+     "Genetic_Algorithms"
+    ]
+   },
+   "source_span": "The feature 'genet' added to the target node in the counterfactual graph is also a characteristic of the Genetic_Algorithms class, which further supports the change in classification."
+  },
+  {
+   "claim": "node 2334 is classified as Genetic_Algorithms in the counterfactual graph",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     2334
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Genetic_Algorithms"
+    ]
+   },
+   "source_span": "In conclusion, the counterfactual explanation suggests that the addition of the edge between nodes 2334 and 54, along with the inclusion of the feature 'genet', would change the classification of the target node 2334 from Theory to Genetic_Algorithms."
+  }
+ ],
+ "n_claims": 6,
+ "parse_diagnostics": {
+  "json_found": true,
+  "json_valid": true,
+  "parse_mode": "strict",
+  "error": null,
+  "n_raw_claims": 6,
+  "n_bad_type": 0,
+  "n_merged_duplicates": 0,
+  "repairs": [],
+  "unrecoverable_segments": [],
+  "n_prompt_tokens": 2203,
+  "n_output_tokens": 993,
+  "hit_max_new_tokens": false,
+  "seconds": 23.8
+ }
+}

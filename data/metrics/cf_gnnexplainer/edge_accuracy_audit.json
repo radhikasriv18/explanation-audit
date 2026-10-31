@@ -1,0 +1,2800 @@
+{
+  "methodology": "\nAudit: for every node where CF-GNNExplainer actually removed edges and the\nLLM generated a narration, does the narration's text accurately describe\nthose removed edges?\n\nHeuristic (applied uniformly, documented so it can be re-checked by hand):\n  - \"mentions a removed edge\" = the raw LLM output contains the global node\n    ID of at least one endpoint involved in a removed edge, within a window\n    of text that also contains removal-indicating language (removed, no\n    longer, disconnect, lost/severed connection, eliminat*).\n  - \"contradiction\" = the text uses edge-ADDITION language (\"new edge\",\n    \"introduced a[n] ... edge/connection\", \"added a connection\", \"new\n    connection\") anywhere -- CF-GNNExplainer here only ever deletes edges\n    (P in [0,1] multiplies the existing adjacency, never exceeds it), so any\n    addition claim is a factual inversion by construction, not a borderline\n    case.\n",
+  "totals": {
+    "n_total": 244,
+    "n_any_correct_mention": 34,
+    "n_correct_no_contradiction": 33,
+    "n_silent": 210,
+    "n_addition_contradiction": 17
+  },
+  "per_node": [
+    {
+      "dataset": "cora",
+      "key": "0",
+      "target_id": 1,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "2",
+      "target_id": 11,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "3",
+      "target_id": 16,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "4",
+      "target_id": 19,
+      "n_removed_edges": 18,
+      "n_other_endpoints": 20,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": true
+    },
+    {
+      "dataset": "cora",
+      "key": "5",
+      "target_id": 21,
+      "n_removed_edges": 19,
+      "n_other_endpoints": 20,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "6",
+      "target_id": 34,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "9",
+      "target_id": 38,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "13",
+      "target_id": 75,
+      "n_removed_edges": 8,
+      "n_other_endpoints": 7,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "14",
+      "target_id": 89,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "17",
+      "target_id": 98,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "18",
+      "target_id": 103,
+      "n_removed_edges": 22,
+      "n_other_endpoints": 20,
+      "n_mentioned_accurately": 3,
+      "mentioned_ids": [
+        128,
+        465,
+        565
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "20",
+      "target_id": 116,
+      "n_removed_edges": 10,
+      "n_other_endpoints": 11,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "21",
+      "target_id": 119,
+      "n_removed_edges": 8,
+      "n_other_endpoints": 9,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "27",
+      "target_id": 153,
+      "n_removed_edges": 27,
+      "n_other_endpoints": 27,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "28",
+      "target_id": 154,
+      "n_removed_edges": 16,
+      "n_other_endpoints": 17,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "29",
+      "target_id": 160,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 3,
+      "mentioned_ids": [
+        1857,
+        2540,
+        2681
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "31",
+      "target_id": 172,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "33",
+      "target_id": 186,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 3,
+      "mentioned_ids": [
+        294,
+        566,
+        588
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "35",
+      "target_id": 190,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "36",
+      "target_id": 197,
+      "n_removed_edges": 9,
+      "n_other_endpoints": 11,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "42",
+      "target_id": 225,
+      "n_removed_edges": 10,
+      "n_other_endpoints": 11,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "45",
+      "target_id": 245,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "47",
+      "target_id": 262,
+      "n_removed_edges": 16,
+      "n_other_endpoints": 17,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "52",
+      "target_id": 301,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 3,
+      "mentioned_ids": [
+        46,
+        238,
+        489
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "55",
+      "target_id": 335,
+      "n_removed_edges": 7,
+      "n_other_endpoints": 8,
+      "n_mentioned_accurately": 4,
+      "mentioned_ids": [
+        378,
+        426,
+        585,
+        1275
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "59",
+      "target_id": 378,
+      "n_removed_edges": 15,
+      "n_other_endpoints": 21,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "62",
+      "target_id": 392,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "64",
+      "target_id": 396,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 5,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": true
+    },
+    {
+      "dataset": "cora",
+      "key": "65",
+      "target_id": 397,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": true
+    },
+    {
+      "dataset": "cora",
+      "key": "67",
+      "target_id": 400,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "69",
+      "target_id": 412,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "71",
+      "target_id": 418,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": true
+    },
+    {
+      "dataset": "cora",
+      "key": "76",
+      "target_id": 469,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "77",
+      "target_id": 474,
+      "n_removed_edges": 5,
+      "n_other_endpoints": 6,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "78",
+      "target_id": 487,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 1,
+      "mentioned_ids": [
+        291
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "80",
+      "target_id": 492,
+      "n_removed_edges": 8,
+      "n_other_endpoints": 10,
+      "n_mentioned_accurately": 1,
+      "mentioned_ids": [
+        213
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "85",
+      "target_id": 510,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "90",
+      "target_id": 540,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "92",
+      "target_id": 550,
+      "n_removed_edges": 5,
+      "n_other_endpoints": 6,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "93",
+      "target_id": 559,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "94",
+      "target_id": 562,
+      "n_removed_edges": 10,
+      "n_other_endpoints": 10,
+      "n_mentioned_accurately": 10,
+      "mentioned_ids": [
+        60,
+        252,
+        370,
+        440,
+        671,
+        1117,
+        1183,
+        1401,
+        2014,
+        2018
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "96",
+      "target_id": 569,
+      "n_removed_edges": 16,
+      "n_other_endpoints": 16,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "97",
+      "target_id": 574,
+      "n_removed_edges": 10,
+      "n_other_endpoints": 10,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "107",
+      "target_id": 627,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 2,
+      "mentioned_ids": [
+        1057,
+        1562
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "109",
+      "target_id": 635,
+      "n_removed_edges": 31,
+      "n_other_endpoints": 34,
+      "n_mentioned_accurately": 5,
+      "mentioned_ids": [
+        430,
+        474,
+        634,
+        683,
+        686
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "110",
+      "target_id": 639,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "112",
+      "target_id": 641,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "115",
+      "target_id": 652,
+      "n_removed_edges": 5,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "120",
+      "target_id": 675,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "122",
+      "target_id": 683,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 5,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "123",
+      "target_id": 684,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "125",
+      "target_id": 699,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "126",
+      "target_id": 702,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "127",
+      "target_id": 703,
+      "n_removed_edges": 64,
+      "n_other_endpoints": 65,
+      "n_mentioned_accurately": 2,
+      "mentioned_ids": [
+        18,
+        747
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "133",
+      "target_id": 740,
+      "n_removed_edges": 6,
+      "n_other_endpoints": 7,
+      "n_mentioned_accurately": 2,
+      "mentioned_ids": [
+        1559,
+        1683
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "137",
+      "target_id": 763,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "138",
+      "target_id": 766,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "142",
+      "target_id": 779,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "143",
+      "target_id": 784,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "144",
+      "target_id": 791,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 6,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": true
+    },
+    {
+      "dataset": "cora",
+      "key": "147",
+      "target_id": 804,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "149",
+      "target_id": 823,
+      "n_removed_edges": 60,
+      "n_other_endpoints": 60,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "151",
+      "target_id": 828,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "158",
+      "target_id": 853,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": true
+    },
+    {
+      "dataset": "cora",
+      "key": "161",
+      "target_id": 863,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "162",
+      "target_id": 870,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "164",
+      "target_id": 876,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 3,
+      "mentioned_ids": [
+        453,
+        1006,
+        1025
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "176",
+      "target_id": 954,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "179",
+      "target_id": 957,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "184",
+      "target_id": 975,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "192",
+      "target_id": 1012,
+      "n_removed_edges": 6,
+      "n_other_endpoints": 6,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "195",
+      "target_id": 1020,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "203",
+      "target_id": 1062,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "213",
+      "target_id": 1115,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "228",
+      "target_id": 1155,
+      "n_removed_edges": 5,
+      "n_other_endpoints": 5,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": true
+    },
+    {
+      "dataset": "cora",
+      "key": "235",
+      "target_id": 1183,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "237",
+      "target_id": 1191,
+      "n_removed_edges": 5,
+      "n_other_endpoints": 6,
+      "n_mentioned_accurately": 1,
+      "mentioned_ids": [
+        661
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "238",
+      "target_id": 1197,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "242",
+      "target_id": 1214,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "248",
+      "target_id": 1238,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "251",
+      "target_id": 1267,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "255",
+      "target_id": 1294,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "257",
+      "target_id": 1297,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 1,
+      "mentioned_ids": [
+        1102
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "259",
+      "target_id": 1306,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "260",
+      "target_id": 1312,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "261",
+      "target_id": 1324,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 5,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "262",
+      "target_id": 1327,
+      "n_removed_edges": 15,
+      "n_other_endpoints": 16,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "265",
+      "target_id": 1354,
+      "n_removed_edges": 21,
+      "n_other_endpoints": 21,
+      "n_mentioned_accurately": 1,
+      "mentioned_ids": [
+        1176
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "269",
+      "target_id": 1369,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "273",
+      "target_id": 1400,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "276",
+      "target_id": 1415,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "281",
+      "target_id": 1440,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "282",
+      "target_id": 1443,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 5,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "283",
+      "target_id": 1445,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "285",
+      "target_id": 1478,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "286",
+      "target_id": 1479,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "288",
+      "target_id": 1484,
+      "n_removed_edges": 9,
+      "n_other_endpoints": 9,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "289",
+      "target_id": 1485,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "294",
+      "target_id": 1504,
+      "n_removed_edges": 10,
+      "n_other_endpoints": 8,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "299",
+      "target_id": 1522,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "301",
+      "target_id": 1528,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": true
+    },
+    {
+      "dataset": "cora",
+      "key": "303",
+      "target_id": 1531,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": true
+    },
+    {
+      "dataset": "cora",
+      "key": "305",
+      "target_id": 1540,
+      "n_removed_edges": 5,
+      "n_other_endpoints": 5,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "307",
+      "target_id": 1548,
+      "n_removed_edges": 10,
+      "n_other_endpoints": 11,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "308",
+      "target_id": 1568,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "309",
+      "target_id": 1570,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "312",
+      "target_id": 1585,
+      "n_removed_edges": 5,
+      "n_other_endpoints": 7,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "313",
+      "target_id": 1589,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "314",
+      "target_id": 1595,
+      "n_removed_edges": 5,
+      "n_other_endpoints": 5,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "317",
+      "target_id": 1625,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "318",
+      "target_id": 1630,
+      "n_removed_edges": 5,
+      "n_other_endpoints": 6,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "322",
+      "target_id": 1636,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "324",
+      "target_id": 1643,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "327",
+      "target_id": 1661,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": true
+    },
+    {
+      "dataset": "cora",
+      "key": "328",
+      "target_id": 1663,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "329",
+      "target_id": 1664,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "331",
+      "target_id": 1678,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "332",
+      "target_id": 1679,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "335",
+      "target_id": 1683,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "338",
+      "target_id": 1687,
+      "n_removed_edges": 8,
+      "n_other_endpoints": 8,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "340",
+      "target_id": 1695,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "342",
+      "target_id": 1698,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 1,
+      "mentioned_ids": [
+        66
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "354",
+      "target_id": 1768,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "355",
+      "target_id": 1773,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "357",
+      "target_id": 1782,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "366",
+      "target_id": 1816,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "370",
+      "target_id": 1827,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "372",
+      "target_id": 1843,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 1,
+      "mentioned_ids": [
+        2626
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "380",
+      "target_id": 1895,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "385",
+      "target_id": 1923,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "390",
+      "target_id": 1959,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "391",
+      "target_id": 1969,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "395",
+      "target_id": 1986,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "399",
+      "target_id": 2027,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "400",
+      "target_id": 2038,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 1,
+      "mentioned_ids": [
+        985
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "406",
+      "target_id": 2062,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "410",
+      "target_id": 2074,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "411",
+      "target_id": 2076,
+      "n_removed_edges": 14,
+      "n_other_endpoints": 15,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "412",
+      "target_id": 2082,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "417",
+      "target_id": 2135,
+      "n_removed_edges": 8,
+      "n_other_endpoints": 8,
+      "n_mentioned_accurately": 1,
+      "mentioned_ids": [
+        2583
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "427",
+      "target_id": 2197,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 1,
+      "mentioned_ids": [
+        2342
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "428",
+      "target_id": 2198,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "433",
+      "target_id": 2214,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 5,
+      "n_mentioned_accurately": 2,
+      "mentioned_ids": [
+        420,
+        2223
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "435",
+      "target_id": 2233,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "439",
+      "target_id": 2239,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "440",
+      "target_id": 2253,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "441",
+      "target_id": 2255,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "442",
+      "target_id": 2257,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "449",
+      "target_id": 2278,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "451",
+      "target_id": 2294,
+      "n_removed_edges": 7,
+      "n_other_endpoints": 8,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "453",
+      "target_id": 2300,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "456",
+      "target_id": 2308,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "457",
+      "target_id": 2311,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "458",
+      "target_id": 2317,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 3,
+      "mentioned_ids": [
+        1353,
+        2429,
+        2624
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "459",
+      "target_id": 2323,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": true
+    },
+    {
+      "dataset": "cora",
+      "key": "460",
+      "target_id": 2324,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "461",
+      "target_id": 2327,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 1,
+      "mentioned_ids": [
+        2015
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "463",
+      "target_id": 2334,
+      "n_removed_edges": 10,
+      "n_other_endpoints": 10,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": true
+    },
+    {
+      "dataset": "cora",
+      "key": "466",
+      "target_id": 2343,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "467",
+      "target_id": 2352,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "469",
+      "target_id": 2368,
+      "n_removed_edges": 5,
+      "n_other_endpoints": 6,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "474",
+      "target_id": 2414,
+      "n_removed_edges": 6,
+      "n_other_endpoints": 8,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "476",
+      "target_id": 2431,
+      "n_removed_edges": 6,
+      "n_other_endpoints": 7,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "477",
+      "target_id": 2432,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "480",
+      "target_id": 2443,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "490",
+      "target_id": 2507,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "494",
+      "target_id": 2532,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "498",
+      "target_id": 2539,
+      "n_removed_edges": 10,
+      "n_other_endpoints": 11,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "503",
+      "target_id": 2559,
+      "n_removed_edges": 6,
+      "n_other_endpoints": 7,
+      "n_mentioned_accurately": 2,
+      "mentioned_ids": [
+        260,
+        2076
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": true
+    },
+    {
+      "dataset": "cora",
+      "key": "504",
+      "target_id": 2561,
+      "n_removed_edges": 6,
+      "n_other_endpoints": 6,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "506",
+      "target_id": 2568,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "511",
+      "target_id": 2583,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "512",
+      "target_id": 2586,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "513",
+      "target_id": 2591,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "514",
+      "target_id": 2597,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "519",
+      "target_id": 2613,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 1,
+      "mentioned_ids": [
+        1756
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "520",
+      "target_id": 2617,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "522",
+      "target_id": 2633,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "523",
+      "target_id": 2635,
+      "n_removed_edges": 9,
+      "n_other_endpoints": 10,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": true
+    },
+    {
+      "dataset": "cora",
+      "key": "528",
+      "target_id": 2647,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "529",
+      "target_id": 2648,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "532",
+      "target_id": 2658,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "cora",
+      "key": "538",
+      "target_id": 2687,
+      "n_removed_edges": 6,
+      "n_other_endpoints": 5,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": true
+    },
+    {
+      "dataset": "cora",
+      "key": "540",
+      "target_id": 2690,
+      "n_removed_edges": 10,
+      "n_other_endpoints": 11,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "0",
+      "target_id": 348,
+      "n_removed_edges": 21,
+      "n_other_endpoints": 24,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "1",
+      "target_id": 1191,
+      "n_removed_edges": 8,
+      "n_other_endpoints": 9,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "2",
+      "target_id": 1691,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "3",
+      "target_id": 1852,
+      "n_removed_edges": 5,
+      "n_other_endpoints": 6,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "4",
+      "target_id": 1958,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "5",
+      "target_id": 2299,
+      "n_removed_edges": 6,
+      "n_other_endpoints": 6,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "6",
+      "target_id": 3040,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "7",
+      "target_id": 3305,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "13",
+      "target_id": 4736,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "14",
+      "target_id": 4782,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "15",
+      "target_id": 4798,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": true
+    },
+    {
+      "dataset": "products",
+      "key": "18",
+      "target_id": 5204,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "20",
+      "target_id": 6050,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "21",
+      "target_id": 6236,
+      "n_removed_edges": 6,
+      "n_other_endpoints": 6,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "27",
+      "target_id": 7982,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "29",
+      "target_id": 8438,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": true
+    },
+    {
+      "dataset": "products",
+      "key": "30",
+      "target_id": 8485,
+      "n_removed_edges": 14,
+      "n_other_endpoints": 19,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "32",
+      "target_id": 8728,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "35",
+      "target_id": 9879,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "36",
+      "target_id": 10192,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "40",
+      "target_id": 12059,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "42",
+      "target_id": 12464,
+      "n_removed_edges": 10,
+      "n_other_endpoints": 11,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "46",
+      "target_id": 14516,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "49",
+      "target_id": 14760,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "50",
+      "target_id": 15065,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "59",
+      "target_id": 17822,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "61",
+      "target_id": 18243,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "65",
+      "target_id": 19140,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "66",
+      "target_id": 19356,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 5,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "67",
+      "target_id": 19363,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "69",
+      "target_id": 20262,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "70",
+      "target_id": 21066,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "73",
+      "target_id": 21445,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "78",
+      "target_id": 22915,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 1,
+      "mentioned_ids": [
+        22916
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "83",
+      "target_id": 23324,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "93",
+      "target_id": 25079,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "107",
+      "target_id": 29531,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 1,
+      "mentioned_ids": [
+        6242
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "108",
+      "target_id": 29606,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "112",
+      "target_id": 30322,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "113",
+      "target_id": 30333,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 2,
+      "mentioned_ids": [
+        6467,
+        6468
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "114",
+      "target_id": 30483,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "115",
+      "target_id": 30739,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "116",
+      "target_id": 32166,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "117",
+      "target_id": 32390,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "118",
+      "target_id": 33376,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "121",
+      "target_id": 33658,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "129",
+      "target_id": 35272,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "130",
+      "target_id": 35306,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "138",
+      "target_id": 36811,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "145",
+      "target_id": 38815,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "147",
+      "target_id": 39419,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 5,
+      "n_mentioned_accurately": 1,
+      "mentioned_ids": [
+        9135
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "149",
+      "target_id": 40262,
+      "n_removed_edges": 3,
+      "n_other_endpoints": 4,
+      "n_mentioned_accurately": 2,
+      "mentioned_ids": [
+        1116,
+        9348
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "150",
+      "target_id": 40286,
+      "n_removed_edges": 4,
+      "n_other_endpoints": 5,
+      "n_mentioned_accurately": 1,
+      "mentioned_ids": [
+        9392
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "158",
+      "target_id": 41316,
+      "n_removed_edges": 5,
+      "n_other_endpoints": 6,
+      "n_mentioned_accurately": 1,
+      "mentioned_ids": [
+        9662
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "161",
+      "target_id": 41614,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 2,
+      "mentioned_ids": [
+        1173,
+        9787
+      ],
+      "any_correct_mention": true,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "169",
+      "target_id": 43608,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "179",
+      "target_id": 45475,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "182",
+      "target_id": 47510,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 2,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "193",
+      "target_id": 51874,
+      "n_removed_edges": 2,
+      "n_other_endpoints": 3,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    },
+    {
+      "dataset": "products",
+      "key": "196",
+      "target_id": 52810,
+      "n_removed_edges": 1,
+      "n_other_endpoints": 1,
+      "n_mentioned_accurately": 0,
+      "mentioned_ids": [],
+      "any_correct_mention": false,
+      "has_addition_contradiction": false
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+env check: v5 reproduces existing CF-GNNExplainer cora rows 184/184
+env check: v5 reproduces existing CF-GNNExplainer products rows 60/60
+
+cora job 51247846: 542 nodes, 4103 batches; targets == test_idx in order: True
+   correctness agrees with lexical_complexity_results.csv (GraphXAIN rows, same canonical model): 542/542
+   empty 0 | no Support line 4 | repetition loop 399 (line 398, token 17) | malformed (non-empty, no Support or repetition) 402
+   batches: empty 0 / 4103, without Support line 109; nodes with >=1 empty batch 0
+   cited IDs outside the node's batches: 1286/25860
+
+products job 50765167: 200 nodes, 670 batches; targets == eval_idx in order: True
+   correctness agrees with lexical_complexity_results.csv (GraphXAIN rows, same canonical model): 200/200
+   empty 0 | no Support line 3 | repetition loop 166 (line 162, token 45) | malformed (non-empty, no Support or repetition) 166
+   batches: empty 0 / 670, without Support line 78; nodes with >=1 empty batch 0
+   cited IDs outside the node's batches: 2424/5866
+
+== Products: job 54238808 (Sept 15) vs job 50765167 (July 27 production)
+targets identical & same order: True; neighbour batches identical for 200/200 nodes; batches 670 vs 670
+   {"run": "sep_54238808", "empty_batches": 0, "batches_without_support": 223, "nodes_without_support": 10, "batches_with_Summary_field": 0, "batches_with_KEYWORDS_block": 522, "batches_ending_mid_sentence": 234, "nodes_repetition_flagged": 177, "median_words_per_batch": 321.0, "max_words_per_batch": 828, "cited_ids": 7344, "cited_outside_batches_pct": 42.4}
+   {"run": "jul_50765167", "empty_batches": 0, "batches_without_support": 78, "nodes_without_support": 3, "batches_with_Summary_field": 538, "batches_with_KEYWORDS_block": 316, "batches_ending_mid_sentence": 160, "nodes_repetition_flagged": 166, "median_words_per_batch": 272.0, "max_words_per_batch": 893, "cited_ids": 5866, "cited_outside_batches_pct": 41.3}
+identical batch texts between runs: 0
+projector md5: Sept 63873653f485c5d1561cd038db323603 | July 63873653f485c5d1561cd038db323603

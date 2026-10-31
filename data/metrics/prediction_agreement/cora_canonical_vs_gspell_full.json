@@ -1,0 +1,2743 @@
+{
+  "summary": {
+    "dataset": "cora",
+    "n_eval_nodes": 542,
+    "gspell_vs_canonical_agreement": 0.3044280442804428,
+    "canonical_accuracy": 0.8966789667896679,
+    "gspell_own_accuracy": 0.3025830258302583,
+    "survey_nodes": {
+      "510": {
+        "true_label": "Probabilistic_Methods",
+        "canonical_pred": "Neural_Networks",
+        "gspell_own_pred": "Neural_Networks"
+      },
+      "2334": {
+        "true_label": "Genetic_Algorithms",
+        "canonical_pred": "Genetic_Algorithms",
+        "gspell_own_pred": "Neural_Networks"
+      },
+      "1062": {
+        "true_label": "Theory",
+        "canonical_pred": "Neural_Networks",
+        "gspell_own_pred": "Neural_Networks"
+      },
+      "884": {
+        "true_label": "Theory",
+        "canonical_pred": "Theory",
+        "gspell_own_pred": "Neural_Networks"
+      }
+    }
+  },
+  "per_node": {
+    "1": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "4": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "11": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "16": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "19": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "21": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "34": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "35": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "36": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "38": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "46": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "50": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "64": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "75": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "89": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "90": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "95": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "98": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "103": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "114": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "116": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "119": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "122": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "127": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "130": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "143": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "146": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "153": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "154": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "160": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "161": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "172": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "180": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "186": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "189": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "190": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "197": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "200": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "201": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "202": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "206": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "216": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "225": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "234": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "241": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "245": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "253": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "262": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "264": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "268": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "284": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "293": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "301": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "317": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "330": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "335": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "337": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "356": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "369": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "378": {
+      "true_label": "Theory",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "379": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "391": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "392": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "395": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "396": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "397": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "399": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "400": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "403": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "412": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "417": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "418": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "452": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "455": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "459": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "466": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "469": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "474": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "487": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "488": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "492": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "496": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "499": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "502": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "504": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "510": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "512": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "515": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "524": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "537": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "540": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "546": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Genetic_Algorithms"
+    },
+    "550": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "559": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "562": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "563": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "569": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "574": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "580": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "586": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "595": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "600": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "606": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "608": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "616": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "623": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "625": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "627": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "633": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "635": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "639": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "640": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "641": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "646": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "648": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "652": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "656": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "658": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "659": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "663": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "675": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "681": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "683": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "684": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "698": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "699": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "702": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "703": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "709": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "713": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "717": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "728": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "732": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "740": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "747": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "750": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "753": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "763": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "766": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "769": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Genetic_Algorithms"
+    },
+    "773": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "775": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "779": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "784": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "791": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "795": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "797": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "804": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "815": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "823": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "825": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "828": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "830": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "833": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "835": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "837": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "850": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "851": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "853": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "854": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "860": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "863": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "870": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "872": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "876": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "877": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "878": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "880": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "884": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "894": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "895": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "896": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "920": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "928": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "933": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "953": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "954": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "955": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "956": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "957": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "959": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "960": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "971": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "972": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "975": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "977": {
+      "true_label": "Theory",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "980": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "991": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "992": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "995": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "996": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1008": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1012": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1015": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1016": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1020": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1021": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1028": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1038": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1045": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1051": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1059": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1060": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1062": {
+      "true_label": "Theory",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1065": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Genetic_Algorithms"
+    },
+    "1066": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1069": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1076": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1077": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1081": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1082": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1092": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1095": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1115": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1119": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1122": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1126": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1129": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1130": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Genetic_Algorithms"
+    },
+    "1136": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1139": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1141": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1147": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1148": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1150": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1152": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1153": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1154": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1155": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1156": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1158": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1162": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1166": {
+      "true_label": "Theory",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1167": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1180": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1183": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1184": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1191": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1197": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1205": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Genetic_Algorithms"
+    },
+    "1209": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1212": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1214": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1215": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1217": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1218": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1219": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Genetic_Algorithms"
+    },
+    "1227": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1238": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1243": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1257": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1267": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1275": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1282": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1291": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1294": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1296": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1297": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1300": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1306": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1312": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1324": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1327": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1346": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1348": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1354": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1363": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1365": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1367": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1369": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1384": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1388": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1390": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1400": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1408": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1409": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1415": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1416": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1434": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1438": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1439": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1440": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1443": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1445": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1470": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1478": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1479": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1482": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1484": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1485": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1492": {
+      "true_label": "Theory",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1495": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1496": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1500": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1504": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1515": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1516": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1519": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1520": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1522": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1527": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1528": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1529": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1531": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1534": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1540": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1542": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1548": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1568": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1570": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1571": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Genetic_Algorithms"
+    },
+    "1579": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1585": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1589": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1595": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1597": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1603": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1625": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1630": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1631": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1634": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1635": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1636": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1638": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1643": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1648": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1649": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1661": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1663": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1664": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1676": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1678": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1679": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1680": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1682": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1683": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1685": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1686": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1687": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1693": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1695": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1696": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1698": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1704": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1705": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1707": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1715": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1722": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1733": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1734": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1751": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1757": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1758": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1759": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1768": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1773": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1781": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1782": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1785": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1787": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1794": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1796": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1799": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1802": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1806": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1810": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1816": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1819": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1821": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1823": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1827": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1841": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1843": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1853": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1856": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1863": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1881": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1884": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1890": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Genetic_Algorithms"
+    },
+    "1892": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1895": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1899": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1903": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1906": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1919": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1923": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1930": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1931": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1955": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1958": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1959": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1969": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1974": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1981": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1982": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1986": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1996": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "1998": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2006": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2027": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2038": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2041": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2047": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2049": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2056": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2061": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2062": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2065": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2068": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2070": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2074": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2076": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2082": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2085": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2088": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2101": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2109": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2135": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2139": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2141": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2143": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2146": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2156": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2160": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2169": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2182": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2191": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2197": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2198": {
+      "true_label": "Theory",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2199": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2200": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2205": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2207": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2214": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2224": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2233": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2235": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2237": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2238": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2239": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2253": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2255": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2257": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2264": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2265": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Genetic_Algorithms"
+    },
+    "2267": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2269": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2274": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2277": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2278": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2281": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2294": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2298": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Genetic_Algorithms"
+    },
+    "2300": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2301": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2306": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2308": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2311": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2317": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2323": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2324": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2327": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2331": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2334": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2335": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2336": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2343": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2352": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2363": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2368": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2385": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2391": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2393": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2408": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2414": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2420": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2431": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2432": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2433": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2435": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2443": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2449": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2450": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2452": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2454": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2459": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2470": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2473": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2489": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2499": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2507": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2510": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2513": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2517": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2532": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2533": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2534": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2535": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2539": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2542": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2553": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2556": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2558": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2559": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2561": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2562": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2568": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2570": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2572": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2573": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2579": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2583": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2586": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2591": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2597": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2598": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2602": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2608": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2612": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2613": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2617": {
+      "true_label": "Rule_Learning",
+      "canonical_pred": "Rule_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2631": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2633": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2635": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2637": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2638": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Genetic_Algorithms"
+    },
+    "2641": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2645": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2647": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2648": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2652": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2655": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2658": {
+      "true_label": "Case_Based",
+      "canonical_pred": "Case_Based",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2660": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2675": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2676": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2684": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2686": {
+      "true_label": "Neural_Networks",
+      "canonical_pred": "Neural_Networks",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2687": {
+      "true_label": "Reinforcement_Learning",
+      "canonical_pred": "Reinforcement_Learning",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2688": {
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2690": {
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "gspell_own_pred": "Neural_Networks"
+    },
+    "2700": {
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Probabilistic_Methods",
+      "gspell_own_pred": "Neural_Networks"
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "model_id": "hugging-quants/Meta-Llama-3.1-70B-Instruct-GPTQ-INT4",
+  "revision": "1b0ae7f9d6da8b79f36fdc24912f950ecb2b6e91",
+  "model_path": "~/.cache/huggingface/hub/models--hugging-quants--Meta-Llama-3.1-70B-Instruct-GPTQ-INT4/snapshots/1b0ae7f9d6da8b79f36fdc24912f950ecb2b6e91",
+  "methods": [
+    "graphnarrator"
+  ],
+  "datasets": [
+    "cora"
+  ],
+  "nodes": null,
+  "sampling_params": {
+    "graphnarrator": {
+      "temperature": 0.3,
+      "top_p": 0.95,
+      "top_k": 50,
+      "max_tokens": 2048,
+      "seed": 42
+    }
+  },
+  "extra_bos": {
+    "graphnarrator": true
+  },
+  "llm_args": {
+    "gpu_memory_utilization": 0.8,
+    "max_model_len": 32000,
+    "max_num_seqs": 1
+  },
+  "char_limit_cf": 200000,
+  "versions": {
+    "vllm": "0.12.0",
+    "transformers": "4.57.3"
+  },
+  "env": {
+    "VLLM_ENABLE_V1_MULTIPROCESSING": "0",
+    "HF_HUB_OFFLINE": "1",
+    "CC": "/usr/bin/gcc",
+    "CUDA_HOME": "<CUDA_HOME (CUDA 12.8.1)>"
+  },
+  "slurm_job_id": "8225329",
+  "host": "<gpu-node>",
+  "started": "2026-10-30T19:09:25",
+  "model_load_seconds": 51.9,
+  "finished": "2026-10-30T19:27:48",
+  "status_counts_this_job": {
+    "ok": 30
+  }
+}

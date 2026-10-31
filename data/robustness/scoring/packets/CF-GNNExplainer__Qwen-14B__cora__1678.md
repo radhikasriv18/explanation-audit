@@ -1,0 +1,258 @@
+# Reference packet: CF-GNNExplainer__Qwen-14B__cora__1678
+
+- Method: CF-GNNExplainer; configuration: Qwen-14B; dataset: cora; target node: 1678
+- Explanation source: `./robustness_2026-10-30/production_a100/qwen14b_gptq_int4_cora_Response.json` ([331][1])
+- Scored scope (what the claims were extracted from): whole output
+- Built by `robustness_2026-10-30/scoring/build_packets.py` (read-only on all sources, no model call).
+
+## 1. Explanation (full text)
+
+~~~~~~text
+To fill the dictionary and provide a detailed explanation of the changes, let's first identify the differences between the factual and counterfactual examples, focusing on the target node 1678.
+
+### Dictionary Filling
+
+```python
+infos = {
+    'Target_Node_ID': '1678',
+    'Factual_Target_Node_Neighbors': ['378', '861', '1339', '1570'],
+    'Factual_Target_Node_Features': ['research', 'simpl', 'practic', 'consider', 'tree', 'averag', 'induc', 'genet', 'year', 'analysi', 'comprehens', 'case', 'induct', 'decis', 'result', 'task', 'worst', 'theoret', 'progress', 'impact'],
+    'Counterfactual_Target_Node_Neighbors': ['378', '861', '1339', '1570'],
+    'Counterfactual_Target_Node_Features': ['research', 'simpl', 'practic', 'consider', 'tree', 'averag', 'induc', 'genet', 'year', 'analysi', 'comprehens', 'case', 'induct', 'decis', 'result', 'task', 'worst', 'theoret', 'progress', 'impact'],
+    'Factual_Target_Node_Class': 'Theory',
+    'Counterfactual_Target_Node_class': 'Rule_Learning',
+    'Target_Node_Features_Changed_From_Factual_To_Counterfactual': [],
+    'Natural_Language_Explanation': ''
+}
+```
+
+### Explanation of Changes
+
+#### Target Node Details
+- **Node ID**: 1678
+- **Factual Classification**: Theory
+- **Counterfactual Classification**: Rule_Learning
+
+#### Differences in Classification
+In the factual scenario, the node 1678 is classified as "Theory," indicating that it deals with theoretical aspects of machine learning, such as mathematical foundations and algorithmic theory. However, in the counterfactual scenario, the same node is reclassified as "Rule_Learning," which suggests a shift towards rule-based learning methods, including decision rules and logic programming.
+
+#### Features and Influences
+The features of the target node remain unchanged between the factual and counterfactual scenarios. The node retains keywords like "research," "simpl," "practic," "consider," "tree," "averag," "induc," "genet," "year," "analysi," "comprehens," "case," "induct," "decis," "result," "task," "worst," "theoret," "progress," and "impact." These features suggest that the node discusses theoretical aspects of decision tree induction and related methodologies.
+
+#### Influence of Neighboring Nodes
+- **Node 378 (Mingers, 1989)**: This node is a central hub in the graph, connecting to numerous other nodes and classified as "Rule_Learning." Its influence likely steers the target node towards a rule-based perspective.
+- **Node 861 (In Defense of C4.5)**: This node focuses on decision tree induction and is classified as "Theory." It provides a theoretical foundation but does not strongly push towards rule-based learning.
+- **Node 1339 (An Analysis of Bayesian Classifiers)**: This node is also classified as "Theory" and discusses Bayesian classifiers, which are more probabilistic in nature. Its influence is less aligned with rule-based learning.
+- **Node 1570 (Average-Case Analysis of a Nearest Neighbor Algorithm)**: This node is classified as "Theory" and deals with nearest neighbor algorithms, which are more related to pattern recognition than rule-based learning.
+
+### Natural Language Explanation
+The target node 1678, titled "Induction of One-Level Decision Trees," was originally classified as "Theory" in the factual scenario. This classification reflects its focus on theoretical aspects of decision tree induction. However, in the counterfactual scenario, the node is reclassified as "Rule_Learning." This change suggests that the node's content is interpreted more closely aligned with rule-based learning methods rather than purely theoretical foundations.
+
+The neighboring nodes play a significant role in influencing this reclassification:
+- **Node 378** acts as a strong influencer, being a central hub classified as "Rule_Learning."
+- Nodes 861, 1339, and 1570, while still classified as "Theory," do not strongly push towards rule-based learning, allowing the influence of Node 378 to dominate.
+
+Thus, the reclassification from "Theory" to "Rule_Learning" highlights a shift in the interpretation of the node's content, emphasizing its relevance to rule-based learning methodologies rather than purely theoretical discussions.
+~~~~~~
+
+## 2. Prompt the method's model received
+
+Chat messages (system + user) built by llm-graph-cf's prompt code; identical for every CF configuration.
+
+**system:**
+
+~~~~~~text
+You are a language model that generates responses in a coherent and well-structured discourse style. Avoid using bullet points, lists, or numerical outlines. Provide your responses in complete sentences and paragraphs, explaining concepts clearly and concisely in a continuous flow.You must take a factual example , a graph, and its counterfactual example, another graph, generated via adjacency matrix perturbation and you must explain the differences.Counterfactual Explanation: A counterfactual explanation refers to a type of explanation in machine learning and artificial intelligence that describes how altering certain input features can change the output of a model. It answers 'what if' scenarios by identifying minimal changes necessary to achieve a different desired outcome. Counterfactual explanations provide insights into the decision-making process of complex models, enhancing transparency and interpretability.For example, consider a credit scoring model that denies a loan application. A counterfactual explanation might be: 'If your annual income had been $50,000 instead of $45,000, your loan would have been approved.' This helps the applicant understand what specific change could lead to a different decision.Counterfactual Explanations in Graphs: Graphs are data structures consisting of nodes (vertices) and edges that represent relationships between entities. Graphs are prevalent in various domains such as social networks, biological networks, and knowledge graphs. When machine learning models, particularly Graph Neural Networks (GNNs), are applied to graph data, interpreting their predictions becomes challenging due to the complexity of the graph structure.Counterfactual explanations in graphs aim to provide insights into how changes in the graph's structure or node features can alter the model's predictions. This involves identifying minimal modifications to the graph that would change the outcome for a specific node or the entire graph.You MUST fill this dictionary taking into account that Node_Differences must contain JUST the nodes' id where the change happen, the Edge_Differences must contain a list of tuple representing the nodes involved in the edges:  infos={Target_Node_ID:'', Factual_Target_Node_Neighbors: [], Factual_Target_Node_Features: [], Counterfactual_Target_Node_Neighbors: [],
+    Counterfactual_Target_Node_Features: [], Factual_Target_Node_Class: '', Counterfactual_Target_Node_class: '', Target_Node_Features_Changed_From_Factual_To_Counterfactual: [], Natural_Language_Explanation: ''}
+~~~~~~
+
+**user:**
+
+~~~~~~text
+given the factual graph: The node 178 is a product titled 'Title: Learning Decision Trees from Decision Rules:  
+Abstract: A method and initial results from a' with key attributes: tree, initi, rule, suit, exampl, standard, determin, modifi, decis, result, difficult, compar, situat, studi, differ, method, aris and is connected with the nodes 286, 378 and it is classified as Rule_Learning, it is not the target node. The node 218 is a product titled 'Title: Learning Classification Trees  
+Abstract: Algorithms for learning classification trees have h' with key attributes: tree, averag, split, artifici, intellig, genet, smooth, success, classif, year, statist, deriv, mani, techniqu, result, thereaft, bayesian, introduc and is connected with the nodes 378, 1290 and it is classified as Probabilistic_Methods, it is not the target node. The node 227 is a product titled 'Title: Induction of Oblique Decision Trees  
+Abstract: This paper introduces a randomized technique' with key attributes: hyperplan, tree, point, orient, random, exampl, read, set, standard, induct, rosenberg, decis, purpos, contrast, techniqu, result, attempt, introduc, partit, method and is connected with the node 378 and it is classified as Rule_Learning, it is not the target node. The node 286 is a product titled 'Title: The Estimation of Probabilities in Attribute Selection Measures for Decision Tree Induction' with key attributes: inform, estim, measur, tree, attribut, probabl, influenc, settl, particular, induct, decis, index, result, experi, interest, select, differ, method, analyz and is connected with the nodes 178, 378, 1963, 2195 and it is classified as Rule_Learning, it is not the target node. The node 335 is a product titled 'Title: Incremental Reduced Error Pruning  
+Abstract: This paper outlines some problems that may occu' with key attributes: domain, reduc, increment, address, prune, noisi, genet, effici, relat, mani, propos, error, result, thereaft, occur, attempt, experi, method, may and is connected with the nodes 378, 585 and it is classified as Rule_Learning, it is not the target node. The node 378 is a product titled 'Title: Mingers, 1989 J. Mingers. An empirical comparison of pruning methods for decision tree induct' with key attributes: empir, domain, tree, barn, share, rule, prune, artifici, intellig, concaten, comparison, machin, induct, categori, decis, improv, multipl, technic, report, theori, method and is connected with the nodes 178, 218, 227, 286, 335, 396, 585, 692, 960, 1027, 1061, 1207, 1238, 1275, 1290, 1539, 1644, 1678, 1963, 2012, 2042, 2195, 2290, 2291, 2447, 2583 and it is classified as Rule_Learning, it is not the target node. The node 396 is a product titled 'Title: Geometric Comparison of Classifications and Rule Sets*  
+Abstract: We present a technique for' with key attributes: matrix, descript, class, overlap, indic, similar, geometr, rule, object, classif, comput, comparison, set, produc, degre, system, evalu, techniqu, correl, repres and is connected with the node 378 and it is classified as Rule_Learning, it is not the target node. The node 434 is a product titled 'Title: Computational Learning in Humans and Machines  
+Abstract: In this paper we review research on' with key attributes: research, issu, review, initi, behavior, comput, relat, machin, induct, complex, main, sequenti, result, examin, model, focu, consid, compar, concept, human and is connected with the node 1339 and it is classified as Theory, it is not the target node. The node 585 is a product titled 'Title: An investigation of noise-tolerant relational concept learning algorithms  
+Abstract: We disc' with key attributes: address, nois, genet, relat, discuss, type, investig, system, describ, evalu, occur, result, experiment, concept, may and is connected with the nodes 335, 378, 1061, 1275, 2290, 2291 and it is classified as Rule_Learning, it is not the target node. The node 634 is a product titled 'Title: Oblivious Decision Trees and Abstract Cases  
+Abstract: In this paper, we address the problem' with key attributes: review, carri, tree, address, hypothes, attribut, prune, greedi, genet, store, featur, set, cbr, case, previou, presenc, decis, result, effect, work, memori, irrelev, select and is connected with the node 1570 and it is classified as Theory, it is not the target node. The node 692 is a product titled 'Title: Decision Tree Induction: How Effective is the Greedy Heuristic?  
+Abstract: Most existing dec' with key attributes: reason, optim, exist, tree, good, split, induc, greedi, believ, produc, induct, decis, local, system, node, effect, attempt, work, everi, current and is connected with the node 378 and it is classified as Rule_Learning, it is not the target node. The node 861 is a product titled 'Title: In Defense of C4.5: Notes on Learning One-Level Decision Trees  
+Abstract: We discuss the imp' with key attributes: simpl, art, tree, accur, implic, articl, rule, data, classif, note, discuss, particular, produc, decis, result, signific, consid, commonli, demonstr, compar and is connected with the nodes 1236, 1431, 1678 and it is classified as Theory, it is not the target node. The node 960 is a product titled 'Title: Proceedings of the First International Workshop on Intelligent Adaptive Systems (IAS-95) Cons' with key attributes: agent, abil, workshop, intellig, declar, intern, adapt, type, system, result, recent, proceed, introduc, construct, call, differ and is connected with the node 378 and it is classified as Rule_Learning, it is not the target node. The node 1027 is a product titled 'Title: Pessimistic decision tree pruning based on tree size  
+Abstract: In this work we develop a ne' with key attributes: chervonenki, motiv, tree, dimens, sound, prune, converg, size, decis, criteria, uniform, develop, result, work, perform, compar, theoret, concept, theori, base, method and is connected with the node 378 and it is classified as Theory, it is not the target node. The node 1061 is a product titled 'Title: Stochastic search in inductive concept learning  
+Abstract: Concept learning can be viewed as' with key attributes: descript, space, hypothesi, genet, standard, view, determin, induct, local, oper, languag, structur, search, result, perform, concept, stochast and is connected with the nodes 378, 585 and it is classified as Rule_Learning, it is not the target node. The node 1109 is a product titled 'Title: Inductive Bias in Case-Based Reasoning Systems  
+Abstract: In order to learn more about the b' with key attributes: reason, simpl, genet, order, cbr, induct, learner, pac, bia, system, behaviour, collect, represent, consid, result and is connected with the node 1570 and it is classified as Theory, it is not the target node. The node 1111 is a product titled 'Title: Towards a Better Understanding of Memory-Based Reasoning Systems  
+Abstract: We quantify both' with key attributes: reason, similar, start, valu, genet, popular, insight, comprehens, classifi, understand, metric, system, better, analyt, capabl, bayesian, experiment, perform, compar, disambigu, gain, differ and is connected with the nodes 1339, 1570 and it is classified as Case_Based, it is not the target node. The node 1164 is a product titled 'Title: PAC Analyses of a `Similarity Learning' IBL Algorithm  
+Abstract: V S-CBR [14] is a simple in' with key attributes: simpl, analys, measur, motiv, similar, weight, multiresolut, genet, analysi, case, adjust, main, idea, pac, collect, relev, result, demonstr, framework and is connected with the node 1570 and it is classified as Theory, it is not the target node. The node 1207 is a product titled 'Title: Data Analyses Using Simulated Breeding and Inductive Learning Methods  
+Abstract: Marketing d' with key attributes: clear, analys, acquisit, rule, market, noisi, data, simul, popular, effici, featur, induct, decis, unlik, characterist, interpret, requir, task, result, method and is connected with the node 378 and it is classified as Rule_Learning, it is not the target node. The node 1236 is a product titled 'Title: Exploring the Decision Forest: An Empirical Investigation of Occam's Razor in Decision Tree I' with key attributes: affect, tree, properti, data, explor, set, understand, massiv, decis, factor, individu, train, rate, error, run, report, experi, consist, perform, construct, seri, gain and is connected with the node 861 and it is classified as Theory, it is not the target node. The node 1238 is a product titled 'Title: On Pruning and Averaging Decision Trees  
+Abstract: Pruning a decision tree is considered by' with key attributes: empir, research, domain, tree, averag, prune, altern, noisi, import, receiv, comparison, attent, decis, part, build, mani, recent, consid, perform and is connected with the nodes 378, 1290 and it is classified as Theory, it is not the target node. The node 1275 is a product titled 'Title: Fossil: A Robust Relational Learner  
+Abstract: The research reported in this paper describes' with key attributes: extend, research, simpl, independ, properti, criterion, robust, ilp, natur, statist, power, relat, heurist, discuss, learner, train, system, shown, describ, search, result, report, interest, correl, base, sever and is connected with the nodes 378, 585, 2290, 2291 and it is classified as Rule_Learning, it is not the target node. The node 1290 is a product titled 'Title: A THEORY OF LEARNING CLASSIFICATION RULES  
+Abstract: This chapter takes a different standpoi' with key attributes: rule, classif, result, theori and is connected with the nodes 218, 378, 1238, 1644 and it is classified as Theory, it is not the target node. The node 1335 is a product titled 'Title: A Study of Cross-Validation and Bootstrap for Accuracy Estimation and Model Selection  
+Abstr' with key attributes: estim, review, bootstrap, restrict, good, artifici, common, data, set, classifi, shown, accuraci, result, model, experiment, compar, studi, theoret, select, method and is connected with the node 1339 and it is classified as Theory, it is not the target node. The node 1339 is a product titled 'Title: An Analysis of Bayesian Classifiers (1988), involves the formulation of average-case models f' with key attributes: involv, simpl, independ, target, genet, specif, analysi, classifi, remark, induct, assum, monoton, mani, conjunct, result, formul, model, bayesian, task, concept and is connected with the nodes 434, 1111, 1335, 1570, 1678, 2443, 2677 and it is classified as Theory, it is not the target node. The node 1431 is a product titled 'Title: Learning to Represent Codons: A Challenge Problem for Constructive Induction  
+Abstract: The' with key attributes: chang, abil, gene, abl, good, dna, depend, import, featur, induct, solut, world, system, describ, represent, challeng, given, result, perform, construct, repres and is connected with the node 861 and it is classified as Theory, it is not the target node. The node 1539 is a product titled 'Title: Finding new rules for incomplete theories: Explicit biases for induction with contextual info' with key attributes: inform, back, connect, unit, address, initi, translat, refin, rule, hidden, explicit, induct, backpropag, incomplet, bias, requir, result, proceed, theori, howev and is connected with the node 378 and it is classified as Rule_Learning, it is not the target node. The node 1570 is a product titled 'Title: Average-Case Analysis of a Nearest Neighbor Algorithm  
+Abstract: In this paper we present an' with key attributes: research, simpl, space, nearest, neighbor, target, attribut, instanc, genet, distribut, analysi, induct, assum, boolean, mani, conjunct, uniform, result, recent, studi, concept, method and is connected with the nodes 634, 1109, 1111, 1164, 1339, 1678 and it is classified as Theory, it is not the target node. The node 1644 is a product titled 'Title: A Comparative Study of ID3 and Backpropagation for English Text-to-Speech Mapping  
+Abstract:' with key attributes: rosenberg, map, code, genet, distribut, comparison, output, backpropag, prop, shown, error, develop, task, result, seattl, consist, perform, compar, stress and is connected with the nodes 378, 1290 and it is classified as Neural_Networks, it is not the target node. The node 1678 is a product titled 'Title: Induction of One-Level Decision Trees  
+Abstract: In recent years, researchers have made cons' with key attributes: research, simpl, practic, consider, tree, averag, deal, induc, genet, year, analysi, comprehens, case, induct, decis, result, task, worst, theoret, progress, impact and is connected with the nodes 378, 861, 1339, 1570 and it is classified as Theory, it is the target node. The node 1963 is a product titled 'Title: Learning Problem-Oriented Decision Structures from Decision Rules: The AQDT-2 System  
+Abstra' with key attributes: methodolog, simpl, specifi, serv, rule, appli, graph, object, order, power, decis, process, system, propos, structur, result, organ, situat, acycl, tool and is connected with the nodes 286, 378, 2195 and it is classified as Rule_Learning, it is not the target node. The node 2012 is a product titled 'Title: Multivariate Decision Trees  
+Abstract: COINS Technical Report 92-82 December 1992 Abstract M' with key attributes: limit, overcom, space, tree, restrict, coin, split, instanc, discuss, multivari, decis, represent, result, technic, report and is connected with the node 378 and it is classified as Theory, it is not the target node. The node 2042 is a product titled 'Title: Fast Bounded Smooth Regression with Lazy Neural Trees  
+Abstract: We propose the lazy neural' with key attributes: network, function, tree, smooth, architectur, neural, decis, lazi, bound, regress, appropri, system, propos, fast, realiz, gener, hybrid and is connected with the node 378 and it is classified as Rule_Learning, it is not the target node. The node 2195 is a product titled 'Title: LEARNING FOR DECISION MAKING: The FRD Approach and a Comparative Study  Machine Learning and' with key attributes: need, issu, best, declar, effici, concern, machin, form, transfer, laboratori, decis, answer, procedur, propos, result, infer, compar, studi, knowledg, repres and is connected with the nodes 286, 378, 1963 and it is classified as Rule_Learning, it is not the target node. The node 2290 is a product titled 'Title: A Comparison of Pruning Methods for Relational Concept Learning  
+Abstract: Pre-Pruning and P' with key attributes: descript, accur, deal, prune, nois, declar, specif, effici, relat, comparison, typic, comprehens, standard, result, gener, compar, concept, method and is connected with the nodes 378, 585, 1275, 2291 and it is classified as Rule_Learning, it is not the target node. The node 2291 is a product titled 'Title: Top-Down Pruning in Relational Learning  
+Abstract: Pruning is an effective method for dealin' with key attributes: reduc, deal, prune, nois, genet, declar, relat, top, machin, particular, induct, logic, shown, program, error, effect, recent, result, interest, compar, field, attract, method, howev and is connected with the nodes 378, 585, 1275, 2290 and it is classified as Rule_Learning, it is not the target node. The node 2443 is a product titled 'Title: Issues in the Integration of Data Mining and Data Visualization Visualizing the Simple Bayesi' with key attributes: condit, simpl, sometim, issu, previous, independ, class, attribut, data, integr, classifi, mine, surprisingli, visual, shown, model, bayesian, given, seattl, call, built, base and is connected with the node 1339 and it is classified as Theory, it is not the target node. The node 2447 is a product titled 'Title: New Roles for Machine Learning in Design for Design of Educational Computing New roles for
+Ab' with key attributes: research, simpl, solv, scale, address, concentr, comput, import, machin, educ, role, real, modulo, effort, design, techniqu, develop, result, recent, invari, earli, field and is connected with the node 378 and it is classified as Rule_Learning, it is not the target node. The node 2583 is a product titled 'Title: Dynamic Automatic Model Selection  
+Abstract: COINS Technical Report 92-30 February 1992 Abst' with key attributes: dynam, coin, februari, genet, success, receiv, exampl, machin, attent, histori, mani, develop, model, recent, technic, report, given, task, result, automat, studi, select and is connected with the node 378 and it is classified as Theory, it is not the target node. The node 2677 is a product titled 'Title: Mining and Model Simplicity: A Case Study in Diagnosis  
+Abstract: Proceedings of the 2nd Int' with key attributes: diagnosi, artifici, intellig, data, case, acut, intern, mine, discoveri, publish, result, model, recent, version, proceed, associ, confer, studi, knowledg, right and is connected with the node 1339 and it is classified as Case_Based, it is not the target node. and given the counterfactual example: The node 178 is a product titled 'Title: Learning Decision Trees from Decision Rules:  
+Abstract: A method and initial results from a' with key attributes: tree, initi, rule, suit, exampl, standard, determin, modifi, decis, result, difficult, compar, situat, studi, differ, method, aris and is connected with the nodes 286, 378 and it is classified as Rule_Learning, it is not the target node. The node 218 is a product titled 'Title: Learning Classification Trees  
+Abstract: Algorithms for learning classification trees have h' with key attributes: tree, averag, split, artifici, intellig, genet, smooth, success, classif, year, statist, deriv, mani, techniqu, result, thereaft, bayesian, introduc and is connected with the nodes 378, 1290 and it is classified as Probabilistic_Methods, it is not the target node. The node 227 is a product titled 'Title: Induction of Oblique Decision Trees  
+Abstract: This paper introduces a randomized technique' with key attributes: hyperplan, tree, point, orient, random, exampl, read, set, standard, induct, rosenberg, decis, purpos, contrast, techniqu, result, attempt, introduc, partit, method and is connected with the node 378 and it is classified as Rule_Learning, it is not the target node. The node 286 is a product titled 'Title: The Estimation of Probabilities in Attribute Selection Measures for Decision Tree Induction' with key attributes: inform, estim, measur, tree, attribut, probabl, influenc, settl, particular, induct, decis, index, result, experi, interest, select, differ, method, analyz and is connected with the nodes 178, 378, 1963, 2195 and it is classified as Rule_Learning, it is not the target node. The node 335 is a product titled 'Title: Incremental Reduced Error Pruning  
+Abstract: This paper outlines some problems that may occu' with key attributes: domain, reduc, increment, address, prune, noisi, genet, effici, relat, mani, propos, error, result, thereaft, occur, attempt, experi, method, may and is connected with the nodes 378, 585 and it is classified as Rule_Learning, it is not the target node. The node 378 is a product titled 'Title: Mingers, 1989 J. Mingers. An empirical comparison of pruning methods for decision tree induct' with key attributes: empir, domain, tree, barn, share, rule, prune, artifici, intellig, concaten, comparison, machin, induct, categori, decis, improv, multipl, technic, report, theori, method and is connected with the nodes 178, 218, 227, 286, 335, 396, 585, 692, 960, 1027, 1061, 1207, 1238, 1275, 1290, 1539, 1644, 1678, 1963, 2012, 2042, 2195, 2290, 2291, 2447, 2583 and it is classified as Rule_Learning, it is not the target node. The node 396 is a product titled 'Title: Geometric Comparison of Classifications and Rule Sets*  
+Abstract: We present a technique for' with key attributes: matrix, descript, class, overlap, indic, similar, geometr, rule, object, classif, comput, comparison, set, produc, degre, system, evalu, techniqu, correl, repres and is connected with the node 378 and it is classified as Rule_Learning, it is not the target node. The node 434 is a product titled 'Title: Computational Learning in Humans and Machines  
+Abstract: In this paper we review research on' with key attributes: research, issu, review, initi, behavior, comput, relat, machin, induct, complex, main, sequenti, result, examin, model, focu, consid, compar, concept, human and is connected with the node 1339 and it is classified as Theory, it is not the target node. The node 585 is a product titled 'Title: An investigation of noise-tolerant relational concept learning algorithms  
+Abstract: We disc' with key attributes: address, nois, genet, relat, discuss, type, investig, system, describ, evalu, occur, result, experiment, concept, may and is connected with the nodes 335, 378, 1061, 1275, 2290, 2291 and it is classified as Rule_Learning, it is not the target node. The node 634 is a product titled 'Title: Oblivious Decision Trees and Abstract Cases  
+Abstract: In this paper, we address the problem' with key attributes: review, carri, tree, address, hypothes, attribut, prune, greedi, genet, store, featur, set, cbr, case, previou, presenc, decis, result, effect, work, memori, irrelev, select and is connected with the node 1570 and it is classified as Theory, it is not the target node. The node 692 is a product titled 'Title: Decision Tree Induction: How Effective is the Greedy Heuristic?  
+Abstract: Most existing dec' with key attributes: reason, optim, exist, tree, good, split, induc, greedi, believ, produc, induct, decis, local, system, node, effect, attempt, work, everi, current and is connected with the node 378 and it is classified as Rule_Learning, it is not the target node. The node 861 is a product titled 'Title: In Defense of C4.5: Notes on Learning One-Level Decision Trees  
+Abstract: We discuss the imp' with key attributes: simpl, art, tree, accur, implic, articl, rule, data, classif, note, discuss, particular, produc, decis, result, signific, consid, commonli, demonstr, compar and is connected with the nodes 1236, 1431 and it is classified as Theory, it is not the target node. The node 960 is a product titled 'Title: Proceedings of the First International Workshop on Intelligent Adaptive Systems (IAS-95) Cons' with key attributes: agent, abil, workshop, intellig, declar, intern, adapt, type, system, result, recent, proceed, introduc, construct, call, differ and is connected with the node 378 and it is classified as Rule_Learning, it is not the target node. The node 1027 is a product titled 'Title: Pessimistic decision tree pruning based on tree size  
+Abstract: In this work we develop a ne' with key attributes: chervonenki, motiv, tree, dimens, sound, prune, converg, size, decis, criteria, uniform, develop, result, work, perform, compar, theoret, concept, theori, base, method and is connected with the node 378 and it is classified as Theory, it is not the target node. The node 1061 is a product titled 'Title: Stochastic search in inductive concept learning  
+Abstract: Concept learning can be viewed as' with key attributes: descript, space, hypothesi, genet, standard, view, determin, induct, local, oper, languag, structur, search, result, perform, concept, stochast and is connected with the nodes 378, 585 and it is classified as Rule_Learning, it is not the target node. The node 1109 is a product titled 'Title: Inductive Bias in Case-Based Reasoning Systems  
+Abstract: In order to learn more about the b' with key attributes: reason, simpl, genet, order, cbr, induct, learner, pac, bia, system, behaviour, collect, represent, consid, result and is connected with the node 1570 and it is classified as Theory, it is not the target node. The node 1111 is a product titled 'Title: Towards a Better Understanding of Memory-Based Reasoning Systems  
+Abstract: We quantify both' with key attributes: reason, similar, start, valu, genet, popular, insight, comprehens, classifi, understand, metric, system, better, analyt, capabl, bayesian, experiment, perform, compar, disambigu, gain, differ and is connected with the nodes 1339, 1570 and it is classified as Case_Based, it is not the target node. The node 1164 is a product titled 'Title: PAC Analyses of a `Similarity Learning' IBL Algorithm  
+Abstract: V S-CBR [14] is a simple in' with key attributes: simpl, analys, measur, motiv, similar, weight, multiresolut, genet, analysi, case, adjust, main, idea, pac, collect, relev, result, demonstr, framework and is connected with the node 1570 and it is classified as Theory, it is not the target node. The node 1207 is a product titled 'Title: Data Analyses Using Simulated Breeding and Inductive Learning Methods  
+Abstract: Marketing d' with key attributes: clear, analys, acquisit, rule, market, noisi, data, simul, popular, effici, featur, induct, decis, unlik, characterist, interpret, requir, task, result, method and is connected with the node 378 and it is classified as Rule_Learning, it is not the target node. The node 1236 is a product titled 'Title: Exploring the Decision Forest: An Empirical Investigation of Occam's Razor in Decision Tree I' with key attributes: affect, tree, properti, data, explor, set, understand, massiv, decis, factor, individu, train, rate, error, run, report, experi, consist, perform, construct, seri, gain and is connected with the node 861 and it is classified as Theory, it is not the target node. The node 1238 is a product titled 'Title: On Pruning and Averaging Decision Trees  
+Abstract: Pruning a decision tree is considered by' with key attributes: empir, research, domain, tree, averag, prune, altern, noisi, import, receiv, comparison, attent, decis, part, build, mani, recent, consid, perform and is connected with the nodes 378, 1290 and it is classified as Theory, it is not the target node. The node 1275 is a product titled 'Title: Fossil: A Robust Relational Learner  
+Abstract: The research reported in this paper describes' with key attributes: extend, research, simpl, independ, properti, criterion, robust, ilp, natur, statist, power, relat, heurist, discuss, learner, train, system, shown, describ, search, result, report, interest, correl, base, sever and is connected with the nodes 378, 585, 2290, 2291 and it is classified as Rule_Learning, it is not the target node. The node 1290 is a product titled 'Title: A THEORY OF LEARNING CLASSIFICATION RULES  
+Abstract: This chapter takes a different standpoi' with key attributes: rule, classif, result, theori and is connected with the nodes 218, 378, 1238, 1644 and it is classified as Theory, it is not the target node. The node 1335 is a product titled 'Title: A Study of Cross-Validation and Bootstrap for Accuracy Estimation and Model Selection  
+Abstr' with key attributes: estim, review, bootstrap, restrict, good, artifici, common, data, set, classifi, shown, accuraci, result, model, experiment, compar, studi, theoret, select, method and is connected with the node 1339 and it is classified as Theory, it is not the target node. The node 1339 is a product titled 'Title: An Analysis of Bayesian Classifiers (1988), involves the formulation of average-case models f' with key attributes: involv, simpl, independ, target, genet, specif, analysi, classifi, remark, induct, assum, monoton, mani, conjunct, result, formul, model, bayesian, task, concept and is connected with the nodes 434, 1111, 1335, 1570, 2443, 2677 and it is classified as Theory, it is not the target node. The node 1431 is a product titled 'Title: Learning to Represent Codons: A Challenge Problem for Constructive Induction  
+Abstract: The' with key attributes: chang, abil, gene, abl, good, dna, depend, import, featur, induct, solut, world, system, describ, represent, challeng, given, result, perform, construct, repres and is connected with the node 861 and it is classified as Theory, it is not the target node. The node 1539 is a product titled 'Title: Finding new rules for incomplete theories: Explicit biases for induction with contextual info' with key attributes: inform, back, connect, unit, address, initi, translat, refin, rule, hidden, explicit, induct, backpropag, incomplet, bias, requir, result, proceed, theori, howev and is connected with the node 378 and it is classified as Rule_Learning, it is not the target node. The node 1570 is a product titled 'Title: Average-Case Analysis of a Nearest Neighbor Algorithm  
+Abstract: In this paper we present an' with key attributes: research, simpl, space, nearest, neighbor, target, attribut, instanc, genet, distribut, analysi, induct, assum, boolean, mani, conjunct, uniform, result, recent, studi, concept, method and is connected with the nodes 634, 1109, 1111, 1164, 1339 and it is classified as Theory, it is not the target node. The node 1644 is a product titled 'Title: A Comparative Study of ID3 and Backpropagation for English Text-to-Speech Mapping  
+Abstract:' with key attributes: rosenberg, map, code, genet, distribut, comparison, output, backpropag, prop, shown, error, develop, task, result, seattl, consist, perform, compar, stress and is connected with the nodes 378, 1290 and it is classified as Neural_Networks, it is not the target node. The node 1678 is a product titled 'Title: Induction of One-Level Decision Trees  
+Abstract: In recent years, researchers have made cons' with key attributes: research, simpl, practic, consider, tree, averag, deal, induc, genet, year, analysi, comprehens, case, induct, decis, result, task, worst, theoret, progress, impact and is connected with the node 378 and it is classified as Rule_Learning, it is the target node. The node 1963 is a product titled 'Title: Learning Problem-Oriented Decision Structures from Decision Rules: The AQDT-2 System  
+Abstra' with key attributes: methodolog, simpl, specifi, serv, rule, appli, graph, object, order, power, decis, process, system, propos, structur, result, organ, situat, acycl, tool and is connected with the nodes 286, 378, 2195 and it is classified as Rule_Learning, it is not the target node. The node 2012 is a product titled 'Title: Multivariate Decision Trees  
+Abstract: COINS Technical Report 92-82 December 1992 Abstract M' with key attributes: limit, overcom, space, tree, restrict, coin, split, instanc, discuss, multivari, decis, represent, result, technic, report and is connected with the node 378 and it is classified as Theory, it is not the target node. The node 2042 is a product titled 'Title: Fast Bounded Smooth Regression with Lazy Neural Trees  
+Abstract: We propose the lazy neural' with key attributes: network, function, tree, smooth, architectur, neural, decis, lazi, bound, regress, appropri, system, propos, fast, realiz, gener, hybrid and is connected with the node 378 and it is classified as Rule_Learning, it is not the target node. The node 2195 is a product titled 'Title: LEARNING FOR DECISION MAKING: The FRD Approach and a Comparative Study  Machine Learning and' with key attributes: need, issu, best, declar, effici, concern, machin, form, transfer, laboratori, decis, answer, procedur, propos, result, infer, compar, studi, knowledg, repres and is connected with the nodes 286, 378, 1963 and it is classified as Rule_Learning, it is not the target node. The node 2290 is a product titled 'Title: A Comparison of Pruning Methods for Relational Concept Learning  
+Abstract: Pre-Pruning and P' with key attributes: descript, accur, deal, prune, nois, declar, specif, effici, relat, comparison, typic, comprehens, standard, result, gener, compar, concept, method and is connected with the nodes 378, 585, 1275, 2291 and it is classified as Rule_Learning, it is not the target node. The node 2291 is a product titled 'Title: Top-Down Pruning in Relational Learning  
+Abstract: Pruning is an effective method for dealin' with key attributes: reduc, deal, prune, nois, genet, declar, relat, top, machin, particular, induct, logic, shown, program, error, effect, recent, result, interest, compar, field, attract, method, howev and is connected with the nodes 378, 585, 1275, 2290 and it is classified as Rule_Learning, it is not the target node. The node 2443 is a product titled 'Title: Issues in the Integration of Data Mining and Data Visualization Visualizing the Simple Bayesi' with key attributes: condit, simpl, sometim, issu, previous, independ, class, attribut, data, integr, classifi, mine, surprisingli, visual, shown, model, bayesian, given, seattl, call, built, base and is connected with the node 1339 and it is classified as Theory, it is not the target node. The node 2447 is a product titled 'Title: New Roles for Machine Learning in Design for Design of Educational Computing New roles for
+Ab' with key attributes: research, simpl, solv, scale, address, concentr, comput, import, machin, educ, role, real, modulo, effort, design, techniqu, develop, result, recent, invari, earli, field and is connected with the node 378 and it is classified as Rule_Learning, it is not the target node. The node 2583 is a product titled 'Title: Dynamic Automatic Model Selection  
+Abstract: COINS Technical Report 92-30 February 1992 Abst' with key attributes: dynam, coin, februari, genet, success, receiv, exampl, machin, attent, histori, mani, develop, model, recent, technic, report, given, task, result, automat, studi, select and is connected with the node 378 and it is classified as Theory, it is not the target node. The node 2677 is a product titled 'Title: Mining and Model Simplicity: A Case Study in Diagnosis  
+Abstract: Proceedings of the 2nd Int' with key attributes: diagnosi, artifici, intellig, data, case, acut, intern, mine, discoveri, publish, result, model, recent, version, proceed, associ, confer, studi, knowledg, right and is connected with the node 1339 and it is classified as Case_Based, it is not the target node.
+                    and given the knowledge base about the dataset: 
+The Cora dataset is a widely used benchmark for graph-based learning tasks, specifically node classification in citation networks. It consists of 2,708 scientific publications classified into seven distinct research topics. The dataset is represented as a graph where each node corresponds to a paper, and edges represent citation links between papers. If a paper cites or is cited by another paper, an undirected edge is created between the two corresponding nodes.
+Features:
+Each node is described by a 1,433-dimensional binary feature vector, where each dimension indicates the presence or absence of a specific word from the paper’s abstract. This feature representation helps capture the content of each publication.In the current format the nodes features are represented by a list of the words in the word vector that have value 1.
+Classes:
+The nodes are categorized into seven classes, which correspond to the research topic of each paper:
+1. Case_Based: Papers focused on case-based learning and case-based reasoning methods.
+2. Genetic_Algorithms: Research related to optimization and search algorithms inspired by natural selection and genetics.
+3. Neural_Networks: Publications on neural network architectures, learning algorithms, and their applications.
+4. Probabilistic_Methods: Papers covering probabilistic models, including Bayesian networks and probabilistic graphical models.
+5. Reinforcement_Learning: Research discussing methods for training agents to make sequential decisions in dynamic environments.
+6. Rule_Learning: Publications on rule-based learning methods, including decision rules and logic programming.
+7. Theory: Theoretical studies, including mathematical foundations of machine learning and algorithmic theory.
+Graph Structure:
+Nodes: 2,708 papers, each labeled with one of the seven classes.
+Edges: 5,429 citation links between papers, forming a sparse and undirected graph structure., fill the dictionary!
+                    and provide an explanation about the change in classification for the target node, please evaluate also the influences of neighbors nodes.
+~~~~~~
+
+## 3. Target node
+
+- ID: 1678
+- Title: Induction of One-Level Decision Trees
+- True class (canonical `y`): **Theory**
+- Predicted class, canonical GraphSAGE (`prediction_agreement/cora_canonical_vs_gspell_full.json`): **Theory**
+- Prediction recorded by this method's pipeline: **Theory**
+
+Canonical text (`raw_text`):
+
+~~~~~~text
+Title: Induction of One-Level Decision Trees  
+Abstract: In recent years, researchers have made considerable progress on the worst-case analysis of inductive learning tasks, but for theoretical results to have impact on practice, they must deal with the average case. In this paper we present an average-case analysis of a simple algorithm that induces one-level decision trees for concepts defined by a single relevant attribute. Given knowledge about the number of training instances, the number of irrelevant attributes, the amount of class and attribute noise, and the class and attribute distributions, we derive the expected classification accuracy over the entire instance space. We then examine the predictions of this analysis for different settings of these domain parameters, comparing them to exper imental results to check our reasoning. 
+~~~~~~
+
+## 4. Neighbors (canonical `edge_index`, `cora_canonical.pt`)
+
+### 1-hop: 4 nodes
+
+| node id | true class | title |
+|---|---|---|
+| 378 | Theory | Mingers, 1989 J. Mingers. An empirical comparison of pruning methods for decision tree induction. Machine |
+| 861 | Theory | In Defense of C4.5: Notes on Learning One-Level Decision Trees |
+| 1339 | Theory | An Analysis of Bayesian Classifiers (1988), involves the formulation of average-case models for specific algorithms |
+| 1570 | Case_Based | Average-Case Analysis of a Nearest Neighbor Algorithm |
+
+### 2-hop (shortest distance exactly 2): 35 nodes
+
+| node id | true class | title |
+|---|---|---|
+| 178 | Rule_Learning | Learning Decision Trees from Decision Rules: |
+| 218 | Probabilistic_Methods | Learning Classification Trees |
+| 227 | Theory | Induction of Oblique Decision Trees |
+| 286 | Rule_Learning | The Estimation of Probabilities in Attribute Selection Measures for Decision Tree Induction |
+| 335 | Rule_Learning | Incremental Reduced Error Pruning |
+| 396 | Rule_Learning | Geometric Comparison of Classifications and Rule Sets* |
+| 434 | Case_Based | Computational Learning in Humans and Machines |
+| 585 | Rule_Learning | An investigation of noise-tolerant relational concept learning algorithms |
+| 634 | Case_Based | Oblivious Decision Trees and Abstract Cases |
+| 692 | Theory | Decision Tree Induction: How Effective is the Greedy Heuristic? |
+| 960 | Rule_Learning | Proceedings of the First International Workshop on Intelligent Adaptive Systems (IAS-95) Constructive Induction-based Learning Agents: |
+| 1027 | Theory | Pessimistic decision tree pruning based on tree size |
+| 1061 | Rule_Learning | Stochastic search in inductive concept learning |
+| 1109 | Theory | Inductive Bias in Case-Based Reasoning Systems |
+| 1111 | Case_Based | Towards a Better Understanding of Memory-Based Reasoning Systems |
+| 1164 | Theory | PAC Analyses of a `Similarity Learning' IBL Algorithm |
+| 1207 | Genetic_Algorithms | Data Analyses Using Simulated Breeding and Inductive Learning Methods |
+| 1236 | Theory | Exploring the Decision Forest: An Empirical Investigation of Occam's Razor in Decision Tree Induction |
+| 1238 | Theory | On Pruning and Averaging Decision Trees |
+| 1275 | Rule_Learning | Fossil: A Robust Relational Learner |
+| 1290 | Theory | A THEORY OF LEARNING CLASSIFICATION RULES |
+| 1335 | Probabilistic_Methods | A Study of Cross-Validation and Bootstrap for Accuracy Estimation and Model Selection |
+| 1431 | Neural_Networks | Learning to Represent Codons: A Challenge Problem for Constructive Induction |
+| 1539 | Rule_Learning | Finding new rules for incomplete theories: Explicit biases for induction with contextual information. In Proceedings |
+| 1644 | Neural_Networks | A Comparative Study of ID3 and Backpropagation for English Text-to-Speech Mapping |
+| 1963 | Rule_Learning | Learning Problem-Oriented Decision Structures from Decision Rules: The AQDT-2 System |
+| 2012 | Theory | Multivariate Decision Trees |
+| 2042 | Neural_Networks | Fast Bounded Smooth Regression with Lazy Neural Trees |
+| 2195 | Rule_Learning | LEARNING FOR DECISION MAKING: The FRD Approach and a Comparative Study  Machine Learning and Inference Laboratory |
+| 2290 | Rule_Learning | A Comparison of Pruning Methods for Relational Concept Learning |
+| 2291 | Rule_Learning | Top-Down Pruning in Relational Learning |
+| 2443 | Probabilistic_Methods | Issues in the Integration of Data Mining and Data Visualization Visualizing the Simple Bayesian Classifier |
+| 2447 | Case_Based | New Roles for Machine Learning in Design for Design of Educational Computing New roles for |
+| 2583 | Theory | Dynamic Automatic Model Selection |
+| 2677 | Probabilistic_Methods | Mining and Model Simplicity: A Case Study in Diagnosis |
+
+## 5. Method evidence: counterfactual (CF-GNNExplainer, edge removal)
+
+Source: `./llm-graph-cf/data/cora/cf-gnnexplainer-canonical/random_seed_42_*` (key=331).
+
+- Factual class: **Theory**
+- Counterfactual class: **Rule_Learning**
+- Removed edges (global ids, 3): (861, 1678), (1339, 1678), (1570, 1678)
+
+### Factual target dict
+
+| field | value |
+|---|---|
+| Target_Node_ID | 1678 |
+| Factual_Target_Node_Neighbors | 378, 861, 1339, 1570 |
+| Factual_Target_Node_Features | research, simpl, practic, consider, tree, averag, deal, induc, genet, year, analysi, comprehens, case, induct, decis, result, result, task, result, worst, theoret, progress, impact |
+| Counterfactual_Target_Node_Neighbors | 378 |
+| Counterfactual_Target_Node_Features | research, simpl, practic, consider, tree, averag, deal, induc, genet, year, analysi, comprehens, case, induct, decis, result, result, task, result, worst, theoret, progress, impact |
+| Factual_Target_Node_Class | Theory |
+| Counterfactual_Target_Node_class | Rule_Learning |
+| Target_Node_Features_Changed_From_Factual_To_Counterfactual |  |
+| Target_Node_Edges_Removed_From_Factual_To_Counterfactual | 861, 1339, 1570 |
+| Natural_Language_Explanation | None |
+
+### Counterfactual target dict
+
+| field | value |
+|---|---|
+| Target_Node_ID | 1678 |
+| Factual_Target_Node_Neighbors | 378, 861, 1339, 1570 |
+| Factual_Target_Node_Features | research, simpl, practic, consider, tree, averag, deal, induc, genet, year, analysi, comprehens, case, induct, decis, result, result, task, result, worst, theoret, progress, impact |
+| Counterfactual_Target_Node_Neighbors | 378 |
+| Counterfactual_Target_Node_Features | research, simpl, practic, consider, tree, averag, deal, induc, genet, year, analysi, comprehens, case, induct, decis, result, result, task, result, worst, theoret, progress, impact |
+| Factual_Target_Node_Class | Theory |
+| Counterfactual_Target_Node_class | Rule_Learning |
+| Target_Node_Features_Changed_From_Factual_To_Counterfactual |  |
+| Target_Node_Edges_Removed_From_Factual_To_Counterfactual | 861, 1339, 1570 |
+| Natural_Language_Explanation | None |

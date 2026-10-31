@@ -1,0 +1,393 @@
+{
+ "run_id": "CF-GNNExplainer__Qwen-14B__cora__1062",
+ "method": "CF-GNNExplainer",
+ "config": "Qwen-14B",
+ "dataset": "cora",
+ "node": "1062",
+ "source_file": "./robustness_2026-10-30/production_a100/qwen14b_gptq_int4_cora_Response.json",
+ "source_locator": "[203][1]",
+ "text_scope": "whole output",
+ "input_text": "To address the task, we will first identify the differences between the factual and counterfactual graphs, focusing on the target node (node 1062). We will then analyze the changes in its classification and the influence of its neighboring nodes.\n\n### Differences Between Factual and Counterfactual Graphs\n\nIn the factual graph, node 1062 (the target node) is classified as `Neural_Networks` and is connected to nodes 930, 1254, and 2651. In the counterfactual graph, node 1062 retains the same title and key attributes but is reclassified as `Theory`. Additionally, its connections have changed; it is now only connected to nodes 1254 and 2651, losing the connection to node 930.\n\n### Filling the Dictionary\n\nBased on the provided information, we can populate the dictionary as follows:\n\n```python\ninfos = {\n    'Target_Node_ID': 1062,\n    'Factual_Target_Node_Neighbors': [930, 1254, 2651],\n    'Factual_Target_Node_Features': ['function', 'dimens', 'exponenti', 'transfer', 'local', 'loss', 'singl', 'mani', 'squar', 'grow', 'error', 'base', 'neuron'],\n    'Counterfactual_Target_Node_Neighbors': [1254, 2651],\n    'Counterfactual_Target_Node_Features': ['function', 'dimens', 'exponenti', 'transfer', 'local', 'loss', 'singl', 'mani', 'squar', 'grow', 'error', 'base', 'neuron'],\n    'Factual_Target_Node_Class': 'Neural_Networks',\n    'Counterfactual_Target_Node_class': 'Theory',\n    'Target_Node_Features_Changed_From_Factual_To_Counterfactual': [],\n    'Natural_Language_Explanation': 'Node 1062, originally classified as \"Neural_Networks\" in the factual graph, was reclassified as \"Theory\" in the counterfactual graph. The node retained its original title and key attributes but lost its connection to node 930, resulting in a change in classification.'\n}\n```\n\n### Explanation of Changes\n\n#### Classification Change\n\nIn the factual graph, node 1062 is classified as `Neural_Networks`, indicating that the content of the paper aligns with topics such as neural network architectures, learning algorithms, and their applications. However, in the counterfactual graph, the same node is reclassified as `Theory`, suggesting that the content now aligns more closely with theoretical studies, including mathematical foundations of machine learning and algorithmic theory.\n\n#### Influence of Neighboring Nodes\n\nThe change in classification can be attributed to the alteration in the graph structure, specifically the removal of the connection between node 1062 and node 930. In the factual graph, node 930 is also classified as `Neural_Networks`, reinforcing the classification of node 1062 within the same category. By removing this connection, the influence of node 930 diminishes, leading to a shift in the classification towards `Theory`.\n\nAdditionally, node 1062 remains connected to nodes 1254 and 2651 in both the factual and counterfactual graphs. However, node 1254 is still classified as `Neural_Networks`, while node 2651 is classified as `Theory`. The presence of these mixed classifications further contributes to the ambiguity in the classification of node 1062, ultimately tipping the balance towards `Theory` in the counterfactual scenario.\n\n### Summary\n\nThe change in classification from `Neural_Networks` to `Theory` for node 1062 is primarily driven by the removal of the connection to node 930, which was previously reinforcing the `Neural_Networks` classification. The remaining connections to nodes 1254 and 2651, with their mixed classifications, further support this shift. This demonstrates how the structural context of a node in a graph can significantly influence its classification in machine learning models.",
+ "text_scored_sha256_16": "0772997018f329f2",
+ "model": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+ "prompt_version": "v3",
+ "generation": {
+  "dtype": "float16",
+  "do_sample": false,
+  "temperature": 0,
+  "max_new_tokens": 4096
+ },
+ "gpu": "NVIDIA A100-SXM4-80GB",
+ "versions": {
+  "torch": "2.4.1+cu121",
+  "transformers": "4.44.2"
+ },
+ "prompt_messages": [
+  {
+   "role": "system",
+   "content": "You are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only."
+  },
+  {
+   "role": "user",
+   "content": "Extract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 1062. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 1062  (dataset: cora)\n\nEXPLANATION:\n<<<\nTo address the task, we will first identify the differences between the factual and counterfactual graphs, focusing on the target node (node 1062). We will then analyze the changes in its classification and the influence of its neighboring nodes.\n\n### Differences Between Factual and Counterfactual Graphs\n\nIn the factual graph, node 1062 (the target node) is classified as `Neural_Networks` and is connected to nodes 930, 1254, and 2651. In the counterfactual graph, node 1062 retains the same title and key attributes but is reclassified as `Theory`. Additionally, its connections have changed; it is now only connected to nodes 1254 and 2651, losing the connection to node 930.\n\n### Filling the Dictionary\n\nBased on the provided information, we can populate the dictionary as follows:\n\n```python\ninfos = {\n    'Target_Node_ID': 1062,\n    'Factual_Target_Node_Neighbors': [930, 1254, 2651],\n    'Factual_Target_Node_Features': ['function', 'dimens', 'exponenti', 'transfer', 'local', 'loss', 'singl', 'mani', 'squar', 'grow', 'error', 'base', 'neuron'],\n    'Counterfactual_Target_Node_Neighbors': [1254, 2651],\n    'Counterfactual_Target_Node_Features': ['function', 'dimens', 'exponenti', 'transfer', 'local', 'loss', 'singl', 'mani', 'squar', 'grow', 'error', 'base', 'neuron'],\n    'Factual_Target_Node_Class': 'Neural_Networks',\n    'Counterfactual_Target_Node_class': 'Theory',\n    'Target_Node_Features_Changed_From_Factual_To_Counterfactual': [],\n    'Natural_Language_Explanation': 'Node 1062, originally classified as \"Neural_Networks\" in the factual graph, was reclassified as \"Theory\" in the counterfactual graph. The node retained its original title and key attributes but lost its connection to node 930, resulting in a change in classification.'\n}\n```\n\n### Explanation of Changes\n\n#### Classification Change\n\nIn the factual graph, node 1062 is classified as `Neural_Networks`, indicating that the content of the paper aligns with topics such as neural network architectures, learning algorithms, and their applications. However, in the counterfactual graph, the same node is reclassified as `Theory`, suggesting that the content now aligns more closely with theoretical studies, including mathematical foundations of machine learning and algorithmic theory.\n\n#### Influence of Neighboring Nodes\n\nThe change in classification can be attributed to the alteration in the graph structure, specifically the removal of the connection between node 1062 and node 930. In the factual graph, node 930 is also classified as `Neural_Networks`, reinforcing the classification of node 1062 within the same category. By removing this connection, the influence of node 930 diminishes, leading to a shift in the classification towards `Theory`.\n\nAdditionally, node 1062 remains connected to nodes 1254 and 2651 in both the factual and counterfactual graphs. However, node 1254 is still classified as `Neural_Networks`, while node 2651 is classified as `Theory`. The presence of these mixed classifications further contributes to the ambiguity in the classification of node 1062, ultimately tipping the balance towards `Theory` in the counterfactual scenario.\n\n### Summary\n\nThe change in classification from `Neural_Networks` to `Theory` for node 1062 is primarily driven by the removal of the connection to node 930, which was previously reinforcing the `Neural_Networks` classification. The remaining connections to nodes 1254 and 2651, with their mixed classifications, further support this shift. This demonstrates how the structural context of a node in a graph can significantly influence its classification in machine learning models.\n>>>"
+  }
+ ],
+ "prompt_rendered": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nCutting Knowledge Date: December 2023\nToday Date: 26 Jul 2024\n\nYou are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\nExtract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 1062. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 1062  (dataset: cora)\n\nEXPLANATION:\n<<<\nTo address the task, we will first identify the differences between the factual and counterfactual graphs, focusing on the target node (node 1062). We will then analyze the changes in its classification and the influence of its neighboring nodes.\n\n### Differences Between Factual and Counterfactual Graphs\n\nIn the factual graph, node 1062 (the target node) is classified as `Neural_Networks` and is connected to nodes 930, 1254, and 2651. In the counterfactual graph, node 1062 retains the same title and key attributes but is reclassified as `Theory`. Additionally, its connections have changed; it is now only connected to nodes 1254 and 2651, losing the connection to node 930.\n\n### Filling the Dictionary\n\nBased on the provided information, we can populate the dictionary as follows:\n\n```python\ninfos = {\n    'Target_Node_ID': 1062,\n    'Factual_Target_Node_Neighbors': [930, 1254, 2651],\n    'Factual_Target_Node_Features': ['function', 'dimens', 'exponenti', 'transfer', 'local', 'loss', 'singl', 'mani', 'squar', 'grow', 'error', 'base', 'neuron'],\n    'Counterfactual_Target_Node_Neighbors': [1254, 2651],\n    'Counterfactual_Target_Node_Features': ['function', 'dimens', 'exponenti', 'transfer', 'local', 'loss', 'singl', 'mani', 'squar', 'grow', 'error', 'base', 'neuron'],\n    'Factual_Target_Node_Class': 'Neural_Networks',\n    'Counterfactual_Target_Node_class': 'Theory',\n    'Target_Node_Features_Changed_From_Factual_To_Counterfactual': [],\n    'Natural_Language_Explanation': 'Node 1062, originally classified as \"Neural_Networks\" in the factual graph, was reclassified as \"Theory\" in the counterfactual graph. The node retained its original title and key attributes but lost its connection to node 930, resulting in a change in classification.'\n}\n```\n\n### Explanation of Changes\n\n#### Classification Change\n\nIn the factual graph, node 1062 is classified as `Neural_Networks`, indicating that the content of the paper aligns with topics such as neural network architectures, learning algorithms, and their applications. However, in the counterfactual graph, the same node is reclassified as `Theory`, suggesting that the content now aligns more closely with theoretical studies, including mathematical foundations of machine learning and algorithmic theory.\n\n#### Influence of Neighboring Nodes\n\nThe change in classification can be attributed to the alteration in the graph structure, specifically the removal of the connection between node 1062 and node 930. In the factual graph, node 930 is also classified as `Neural_Networks`, reinforcing the classification of node 1062 within the same category. By removing this connection, the influence of node 930 diminishes, leading to a shift in the classification towards `Theory`.\n\nAdditionally, node 1062 remains connected to nodes 1254 and 2651 in both the factual and counterfactual graphs. However, node 1254 is still classified as `Neural_Networks`, while node 2651 is classified as `Theory`. The presence of these mixed classifications further contributes to the ambiguity in the classification of node 1062, ultimately tipping the balance towards `Theory` in the counterfactual scenario.\n\n### Summary\n\nThe change in classification from `Neural_Networks` to `Theory` for node 1062 is primarily driven by the removal of the connection to node 930, which was previously reinforcing the `Neural_Networks` classification. The remaining connections to nodes 1254 and 2651, with their mixed classifications, further support this shift. This demonstrates how the structural context of a node in a graph can significantly influence its classification in machine learning models.\n>>><|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+ "raw_output": "{\"claims\": [{\"claim\": \"node 1062 is classified as Neural_Networks\", \"claim_type\": \"class_state\", \"source_span\": \"In the factual graph, node 1062 (the target node) is classified as `Neural_Networks`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Neural_Networks\"]}}, {\"claim\": \"node 1062 is connected to nodes 930, 1254, and 2651\", \"claim_type\": \"structural\", \"source_span\": \"In the factual graph, node 1062 (the target node) is classified as `Neural_Networks` and is connected to nodes 930, 1254, and 2651\", \"entities\": {\"node_ids\": [1062, 930, 1254, 2651], \"titles\": [], \"feature_words\": [], \"edges\": [[1062, 930], [1062, 1254], [1062, 2651]], \"classes\": []}}, {\"claim\": \"node 1062 retains the same title and key attributes\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1062 is reclassified as Theory\", \"claim_type\": \"class_state\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Theory\"]}}, {\"claim\": \"node 1062 is connected to nodes 1254 and 2651\", \"claim_type\": \"structural\", \"source_span\": \"it is now only connected to nodes 1254 and 2651, losing the connection to node 930\", \"entities\": {\"node_ids\": [1062, 1254, 2651], \"titles\": [], \"feature_words\": [], \"edges\": [[1062, 1254], [1062, 2651]], \"classes\": []}}, {\"claim\": \"node 1062 loses the connection to node 930\", \"claim_type\": \"structural\", \"source_span\": \"it is now only connected to nodes 1254 and 2651, losing the connection to node 930\", \"entities\": {\"node_ids\": [1062, 930], \"titles\": [], \"feature_words\": [], \"edges\": [[1062, 930]], \"classes\": []}}, {\"claim\": \"node 930 is classified as Neural_Networks\", \"claim_type\": \"class_state\", \"source_span\": \"node 930 is also classified as `Neural_Networks`\", \"entities\": {\"node_ids\": [930], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Neural_Networks\"]}}, {\"claim\": \"node 1254 is classified as Neural_Networks\", \"claim_type\": \"class_state\", \"source_span\": \"node 1254 is still classified as `Neural_Networks`\", \"entities\": {\"node_ids\": [1254], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Neural_Networks\"]}}, {\"claim\": \"node 2651 is classified as Theory\", \"claim_type\": \"class_state\", \"source_span\": \"node 2651 is classified as `Theory`\", \"entities\": {\"node_ids\": [2651], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Theory\"]}}, {\"claim\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [[1062, 930]], \"classes\": []}}, {\"claim\": \"the content of the paper aligns with topics such as neural network architectures, learning algorithms, and their applications\", \"claim_type\": \"content\", \"source_span\": \"indicating that the content of the paper aligns with topics such as neural network architectures, learning algorithms, and their applications\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"the content now aligns more closely with theoretical studies, including mathematical foundations of machine learning and algorithmic theory\", \"claim_type\": \"content\", \"source_span\": \"suggesting that the content now aligns more closely with theoretical studies, including mathematical foundations of machine learning and algorithmic theory\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"the removal of the connection between node 1062 and node 930 is attributed to the change in classification\", \"claim_type\": \"mechanism\", \"source_span\": \"The change in classification can be attributed to the alteration in the graph structure, specifically the removal of the connection between node 1062 and node 930\", \"entities\": {\"node_ids\": [1062, 930], \"titles\": [], \"feature_words\": [], \"edges\": [[1062, 930]], \"classes\": []}}, {\"claim\": \"node 930 reinforces the classification of node 1062 within the same category\", \"claim_type\": \"mechanism\", \"source_span\": \"In the factual graph, node 930 is also classified as `Neural_Networks`, reinforcing the classification of node 1062 within the same category\", \"entities\": {\"node_ids\": [1062, 930], \"titles\": [], \"feature_words\": [], \"edges\": [[1062, 930]], \"classes\": [\"Neural_Networks\"]}}, {\"claim\": \"the removal of the connection to node 930 leads to a shift in the classification towards Theory\", \"claim_type\": \"mechanism\", \"source_span\": \"By removing this connection, the influence of node 930 diminishes, leading to a shift in the classification towards `Theory`\", \"entities\": {\"node_ids\": [1062, 930], \"titles\": [], \"feature_words\": [], \"edges\": [[1062, 930]], \"classes\": [\"Theory\"]}}, {\"claim\": \"node 1254 is classified as Neural_Networks and supports the shift in classification towards Theory\", \"claim_type\": \"mechanism\", \"source_span\": \"The presence of these mixed classifications further contributes to the ambiguity in the classification of node 1062, ultimately tipping the balance towards `Theory` in the counterfactual scenario\", \"entities\": {\"node_ids\": [1062, 1254], \"titles\": [], \"feature_words\": [], \"edges\": [[1062, 1254]], \"classes\": [\"Neural_Networks\", \"Theory\"]}}, {\"claim\": \"the structural context of a node in a graph can significantly influence its classification in machine learning models\", \"claim_type\": \"importance\", \"source_span\": \"This demonstrates how the structural context of a node in a graph can significantly influence its classification in machine learning models\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1062 retains the same title and key attributes\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1062 is reclassified as Theory\", \"claim_type\": \"class_state\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Theory\"]}}, {\"claim\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [[1062, 930]], \"classes\": []}}, {\"claim\": \"node 1062 retains the same title and key attributes\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1062 is reclassified as Theory\", \"claim_type\": \"class_state\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Theory\"]}}, {\"claim\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [[1062, 930]], \"classes\": []}}, {\"claim\": \"node 1062 retains the same title and key attributes\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1062 is reclassified as Theory\", \"claim_type\": \"class_state\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Theory\"]}}, {\"claim\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [[1062, 930]], \"classes\": []}}, {\"claim\": \"node 1062 retains the same title and key attributes\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1062 is reclassified as Theory\", \"claim_type\": \"class_state\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Theory\"]}}, {\"claim\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [[1062, 930]], \"classes\": []}}, {\"claim\": \"node 1062 retains the same title and key attributes\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1062 is reclassified as Theory\", \"claim_type\": \"class_state\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Theory\"]}}, {\"claim\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [[1062, 930]], \"classes\": []}}, {\"claim\": \"node 1062 retains the same title and key attributes\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1062 is reclassified as Theory\", \"claim_type\": \"class_state\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Theory\"]}}, {\"claim\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [[1062, 930]], \"classes\": []}}, {\"claim\": \"node 1062 retains the same title and key attributes\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1062 is reclassified as Theory\", \"claim_type\": \"class_state\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Theory\"]}}, {\"claim\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [[1062, 930]], \"classes\": []}}, {\"claim\": \"node 1062 retains the same title and key attributes\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1062 is reclassified as Theory\", \"claim_type\": \"class_state\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Theory\"]}}, {\"claim\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [[1062, 930]], \"classes\": []}}, {\"claim\": \"node 1062 retains the same title and key attributes\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1062 is reclassified as Theory\", \"claim_type\": \"class_state\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": [\"Theory\"]}}, {\"claim\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [[1062, 930]], \"classes\": []}}, {\"claim\": \"node 1062 retains the same title and key attributes\", \"claim_type\": \"content\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [1062], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}, {\"claim\": \"node 1062 is reclassified as Theory\", \"claim_type\": \"class_state\", \"source_span\": \"node 1062 retains the same title and key attributes but is reclassified as `Theory`\", \"entities\": {\"node_ids\": [",
+ "claims": [
+  {
+   "claim": "node 1062 is classified as Neural_Networks",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1062
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Neural_Networks"
+    ]
+   },
+   "source_span": "In the factual graph, node 1062 (the target node) is classified as `Neural_Networks`"
+  },
+  {
+   "claim": "node 1062 is connected to nodes 930, 1254, and 2651",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1062,
+     930,
+     1254,
+     2651
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      1062,
+      930
+     ],
+     [
+      1062,
+      1254
+     ],
+     [
+      1062,
+      2651
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "In the factual graph, node 1062 (the target node) is classified as `Neural_Networks` and is connected to nodes 930, 1254, and 2651"
+  },
+  {
+   "claim": "node 1062 retains the same title and key attributes",
+   "claim_type": "content",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1062
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "node 1062 retains the same title and key attributes but is reclassified as `Theory`"
+  },
+  {
+   "claim": "node 1062 is reclassified as Theory",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1062
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Theory"
+    ]
+   },
+   "source_span": "node 1062 retains the same title and key attributes but is reclassified as `Theory`"
+  },
+  {
+   "claim": "node 1062 is connected to nodes 1254 and 2651",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1062,
+     1254,
+     2651
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      1062,
+      1254
+     ],
+     [
+      1062,
+      2651
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "it is now only connected to nodes 1254 and 2651, losing the connection to node 930"
+  },
+  {
+   "claim": "node 1062 loses the connection to node 930",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1062,
+     930
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      1062,
+      930
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "it is now only connected to nodes 1254 and 2651, losing the connection to node 930"
+  },
+  {
+   "claim": "node 930 is classified as Neural_Networks",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     930
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Neural_Networks"
+    ]
+   },
+   "source_span": "node 930 is also classified as `Neural_Networks`"
+  },
+  {
+   "claim": "node 1254 is classified as Neural_Networks",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1254
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Neural_Networks"
+    ]
+   },
+   "source_span": "node 1254 is still classified as `Neural_Networks`"
+  },
+  {
+   "claim": "node 2651 is classified as Theory",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     2651
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Theory"
+    ]
+   },
+   "source_span": "node 2651 is classified as `Theory`"
+  },
+  {
+   "claim": "node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification",
+   "claim_type": "content",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1062
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      1062,
+      930
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "node 1062 retains the same title and key attributes but lost its connection to node 930, resulting in a change in classification"
+  },
+  {
+   "claim": "the content of the paper aligns with topics such as neural network architectures, learning algorithms, and their applications",
+   "claim_type": "content",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1062
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "indicating that the content of the paper aligns with topics such as neural network architectures, learning algorithms, and their applications"
+  },
+  {
+   "claim": "the content now aligns more closely with theoretical studies, including mathematical foundations of machine learning and algorithmic theory",
+   "claim_type": "content",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1062
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "suggesting that the content now aligns more closely with theoretical studies, including mathematical foundations of machine learning and algorithmic theory"
+  },
+  {
+   "claim": "the removal of the connection between node 1062 and node 930 is attributed to the change in classification",
+   "claim_type": "mechanism",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1062,
+     930
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      1062,
+      930
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "The change in classification can be attributed to the alteration in the graph structure, specifically the removal of the connection between node 1062 and node 930"
+  },
+  {
+   "claim": "node 930 reinforces the classification of node 1062 within the same category",
+   "claim_type": "mechanism",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1062,
+     930
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      1062,
+      930
+     ]
+    ],
+    "classes": [
+     "Neural_Networks"
+    ]
+   },
+   "source_span": "In the factual graph, node 930 is also classified as `Neural_Networks`, reinforcing the classification of node 1062 within the same category"
+  },
+  {
+   "claim": "the removal of the connection to node 930 leads to a shift in the classification towards Theory",
+   "claim_type": "mechanism",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1062,
+     930
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      1062,
+      930
+     ]
+    ],
+    "classes": [
+     "Theory"
+    ]
+   },
+   "source_span": "By removing this connection, the influence of node 930 diminishes, leading to a shift in the classification towards `Theory`"
+  },
+  {
+   "claim": "node 1254 is classified as Neural_Networks and supports the shift in classification towards Theory",
+   "claim_type": "mechanism",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1062,
+     1254
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      1062,
+      1254
+     ]
+    ],
+    "classes": [
+     "Neural_Networks",
+     "Theory"
+    ]
+   },
+   "source_span": "The presence of these mixed classifications further contributes to the ambiguity in the classification of node 1062, ultimately tipping the balance towards `Theory` in the counterfactual scenario"
+  },
+  {
+   "claim": "the structural context of a node in a graph can significantly influence its classification in machine learning models",
+   "claim_type": "importance",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "This demonstrates how the structural context of a node in a graph can significantly influence its classification in machine learning models"
+  }
+ ],
+ "n_claims": 17,
+ "parse_diagnostics": {
+  "json_found": true,
+  "json_valid": false,
+  "parse_mode": "recovered_per_object",
+  "error": "first balanced JSON object has no top-level 'claims' list (outer object malformed)",
+  "n_raw_claims": 46,
+  "n_bad_type": 0,
+  "n_merged_duplicates": 29,
+  "repairs": [
+   {
+    "claim_index": 45,
+    "stripped_tail": false,
+    "appended": "]}}"
+   }
+  ],
+  "unrecoverable_segments": [],
+  "n_prompt_tokens": 2321,
+  "n_output_tokens": 4096,
+  "hit_max_new_tokens": true,
+  "seconds": 101.1
+ }
+}

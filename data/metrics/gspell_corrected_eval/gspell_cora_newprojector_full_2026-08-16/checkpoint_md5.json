@@ -1,0 +1,11 @@
+{
+  "projector_checkpoint": "./pretrained/cora-meta-llama/Meta-Llama-3.1-8B-Instruct-canonical-projector-retrain-2026-08-16/projector.pth",
+  "projector_md5": "768fc1a6ccfcbb72871f8ec12b506116",
+  "gnn_checkpoint": "./pretrained/cora-meta-llama/Meta-Llama-3.1-8B-Instruct-2026-03-09-20-33-28/sage.pth",
+  "gnn_md5": "d590ad5ef63cfef9263be59c97fa4763",
+  "data_canonical": "./output/cora-meta-llama/Meta-Llama-3.1-8B-Instruct-2026-03-09-20-33-28/data_canonical.pth",
+  "data_canonical_md5": "47afa44255c98c44c0a721488469d340",
+  "split_path": "./cora_splits_seed42.npz",
+  "note": "projector is the NEW canonical-embedding-trained checkpoint (retrained from data_canonical.pth, not the original data.pth-trained 2026-03-09-23-12-28 one). Not retrained further here, loaded via -ppp.",
+  "timestamp": 1786937950.4570568
+}

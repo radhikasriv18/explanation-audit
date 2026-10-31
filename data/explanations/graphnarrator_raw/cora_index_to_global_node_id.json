@@ -1,0 +1,2724 @@
+{
+  "summary": {
+    "pkl_dir": "./graphnarrCora/GraphNarrator/outputs/pkls_cora_eval",
+    "n_pkls": 542,
+    "n_full_eval_split": 542,
+    "n_covered": 542,
+    "n_missing": 0,
+    "missing_global_node_ids": [],
+    "unexpected_extra_global_node_ids": [],
+    "coverage_rate": 1.0
+  },
+  "mapping": {
+    "0": {
+      "root_global_id": 1,
+      "root_local_id": 0,
+      "num_sampled_nodes": 11
+    },
+    "1": {
+      "root_global_id": 4,
+      "root_local_id": 0,
+      "num_sampled_nodes": 3
+    },
+    "2": {
+      "root_global_id": 11,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "3": {
+      "root_global_id": 16,
+      "root_local_id": 0,
+      "num_sampled_nodes": 34
+    },
+    "4": {
+      "root_global_id": 19,
+      "root_local_id": 0,
+      "num_sampled_nodes": 17
+    },
+    "5": {
+      "root_global_id": 21,
+      "root_local_id": 0,
+      "num_sampled_nodes": 37
+    },
+    "6": {
+      "root_global_id": 34,
+      "root_local_id": 0,
+      "num_sampled_nodes": 37
+    },
+    "7": {
+      "root_global_id": 35,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "8": {
+      "root_global_id": 36,
+      "root_local_id": 0,
+      "num_sampled_nodes": 32
+    },
+    "9": {
+      "root_global_id": 38,
+      "root_local_id": 0,
+      "num_sampled_nodes": 18
+    },
+    "10": {
+      "root_global_id": 46,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "11": {
+      "root_global_id": 50,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "12": {
+      "root_global_id": 64,
+      "root_local_id": 0,
+      "num_sampled_nodes": 23
+    },
+    "13": {
+      "root_global_id": 75,
+      "root_local_id": 0,
+      "num_sampled_nodes": 32
+    },
+    "14": {
+      "root_global_id": 89,
+      "root_local_id": 0,
+      "num_sampled_nodes": 31
+    },
+    "15": {
+      "root_global_id": 90,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "16": {
+      "root_global_id": 95,
+      "root_local_id": 0,
+      "num_sampled_nodes": 15
+    },
+    "17": {
+      "root_global_id": 98,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "18": {
+      "root_global_id": 103,
+      "root_local_id": 0,
+      "num_sampled_nodes": 35
+    },
+    "19": {
+      "root_global_id": 114,
+      "root_local_id": 0,
+      "num_sampled_nodes": 3
+    },
+    "20": {
+      "root_global_id": 116,
+      "root_local_id": 0,
+      "num_sampled_nodes": 24
+    },
+    "21": {
+      "root_global_id": 119,
+      "root_local_id": 0,
+      "num_sampled_nodes": 27
+    },
+    "22": {
+      "root_global_id": 122,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "23": {
+      "root_global_id": 127,
+      "root_local_id": 0,
+      "num_sampled_nodes": 35
+    },
+    "24": {
+      "root_global_id": 130,
+      "root_local_id": 0,
+      "num_sampled_nodes": 24
+    },
+    "25": {
+      "root_global_id": 143,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "26": {
+      "root_global_id": 146,
+      "root_local_id": 0,
+      "num_sampled_nodes": 23
+    },
+    "27": {
+      "root_global_id": 153,
+      "root_local_id": 0,
+      "num_sampled_nodes": 27
+    },
+    "28": {
+      "root_global_id": 154,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "29": {
+      "root_global_id": 160,
+      "root_local_id": 0,
+      "num_sampled_nodes": 18
+    },
+    "30": {
+      "root_global_id": 161,
+      "root_local_id": 0,
+      "num_sampled_nodes": 26
+    },
+    "31": {
+      "root_global_id": 172,
+      "root_local_id": 0,
+      "num_sampled_nodes": 22
+    },
+    "32": {
+      "root_global_id": 180,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "33": {
+      "root_global_id": 186,
+      "root_local_id": 0,
+      "num_sampled_nodes": 29
+    },
+    "34": {
+      "root_global_id": 189,
+      "root_local_id": 0,
+      "num_sampled_nodes": 28
+    },
+    "35": {
+      "root_global_id": 190,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "36": {
+      "root_global_id": 197,
+      "root_local_id": 0,
+      "num_sampled_nodes": 23
+    },
+    "37": {
+      "root_global_id": 200,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "38": {
+      "root_global_id": 201,
+      "root_local_id": 0,
+      "num_sampled_nodes": 37
+    },
+    "39": {
+      "root_global_id": 202,
+      "root_local_id": 0,
+      "num_sampled_nodes": 34
+    },
+    "40": {
+      "root_global_id": 206,
+      "root_local_id": 0,
+      "num_sampled_nodes": 22
+    },
+    "41": {
+      "root_global_id": 216,
+      "root_local_id": 0,
+      "num_sampled_nodes": 11
+    },
+    "42": {
+      "root_global_id": 225,
+      "root_local_id": 0,
+      "num_sampled_nodes": 23
+    },
+    "43": {
+      "root_global_id": 234,
+      "root_local_id": 0,
+      "num_sampled_nodes": 22
+    },
+    "44": {
+      "root_global_id": 241,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "45": {
+      "root_global_id": 245,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "46": {
+      "root_global_id": 253,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "47": {
+      "root_global_id": 262,
+      "root_local_id": 0,
+      "num_sampled_nodes": 28
+    },
+    "48": {
+      "root_global_id": 264,
+      "root_local_id": 0,
+      "num_sampled_nodes": 21
+    },
+    "49": {
+      "root_global_id": 268,
+      "root_local_id": 0,
+      "num_sampled_nodes": 26
+    },
+    "50": {
+      "root_global_id": 284,
+      "root_local_id": 0,
+      "num_sampled_nodes": 18
+    },
+    "51": {
+      "root_global_id": 293,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "52": {
+      "root_global_id": 301,
+      "root_local_id": 0,
+      "num_sampled_nodes": 9
+    },
+    "53": {
+      "root_global_id": 317,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "54": {
+      "root_global_id": 330,
+      "root_local_id": 0,
+      "num_sampled_nodes": 41
+    },
+    "55": {
+      "root_global_id": 335,
+      "root_local_id": 0,
+      "num_sampled_nodes": 38
+    },
+    "56": {
+      "root_global_id": 337,
+      "root_local_id": 0,
+      "num_sampled_nodes": 9
+    },
+    "57": {
+      "root_global_id": 356,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "58": {
+      "root_global_id": 369,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "59": {
+      "root_global_id": 378,
+      "root_local_id": 0,
+      "num_sampled_nodes": 43
+    },
+    "60": {
+      "root_global_id": 379,
+      "root_local_id": 0,
+      "num_sampled_nodes": 3
+    },
+    "61": {
+      "root_global_id": 391,
+      "root_local_id": 0,
+      "num_sampled_nodes": 30
+    },
+    "62": {
+      "root_global_id": 392,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "63": {
+      "root_global_id": 395,
+      "root_local_id": 0,
+      "num_sampled_nodes": 20
+    },
+    "64": {
+      "root_global_id": 396,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "65": {
+      "root_global_id": 397,
+      "root_local_id": 0,
+      "num_sampled_nodes": 21
+    },
+    "66": {
+      "root_global_id": 399,
+      "root_local_id": 0,
+      "num_sampled_nodes": 24
+    },
+    "67": {
+      "root_global_id": 400,
+      "root_local_id": 0,
+      "num_sampled_nodes": 34
+    },
+    "68": {
+      "root_global_id": 403,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "69": {
+      "root_global_id": 412,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "70": {
+      "root_global_id": 417,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "71": {
+      "root_global_id": 418,
+      "root_local_id": 0,
+      "num_sampled_nodes": 39
+    },
+    "72": {
+      "root_global_id": 452,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "73": {
+      "root_global_id": 455,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "74": {
+      "root_global_id": 459,
+      "root_local_id": 0,
+      "num_sampled_nodes": 26
+    },
+    "75": {
+      "root_global_id": 466,
+      "root_local_id": 0,
+      "num_sampled_nodes": 47
+    },
+    "76": {
+      "root_global_id": 469,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "77": {
+      "root_global_id": 474,
+      "root_local_id": 0,
+      "num_sampled_nodes": 15
+    },
+    "78": {
+      "root_global_id": 487,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "79": {
+      "root_global_id": 488,
+      "root_local_id": 0,
+      "num_sampled_nodes": 29
+    },
+    "80": {
+      "root_global_id": 492,
+      "root_local_id": 0,
+      "num_sampled_nodes": 31
+    },
+    "81": {
+      "root_global_id": 496,
+      "root_local_id": 0,
+      "num_sampled_nodes": 11
+    },
+    "82": {
+      "root_global_id": 499,
+      "root_local_id": 0,
+      "num_sampled_nodes": 27
+    },
+    "83": {
+      "root_global_id": 502,
+      "root_local_id": 0,
+      "num_sampled_nodes": 38
+    },
+    "84": {
+      "root_global_id": 504,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "85": {
+      "root_global_id": 510,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "86": {
+      "root_global_id": 512,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "87": {
+      "root_global_id": 515,
+      "root_local_id": 0,
+      "num_sampled_nodes": 8
+    },
+    "88": {
+      "root_global_id": 524,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "89": {
+      "root_global_id": 537,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "90": {
+      "root_global_id": 540,
+      "root_local_id": 0,
+      "num_sampled_nodes": 26
+    },
+    "91": {
+      "root_global_id": 546,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "92": {
+      "root_global_id": 550,
+      "root_local_id": 0,
+      "num_sampled_nodes": 38
+    },
+    "93": {
+      "root_global_id": 559,
+      "root_local_id": 0,
+      "num_sampled_nodes": 38
+    },
+    "94": {
+      "root_global_id": 562,
+      "root_local_id": 0,
+      "num_sampled_nodes": 40
+    },
+    "95": {
+      "root_global_id": 563,
+      "root_local_id": 0,
+      "num_sampled_nodes": 34
+    },
+    "96": {
+      "root_global_id": 569,
+      "root_local_id": 0,
+      "num_sampled_nodes": 39
+    },
+    "97": {
+      "root_global_id": 574,
+      "root_local_id": 0,
+      "num_sampled_nodes": 47
+    },
+    "98": {
+      "root_global_id": 580,
+      "root_local_id": 0,
+      "num_sampled_nodes": 28
+    },
+    "99": {
+      "root_global_id": 586,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "100": {
+      "root_global_id": 595,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "101": {
+      "root_global_id": 600,
+      "root_local_id": 0,
+      "num_sampled_nodes": 28
+    },
+    "102": {
+      "root_global_id": 606,
+      "root_local_id": 0,
+      "num_sampled_nodes": 15
+    },
+    "103": {
+      "root_global_id": 608,
+      "root_local_id": 0,
+      "num_sampled_nodes": 28
+    },
+    "104": {
+      "root_global_id": 616,
+      "root_local_id": 0,
+      "num_sampled_nodes": 20
+    },
+    "105": {
+      "root_global_id": 623,
+      "root_local_id": 0,
+      "num_sampled_nodes": 24
+    },
+    "106": {
+      "root_global_id": 625,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "107": {
+      "root_global_id": 627,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "108": {
+      "root_global_id": 633,
+      "root_local_id": 0,
+      "num_sampled_nodes": 52
+    },
+    "109": {
+      "root_global_id": 635,
+      "root_local_id": 0,
+      "num_sampled_nodes": 46
+    },
+    "110": {
+      "root_global_id": 639,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "111": {
+      "root_global_id": 640,
+      "root_local_id": 0,
+      "num_sampled_nodes": 47
+    },
+    "112": {
+      "root_global_id": 641,
+      "root_local_id": 0,
+      "num_sampled_nodes": 9
+    },
+    "113": {
+      "root_global_id": 646,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "114": {
+      "root_global_id": 648,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "115": {
+      "root_global_id": 652,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "116": {
+      "root_global_id": 656,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "117": {
+      "root_global_id": 658,
+      "root_local_id": 0,
+      "num_sampled_nodes": 25
+    },
+    "118": {
+      "root_global_id": 659,
+      "root_local_id": 0,
+      "num_sampled_nodes": 23
+    },
+    "119": {
+      "root_global_id": 663,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "120": {
+      "root_global_id": 675,
+      "root_local_id": 0,
+      "num_sampled_nodes": 31
+    },
+    "121": {
+      "root_global_id": 681,
+      "root_local_id": 0,
+      "num_sampled_nodes": 15
+    },
+    "122": {
+      "root_global_id": 683,
+      "root_local_id": 0,
+      "num_sampled_nodes": 39
+    },
+    "123": {
+      "root_global_id": 684,
+      "root_local_id": 0,
+      "num_sampled_nodes": 26
+    },
+    "124": {
+      "root_global_id": 698,
+      "root_local_id": 0,
+      "num_sampled_nodes": 20
+    },
+    "125": {
+      "root_global_id": 699,
+      "root_local_id": 0,
+      "num_sampled_nodes": 31
+    },
+    "126": {
+      "root_global_id": 702,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "127": {
+      "root_global_id": 703,
+      "root_local_id": 0,
+      "num_sampled_nodes": 15
+    },
+    "128": {
+      "root_global_id": 709,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "129": {
+      "root_global_id": 713,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "130": {
+      "root_global_id": 717,
+      "root_local_id": 0,
+      "num_sampled_nodes": 48
+    },
+    "131": {
+      "root_global_id": 728,
+      "root_local_id": 0,
+      "num_sampled_nodes": 28
+    },
+    "132": {
+      "root_global_id": 732,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "133": {
+      "root_global_id": 740,
+      "root_local_id": 0,
+      "num_sampled_nodes": 40
+    },
+    "134": {
+      "root_global_id": 747,
+      "root_local_id": 0,
+      "num_sampled_nodes": 31
+    },
+    "135": {
+      "root_global_id": 750,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "136": {
+      "root_global_id": 753,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "137": {
+      "root_global_id": 763,
+      "root_local_id": 0,
+      "num_sampled_nodes": 17
+    },
+    "138": {
+      "root_global_id": 766,
+      "root_local_id": 0,
+      "num_sampled_nodes": 23
+    },
+    "139": {
+      "root_global_id": 769,
+      "root_local_id": 0,
+      "num_sampled_nodes": 20
+    },
+    "140": {
+      "root_global_id": 773,
+      "root_local_id": 0,
+      "num_sampled_nodes": 29
+    },
+    "141": {
+      "root_global_id": 775,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "142": {
+      "root_global_id": 779,
+      "root_local_id": 0,
+      "num_sampled_nodes": 36
+    },
+    "143": {
+      "root_global_id": 784,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "144": {
+      "root_global_id": 791,
+      "root_local_id": 0,
+      "num_sampled_nodes": 24
+    },
+    "145": {
+      "root_global_id": 795,
+      "root_local_id": 0,
+      "num_sampled_nodes": 7
+    },
+    "146": {
+      "root_global_id": 797,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "147": {
+      "root_global_id": 804,
+      "root_local_id": 0,
+      "num_sampled_nodes": 24
+    },
+    "148": {
+      "root_global_id": 815,
+      "root_local_id": 0,
+      "num_sampled_nodes": 7
+    },
+    "149": {
+      "root_global_id": 823,
+      "root_local_id": 0,
+      "num_sampled_nodes": 26
+    },
+    "150": {
+      "root_global_id": 825,
+      "root_local_id": 0,
+      "num_sampled_nodes": 9
+    },
+    "151": {
+      "root_global_id": 828,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "152": {
+      "root_global_id": 830,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "153": {
+      "root_global_id": 833,
+      "root_local_id": 0,
+      "num_sampled_nodes": 17
+    },
+    "154": {
+      "root_global_id": 835,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "155": {
+      "root_global_id": 837,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "156": {
+      "root_global_id": 850,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "157": {
+      "root_global_id": 851,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "158": {
+      "root_global_id": 853,
+      "root_local_id": 0,
+      "num_sampled_nodes": 28
+    },
+    "159": {
+      "root_global_id": 854,
+      "root_local_id": 0,
+      "num_sampled_nodes": 21
+    },
+    "160": {
+      "root_global_id": 860,
+      "root_local_id": 0,
+      "num_sampled_nodes": 25
+    },
+    "161": {
+      "root_global_id": 863,
+      "root_local_id": 0,
+      "num_sampled_nodes": 28
+    },
+    "162": {
+      "root_global_id": 870,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "163": {
+      "root_global_id": 872,
+      "root_local_id": 0,
+      "num_sampled_nodes": 21
+    },
+    "164": {
+      "root_global_id": 876,
+      "root_local_id": 0,
+      "num_sampled_nodes": 29
+    },
+    "165": {
+      "root_global_id": 877,
+      "root_local_id": 0,
+      "num_sampled_nodes": 17
+    },
+    "166": {
+      "root_global_id": 878,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "167": {
+      "root_global_id": 880,
+      "root_local_id": 0,
+      "num_sampled_nodes": 7
+    },
+    "168": {
+      "root_global_id": 884,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "169": {
+      "root_global_id": 894,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "170": {
+      "root_global_id": 895,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "171": {
+      "root_global_id": 896,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "172": {
+      "root_global_id": 920,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "173": {
+      "root_global_id": 928,
+      "root_local_id": 0,
+      "num_sampled_nodes": 18
+    },
+    "174": {
+      "root_global_id": 933,
+      "root_local_id": 0,
+      "num_sampled_nodes": 15
+    },
+    "175": {
+      "root_global_id": 953,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "176": {
+      "root_global_id": 954,
+      "root_local_id": 0,
+      "num_sampled_nodes": 27
+    },
+    "177": {
+      "root_global_id": 955,
+      "root_local_id": 0,
+      "num_sampled_nodes": 22
+    },
+    "178": {
+      "root_global_id": 956,
+      "root_local_id": 0,
+      "num_sampled_nodes": 24
+    },
+    "179": {
+      "root_global_id": 957,
+      "root_local_id": 0,
+      "num_sampled_nodes": 11
+    },
+    "180": {
+      "root_global_id": 959,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "181": {
+      "root_global_id": 960,
+      "root_local_id": 0,
+      "num_sampled_nodes": 20
+    },
+    "182": {
+      "root_global_id": 971,
+      "root_local_id": 0,
+      "num_sampled_nodes": 26
+    },
+    "183": {
+      "root_global_id": 972,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "184": {
+      "root_global_id": 975,
+      "root_local_id": 0,
+      "num_sampled_nodes": 43
+    },
+    "185": {
+      "root_global_id": 977,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "186": {
+      "root_global_id": 980,
+      "root_local_id": 0,
+      "num_sampled_nodes": 7
+    },
+    "187": {
+      "root_global_id": 991,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "188": {
+      "root_global_id": 992,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "189": {
+      "root_global_id": 995,
+      "root_local_id": 0,
+      "num_sampled_nodes": 36
+    },
+    "190": {
+      "root_global_id": 996,
+      "root_local_id": 0,
+      "num_sampled_nodes": 11
+    },
+    "191": {
+      "root_global_id": 1008,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "192": {
+      "root_global_id": 1012,
+      "root_local_id": 0,
+      "num_sampled_nodes": 26
+    },
+    "193": {
+      "root_global_id": 1015,
+      "root_local_id": 0,
+      "num_sampled_nodes": 9
+    },
+    "194": {
+      "root_global_id": 1016,
+      "root_local_id": 0,
+      "num_sampled_nodes": 29
+    },
+    "195": {
+      "root_global_id": 1020,
+      "root_local_id": 0,
+      "num_sampled_nodes": 43
+    },
+    "196": {
+      "root_global_id": 1021,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "197": {
+      "root_global_id": 1028,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "198": {
+      "root_global_id": 1038,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "199": {
+      "root_global_id": 1045,
+      "root_local_id": 0,
+      "num_sampled_nodes": 15
+    },
+    "200": {
+      "root_global_id": 1051,
+      "root_local_id": 0,
+      "num_sampled_nodes": 7
+    },
+    "201": {
+      "root_global_id": 1059,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "202": {
+      "root_global_id": 1060,
+      "root_local_id": 0,
+      "num_sampled_nodes": 41
+    },
+    "203": {
+      "root_global_id": 1062,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "204": {
+      "root_global_id": 1065,
+      "root_local_id": 0,
+      "num_sampled_nodes": 31
+    },
+    "205": {
+      "root_global_id": 1066,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "206": {
+      "root_global_id": 1069,
+      "root_local_id": 0,
+      "num_sampled_nodes": 27
+    },
+    "207": {
+      "root_global_id": 1076,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "208": {
+      "root_global_id": 1077,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "209": {
+      "root_global_id": 1081,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "210": {
+      "root_global_id": 1082,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "211": {
+      "root_global_id": 1092,
+      "root_local_id": 0,
+      "num_sampled_nodes": 21
+    },
+    "212": {
+      "root_global_id": 1095,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "213": {
+      "root_global_id": 1115,
+      "root_local_id": 0,
+      "num_sampled_nodes": 11
+    },
+    "214": {
+      "root_global_id": 1119,
+      "root_local_id": 0,
+      "num_sampled_nodes": 18
+    },
+    "215": {
+      "root_global_id": 1122,
+      "root_local_id": 0,
+      "num_sampled_nodes": 28
+    },
+    "216": {
+      "root_global_id": 1126,
+      "root_local_id": 0,
+      "num_sampled_nodes": 28
+    },
+    "217": {
+      "root_global_id": 1129,
+      "root_local_id": 0,
+      "num_sampled_nodes": 18
+    },
+    "218": {
+      "root_global_id": 1130,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "219": {
+      "root_global_id": 1136,
+      "root_local_id": 0,
+      "num_sampled_nodes": 34
+    },
+    "220": {
+      "root_global_id": 1139,
+      "root_local_id": 0,
+      "num_sampled_nodes": 27
+    },
+    "221": {
+      "root_global_id": 1141,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "222": {
+      "root_global_id": 1147,
+      "root_local_id": 0,
+      "num_sampled_nodes": 29
+    },
+    "223": {
+      "root_global_id": 1148,
+      "root_local_id": 0,
+      "num_sampled_nodes": 22
+    },
+    "224": {
+      "root_global_id": 1150,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "225": {
+      "root_global_id": 1152,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "226": {
+      "root_global_id": 1153,
+      "root_local_id": 0,
+      "num_sampled_nodes": 34
+    },
+    "227": {
+      "root_global_id": 1154,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "228": {
+      "root_global_id": 1155,
+      "root_local_id": 0,
+      "num_sampled_nodes": 25
+    },
+    "229": {
+      "root_global_id": 1156,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "230": {
+      "root_global_id": 1158,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "231": {
+      "root_global_id": 1162,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "232": {
+      "root_global_id": 1166,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "233": {
+      "root_global_id": 1167,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "234": {
+      "root_global_id": 1180,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "235": {
+      "root_global_id": 1183,
+      "root_local_id": 0,
+      "num_sampled_nodes": 23
+    },
+    "236": {
+      "root_global_id": 1184,
+      "root_local_id": 0,
+      "num_sampled_nodes": 25
+    },
+    "237": {
+      "root_global_id": 1191,
+      "root_local_id": 0,
+      "num_sampled_nodes": 34
+    },
+    "238": {
+      "root_global_id": 1197,
+      "root_local_id": 0,
+      "num_sampled_nodes": 31
+    },
+    "239": {
+      "root_global_id": 1205,
+      "root_local_id": 0,
+      "num_sampled_nodes": 37
+    },
+    "240": {
+      "root_global_id": 1209,
+      "root_local_id": 0,
+      "num_sampled_nodes": 17
+    },
+    "241": {
+      "root_global_id": 1212,
+      "root_local_id": 0,
+      "num_sampled_nodes": 24
+    },
+    "242": {
+      "root_global_id": 1214,
+      "root_local_id": 0,
+      "num_sampled_nodes": 23
+    },
+    "243": {
+      "root_global_id": 1215,
+      "root_local_id": 0,
+      "num_sampled_nodes": 22
+    },
+    "244": {
+      "root_global_id": 1217,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "245": {
+      "root_global_id": 1218,
+      "root_local_id": 0,
+      "num_sampled_nodes": 37
+    },
+    "246": {
+      "root_global_id": 1219,
+      "root_local_id": 0,
+      "num_sampled_nodes": 21
+    },
+    "247": {
+      "root_global_id": 1227,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "248": {
+      "root_global_id": 1238,
+      "root_local_id": 0,
+      "num_sampled_nodes": 43
+    },
+    "249": {
+      "root_global_id": 1243,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "250": {
+      "root_global_id": 1257,
+      "root_local_id": 0,
+      "num_sampled_nodes": 49
+    },
+    "251": {
+      "root_global_id": 1267,
+      "root_local_id": 0,
+      "num_sampled_nodes": 33
+    },
+    "252": {
+      "root_global_id": 1275,
+      "root_local_id": 0,
+      "num_sampled_nodes": 45
+    },
+    "253": {
+      "root_global_id": 1282,
+      "root_local_id": 0,
+      "num_sampled_nodes": 15
+    },
+    "254": {
+      "root_global_id": 1291,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "255": {
+      "root_global_id": 1294,
+      "root_local_id": 0,
+      "num_sampled_nodes": 3
+    },
+    "256": {
+      "root_global_id": 1296,
+      "root_local_id": 0,
+      "num_sampled_nodes": 26
+    },
+    "257": {
+      "root_global_id": 1297,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "258": {
+      "root_global_id": 1300,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "259": {
+      "root_global_id": 1306,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "260": {
+      "root_global_id": 1312,
+      "root_local_id": 0,
+      "num_sampled_nodes": 48
+    },
+    "261": {
+      "root_global_id": 1324,
+      "root_local_id": 0,
+      "num_sampled_nodes": 17
+    },
+    "262": {
+      "root_global_id": 1327,
+      "root_local_id": 0,
+      "num_sampled_nodes": 23
+    },
+    "263": {
+      "root_global_id": 1346,
+      "root_local_id": 0,
+      "num_sampled_nodes": 8
+    },
+    "264": {
+      "root_global_id": 1348,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "265": {
+      "root_global_id": 1354,
+      "root_local_id": 0,
+      "num_sampled_nodes": 24
+    },
+    "266": {
+      "root_global_id": 1363,
+      "root_local_id": 0,
+      "num_sampled_nodes": 33
+    },
+    "267": {
+      "root_global_id": 1365,
+      "root_local_id": 0,
+      "num_sampled_nodes": 15
+    },
+    "268": {
+      "root_global_id": 1367,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "269": {
+      "root_global_id": 1369,
+      "root_local_id": 0,
+      "num_sampled_nodes": 11
+    },
+    "270": {
+      "root_global_id": 1384,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "271": {
+      "root_global_id": 1388,
+      "root_local_id": 0,
+      "num_sampled_nodes": 28
+    },
+    "272": {
+      "root_global_id": 1390,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "273": {
+      "root_global_id": 1400,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "274": {
+      "root_global_id": 1408,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "275": {
+      "root_global_id": 1409,
+      "root_local_id": 0,
+      "num_sampled_nodes": 29
+    },
+    "276": {
+      "root_global_id": 1415,
+      "root_local_id": 0,
+      "num_sampled_nodes": 9
+    },
+    "277": {
+      "root_global_id": 1416,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "278": {
+      "root_global_id": 1434,
+      "root_local_id": 0,
+      "num_sampled_nodes": 3
+    },
+    "279": {
+      "root_global_id": 1438,
+      "root_local_id": 0,
+      "num_sampled_nodes": 24
+    },
+    "280": {
+      "root_global_id": 1439,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "281": {
+      "root_global_id": 1440,
+      "root_local_id": 0,
+      "num_sampled_nodes": 26
+    },
+    "282": {
+      "root_global_id": 1443,
+      "root_local_id": 0,
+      "num_sampled_nodes": 8
+    },
+    "283": {
+      "root_global_id": 1445,
+      "root_local_id": 0,
+      "num_sampled_nodes": 24
+    },
+    "284": {
+      "root_global_id": 1470,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "285": {
+      "root_global_id": 1478,
+      "root_local_id": 0,
+      "num_sampled_nodes": 18
+    },
+    "286": {
+      "root_global_id": 1479,
+      "root_local_id": 0,
+      "num_sampled_nodes": 23
+    },
+    "287": {
+      "root_global_id": 1482,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "288": {
+      "root_global_id": 1484,
+      "root_local_id": 0,
+      "num_sampled_nodes": 32
+    },
+    "289": {
+      "root_global_id": 1485,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "290": {
+      "root_global_id": 1492,
+      "root_local_id": 0,
+      "num_sampled_nodes": 11
+    },
+    "291": {
+      "root_global_id": 1495,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "292": {
+      "root_global_id": 1496,
+      "root_local_id": 0,
+      "num_sampled_nodes": 7
+    },
+    "293": {
+      "root_global_id": 1500,
+      "root_local_id": 0,
+      "num_sampled_nodes": 22
+    },
+    "294": {
+      "root_global_id": 1504,
+      "root_local_id": 0,
+      "num_sampled_nodes": 9
+    },
+    "295": {
+      "root_global_id": 1515,
+      "root_local_id": 0,
+      "num_sampled_nodes": 22
+    },
+    "296": {
+      "root_global_id": 1516,
+      "root_local_id": 0,
+      "num_sampled_nodes": 23
+    },
+    "297": {
+      "root_global_id": 1519,
+      "root_local_id": 0,
+      "num_sampled_nodes": 7
+    },
+    "298": {
+      "root_global_id": 1520,
+      "root_local_id": 0,
+      "num_sampled_nodes": 24
+    },
+    "299": {
+      "root_global_id": 1522,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "300": {
+      "root_global_id": 1527,
+      "root_local_id": 0,
+      "num_sampled_nodes": 37
+    },
+    "301": {
+      "root_global_id": 1528,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "302": {
+      "root_global_id": 1529,
+      "root_local_id": 0,
+      "num_sampled_nodes": 20
+    },
+    "303": {
+      "root_global_id": 1531,
+      "root_local_id": 0,
+      "num_sampled_nodes": 21
+    },
+    "304": {
+      "root_global_id": 1534,
+      "root_local_id": 0,
+      "num_sampled_nodes": 33
+    },
+    "305": {
+      "root_global_id": 1540,
+      "root_local_id": 0,
+      "num_sampled_nodes": 37
+    },
+    "306": {
+      "root_global_id": 1542,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "307": {
+      "root_global_id": 1548,
+      "root_local_id": 0,
+      "num_sampled_nodes": 15
+    },
+    "308": {
+      "root_global_id": 1568,
+      "root_local_id": 0,
+      "num_sampled_nodes": 30
+    },
+    "309": {
+      "root_global_id": 1570,
+      "root_local_id": 0,
+      "num_sampled_nodes": 27
+    },
+    "310": {
+      "root_global_id": 1571,
+      "root_local_id": 0,
+      "num_sampled_nodes": 32
+    },
+    "311": {
+      "root_global_id": 1579,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "312": {
+      "root_global_id": 1585,
+      "root_local_id": 0,
+      "num_sampled_nodes": 25
+    },
+    "313": {
+      "root_global_id": 1589,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "314": {
+      "root_global_id": 1595,
+      "root_local_id": 0,
+      "num_sampled_nodes": 26
+    },
+    "315": {
+      "root_global_id": 1597,
+      "root_local_id": 0,
+      "num_sampled_nodes": 23
+    },
+    "316": {
+      "root_global_id": 1603,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "317": {
+      "root_global_id": 1625,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "318": {
+      "root_global_id": 1630,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "319": {
+      "root_global_id": 1631,
+      "root_local_id": 0,
+      "num_sampled_nodes": 21
+    },
+    "320": {
+      "root_global_id": 1634,
+      "root_local_id": 0,
+      "num_sampled_nodes": 20
+    },
+    "321": {
+      "root_global_id": 1635,
+      "root_local_id": 0,
+      "num_sampled_nodes": 7
+    },
+    "322": {
+      "root_global_id": 1636,
+      "root_local_id": 0,
+      "num_sampled_nodes": 22
+    },
+    "323": {
+      "root_global_id": 1638,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "324": {
+      "root_global_id": 1643,
+      "root_local_id": 0,
+      "num_sampled_nodes": 35
+    },
+    "325": {
+      "root_global_id": 1648,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "326": {
+      "root_global_id": 1649,
+      "root_local_id": 0,
+      "num_sampled_nodes": 29
+    },
+    "327": {
+      "root_global_id": 1661,
+      "root_local_id": 0,
+      "num_sampled_nodes": 34
+    },
+    "328": {
+      "root_global_id": 1663,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "329": {
+      "root_global_id": 1664,
+      "root_local_id": 0,
+      "num_sampled_nodes": 20
+    },
+    "330": {
+      "root_global_id": 1676,
+      "root_local_id": 0,
+      "num_sampled_nodes": 40
+    },
+    "331": {
+      "root_global_id": 1678,
+      "root_local_id": 0,
+      "num_sampled_nodes": 25
+    },
+    "332": {
+      "root_global_id": 1679,
+      "root_local_id": 0,
+      "num_sampled_nodes": 18
+    },
+    "333": {
+      "root_global_id": 1680,
+      "root_local_id": 0,
+      "num_sampled_nodes": 18
+    },
+    "334": {
+      "root_global_id": 1682,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "335": {
+      "root_global_id": 1683,
+      "root_local_id": 0,
+      "num_sampled_nodes": 23
+    },
+    "336": {
+      "root_global_id": 1685,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "337": {
+      "root_global_id": 1686,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "338": {
+      "root_global_id": 1687,
+      "root_local_id": 0,
+      "num_sampled_nodes": 38
+    },
+    "339": {
+      "root_global_id": 1693,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "340": {
+      "root_global_id": 1695,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "341": {
+      "root_global_id": 1696,
+      "root_local_id": 0,
+      "num_sampled_nodes": 45
+    },
+    "342": {
+      "root_global_id": 1698,
+      "root_local_id": 0,
+      "num_sampled_nodes": 38
+    },
+    "343": {
+      "root_global_id": 1704,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "344": {
+      "root_global_id": 1705,
+      "root_local_id": 0,
+      "num_sampled_nodes": 17
+    },
+    "345": {
+      "root_global_id": 1707,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "346": {
+      "root_global_id": 1715,
+      "root_local_id": 0,
+      "num_sampled_nodes": 28
+    },
+    "347": {
+      "root_global_id": 1722,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "348": {
+      "root_global_id": 1733,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "349": {
+      "root_global_id": 1734,
+      "root_local_id": 0,
+      "num_sampled_nodes": 33
+    },
+    "350": {
+      "root_global_id": 1751,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "351": {
+      "root_global_id": 1757,
+      "root_local_id": 0,
+      "num_sampled_nodes": 21
+    },
+    "352": {
+      "root_global_id": 1758,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "353": {
+      "root_global_id": 1759,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "354": {
+      "root_global_id": 1768,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "355": {
+      "root_global_id": 1773,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "356": {
+      "root_global_id": 1781,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "357": {
+      "root_global_id": 1782,
+      "root_local_id": 0,
+      "num_sampled_nodes": 36
+    },
+    "358": {
+      "root_global_id": 1785,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "359": {
+      "root_global_id": 1787,
+      "root_local_id": 0,
+      "num_sampled_nodes": 20
+    },
+    "360": {
+      "root_global_id": 1794,
+      "root_local_id": 0,
+      "num_sampled_nodes": 11
+    },
+    "361": {
+      "root_global_id": 1796,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "362": {
+      "root_global_id": 1799,
+      "root_local_id": 0,
+      "num_sampled_nodes": 18
+    },
+    "363": {
+      "root_global_id": 1802,
+      "root_local_id": 0,
+      "num_sampled_nodes": 3
+    },
+    "364": {
+      "root_global_id": 1806,
+      "root_local_id": 0,
+      "num_sampled_nodes": 7
+    },
+    "365": {
+      "root_global_id": 1810,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "366": {
+      "root_global_id": 1816,
+      "root_local_id": 0,
+      "num_sampled_nodes": 33
+    },
+    "367": {
+      "root_global_id": 1819,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "368": {
+      "root_global_id": 1821,
+      "root_local_id": 0,
+      "num_sampled_nodes": 7
+    },
+    "369": {
+      "root_global_id": 1823,
+      "root_local_id": 0,
+      "num_sampled_nodes": 7
+    },
+    "370": {
+      "root_global_id": 1827,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "371": {
+      "root_global_id": 1841,
+      "root_local_id": 0,
+      "num_sampled_nodes": 9
+    },
+    "372": {
+      "root_global_id": 1843,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "373": {
+      "root_global_id": 1853,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "374": {
+      "root_global_id": 1856,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "375": {
+      "root_global_id": 1863,
+      "root_local_id": 0,
+      "num_sampled_nodes": 23
+    },
+    "376": {
+      "root_global_id": 1881,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "377": {
+      "root_global_id": 1884,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "378": {
+      "root_global_id": 1890,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "379": {
+      "root_global_id": 1892,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "380": {
+      "root_global_id": 1895,
+      "root_local_id": 0,
+      "num_sampled_nodes": 21
+    },
+    "381": {
+      "root_global_id": 1899,
+      "root_local_id": 0,
+      "num_sampled_nodes": 9
+    },
+    "382": {
+      "root_global_id": 1903,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "383": {
+      "root_global_id": 1906,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "384": {
+      "root_global_id": 1919,
+      "root_local_id": 0,
+      "num_sampled_nodes": 22
+    },
+    "385": {
+      "root_global_id": 1923,
+      "root_local_id": 0,
+      "num_sampled_nodes": 18
+    },
+    "386": {
+      "root_global_id": 1930,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "387": {
+      "root_global_id": 1931,
+      "root_local_id": 0,
+      "num_sampled_nodes": 26
+    },
+    "388": {
+      "root_global_id": 1955,
+      "root_local_id": 0,
+      "num_sampled_nodes": 7
+    },
+    "389": {
+      "root_global_id": 1958,
+      "root_local_id": 0,
+      "num_sampled_nodes": 11
+    },
+    "390": {
+      "root_global_id": 1959,
+      "root_local_id": 0,
+      "num_sampled_nodes": 18
+    },
+    "391": {
+      "root_global_id": 1969,
+      "root_local_id": 0,
+      "num_sampled_nodes": 15
+    },
+    "392": {
+      "root_global_id": 1974,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "393": {
+      "root_global_id": 1981,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "394": {
+      "root_global_id": 1982,
+      "root_local_id": 0,
+      "num_sampled_nodes": 25
+    },
+    "395": {
+      "root_global_id": 1986,
+      "root_local_id": 0,
+      "num_sampled_nodes": 28
+    },
+    "396": {
+      "root_global_id": 1996,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "397": {
+      "root_global_id": 1998,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "398": {
+      "root_global_id": 2006,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "399": {
+      "root_global_id": 2027,
+      "root_local_id": 0,
+      "num_sampled_nodes": 36
+    },
+    "400": {
+      "root_global_id": 2038,
+      "root_local_id": 0,
+      "num_sampled_nodes": 8
+    },
+    "401": {
+      "root_global_id": 2041,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "402": {
+      "root_global_id": 2047,
+      "root_local_id": 0,
+      "num_sampled_nodes": 3
+    },
+    "403": {
+      "root_global_id": 2049,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "404": {
+      "root_global_id": 2056,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "405": {
+      "root_global_id": 2061,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "406": {
+      "root_global_id": 2062,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "407": {
+      "root_global_id": 2065,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "408": {
+      "root_global_id": 2068,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "409": {
+      "root_global_id": 2070,
+      "root_local_id": 0,
+      "num_sampled_nodes": 3
+    },
+    "410": {
+      "root_global_id": 2074,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "411": {
+      "root_global_id": 2076,
+      "root_local_id": 0,
+      "num_sampled_nodes": 26
+    },
+    "412": {
+      "root_global_id": 2082,
+      "root_local_id": 0,
+      "num_sampled_nodes": 15
+    },
+    "413": {
+      "root_global_id": 2085,
+      "root_local_id": 0,
+      "num_sampled_nodes": 9
+    },
+    "414": {
+      "root_global_id": 2088,
+      "root_local_id": 0,
+      "num_sampled_nodes": 24
+    },
+    "415": {
+      "root_global_id": 2101,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "416": {
+      "root_global_id": 2109,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "417": {
+      "root_global_id": 2135,
+      "root_local_id": 0,
+      "num_sampled_nodes": 15
+    },
+    "418": {
+      "root_global_id": 2139,
+      "root_local_id": 0,
+      "num_sampled_nodes": 21
+    },
+    "419": {
+      "root_global_id": 2141,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "420": {
+      "root_global_id": 2143,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "421": {
+      "root_global_id": 2146,
+      "root_local_id": 0,
+      "num_sampled_nodes": 33
+    },
+    "422": {
+      "root_global_id": 2156,
+      "root_local_id": 0,
+      "num_sampled_nodes": 11
+    },
+    "423": {
+      "root_global_id": 2160,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "424": {
+      "root_global_id": 2169,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "425": {
+      "root_global_id": 2182,
+      "root_local_id": 0,
+      "num_sampled_nodes": 32
+    },
+    "426": {
+      "root_global_id": 2191,
+      "root_local_id": 0,
+      "num_sampled_nodes": 8
+    },
+    "427": {
+      "root_global_id": 2197,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "428": {
+      "root_global_id": 2198,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "429": {
+      "root_global_id": 2199,
+      "root_local_id": 0,
+      "num_sampled_nodes": 17
+    },
+    "430": {
+      "root_global_id": 2200,
+      "root_local_id": 0,
+      "num_sampled_nodes": 20
+    },
+    "431": {
+      "root_global_id": 2205,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "432": {
+      "root_global_id": 2207,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "433": {
+      "root_global_id": 2214,
+      "root_local_id": 0,
+      "num_sampled_nodes": 11
+    },
+    "434": {
+      "root_global_id": 2224,
+      "root_local_id": 0,
+      "num_sampled_nodes": 7
+    },
+    "435": {
+      "root_global_id": 2233,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "436": {
+      "root_global_id": 2235,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "437": {
+      "root_global_id": 2237,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "438": {
+      "root_global_id": 2238,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "439": {
+      "root_global_id": 2239,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "440": {
+      "root_global_id": 2253,
+      "root_local_id": 0,
+      "num_sampled_nodes": 9
+    },
+    "441": {
+      "root_global_id": 2255,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "442": {
+      "root_global_id": 2257,
+      "root_local_id": 0,
+      "num_sampled_nodes": 17
+    },
+    "443": {
+      "root_global_id": 2264,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "444": {
+      "root_global_id": 2265,
+      "root_local_id": 0,
+      "num_sampled_nodes": 15
+    },
+    "445": {
+      "root_global_id": 2267,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "446": {
+      "root_global_id": 2269,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "447": {
+      "root_global_id": 2274,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "448": {
+      "root_global_id": 2277,
+      "root_local_id": 0,
+      "num_sampled_nodes": 22
+    },
+    "449": {
+      "root_global_id": 2278,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "450": {
+      "root_global_id": 2281,
+      "root_local_id": 0,
+      "num_sampled_nodes": 9
+    },
+    "451": {
+      "root_global_id": 2294,
+      "root_local_id": 0,
+      "num_sampled_nodes": 37
+    },
+    "452": {
+      "root_global_id": 2298,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "453": {
+      "root_global_id": 2300,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "454": {
+      "root_global_id": 2301,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "455": {
+      "root_global_id": 2306,
+      "root_local_id": 0,
+      "num_sampled_nodes": 17
+    },
+    "456": {
+      "root_global_id": 2308,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "457": {
+      "root_global_id": 2311,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "458": {
+      "root_global_id": 2317,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "459": {
+      "root_global_id": 2323,
+      "root_local_id": 0,
+      "num_sampled_nodes": 21
+    },
+    "460": {
+      "root_global_id": 2324,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "461": {
+      "root_global_id": 2327,
+      "root_local_id": 0,
+      "num_sampled_nodes": 20
+    },
+    "462": {
+      "root_global_id": 2331,
+      "root_local_id": 0,
+      "num_sampled_nodes": 7
+    },
+    "463": {
+      "root_global_id": 2334,
+      "root_local_id": 0,
+      "num_sampled_nodes": 24
+    },
+    "464": {
+      "root_global_id": 2335,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "465": {
+      "root_global_id": 2336,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "466": {
+      "root_global_id": 2343,
+      "root_local_id": 0,
+      "num_sampled_nodes": 26
+    },
+    "467": {
+      "root_global_id": 2352,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "468": {
+      "root_global_id": 2363,
+      "root_local_id": 0,
+      "num_sampled_nodes": 35
+    },
+    "469": {
+      "root_global_id": 2368,
+      "root_local_id": 0,
+      "num_sampled_nodes": 15
+    },
+    "470": {
+      "root_global_id": 2385,
+      "root_local_id": 0,
+      "num_sampled_nodes": 24
+    },
+    "471": {
+      "root_global_id": 2391,
+      "root_local_id": 0,
+      "num_sampled_nodes": 11
+    },
+    "472": {
+      "root_global_id": 2393,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "473": {
+      "root_global_id": 2408,
+      "root_local_id": 0,
+      "num_sampled_nodes": 17
+    },
+    "474": {
+      "root_global_id": 2414,
+      "root_local_id": 0,
+      "num_sampled_nodes": 28
+    },
+    "475": {
+      "root_global_id": 2420,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "476": {
+      "root_global_id": 2431,
+      "root_local_id": 0,
+      "num_sampled_nodes": 23
+    },
+    "477": {
+      "root_global_id": 2432,
+      "root_local_id": 0,
+      "num_sampled_nodes": 3
+    },
+    "478": {
+      "root_global_id": 2433,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "479": {
+      "root_global_id": 2435,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "480": {
+      "root_global_id": 2443,
+      "root_local_id": 0,
+      "num_sampled_nodes": 18
+    },
+    "481": {
+      "root_global_id": 2449,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "482": {
+      "root_global_id": 2450,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "483": {
+      "root_global_id": 2452,
+      "root_local_id": 0,
+      "num_sampled_nodes": 7
+    },
+    "484": {
+      "root_global_id": 2454,
+      "root_local_id": 0,
+      "num_sampled_nodes": 18
+    },
+    "485": {
+      "root_global_id": 2459,
+      "root_local_id": 0,
+      "num_sampled_nodes": 8
+    },
+    "486": {
+      "root_global_id": 2470,
+      "root_local_id": 0,
+      "num_sampled_nodes": 15
+    },
+    "487": {
+      "root_global_id": 2473,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "488": {
+      "root_global_id": 2489,
+      "root_local_id": 0,
+      "num_sampled_nodes": 17
+    },
+    "489": {
+      "root_global_id": 2499,
+      "root_local_id": 0,
+      "num_sampled_nodes": 21
+    },
+    "490": {
+      "root_global_id": 2507,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "491": {
+      "root_global_id": 2510,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "492": {
+      "root_global_id": 2513,
+      "root_local_id": 0,
+      "num_sampled_nodes": 24
+    },
+    "493": {
+      "root_global_id": 2517,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "494": {
+      "root_global_id": 2532,
+      "root_local_id": 0,
+      "num_sampled_nodes": 20
+    },
+    "495": {
+      "root_global_id": 2533,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "496": {
+      "root_global_id": 2534,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "497": {
+      "root_global_id": 2535,
+      "root_local_id": 0,
+      "num_sampled_nodes": 8
+    },
+    "498": {
+      "root_global_id": 2539,
+      "root_local_id": 0,
+      "num_sampled_nodes": 20
+    },
+    "499": {
+      "root_global_id": 2542,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "500": {
+      "root_global_id": 2553,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "501": {
+      "root_global_id": 2556,
+      "root_local_id": 0,
+      "num_sampled_nodes": 10
+    },
+    "502": {
+      "root_global_id": 2558,
+      "root_local_id": 0,
+      "num_sampled_nodes": 9
+    },
+    "503": {
+      "root_global_id": 2559,
+      "root_local_id": 0,
+      "num_sampled_nodes": 28
+    },
+    "504": {
+      "root_global_id": 2561,
+      "root_local_id": 0,
+      "num_sampled_nodes": 34
+    },
+    "505": {
+      "root_global_id": 2562,
+      "root_local_id": 0,
+      "num_sampled_nodes": 19
+    },
+    "506": {
+      "root_global_id": 2568,
+      "root_local_id": 0,
+      "num_sampled_nodes": 28
+    },
+    "507": {
+      "root_global_id": 2570,
+      "root_local_id": 0,
+      "num_sampled_nodes": 17
+    },
+    "508": {
+      "root_global_id": 2572,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "509": {
+      "root_global_id": 2573,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "510": {
+      "root_global_id": 2579,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "511": {
+      "root_global_id": 2583,
+      "root_local_id": 0,
+      "num_sampled_nodes": 30
+    },
+    "512": {
+      "root_global_id": 2586,
+      "root_local_id": 0,
+      "num_sampled_nodes": 17
+    },
+    "513": {
+      "root_global_id": 2591,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "514": {
+      "root_global_id": 2597,
+      "root_local_id": 0,
+      "num_sampled_nodes": 7
+    },
+    "515": {
+      "root_global_id": 2598,
+      "root_local_id": 0,
+      "num_sampled_nodes": 17
+    },
+    "516": {
+      "root_global_id": 2602,
+      "root_local_id": 0,
+      "num_sampled_nodes": 3
+    },
+    "517": {
+      "root_global_id": 2608,
+      "root_local_id": 0,
+      "num_sampled_nodes": 11
+    },
+    "518": {
+      "root_global_id": 2612,
+      "root_local_id": 0,
+      "num_sampled_nodes": 7
+    },
+    "519": {
+      "root_global_id": 2613,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "520": {
+      "root_global_id": 2617,
+      "root_local_id": 0,
+      "num_sampled_nodes": 40
+    },
+    "521": {
+      "root_global_id": 2631,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "522": {
+      "root_global_id": 2633,
+      "root_local_id": 0,
+      "num_sampled_nodes": 9
+    },
+    "523": {
+      "root_global_id": 2635,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "524": {
+      "root_global_id": 2637,
+      "root_local_id": 0,
+      "num_sampled_nodes": 4
+    },
+    "525": {
+      "root_global_id": 2638,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "526": {
+      "root_global_id": 2641,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "527": {
+      "root_global_id": 2645,
+      "root_local_id": 0,
+      "num_sampled_nodes": 11
+    },
+    "528": {
+      "root_global_id": 2647,
+      "root_local_id": 0,
+      "num_sampled_nodes": 12
+    },
+    "529": {
+      "root_global_id": 2648,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "530": {
+      "root_global_id": 2652,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    },
+    "531": {
+      "root_global_id": 2655,
+      "root_local_id": 0,
+      "num_sampled_nodes": 6
+    },
+    "532": {
+      "root_global_id": 2658,
+      "root_local_id": 0,
+      "num_sampled_nodes": 53
+    },
+    "533": {
+      "root_global_id": 2660,
+      "root_local_id": 0,
+      "num_sampled_nodes": 22
+    },
+    "534": {
+      "root_global_id": 2675,
+      "root_local_id": 0,
+      "num_sampled_nodes": 18
+    },
+    "535": {
+      "root_global_id": 2676,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "536": {
+      "root_global_id": 2684,
+      "root_local_id": 0,
+      "num_sampled_nodes": 2
+    },
+    "537": {
+      "root_global_id": 2686,
+      "root_local_id": 0,
+      "num_sampled_nodes": 13
+    },
+    "538": {
+      "root_global_id": 2687,
+      "root_local_id": 0,
+      "num_sampled_nodes": 16
+    },
+    "539": {
+      "root_global_id": 2688,
+      "root_local_id": 0,
+      "num_sampled_nodes": 14
+    },
+    "540": {
+      "root_global_id": 2690,
+      "root_local_id": 0,
+      "num_sampled_nodes": 15
+    },
+    "541": {
+      "root_global_id": 2700,
+      "root_local_id": 0,
+      "num_sampled_nodes": 5
+    }
+  }
+}

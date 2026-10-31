@@ -1,0 +1,292 @@
+{
+ "run_id": "CF-GNNExplainer__Qwen-14B__cora__1687",
+ "method": "CF-GNNExplainer",
+ "config": "Qwen-14B",
+ "dataset": "cora",
+ "node": "1687",
+ "source_file": "./robustness_2026-10-30/production_a100/qwen14b_gptq_int4_cora_Response.json",
+ "source_locator": "[338][1]",
+ "text_scope": "whole output",
+ "input_text": "To fill the `infos` dictionary and provide a detailed explanation of the changes in the graph structure and classification, let's first identify the differences between the factual and counterfactual examples.\n\n### Factual Example:\nIn the factual graph, the target node (node 1687) is classified as Reinforcement_Learning. It is connected to several nodes, including nodes 54, 523, 870, 898, and 1189. Its key attributes include \"agent\", \"defin\", \"function\", \"interact\", \"formal\", \"environ\", \"reinforc\", \"mdp\", \"markov\", \"view\", \"transit\", \"decis\", \"adapt\", \"part\", \"process\", \"singl\", \"probabilist\", \"result\", \"game\", \"framework\", and \"instanc\".\n\n### Counterfactual Example:\nIn the counterfactual graph, the target node (node 1687) is reclassified as Theory. The connections and attributes remain largely the same, but the overall classification changes.\n\n### Filling the Dictionary\n\n```python\ninfos = {\n    'Target_Node_ID': '1687',\n    'Factual_Target_Node_Neighbors': [54, 523, 870, 898, 1189],\n    'Factual_Target_Node_Features': ['agent', 'defin', 'function', 'interact', 'formal', 'environ', 'reinforc', 'mdp', 'markov', 'view', 'transit', 'decis', 'adapt', 'part', 'process', 'singl', 'probabilist', 'result', 'game', 'framework', 'instanc'],\n    'Counterfactual_Target_Node_Neighbors': [54, 523, 870, 898, 1189],\n    'Counterfactual_Target_Node_Features': ['agent', 'defin', 'function', 'interact', 'formal', 'environ', 'reinforc', 'mdp', 'markov', 'view', 'transit', 'decis', 'adapt', 'part', 'process', 'singl', 'probabilist', 'result', 'game', 'framework', 'instanc'],\n    'Factual_Target_Node_Class': 'Reinforcement_Learning',\n    'Counterfactual_Target_Node_class': 'Theory',\n    'Target_Node_Features_Changed_From_Factual_To_Counterfactual': [],\n    'Natural_Language_Explanation': 'Node 1687 was originally classified as Reinforcement_Learning based on its connections and attributes. However, in the counterfactual scenario, it is reclassified as Theory. Despite having the same neighbors and features, the change in classification suggests that the model interprets the node differently based on the overall graph structure and possibly the influence of neighboring nodes.'\n}\n```\n\n### Explanation of Changes\n\n#### Classification Change:\n- **Factual Classification**: The target node (node 1687) is initially classified as Reinforcement_Learning.\n- **Counterfactual Classification**: After perturbation, the target node is reclassified as Theory.\n\n#### Influence of Neighbors:\n- **Neighbors**: Both in the factual and counterfactual scenarios, the target node is connected to nodes 54, 523, 870, 898, and 1189.\n- **Impact**: The neighbors themselves do not change, but their influence on the target node's classification does. Nodes like 523 and 870 are heavily connected and have diverse classifications (Reinforcement_Learning and Theory), which might contribute to the shift in the target node's classification.\n\n#### Features:\n- **Features**: The features of the target node remain unchanged in both scenarios. This implies that the change in classification is driven more by the structural context rather than the intrinsic features of the node itself.\n\n#### Natural Language Explanation:\nThe target node (node 1687) was initially classified as Reinforcement_Learning due to its attributes and connections within the graph. However, after applying perturbations to the graph structure, the node is reclassified as Theory. This change highlights the sensitivity of the classification model to the broader context of the graph. Although the node retains the same attributes and immediate connections, the overall influence of its neighbors and the broader graph structure leads to a different interpretation by the model. Specifically, the presence of nodes like 523 and 870, which have mixed classifications, might contribute to the shift in the target node's classification from Reinforcement_Learning to Theory.\n\nThis example underscores the importance of understanding the broader context and interdependencies within a graph when interpreting node classifications, especially in complex machine learning models.",
+ "text_scored_sha256_16": "ef7dfc0919359250",
+ "model": "meta-llama/Meta-Llama-3.1-8B-Instruct",
+ "prompt_version": "v3",
+ "generation": {
+  "dtype": "float16",
+  "do_sample": false,
+  "temperature": 0,
+  "max_new_tokens": 4096
+ },
+ "gpu": "NVIDIA A100-SXM4-80GB",
+ "versions": {
+  "torch": "2.4.1+cu121",
+  "transformers": "4.44.2"
+ },
+ "prompt_messages": [
+  {
+   "role": "system",
+   "content": "You are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only."
+  },
+  {
+   "role": "user",
+   "content": "Extract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 1687. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 1687  (dataset: cora)\n\nEXPLANATION:\n<<<\nTo fill the `infos` dictionary and provide a detailed explanation of the changes in the graph structure and classification, let's first identify the differences between the factual and counterfactual examples.\n\n### Factual Example:\nIn the factual graph, the target node (node 1687) is classified as Reinforcement_Learning. It is connected to several nodes, including nodes 54, 523, 870, 898, and 1189. Its key attributes include \"agent\", \"defin\", \"function\", \"interact\", \"formal\", \"environ\", \"reinforc\", \"mdp\", \"markov\", \"view\", \"transit\", \"decis\", \"adapt\", \"part\", \"process\", \"singl\", \"probabilist\", \"result\", \"game\", \"framework\", and \"instanc\".\n\n### Counterfactual Example:\nIn the counterfactual graph, the target node (node 1687) is reclassified as Theory. The connections and attributes remain largely the same, but the overall classification changes.\n\n### Filling the Dictionary\n\n```python\ninfos = {\n    'Target_Node_ID': '1687',\n    'Factual_Target_Node_Neighbors': [54, 523, 870, 898, 1189],\n    'Factual_Target_Node_Features': ['agent', 'defin', 'function', 'interact', 'formal', 'environ', 'reinforc', 'mdp', 'markov', 'view', 'transit', 'decis', 'adapt', 'part', 'process', 'singl', 'probabilist', 'result', 'game', 'framework', 'instanc'],\n    'Counterfactual_Target_Node_Neighbors': [54, 523, 870, 898, 1189],\n    'Counterfactual_Target_Node_Features': ['agent', 'defin', 'function', 'interact', 'formal', 'environ', 'reinforc', 'mdp', 'markov', 'view', 'transit', 'decis', 'adapt', 'part', 'process', 'singl', 'probabilist', 'result', 'game', 'framework', 'instanc'],\n    'Factual_Target_Node_Class': 'Reinforcement_Learning',\n    'Counterfactual_Target_Node_class': 'Theory',\n    'Target_Node_Features_Changed_From_Factual_To_Counterfactual': [],\n    'Natural_Language_Explanation': 'Node 1687 was originally classified as Reinforcement_Learning based on its connections and attributes. However, in the counterfactual scenario, it is reclassified as Theory. Despite having the same neighbors and features, the change in classification suggests that the model interprets the node differently based on the overall graph structure and possibly the influence of neighboring nodes.'\n}\n```\n\n### Explanation of Changes\n\n#### Classification Change:\n- **Factual Classification**: The target node (node 1687) is initially classified as Reinforcement_Learning.\n- **Counterfactual Classification**: After perturbation, the target node is reclassified as Theory.\n\n#### Influence of Neighbors:\n- **Neighbors**: Both in the factual and counterfactual scenarios, the target node is connected to nodes 54, 523, 870, 898, and 1189.\n- **Impact**: The neighbors themselves do not change, but their influence on the target node's classification does. Nodes like 523 and 870 are heavily connected and have diverse classifications (Reinforcement_Learning and Theory), which might contribute to the shift in the target node's classification.\n\n#### Features:\n- **Features**: The features of the target node remain unchanged in both scenarios. This implies that the change in classification is driven more by the structural context rather than the intrinsic features of the node itself.\n\n#### Natural Language Explanation:\nThe target node (node 1687) was initially classified as Reinforcement_Learning due to its attributes and connections within the graph. However, after applying perturbations to the graph structure, the node is reclassified as Theory. This change highlights the sensitivity of the classification model to the broader context of the graph. Although the node retains the same attributes and immediate connections, the overall influence of its neighbors and the broader graph structure leads to a different interpretation by the model. Specifically, the presence of nodes like 523 and 870, which have mixed classifications, might contribute to the shift in the target node's classification from Reinforcement_Learning to Theory.\n\nThis example underscores the importance of understanding the broader context and interdependencies within a graph when interpreting node classifications, especially in complex machine learning models.\n>>>"
+  }
+ ],
+ "prompt_rendered": "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n\nCutting Knowledge Date: December 2023\nToday Date: 26 Jul 2024\n\nYou are a careful information-extraction system. You read an explanation that a model wrote about why a graph neural network (GNN) classified a target node, and you list the atomic factual claims it makes. You do not judge whether claims are true. You output JSON only.<|eot_id|><|start_header_id|>user<|end_header_id|>\n\nExtract every atomic factual claim from the EXPLANATION below.\n\nDefinitions\n- An atomic claim states exactly one checkable fact (one subject, one property or relation). Split sentences that state several facts into several claims. Do not split one fact into pieces.\n- Merge repeated claims: if the same fact is stated more than once, output it once.\n\nDictionary output and merging (apply when the explanation contains a dictionary such as infos={...})\n- Output EXACTLY ONE claim per dictionary field, phrased from the field, including empty fields (e.g. \"Counterfactual_Target_Node_Neighbors of node 510 is empty\").\n- Before outputting any prose claim, check it against every field. If the prose states the same fact as a field, even in different words, do NOT output it; the field claim already covers it. Examples of the same fact:\n  * \"node 510 is connected with nodes 192, 356 and 519\" = Factual_Target_Node_Neighbors [192, 356, 519]\n  * \"node 510 is not connected to any other node in the counterfactual graph\" = \"node 510 lost all its connections\" = Counterfactual_Target_Node_Neighbors []\n  * \"node 510 is classified as Theory\" = Factual_Target_Node_Class 'Theory'\n  * \"no features changed\" = Target_Node_Features_Changed_From_Factual_To_Counterfactual []\n- Output a prose claim only if it states a fact that no field states (for example the class of a specific neighbor, or which specific edge was removed).\n- Natural_Language_Explanation is one field: output it as one claim (claim_type mechanism).\n- Field types: Target_Node_ID -> structural; *_Neighbors -> structural; *_Features and Target_Node_Features_Changed_From_Factual_To_Counterfactual -> feature; *_Class / *_class -> class_state.\n\nSkip rule: output only claims that can be checked against the graph data (node texts, titles, features, edges, labels, predictions, importance scores). Do NOT output:\n- opinions or evaluations of relevance, quality, strength or significance: \"is crucial\", \"is essential\", \"is vital\", \"plays a key role\", \"contributes significantly\", \"lacks strong relevance\", \"its contribution is minimal\", \"is well-supported\", \"strongly supports the classification\";\n- interpretations of what something indicates or suggests: \"indicates a focus on\", \"suggests that\", \"reflects\", \"highlights\", \"emphasizes the importance of\", \"reinforces the theme\", \"is consistent with\";\n- hedged or speculative statements (\"may\", \"might\", \"could\", \"possibly\", \"likely\", \"appears to\");\n- generic statements about GNNs, graphs, datasets or the task, and sentences that only announce a list (\"the classification is supported by the following factors\");\n- YES/NO votes.\n- If a sentence mixes a checkable fact with an evaluation, output only the checkable part. Example: \"Node-1 discusses backpropagation, which is critical for training neural networks\" -> \"Node-1 discusses backpropagation\".\n- An importance claim is kept only if it gives a specific score, weight, rank or ordering (e.g. \"smooth has importance 0.67\", \"Node-1 is the most important neighbor\"). A vague \"is important / influential\" without a score, rank or ordering is skipped.\n- A mechanism claim is kept only if it names specific nodes, edges or features AND a specific effect on the prediction.\n\nTyping target vs neighbor: decide by the SUBJECT of the claim.\n- The TARGET is node 1687. It may also be called \"ROOT\", \"the target node\", \"the target paper/product\", \"this paper/product\", or by its own title.\n- Any other node is a NEIGHBOR: \"Node-1\", \"Node-2.3\", \"Node-3.1 to Node-3.4\", \"Node 192\", \"its neighbors\", \"the 2-hop neighbors\", or a neighbor's title. In GraphNarrator-style text, ROOT is the target and EVERY \"Node-X\" / \"Node-X.Y\" is a neighbor.\n- A claim about a neighbor's topic, title, content or label is type neighbor, never content. Use content only when the subject is the target.\n- A claim about which nodes are connected is structural, whoever the subject is.\n\nclaim_type (choose exactly one)\n- content: what the TARGET node is about (its topic, title, abstract, product description).\n- neighbor: a property of a NEIGHBOR node or group of neighbors (topic, title, content or label).\n- structural: graph connectivity: which nodes are connected, neighbor lists, number of neighbors, hops, edges added or removed, which node is the target.\n- importance: an importance/saliency/attention score, weight, rank or ordering of a node, edge, word or feature.\n- class_state: a class label, predicted class, true class, counterfactual class, or prediction confidence.\n- mechanism: a causal claim about how the GNN used specific information to reach or change its prediction.\n- feature: a specific feature/keyword/bag-of-words term being present, absent, or changed for a node.\n\nentities (copy exactly as written in the explanation; use [] when none)\n- node_ids: integer node IDs, or labels such as \"Node-1\" / \"Node-1.2\" exactly as written.\n- titles: paper or product titles quoted or named.\n- feature_words: specific words/keywords/features named.\n- edges: pairs [a, b] of connected or disconnected nodes named by the claim.\n- classes: class/category names.\n\nsource_span (required for every claim)\n- Copy the exact contiguous words from the EXPLANATION that state this claim, character for character: same spelling, capitalization and punctuation. Do not paraphrase, summarize, fix typos, or join words that are not next to each other in the EXPLANATION.\n- Keep it as short as possible while still containing the whole fact. For a dictionary field, copy that field as written (e.g. \"Counterfactual_Target_Node_Neighbors: []\").\n\nOutput format: a single JSON object and nothing else, no markdown fences:\n{\"claims\": [{\"claim\": \"<one atomic claim, self-contained, with the subject node named>\", \"claim_type\": \"<type>\", \"source_span\": \"<exact words copied from the EXPLANATION>\", \"entities\": {\"node_ids\": [], \"titles\": [], \"feature_words\": [], \"edges\": [], \"classes\": []}}]}\n\nTARGET NODE: 1687  (dataset: cora)\n\nEXPLANATION:\n<<<\nTo fill the `infos` dictionary and provide a detailed explanation of the changes in the graph structure and classification, let's first identify the differences between the factual and counterfactual examples.\n\n### Factual Example:\nIn the factual graph, the target node (node 1687) is classified as Reinforcement_Learning. It is connected to several nodes, including nodes 54, 523, 870, 898, and 1189. Its key attributes include \"agent\", \"defin\", \"function\", \"interact\", \"formal\", \"environ\", \"reinforc\", \"mdp\", \"markov\", \"view\", \"transit\", \"decis\", \"adapt\", \"part\", \"process\", \"singl\", \"probabilist\", \"result\", \"game\", \"framework\", and \"instanc\".\n\n### Counterfactual Example:\nIn the counterfactual graph, the target node (node 1687) is reclassified as Theory. The connections and attributes remain largely the same, but the overall classification changes.\n\n### Filling the Dictionary\n\n```python\ninfos = {\n    'Target_Node_ID': '1687',\n    'Factual_Target_Node_Neighbors': [54, 523, 870, 898, 1189],\n    'Factual_Target_Node_Features': ['agent', 'defin', 'function', 'interact', 'formal', 'environ', 'reinforc', 'mdp', 'markov', 'view', 'transit', 'decis', 'adapt', 'part', 'process', 'singl', 'probabilist', 'result', 'game', 'framework', 'instanc'],\n    'Counterfactual_Target_Node_Neighbors': [54, 523, 870, 898, 1189],\n    'Counterfactual_Target_Node_Features': ['agent', 'defin', 'function', 'interact', 'formal', 'environ', 'reinforc', 'mdp', 'markov', 'view', 'transit', 'decis', 'adapt', 'part', 'process', 'singl', 'probabilist', 'result', 'game', 'framework', 'instanc'],\n    'Factual_Target_Node_Class': 'Reinforcement_Learning',\n    'Counterfactual_Target_Node_class': 'Theory',\n    'Target_Node_Features_Changed_From_Factual_To_Counterfactual': [],\n    'Natural_Language_Explanation': 'Node 1687 was originally classified as Reinforcement_Learning based on its connections and attributes. However, in the counterfactual scenario, it is reclassified as Theory. Despite having the same neighbors and features, the change in classification suggests that the model interprets the node differently based on the overall graph structure and possibly the influence of neighboring nodes.'\n}\n```\n\n### Explanation of Changes\n\n#### Classification Change:\n- **Factual Classification**: The target node (node 1687) is initially classified as Reinforcement_Learning.\n- **Counterfactual Classification**: After perturbation, the target node is reclassified as Theory.\n\n#### Influence of Neighbors:\n- **Neighbors**: Both in the factual and counterfactual scenarios, the target node is connected to nodes 54, 523, 870, 898, and 1189.\n- **Impact**: The neighbors themselves do not change, but their influence on the target node's classification does. Nodes like 523 and 870 are heavily connected and have diverse classifications (Reinforcement_Learning and Theory), which might contribute to the shift in the target node's classification.\n\n#### Features:\n- **Features**: The features of the target node remain unchanged in both scenarios. This implies that the change in classification is driven more by the structural context rather than the intrinsic features of the node itself.\n\n#### Natural Language Explanation:\nThe target node (node 1687) was initially classified as Reinforcement_Learning due to its attributes and connections within the graph. However, after applying perturbations to the graph structure, the node is reclassified as Theory. This change highlights the sensitivity of the classification model to the broader context of the graph. Although the node retains the same attributes and immediate connections, the overall influence of its neighbors and the broader graph structure leads to a different interpretation by the model. Specifically, the presence of nodes like 523 and 870, which have mixed classifications, might contribute to the shift in the target node's classification from Reinforcement_Learning to Theory.\n\nThis example underscores the importance of understanding the broader context and interdependencies within a graph when interpreting node classifications, especially in complex machine learning models.\n>>><|eot_id|><|start_header_id|>assistant<|end_header_id|>\n\n",
+ "raw_output": "{\n  \"claims\": [\n    {\n      \"claim\": \"node 1687 is classified as Reinforcement_Learning\",\n      \"claim_type\": \"class_state\",\n      \"source_span\": \"The target node (node 1687) is classified as Reinforcement_Learning.\",\n      \"entities\": {\n        \"node_ids\": [\"1687\"],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Reinforcement_Learning\"]\n      }\n    },\n    {\n      \"claim\": \"node 1687 is connected to nodes 54, 523, 870, 898, and 1189\",\n      \"claim_type\": \"structural\",\n      \"source_span\": \"It is connected to several nodes, including nodes 54, 523, 870, 898, and 1189.\",\n      \"entities\": {\n        \"node_ids\": [54, 523, 870, 898, 1189],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [[1687, 54], [1687, 523], [1687, 870], [1687, 898], [1687, 1189]],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"node 1687 has features 'agent', 'defin', 'function', 'interact', 'formal', 'environ','reinforc','mdp','markov', 'view', 'transit', 'decis', 'adapt', 'part', 'process','singl', 'probabilist','result', 'game', 'framework', and 'instanc'\",\n      \"claim_type\": \"feature\",\n      \"source_span\": \"Its key attributes include 'agent', 'defin', 'function', 'interact', 'formal', 'environ','reinforc','mdp','markov', 'view', 'transit', 'decis', 'adapt', 'part', 'process','singl', 'probabilist','result', 'game', 'framework', and 'instanc'.\",\n      \"entities\": {\n        \"node_ids\": [\"1687\"],\n        \"titles\": [],\n        \"feature_words\": [\"agent\", \"defin\", \"function\", \"interact\", \"formal\", \"environ\", \"reinforc\", \"mdp\", \"markov\", \"view\", \"transit\", \"decis\", \"adapt\", \"part\", \"process\", \"singl\", \"probabilist\", \"result\", \"game\", \"framework\", \"instanc\"],\n        \"edges\": [],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"node 1687 is reclassified as Theory\",\n      \"claim_type\": \"class_state\",\n      \"source_span\": \"The target node (node 1687) is reclassified as Theory.\",\n      \"entities\": {\n        \"node_ids\": [\"1687\"],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Theory\"]\n      }\n    },\n    {\n      \"claim\": \"node 1687 is connected to nodes 54, 523, 870, 898, and 1189 in the counterfactual graph\",\n      \"claim_type\": \"structural\",\n      \"source_span\": \"The connections and attributes remain largely the same, but the overall classification changes.\",\n      \"entities\": {\n        \"node_ids\": [54, 523, 870, 898, 1189],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [[1687, 54], [1687, 523], [1687, 870], [1687, 898], [1687, 1189]],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"node 1687 has features 'agent', 'defin', 'function', 'interact', 'formal', 'environ','reinforc','mdp','markov', 'view', 'transit', 'decis', 'adapt', 'part', 'process','singl', 'probabilist','result', 'game', 'framework', and 'instanc' in the counterfactual graph\",\n      \"claim_type\": \"feature\",\n      \"source_span\": \"The connections and attributes remain largely the same, but the overall classification changes.\",\n      \"entities\": {\n        \"node_ids\": [\"1687\"],\n        \"titles\": [],\n        \"feature_words\": [\"agent\", \"defin\", \"function\", \"interact\", \"formal\", \"environ\", \"reinforc\", \"mdp\", \"markov\", \"view\", \"transit\", \"decis\", \"adapt\", \"part\", \"process\", \"singl\", \"probabilist\", \"result\", \"game\", \"framework\", \"instanc\"],\n        \"edges\": [],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"node 1687 has no changed features from factual to counterfactual\",\n      \"claim_type\": \"feature\",\n      \"source_span\": \"The features of the target node remain unchanged in both scenarios.\",\n      \"entities\": {\n        \"node_ids\": [\"1687\"],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"node 1687 is influenced by its neighbors in the counterfactual graph\",\n      \"claim_type\": \"structural\",\n      \"source_span\": \"The neighbors themselves do not change, but their influence on the target node's classification does.\",\n      \"entities\": {\n        \"node_ids\": [1687],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": []\n      }\n    },\n    {\n      \"claim\": \"node 523 and 870 have mixed classifications\",\n      \"claim_type\": \"neighbor\",\n      \"source_span\": \"Nodes like 523 and 870 are heavily connected and have diverse classifications (Reinforcement_Learning and Theory),\",\n      \"entities\": {\n        \"node_ids\": [523, 870],\n        \"titles\": [],\n        \"feature_words\": [],\n        \"edges\": [],\n        \"classes\": [\"Reinforcement_Learning\", \"Theory\"]\n      }\n    }\n  ]\n}",
+ "claims": [
+  {
+   "claim": "node 1687 is classified as Reinforcement_Learning",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "1687"
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Reinforcement_Learning"
+    ]
+   },
+   "source_span": "The target node (node 1687) is classified as Reinforcement_Learning."
+  },
+  {
+   "claim": "node 1687 is connected to nodes 54, 523, 870, 898, and 1189",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     54,
+     523,
+     870,
+     898,
+     1189
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      1687,
+      54
+     ],
+     [
+      1687,
+      523
+     ],
+     [
+      1687,
+      870
+     ],
+     [
+      1687,
+      898
+     ],
+     [
+      1687,
+      1189
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "It is connected to several nodes, including nodes 54, 523, 870, 898, and 1189."
+  },
+  {
+   "claim": "node 1687 has features 'agent', 'defin', 'function', 'interact', 'formal', 'environ','reinforc','mdp','markov', 'view', 'transit', 'decis', 'adapt', 'part', 'process','singl', 'probabilist','result', 'game', 'framework', and 'instanc'",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "1687"
+    ],
+    "titles": [],
+    "feature_words": [
+     "agent",
+     "defin",
+     "function",
+     "interact",
+     "formal",
+     "environ",
+     "reinforc",
+     "mdp",
+     "markov",
+     "view",
+     "transit",
+     "decis",
+     "adapt",
+     "part",
+     "process",
+     "singl",
+     "probabilist",
+     "result",
+     "game",
+     "framework",
+     "instanc"
+    ],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "Its key attributes include 'agent', 'defin', 'function', 'interact', 'formal', 'environ','reinforc','mdp','markov', 'view', 'transit', 'decis', 'adapt', 'part', 'process','singl', 'probabilist','result', 'game', 'framework', and 'instanc'."
+  },
+  {
+   "claim": "node 1687 is reclassified as Theory",
+   "claim_type": "class_state",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "1687"
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Theory"
+    ]
+   },
+   "source_span": "The target node (node 1687) is reclassified as Theory."
+  },
+  {
+   "claim": "node 1687 is connected to nodes 54, 523, 870, 898, and 1189 in the counterfactual graph",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     54,
+     523,
+     870,
+     898,
+     1189
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [
+     [
+      1687,
+      54
+     ],
+     [
+      1687,
+      523
+     ],
+     [
+      1687,
+      870
+     ],
+     [
+      1687,
+      898
+     ],
+     [
+      1687,
+      1189
+     ]
+    ],
+    "classes": []
+   },
+   "source_span": "The connections and attributes remain largely the same, but the overall classification changes."
+  },
+  {
+   "claim": "node 1687 has features 'agent', 'defin', 'function', 'interact', 'formal', 'environ','reinforc','mdp','markov', 'view', 'transit', 'decis', 'adapt', 'part', 'process','singl', 'probabilist','result', 'game', 'framework', and 'instanc' in the counterfactual graph",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "1687"
+    ],
+    "titles": [],
+    "feature_words": [
+     "agent",
+     "defin",
+     "function",
+     "interact",
+     "formal",
+     "environ",
+     "reinforc",
+     "mdp",
+     "markov",
+     "view",
+     "transit",
+     "decis",
+     "adapt",
+     "part",
+     "process",
+     "singl",
+     "probabilist",
+     "result",
+     "game",
+     "framework",
+     "instanc"
+    ],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "The connections and attributes remain largely the same, but the overall classification changes."
+  },
+  {
+   "claim": "node 1687 has no changed features from factual to counterfactual",
+   "claim_type": "feature",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     "1687"
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "The features of the target node remain unchanged in both scenarios."
+  },
+  {
+   "claim": "node 1687 is influenced by its neighbors in the counterfactual graph",
+   "claim_type": "structural",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     1687
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": []
+   },
+   "source_span": "The neighbors themselves do not change, but their influence on the target node's classification does."
+  },
+  {
+   "claim": "node 523 and 870 have mixed classifications",
+   "claim_type": "neighbor",
+   "claim_type_valid": true,
+   "entities": {
+    "node_ids": [
+     523,
+     870
+    ],
+    "titles": [],
+    "feature_words": [],
+    "edges": [],
+    "classes": [
+     "Reinforcement_Learning",
+     "Theory"
+    ]
+   },
+   "source_span": "Nodes like 523 and 870 are heavily connected and have diverse classifications (Reinforcement_Learning and Theory),"
+  }
+ ],
+ "n_claims": 9,
+ "parse_diagnostics": {
+  "json_found": true,
+  "json_valid": true,
+  "parse_mode": "strict",
+  "error": null,
+  "n_raw_claims": 9,
+  "n_bad_type": 0,
+  "n_merged_duplicates": 0,
+  "repairs": [],
+  "unrecoverable_segments": [],
+  "n_prompt_tokens": 2432,
+  "n_output_tokens": 1326,
+  "hit_max_new_tokens": false,
+  "seconds": 32.4
+ }
+}

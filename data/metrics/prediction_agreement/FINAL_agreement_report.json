@@ -1,0 +1,84 @@
+{
+  "cora": {
+    "graphnarrator_vs_canonical_agreement": 0.511070110701107,
+    "graphnarrator_own_accuracy": 0.5166051660516605,
+    "n_nodes_compared": 542,
+    "canonical_accuracy": 0.8966789667896679,
+    "gspell_vs_canonical_agreement": 0.3044280442804428,
+    "gspell_own_accuracy": 0.3025830258302583
+  },
+  "products": {
+    "graphnarrator_vs_canonical_agreement": 0.315,
+    "graphnarrator_own_accuracy": 0.265,
+    "n_nodes_compared": 200,
+    "canonical_accuracy": 0.71,
+    "gspell_vs_canonical_agreement": 1.0,
+    "gspell_own_accuracy": 0.71
+  },
+  "survey_8node_graphnarrator_check": [
+    {
+      "dataset": "cora",
+      "node": 510,
+      "true_label": "Probabilistic_Methods",
+      "canonical_pred": "Neural_Networks",
+      "graphnarrator_pred": "Neural_Networks",
+      "agrees_with_canonical": true
+    },
+    {
+      "dataset": "cora",
+      "node": 2334,
+      "true_label": "Genetic_Algorithms",
+      "canonical_pred": "Genetic_Algorithms",
+      "graphnarrator_pred": "Genetic_Algorithms",
+      "agrees_with_canonical": true
+    },
+    {
+      "dataset": "cora",
+      "node": 1062,
+      "true_label": "Theory",
+      "canonical_pred": "Neural_Networks",
+      "graphnarrator_pred": "Neural_Networks",
+      "agrees_with_canonical": true
+    },
+    {
+      "dataset": "cora",
+      "node": 884,
+      "true_label": "Theory",
+      "canonical_pred": "Theory",
+      "graphnarrator_pred": "Theory",
+      "agrees_with_canonical": true
+    },
+    {
+      "dataset": "products",
+      "node": 6813,
+      "true_label": "Beauty",
+      "canonical_pred": "Beauty",
+      "graphnarrator_pred": "Beauty",
+      "agrees_with_canonical": true
+    },
+    {
+      "dataset": "products",
+      "node": 1852,
+      "true_label": "Office Products",
+      "canonical_pred": "Health & Personal Care",
+      "graphnarrator_pred": "Health & Personal Care",
+      "agrees_with_canonical": true
+    },
+    {
+      "dataset": "products",
+      "node": 8766,
+      "true_label": "Beauty",
+      "canonical_pred": "Beauty",
+      "graphnarrator_pred": "Beauty",
+      "agrees_with_canonical": true
+    },
+    {
+      "dataset": "products",
+      "node": 8438,
+      "true_label": "Baby",
+      "canonical_pred": "Health & Personal Care",
+      "graphnarrator_pred": "Health & Personal Care",
+      "agrees_with_canonical": true
+    }
+  ]
+}
