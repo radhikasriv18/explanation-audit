@@ -2,7 +2,7 @@
 
 Code and data for comparing four LLM-based GNN explanation methods (GraphNarrator, GSPELL, GraphXAIN and
 CF-GNNExplainer with LLM narration) on Cora (542 evaluation nodes) and Amazon Products (200 evaluation nodes):
-the full standardized runs of all four methods, text metrics, rule-based grounding metrics, claim extraction,
+the full standardized runs of all four methods, text metrics, rule-based grounding metrics,
 an LLM grounding judge, and a robustness study that regenerates explanations with other LLMs.
 
 Upstream method code is **not** included. `upstream/UPSTREAM.md` gives each repository's URL and commit, and
@@ -34,13 +34,9 @@ scripts/
     entity_graph/             entity-graph complexity v5 and per-method entity counts
     gspell/                   GSPELL rows for the readability / lexical / entity tables, Kruskal-Wallis tests
     gspell_style/             GSPELL-paper metrics (fidelity, comprehensiveness) for GraphNarrator and CF
-  claims/
-    pilot/                    claim extraction: extract_claims.py (Llama-3.1-8B) -> cleanup_v3.py -> span_check_v4.py,
-                              reference-packet builder
-    answer_key_3methods/, gspell/   builders for the claim-labeling sheets
   judge/                      LLM grounding judge; FROZEN_JUDGE_PROMPT.md is the exact prompt and settings
   robustness/                 subset selection, regeneration (Qwen2.5-14B, Llama-3.1-70B, GPT-4o, GPT-4o-mini)
-                              and scoring/ (claim extraction, judge, metrics for the regenerated texts)
+                              and scoring/ (judge and metrics for the regenerated texts)
 data/
   inputs/                     cora_canonical.pt (canonical Cora graph) and seed-42 splits for Cora and Products
   explanations/
@@ -73,9 +69,8 @@ tools/
 | Entity-graph complexity | `scripts/metrics/entity_graph/compute_entity_graph_v5.py` |
 | CF-GNNExplainer coverage and edge-accuracy audit | `scripts/generation/cf_gnnexplainer/src/cf_gnnexplainer.py` |
 | Grounding precision / recall / F1 | `scripts/metrics/grounding/{graphnarrator,graphxain,cf_gnnexplainer}/grounding_precision_rulebased*.py`, `grounding_recall_f1.py` |
-| Claim extraction | `scripts/claims/pilot/extract_claims.py` → `cleanup_v3.py` → `span_check_v4.py` |
 | LLM grounding judge | `scripts/judge/judge_gemini.py`, `judge_gemini_3methods.py`; agreement with hand labels: `report_gemini_full.py` |
-| Robustness to the narrating LLM | `scripts/robustness/make_robustness_subset.py`; `run_qwen14b_regen.py`, `run_llama70b_regen.py`, `run_gpt4o_graphxain.py`, `run_gpt4omini_graphnarrator.py`; `scoring/{prepare_judge_inputs,extract_robustness,judge_robustness,compute_metrics}.py` |
+| Robustness to the narrating LLM | `scripts/robustness/make_robustness_subset.py`; `run_qwen14b_regen.py`, `run_llama70b_regen.py`, `run_gpt4o_graphxain.py`, `run_gpt4omini_graphnarrator.py`; `scoring/{prepare_judge_inputs,judge_robustness,compute_metrics}.py` |
 
 ## How to reproduce
 
@@ -94,13 +89,12 @@ tools/
    `meta-llama/Meta-Llama-3.1-8B-Instruct`, `Qwen/Qwen2.5-14B-Instruct-GPTQ-Int4`
    (revision `08fdbde5eea15cd2aae884125fbfd604dec19818`), `hugging-quants/Meta-Llama-3.1-70B-Instruct-GPTQ-INT4`
    (revision `1b0ae7f9d6da8b79f36fdc24912f950ecb2b6e91`).
-3. **Environments.** Each upstream repository's own requirements, plus: `transformers` 4.44.2 for GraphNarrator /
-   claim extraction; `vllm` for the Qwen / Llama-70B regeneration; `textstat` 0.7.13 and `scipy` 1.13.1 for every
+3. **Environments.** Each upstream repository's own requirements, plus: `transformers` 4.44.2 for GraphNarrator; `vllm` for the Qwen / Llama-70B regeneration; `textstat` 0.7.13 and `scipy` 1.13.1 for every
    readability / lexical metric (other textstat versions give different FK values); `google-genai` for the judge;
    `openai` for the GPT-4o / GPT-4o-mini runs.
 4. **API keys** are read from the environment only: `OPENAI_API_KEY`, `GEMINI_API_KEY`, `HUGGINGFACE_TOKEN`.
    None are included.
-5. **Order.** Generation → consolidation → metrics → robustness (regeneration → claim extraction → judge →
+5. **Order.** Generation → consolidation → metrics → robustness (regeneration → judge →
    `compute_metrics.py`). Every stage's outputs are in `data/`, so any stage can be rerun on its own.
 6. **Determinism.** Generation used seed 42. LLM outputs still differ across GPU types: compare regenerated text
    only against runs on the same hardware (A100 for the robustness runs, V100 for the rest).
